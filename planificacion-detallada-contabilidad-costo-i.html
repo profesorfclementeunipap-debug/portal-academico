@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Planificación Detallada - Contabilidad de Costo I</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'ucsar-blue': '#1e40af',
+                        'ucsar-red': '#dc2626'
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-gradient-to-br from-blue-50 to-indigo-100 min-h-screen">
+    <!-- Header -->
+    <header class="bg-white shadow-lg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center py-6">
+                <div class="flex items-center space-x-4">
+                    <div class="bg-ucsar-blue text-white p-3 rounded-lg">
+                        <i class="fas fa-calculator text-2xl"></i>
+                    </div>
+                    <div>
+                        <h1 class="text-3xl font-bold text-gray-800">Planificación Académica 2025</h1>
+                        <p class="text-gray-600">Contabilidad de Costo I - CON-2463 | UCSAR</p>
+                    </div>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <a href="index.html" 
+                       class="inline-flex items-center px-4 py-2 bg-blue-600 text-white text-sm font-medium rounded-lg hover:bg-blue-700 transition-colors">
+                        <span class="mr-2">🏠</span>
+                        Volver al Dashboard
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <!-- Title Section -->
+        <section class="bg-white rounded-xl shadow-lg p-8 mb-8">
+            <div class="text-center">
+                <h2 class="text-4xl font-bold text-gray-800 mb-4">
+                    <span class="text-ucsar-blue">Planificación Detallada</span> - Contabilidad de Costo I
+                </h2>
+                <p class="text-xl text-gray-600 mb-6">
+                    Trimestre III 2025 | Lic. Frank Clemente | UCSAR
+                </p>
+                <div class="bg-gradient-to-r from-blue-50 to-indigo-50 p-6 rounded-lg">
+                    <p class="text-lg text-gray-700">
+                        <i class="fas fa-calendar-alt text-ucsar-blue mr-2"></i>
+                        Planificación intensiva y ajustada para el control de costos empresariales
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Planning Table -->
+        <section class="bg-white rounded-xl shadow-lg p-8">
+            <h3 class="text-2xl font-bold text-gray-800 mb-6 text-center">Planificación por Sesiones</h3>
+            
+            <div class="overflow-x-auto">
+                <table class="w-full border-collapse border border-gray-300">
+                    <thead>
+                        <tr class="bg-ucsar-blue text-white">
+                            <th class="border border-gray-300 px-4 py-3 text-left">Sesión N°</th>
+                            <th class="border border-gray-300 px-4 py-3 text-left">Semana y Fecha</th>
+                            <th class="border border-gray-300 px-4 py-3 text-left">Unidad</th>
+                            <th class="border border-gray-300 px-4 py-3 text-left">Objetivos y Contenidos</th>
+                            <th class="border border-gray-300 px-4 py-3 text-left">Estrategias de Aprendizaje</th>
+                            <th class="border border-gray-300 px-4 py-3 text-left">Evaluación</th>
+                            <th class="border border-gray-300 px-4 py-3 text-left">%</th>
+                            <th class="border border-gray-300 px-4 py-3 text-left">Observaciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Sesión 1 -->
+                        <tr class="hover:bg-gray-50">
+                            <td class="border border-gray-300 px-4 py-3 font-semibold">1</td>
+                            <td class="border border-gray-300 px-4 py-3">29/09/2025</td>
+                            <td class="border border-gray-300 px-4 py-3">Introducción</td>
+                            <td class="border border-gray-300 px-4 py-3">
+                                Acuerdo del plan de evaluación y acuerdos de clase.
+                            </td>
+                            <td class="border border-gray-300 px-4 py-3">
+                                Presentación de los objetivos. Diálogo y retroalimentación.
+                            </td>
+                            <td class="border border-gray-300 px-4 py-3">
+                                Evaluación colaborativa: Intervención Activa, Diálogo y retroalimentación, Valoración de múltiples perspectivas.
+                            </td>
+                            <td class="border border-gray-300 px-4 py-3 text-center">N/A</td>
+                            <td class="border border-gray-300 px-4 py-3 text-sm">
+                                La evaluación debe ser acordada con el curso.
+                            </td>
+                        </tr>
+
+                        <!-- Sesión 2 -->
+                        <tr class="hover:bg-gray-50">
+                            <td class="border border-gray-300 px-4 py-3 font-semibold">2</td>
+                            <td class="border border-gray-300 px-4 py-3">06/10/2025</td>
+                            <td class="border border-gray-300 px-4 py-3">1</td>
+                            <td class="border border-gray-300 px-4 py-3">
+                                CONCEPTOS BÁSICOS DE LA CONTABILIDAD APLICADOS EN EL CONTROL DE COSTOS: Terminología básica de costos. La noción del Costo y la Relación de la naturaleza de las operaciones que ejecuta una empresa (distribución de servicios o de manufactura). Diferencia entre costo y gasto.
+                            </td>
+                            <td class="border border-gray-300 px-4 py-3">
+                                Clase Magistral. Debate de conceptos. Ejercicios y prácticas. Recursos: Textos, Pizarrón, App (WhatsApp o Telegrams), Google.docs, Google Drive, Correo electrónicos.
+                            </td>
+                            <td class="border border-gray-300 px-4 py-3">
+                                Evaluación formativa: Debate de Conceptos. Evaluación Sumativa: Examen de Conceptos (o Ensayo de conceptos).
+                            </td>
+                            <td class="border border-gray-300 px-4 py-3 text-center font-semibold">20%</td>
+                            <td class="border border-gray-300 px-4 py-3 text-sm">
+                                El objetivo de la contabilidad de costos es predeterminar, registrar, acumular, controlar, analizar, direccionar, interpretar e informar todo lo relacionado con los costos.
+                            </td>
+                        </tr>
+
+                        <!-- Sesión 3 -->
+                        <tr class="hover:bg-gray-50">
+                            <td class="border border-gray-300 px-4 py-3 font-semibold">3</td>
+                            <td class="border border-gray-300 px-4 py-3">13/10/2025</td>
+                            <td class="border border-gray-300 px-4 py-3">2 y 5 (Semana 1)</td>
+                            <td class="border border-gray-300 px-4 py-3">
+                                CICLOS DE COSTOS Y ESTADOS DE COSTOS DE LA PRODUCCIÓN (I): El proceso del flujo de costos en empresas manufactureras a través del análisis práctico de las cuentas de inventario de materiales y suministros, y productos terminados.
+                            </td>
+                            <td class="border border-gray-300 px-4 py-3">
+                                Presentación de los objetivos. Clase Magistral. Resolución de Problemas contables en equipos. Ejercicios y prácticas.
+                            </td>
+                            <td class="border border-gray-300 px-4 py-3">
+                                Evaluación formativa: Ejercicios Prácticos. Evaluación colaborativa: Intervención Activa.
+                            </td>
+                            <td class="border border-gray-300 px-4 py-3 text-center">N/A</td>
+                            <td class="border border-gray-300 px-4 py-3 text-sm">
+                                Se inicia la cobertura de los ciclos y flujos de costos.
+                            </td>
+                        </tr>
+
+                        <!-- Sesión 4 -->
+                        <tr class="hover:bg-gray-50">
+                            <td class="border border-gray-300 px-4 py-3 font-semibold">4</td>
+                            <td class="border border-gray-300 px-4 py-3">20/10/2025</td>
+                            <td class="border border-gray-300 px-4 py-3">2 y 5 (Semana 2)</td>
+                            <td class="border border-gray-300 px-4 py-3">
+                                CICLOS DE COSTOS Y ESTADOS DE COSTOS DE LA PRODUCCIÓN (II) / ESTADOS DE LOS COSTOS: Valoración de la producción de costos reales de costos aplicados a la carga fabril. Elaboración del estado de costos de los artículos manufacturados y vendidos y el estado de resultados en empresas de manufactura. Capacidad de elaborar los costos de los ciclos del costo en un formato determinado.
+                            </td>
+                            <td class="border border-gray-300 px-4 py-3">
+                                Resolución de Problemas contables en equipos. Cierre: Debate punto de encuentro por resolución de problemas en equipo.
+                            </td>
+                            <td class="border border-gray-300 px-4 py-3">
+                                Evaluación Sumativa: Ejercicios Prácticos (Foco: Elaboración de Estados de Costos/Resultados).
+                            </td>
+                            <td class="border border-gray-300 px-4 py-3 text-center font-semibold">20%</td>
+                            <td class="border border-gray-300 px-4 py-3 text-sm">
+                                La elaboración del estado de costos de producción y ventas es clave en este capítulo.
+                            </td>
+                        </tr>
+
+                        <!-- Sesión 5 -->
+                        <tr class="hover:bg-gray-50">
+                            <td class="border border-gray-300 px-4 py-3 font-semibold">5</td>
+                            <td class="border border-gray-300 px-4 py-3">27/10/2025</td>
+                            <td class="border border-gray-300 px-4 py-3">3 (Semana 1)</td>
+                            <td class="border border-gray-300 px-4 py-3">
+                                CONTROL DE MATERIALES Y DE LA PRODUCCIÓN (I): Comportamiento de los costos en los ambientes de manufactura y el concepto de rango de relevancia. Valuación de salidas de almacén: Costos promedio, PEPS, UEPS.
+                            </td>
+                            <td class="border border-gray-300 px-4 py-3">
+                                Clase Magistral. Exposición. Resolución de Problemas contables en equipos. Uso de recursos digitales (Google.docs, Drive).
+                            </td>
+                            <td class="border border-gray-300 px-4 py-3">
+                                Evaluación formativa: Informe del contenido a exponer.
+                            </td>
+                            <td class="border border-gray-300 px-4 py-3 text-center">N/A</td>
+                            <td class="border border-gray-300 px-4 py-3 text-sm">
+                                Se debe consignar el corte de notas en la Dirección de la Escuela en esta semana (Semana 5 de actividades académicas).
+                            </td>
+                        </tr>
+
+                        <!-- Sesión 6 -->
+                        <tr class="hover:bg-gray-50">
+                            <td class="border border-gray-300 px-4 py-3 font-semibold">6</td>
+                            <td class="border border-gray-300 px-4 py-3">03/11/2025</td>
+                            <td class="border border-gray-300 px-4 py-3">3 (Semana 2)</td>
+                            <td class="border border-gray-300 px-4 py-3">
+                                CONTROL DE MATERIALES Y DE LA PRODUCCIÓN (II): Comportamiento de los costos y su relación costo-volumen-utilidad (CVU) sobre la toma de decisiones (fijación de precios de los productos, rechazo o aceptación de órdenes de venta, promoción de líneas de productos rentables).
+                            </td>
+                            <td class="border border-gray-300 px-4 py-3">
+                                Debate de conceptos. Resolución de Problemas contables en equipos (Análisis CVU/Punto de Equilibrio/Utilidad Deseada).
+                            </td>
+                            <td class="border border-gray-300 px-4 py-3">
+                                Evaluación Sumativa: Ejercicios Prácticos (Foco: CVU y toma de decisiones).
+                            </td>
+                            <td class="border border-gray-300 px-4 py-3 text-center font-semibold">20%</td>
+                            <td class="border border-gray-300 px-4 py-3 text-sm">
+                                El análisis CVU ayuda a medir el éxito de una empresa en términos de utilidad neta.
+                            </td>
+                        </tr>
+
+                        <!-- Sesión 7 -->
+                        <tr class="hover:bg-gray-50">
+                            <td class="border border-gray-300 px-4 py-3 font-semibold">7</td>
+                            <td class="border border-gray-300 px-4 py-3">10/11/2025</td>
+                            <td class="border border-gray-300 px-4 py-3">4 (Semana 1)</td>
+                            <td class="border border-gray-300 px-4 py-3">
+                                CONTROL DE MANO DE OBRA Y CARGA FABRIL (I): Capacidad apropiada de la planta. Inductores de costos (cost drivers) relacionados con el volumen para realizar la asignación de costos de cualquier objeto de costeo. Direccionamiento (prorrateo) primario, secundario y final.
+                            </td>
+                            <td class="border border-gray-300 px-4 py-3">
+                                Presentación de los objetivos. Clase Magistral. Ejercicios y prácticas (e.g., cálculo del costo hora-hombre, asignación de cargos indirectos).
+                            </td>
+                            <td class="border border-gray-300 px-4 py-3">
+                                Evaluación formativa: Construcción de ejercicios.
+                            </td>
+                            <td class="border border-gray-300 px-4 py-3 text-center">N/A</td>
+                            <td class="border border-gray-300 px-4 py-3 text-sm">
+                                Los Cargos Indirectos (CI) no se identifican plenamente con los productos, por lo que requieren métodos de direccionamiento.
+                            </td>
+                        </tr>
+
+                        <!-- Sesión 8 -->
+                        <tr class="hover:bg-gray-50">
+                            <td class="border border-gray-300 px-4 py-3 font-semibold">8</td>
+                            <td class="border border-gray-300 px-4 py-3">17/11/2025</td>
+                            <td class="border border-gray-300 px-4 py-3">4 (Semana 2)</td>
+                            <td class="border border-gray-300 px-4 py-3">
+                                CONTROL DE MANO DE OBRA Y CARGA FABRIL (II): Análisis de Costos Predeterminados (Introducción a Costos Estándar). Variaciones. Revisión y consolidación de la unidad 4.
+                            </td>
+                            <td class="border border-gray-300 px-4 py-3">
+                                Exposición del tema asignado. Revisión de ejercicios y prácticas.
+                            </td>
+                            <td class="border border-gray-300 px-4 py-3">
+                                Evaluación Sumativa: Ejercicios Prácticos (Para completar la evaluación de la unidad 4).
+                            </td>
+                            <td class="border border-gray-300 px-4 py-3 text-center font-semibold">20%</td>
+                            <td class="border border-gray-300 px-4 py-3 text-sm">
+                                Se debe consignar el corte de notas final en la Dirección de la Escuela en la semana decimocuarta (finales de noviembre).
+                            </td>
+                        </tr>
+
+                        <!-- Sesión 9 -->
+                        <tr class="hover:bg-gray-50">
+                            <td class="border border-gray-300 px-4 py-3 font-semibold">9</td>
+                            <td class="border border-gray-300 px-4 py-3">24/11/2025</td>
+                            <td class="border border-gray-300 px-4 py-3">Cierre</td>
+                            <td class="border border-gray-300 px-4 py-3">
+                                Socialización de notas definitivas.
+                            </td>
+                            <td class="border border-gray-300 px-4 py-3">
+                                Diálogo y retroalimentación.
+                            </td>
+                            <td class="border border-gray-300 px-4 py-3">
+                                N/A
+                            </td>
+                            <td class="border border-gray-300 px-4 py-3 text-center">N/A</td>
+                            <td class="border border-gray-300 px-4 py-3 text-sm">
+                                Culminación del Trimestre. El profesor debe registrar la evaluación definitiva en el Sistema de Control de Estudios en la semana decimocuarta.
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- Summary Section -->
+        <section class="mt-8 bg-white rounded-xl shadow-lg p-8">
+            <h3 class="text-2xl font-bold text-gray-800 mb-6 text-center">Resumen de Evaluación</h3>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="bg-blue-50 p-6 rounded-xl text-center">
+                    <div class="text-3xl font-bold text-blue-800 mb-2">5</div>
+                    <p class="text-blue-600 font-semibold">Evaluaciones Sumativas</p>
+                    <p class="text-sm text-gray-600">20% cada una</p>
+                </div>
+                <div class="bg-green-50 p-6 rounded-xl text-center">
+                    <div class="text-3xl font-bold text-green-800 mb-2">100%</div>
+                    <p class="text-green-600 font-semibold">Total Evaluación</p>
+                    <p class="text-sm text-gray-600">Distribuido en 5 evaluaciones</p>
+                </div>
+                <div class="bg-purple-50 p-6 rounded-xl text-center">
+                    <div class="text-3xl font-bold text-purple-800 mb-2">9</div>
+                    <p class="text-purple-600 font-semibold">Sesiones Totales</p>
+                    <p class="text-sm text-gray-600">Desde introducción hasta cierre</p>
+                </div>
+            </div>
+            <div class="mt-6 bg-yellow-50 p-6 rounded-xl">
+                <h4 class="text-lg font-semibold text-gray-800 mb-3">Distribución de Evaluaciones:</h4>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                        <p class="text-sm text-gray-700"><strong>Sesión 2:</strong> Conceptos Básicos (20%)</p>
+                        <p class="text-sm text-gray-700"><strong>Sesión 4:</strong> Estados de Costos (20%)</p>
+                        <p class="text-sm text-gray-700"><strong>Sesión 6:</strong> Análisis CVU (20%)</p>
+                    </div>
+                    <div>
+                        <p class="text-sm text-gray-700"><strong>Sesión 8:</strong> Costos Predeterminados (20%)</p>
+                        <p class="text-sm text-gray-700"><strong>Total:</strong> 100%</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-8 mt-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center">
+                <p class="text-lg font-semibold mb-2">Contabilidad de Costo I - UCSAR</p>
+                <p class="text-gray-400">Trimestre III 2025 | Lic. Frank Clemente</p>
+                <p class="text-gray-500 text-sm mt-4">
+                    <i class="fas fa-university mr-2"></i>
+                    Universidad Católica Santa Rosa
+                </p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
