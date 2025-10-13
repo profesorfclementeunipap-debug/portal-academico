@@ -98,10 +98,59 @@
             </div>
         </section>
 
+        <!-- Consulta de Calificaciones -->
+        <section class="mt-12 bg-white rounded-xl shadow-lg p-8">
+            <h3 class="text-2xl font-bold text-gray-800 mb-6 flex items-center">
+                <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-lg mr-3">📊</span>
+                Consulta de Calificaciones
+            </h3>
+            <p class="text-gray-600 mb-8">Ingresa tu número de cédula para consultar tus calificaciones en tiempo real.</p>
+            
+            <div class="max-w-md mx-auto">
+                <div class="bg-gradient-to-r from-blue-50 to-indigo-50 p-6 rounded-xl border-2 border-blue-200">
+                    <div class="text-center mb-6">
+                        <div class="inline-flex items-center justify-center w-16 h-16 bg-blue-100 rounded-full mb-4">
+                            <span class="text-2xl">🔍</span>
+                        </div>
+                        <h4 class="text-xl font-bold text-blue-800 mb-2">Consulta tu Progreso</h4>
+                        <p class="text-blue-600 text-sm">Ingresa tu cédula para ver tus calificaciones</p>
+                    </div>
+                    
+                    <div class="space-y-4">
+                        <div>
+                            <label for="cedula" class="block text-sm font-medium text-gray-700 mb-2">Número de Cédula:</label>
+                            <input type="text" 
+                                   id="cedula" 
+                                   placeholder="Ej: 12345678"
+                                   class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-center text-lg">
+                        </div>
+                        
+                        <div class="text-center">
+                            <button onclick="consultarCalificaciones()" 
+                                    class="w-full px-6 py-3 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 transition-colors shadow-lg hover:shadow-xl">
+                                <span class="mr-2">📊</span>
+                                Consultar Calificaciones
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Resultados de Calificaciones -->
+            <div id="resultados-calificaciones" class="mt-8 hidden">
+                <div class="bg-gray-50 rounded-xl p-6">
+                    <h4 class="text-lg font-semibold text-gray-800 mb-4">Resultados de Búsqueda</h4>
+                    <div id="datos-estudiante" class="space-y-4">
+                        <!-- Los datos se cargarán aquí dinámicamente -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <!-- Registro en Cuadro de Notas -->
         <section class="mt-12 bg-white rounded-xl shadow-lg p-8">
             <h3 class="text-2xl font-bold text-gray-800 mb-6 flex items-center">
-                <span class="bg-green-100 text-green-800 px-3 py-1 rounded-lg mr-3">📊</span>
+                <span class="bg-green-100 text-green-800 px-3 py-1 rounded-lg mr-3">📝</span>
                 Registro en Cuadro de Notas
             </h3>
             <p class="text-gray-600 mb-8">Regístrate en el cuadro de notas según tu carrera. Es importante que sigas las instrucciones para mantener el formato correcto.</p>
@@ -408,6 +457,245 @@
                 behavior: 'smooth' 
             });
         }
+
+        // Función para consultar calificaciones desde Google Sheets
+        async function consultarCalificaciones() {
+            const cedula = document.getElementById('cedula').value.trim();
+            const resultados = document.getElementById('resultados-calificaciones');
+            const datosEstudiante = document.getElementById('datos-estudiante');
+
+            if (!cedula) {
+                alert('Por favor ingresa tu número de cédula');
+                return;
+            }
+
+            // Mostrar loading
+            datosEstudiante.innerHTML = `
+                <div class="text-center py-8">
+                    <div class="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto mb-4"></div>
+                    <p class="text-gray-600">Consultando calificaciones desde Google Sheets...</p>
+                </div>
+            `;
+            resultados.classList.remove('hidden');
+
+            try {
+                // Consultar desde Google Sheets
+                const calificacionesActualizadas = await consultarGoogleSheetsYActualizar(cedula);
+                
+                if (calificacionesActualizadas) {
+                    mostrarCalificaciones(calificacionesActualizadas);
+                } else {
+                    mostrarError('No se encontraron calificaciones para la cédula ingresada');
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                mostrarError('Error al consultar las calificaciones. Intenta nuevamente.');
+            }
+        }
+
+        async function consultarGoogleSheetsYActualizar(cedula) {
+            try {
+                // Consultar Google Sheets de Contaduría
+                const contaduriaData = await consultarGoogleSheet('17ylQ1IsjRUCLgX0AwWw2tG0ImTGIRj_Z');
+                
+                // Consultar Google Sheets de Administración de Empresas
+                const administracionData = await consultarGoogleSheet('14WheATkg9GCtOAsoQWtL2I5Sy4d2jI6s');
+                
+                // Combinar datos de ambas hojas
+                const todosLosEstudiantes = [...contaduriaData, ...administracionData];
+                
+                // Buscar el estudiante por cédula
+                const estudiante = todosLosEstudiantes.find(est => est.cedula === cedula);
+                
+                return estudiante || null;
+            } catch (error) {
+                console.error('Error consultando Google Sheets:', error);
+                return null;
+            }
+        }
+
+        async function consultarGoogleSheet(sheetId) {
+            // Usar Google Sheets API pública (sin autenticación)
+            const url = `https://docs.google.com/spreadsheets/d/${sheetId}/gviz/tq?tqx=out:json`;
+            
+            try {
+                const response = await fetch(url);
+                const text = await response.text();
+                
+                // Parsear respuesta de Google Sheets
+                const jsonData = JSON.parse(text.substring(47, text.length - 2));
+                const rows = jsonData.table.rows;
+                
+                const estudiantes = [];
+                
+                // Procesar filas (saltar encabezados)
+                for (let i = 2; i < rows.length; i++) {
+                    const row = rows[i];
+                    if (row.c && row.c.length >= 13) {
+                        const cedula = row.c[3]?.v?.toString() || '';
+                        const apellidos = row.c[1]?.v?.toString() || '';
+                        const nombres = row.c[2]?.v?.toString() || '';
+                        
+                        if (cedula && cedula !== '0' && apellidos && nombres) {
+                            const evaluaciones = [
+                                { nombre: 'Evaluación 1', puntaje: parseFloat(row.c[4]?.v) || 0, ponderado: 0, porcentaje: 20 }, // Columna E (EVAL 1)
+                                { nombre: 'Evaluación 2', puntaje: parseFloat(row.c[6]?.v) || 0, ponderado: 0, porcentaje: 20 }, // Columna G (EVAL 2)
+                                { nombre: 'Evaluación 3', puntaje: parseFloat(row.c[8]?.v) || 0, ponderado: 0, porcentaje: 20 }, // Columna I (EVAL 3)
+                                { nombre: 'Evaluación 4', puntaje: parseFloat(row.c[10]?.v) || 0, ponderado: 0, porcentaje: 20 }, // Columna K (EVAL 4)
+                                { nombre: 'Evaluación 5', puntaje: parseFloat(row.c[12]?.v) || 0, ponderado: 0, porcentaje: 20 } // Columna M (EVAL 5)
+                            ];
+                            
+                            // Calcular ponderados
+                            evaluaciones.forEach(eval => {
+                                eval.ponderado = (eval.puntaje * eval.porcentaje) / 100;
+                            });
+                            
+                            const definitiva = evaluaciones.reduce((sum, eval) => sum + eval.ponderado, 0);
+                            
+                            estudiantes.push({
+                                cedula: cedula,
+                                nombre: `${apellidos} ${nombres}`.toUpperCase(),
+                                carrera: sheetId === '17ylQ1IsjRUCLgX0AwWw2tG0ImTGIRj_Z' ? 'Contaduría' : 'Administración de Empresas',
+                                evaluaciones: evaluaciones,
+                                definitiva: definitiva,
+                                estado: definitiva > 0 ? 'En progreso' : 'Sin calificaciones'
+                            });
+                        }
+                    }
+                }
+                
+                return estudiantes;
+            } catch (error) {
+                console.error('Error consultando Google Sheet:', error);
+                return [];
+            }
+        }
+
+        // Función para mostrar las calificaciones
+        function mostrarCalificaciones(calificaciones) {
+            const datosEstudiante = document.getElementById('datos-estudiante');
+            
+            // Verificar si hay calificaciones
+            const tieneCalificaciones = calificaciones.evaluaciones.some(eval => eval.puntaje > 0);
+            
+            if (!tieneCalificaciones) {
+                // Mostrar mensaje cuando no hay calificaciones
+                datosEstudiante.innerHTML = `
+                    <div class="bg-white rounded-lg p-6 shadow-sm">
+                        <div class="flex items-center justify-between mb-6">
+                            <div>
+                                <h5 class="text-xl font-bold text-gray-800">${calificaciones.nombre}</h5>
+                                <p class="text-gray-600">Cédula: ${calificaciones.cedula}</p>
+                                <p class="text-sm text-blue-600 font-medium">${calificaciones.carrera}</p>
+                            </div>
+                            <div class="text-right">
+                                <div class="text-3xl font-bold text-gray-400">-</div>
+                                <div class="text-sm text-gray-500">Sin calificaciones</div>
+                            </div>
+                        </div>
+
+                        <div class="bg-gradient-to-r from-yellow-50 to-orange-50 rounded-lg p-6 text-center">
+                            <div class="text-yellow-600 text-4xl mb-4">📝</div>
+                            <h6 class="font-semibold text-gray-800 mb-2">Estudiante Registrado</h6>
+                            <p class="text-sm text-gray-600 mb-4">
+                                Has sido registrado exitosamente en el sistema. 
+                                Las calificaciones aparecerán aquí conforme se vayan asignando.
+                            </p>
+                            <div class="bg-white rounded-lg p-4">
+                                <h6 class="font-semibold text-gray-800 mb-2">Estado del Registro</h6>
+                                <div class="flex items-center justify-center space-x-4 text-sm">
+                                    <div class="flex items-center text-green-600">
+                                        <span class="mr-2">✅</span>
+                                        GitHub
+                                    </div>
+                                    <div class="flex items-center text-green-600">
+                                        <span class="mr-2">✅</span>
+                                        Google Sheets
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                return;
+            }
+            
+            // Mostrar calificaciones normales
+            let html = `
+                <div class="bg-white rounded-lg p-6 shadow-sm">
+                    <div class="flex items-center justify-between mb-6">
+                        <div>
+                            <h5 class="text-xl font-bold text-gray-800">${calificaciones.nombre}</h5>
+                            <p class="text-gray-600">Cédula: ${calificaciones.cedula}</p>
+                            <p class="text-sm text-blue-600 font-medium">${calificaciones.carrera}</p>
+                        </div>
+                        <div class="text-right">
+                            <div class="text-3xl font-bold text-ucsar-blue">${calificaciones.definitiva.toFixed(2)}</div>
+                            <div class="text-sm text-gray-500">Calificación Definitiva</div>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4 mb-6">
+            `;
+
+            calificaciones.evaluaciones.forEach((eval, index) => {
+                const color = eval.puntaje >= 18 ? 'green' : eval.puntaje >= 15 ? 'yellow' : 'red';
+                html += `
+                    <div class="bg-gray-50 rounded-lg p-4 text-center">
+                        <div class="text-sm font-medium text-gray-600 mb-2">${eval.nombre}</div>
+                        <div class="text-2xl font-bold text-${color}-600 mb-1">${eval.puntaje.toFixed(2)}</div>
+                        <div class="text-xs text-gray-500">Ponderado: ${eval.ponderado.toFixed(2)}</div>
+                        <div class="text-xs text-gray-400">${eval.porcentaje}%</div>
+                    </div>
+                `;
+            });
+
+            html += `
+                    </div>
+
+                    <div class="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-lg p-4">
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <h6 class="font-semibold text-gray-800">Estado Académico</h6>
+                                <p class="text-sm text-gray-600">
+                                    ${calificaciones.definitiva >= 18 ? '✅ Aprobado' : 
+                                      calificaciones.definitiva >= 15 ? '⚠️ En observación' : 
+                                      '❌ Reprobado'}
+                                </p>
+                            </div>
+                            <div class="text-right">
+                                <div class="text-sm text-gray-500">Progreso</div>
+                                <div class="w-24 bg-gray-200 rounded-full h-2">
+                                    <div class="bg-blue-600 h-2 rounded-full" style="width: ${(calificaciones.definitiva / 20) * 100}%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+
+            datosEstudiante.innerHTML = html;
+        }
+
+        // Función para mostrar errores
+        function mostrarError(mensaje) {
+            const datosEstudiante = document.getElementById('datos-estudiante');
+            datosEstudiante.innerHTML = `
+                <div class="bg-red-50 border border-red-200 rounded-lg p-6 text-center">
+                    <div class="text-red-600 text-4xl mb-4">⚠️</div>
+                    <h6 class="font-semibold text-red-800 mb-2">No se encontraron resultados</h6>
+                    <p class="text-red-600">${mensaje}</p>
+                    <p class="text-sm text-gray-500 mt-2">Verifica que hayas ingresado correctamente tu número de cédula</p>
+                </div>
+            `;
+        }
+
+        // Permitir búsqueda con Enter
+        document.getElementById('cedula').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                consultarCalificaciones();
+            }
+        });
     </script>
 </body>
 </html>
