@@ -3,411 +3,97 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contabilidad de Costo I - UCSAR</title>
+    <title>Portal Académico - Prof. Frank Clemente</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        'ucsar-blue': '#1e40af',
-                        'ucsar-red': '#dc2626'
-                    }
-                }
-            }
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Outfit', sans-serif;
+            background-color: #020617;
+            background-image: radial-gradient(circle at 50% -20%, #1e293b 0%, #020617 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
         }
-    </script>
+        .portal-card {
+            background: rgba(30, 41, 59, 0.5);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .portal-card:hover {
+            transform: scale(1.02) translateY(-10px);
+            border-color: rgba(59, 130, 246, 0.5);
+            background: rgba(30, 41, 59, 0.8);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+        }
+        .glow {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at center, rgba(59, 130, 246, 0.15) 0%, transparent 70%);
+            top: 0;
+            left: 0;
+            pointer-events: none;
+        }
+    </style>
 </head>
-<body class="bg-gradient-to-br from-blue-50 to-indigo-100 min-h-screen">
-    <!-- Header -->
-    <header class="bg-white shadow-lg">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center py-6">
-                <div class="flex items-center space-x-4">
-                    <div class="bg-ucsar-blue text-white p-3 rounded-lg">
+<body class="text-white px-6 py-20">
+
+    <div class="text-center mb-16 animate-fade-in">
+        <div class="bg-blue-600 w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-xl shadow-blue-900/20">
+            <i class="fas fa-university text-3xl"></i>
+        </div>
+        <h1 class="text-4xl md:text-5xl font-bold tracking-tight mb-4">Portal Académico Digital</h1>
+        <p class="text-slate-400 text-lg max-w-xl mx-auto">Seleccione el entorno académico al que desea ingresar.</p>
+    </div>
+
+    <div class="max-w-6xl w-full grid grid-cols-1 md:grid-cols-2 gap-8">
+        
+        <!-- Contabilidad de Costo I -->
+        <a href="costo.html" class="portal-card rounded-[2.5rem] p-10 relative overflow-hidden group">
+            <div class="glow"></div>
+            <div class="relative z-10">
+                <div class="flex justify-between items-start mb-12">
+                    <div class="w-14 h-14 bg-blue-500/20 text-blue-400 rounded-2xl flex items-center justify-center border border-blue-500/30 group-hover:bg-blue-500 group-hover:text-white transition-all duration-500">
                         <i class="fas fa-calculator text-2xl"></i>
                     </div>
-                    <div>
-                        <h1 class="text-3xl font-bold text-gray-800">Contabilidad de Costo I</h1>
-                        <p class="text-gray-600">CON-2463 | UCSAR</p>
-                    </div>
+                    <span class="text-xs font-bold uppercase tracking-widest bg-blue-500/10 text-blue-400 px-3 py-1 rounded-full border border-blue-500/20">Grado</span>
                 </div>
-                <div class="text-right">
-                    <p class="text-sm text-gray-500">Trimestre II 2026 (18/05 - 31/07)</p>
-                    <p class="text-sm text-gray-500">Lic. Frank Clemente</p>
+                <h2 class="text-3xl font-bold mb-4">Contabilidad de Costo I</h2>
+                <p class="text-slate-400 mb-8 leading-relaxed">Gestión académica integral para el Trimestre 2026-II. Dashboard de sesiones, planificación y notas.</p>
+                <div class="flex items-center text-blue-400 font-bold group-hover:translate-x-2 transition-all">
+                    Ingresar al Aula <i class="fas fa-arrow-right ml-2"></i>
                 </div>
             </div>
-        </div>
-    </header>
+        </a>
 
-    <!-- Main Content -->
-    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <!-- Welcome Section -->
-        <section class="bg-white rounded-xl shadow-lg p-8 mb-8">
-            <div class="text-center">
-                <h2 class="text-4xl font-bold text-gray-800 mb-4">
-                    <span class="text-ucsar-blue">Bienvenidos</span> a Contabilidad de Costo I
-                </h2>
-                <p class="text-xl text-gray-600 mb-6">
-                    Plataforma de planificación académica para el control y análisis de costos empresariales
-                </p>
-                <div class="bg-gradient-to-r from-blue-50 to-indigo-50 p-6 rounded-lg">
-                    <p class="text-lg text-gray-700">
-                        <i class="fas fa-graduation-cap text-ucsar-blue mr-2"></i>
-                        Explora la planificación detallada, consulta cada sesión y accede a todos los recursos de la cátedra
-                    </p>
+        <!-- Diplomado en Contabilidad Financiera -->
+        <a href="diplomado/index.html" class="portal-card rounded-[2.5rem] p-10 relative overflow-hidden group">
+            <div class="glow"></div>
+            <div class="relative z-10">
+                <div class="flex justify-between items-start mb-12">
+                    <div class="w-14 h-14 bg-indigo-500/20 text-indigo-400 rounded-2xl flex items-center justify-center border border-indigo-500/30 group-hover:bg-indigo-500 group-hover:text-white transition-all duration-500">
+                        <i class="fas fa-award text-2xl"></i>
+                    </div>
+                    <span class="text-xs font-bold uppercase tracking-widest bg-indigo-500/10 text-indigo-400 px-3 py-1 rounded-full border border-indigo-500/20">Postgrado</span>
+                </div>
+                <h2 class="text-3xl font-bold mb-4">Diplomado Contabilidad Financiera</h2>
+                <p class="text-slate-400 mb-8 leading-relaxed">Formación profesional avanzada. Módulos teóricos, casos prácticos y entorno de evaluación.</p>
+                <div class="flex items-center text-indigo-400 font-bold group-hover:translate-x-2 transition-all">
+                    Ingresar al Diplomado <i class="fas fa-arrow-right ml-2"></i>
                 </div>
             </div>
-        </section>
+        </a>
 
-        <!-- Quick Actions -->
-        <section class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
-            <!-- Planificación Detallada -->
-            <div class="bg-white rounded-xl shadow-lg p-8 hover:shadow-xl transition-all duration-300 cursor-pointer" onclick="window.location.href='planificacion-detallada-contabilidad-costo-i.html'">
-                <div class="text-center">
-                    <div class="bg-green-100 text-green-800 p-4 rounded-full w-16 h-16 mx-auto mb-4 flex items-center justify-center">
-                        <i class="fas fa-calendar-alt text-2xl"></i>
-                    </div>
-                    <h3 class="text-2xl font-bold text-gray-800 mb-4">Planificación Detallada</h3>
-                    <p class="text-gray-600 mb-6">Consulta la planificación completa del trimestre con objetivos, contenidos y evaluaciones</p>
-                    <div class="bg-green-50 p-4 rounded-lg">
-                        <p class="text-sm text-green-800 font-medium">
-                            <i class="fas fa-clock mr-2"></i>
-                            9 sesiones programadas
-                        </p>
-                    </div>
-                </div>
-            </div>
+    </div>
 
-            <!-- Sesiones por Semana -->
-            <div class="bg-white rounded-xl shadow-lg p-8 hover:shadow-xl transition-all duration-300 cursor-pointer" onclick="scrollToSessions()">
-                <div class="text-center">
-                    <div class="bg-blue-100 text-blue-800 p-4 rounded-full w-16 h-16 mx-auto mb-4 flex items-center justify-center">
-                        <i class="fas fa-list-ol text-2xl"></i>
-                    </div>
-                    <h3 class="text-2xl font-bold text-gray-800 mb-4">Sesiones por Semana</h3>
-                    <p class="text-gray-600 mb-6">Accede a cada sesión individual con objetivos específicos y recursos</p>
-                    <div class="bg-blue-50 p-4 rounded-lg">
-                        <p class="text-sm text-blue-800 font-medium">
-                            <i class="fas fa-book mr-2"></i>
-                            Desde Introducción hasta Cierre
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Registro en Cuadro de Notas -->
-        <section class="mt-12 bg-white rounded-xl shadow-lg p-8">
-            <h3 class="text-2xl font-bold text-gray-800 mb-6 flex items-center">
-                <span class="bg-green-100 text-green-800 px-3 py-1 rounded-lg mr-3">📊</span>
-                Registro en Cuadro de Notas
-            </h3>
-            <p class="text-gray-600 mb-8">Regístrate en el cuadro de notas según tu carrera. Es importante que sigas las instrucciones para mantener el formato correcto.</p>
-            
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <!-- Administración de Empresas -->
-                <div class="bg-gradient-to-br from-blue-50 to-indigo-50 p-6 rounded-xl border-2 border-blue-200">
-                    <div class="text-center mb-6">
-                        <div class="inline-flex items-center justify-center w-16 h-16 bg-blue-100 rounded-full mb-4">
-                            <span class="text-2xl">🏢</span>
-                        </div>
-                        <h4 class="text-xl font-bold text-blue-800 mb-2">Administración de Empresas</h4>
-                        <p class="text-blue-600 text-sm">Para estudiantes de la carrera de Administración de Empresas</p>
-                    </div>
-                    
-                    <div class="bg-white p-4 rounded-lg shadow-sm mb-4">
-                        <h5 class="font-semibold text-gray-800 mb-3">📋 Instrucciones:</h5>
-                        <ul class="text-sm text-gray-700 space-y-2">
-                            <li>• <strong>NO modifiques</strong> el formato del cuadro</li>
-                            <li>• <strong>Nombre completo:</strong> Todas las letras en MAYÚSCULA</li>
-                            <li>• <strong>Cédula:</strong> Solo números, sin puntos</li>
-                            <li>• Coloca tu nombre completo</li>
-                        </ul>
-                    </div>
-                    
-                    <div class="text-center">
-                        <a href="https://docs.google.com/spreadsheets/d/1b7O-S598Kv6KpBAeem7EHZmr6KLpjTzc/edit?usp=sharing" 
-                           target="_blank"
-                           class="inline-flex items-center px-6 py-3 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 transition-colors shadow-lg hover:shadow-xl">
-                            <span class="mr-3 text-xl">📊</span>
-                            Registrarse en Cuadro de Notas
-                            <span class="ml-3 text-sm">→</span>
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Contaduría -->
-                <div class="bg-gradient-to-br from-green-50 to-emerald-50 p-6 rounded-xl border-2 border-green-200">
-                    <div class="text-center mb-6">
-                        <div class="inline-flex items-center justify-center w-16 h-16 bg-green-100 rounded-full mb-4">
-                            <span class="text-2xl">📈</span>
-                        </div>
-                        <h4 class="text-xl font-bold text-green-800 mb-2">Contaduría</h4>
-                        <p class="text-green-600 text-sm">Para estudiantes de la carrera de Contaduría</p>
-                    </div>
-                    
-                    <div class="bg-white p-4 rounded-lg shadow-sm mb-4">
-                        <h5 class="font-semibold text-gray-800 mb-3">📋 Instrucciones:</h5>
-                        <ul class="text-sm text-gray-700 space-y-2">
-                            <li>• <strong>NO modifiques</strong> el formato del cuadro</li>
-                            <li>• <strong>Nombre completo:</strong> Todas las letras en MAYÚSCULA</li>
-                            <li>• <strong>Cédula:</strong> Solo números, sin puntos</li>
-                            <li>• Coloca tu nombre completo</li>
-                        </ul>
-                    </div>
-                    
-                    <div class="text-center">
-                        <a href="https://docs.google.com/spreadsheets/d/1b7O-S598Kv6KpBAeem7EHZmr6KLpjTzc/edit?usp=sharing" 
-                           target="_blank"
-                           class="inline-flex items-center px-6 py-3 bg-green-600 text-white font-semibold rounded-lg hover:bg-green-700 transition-colors shadow-lg hover:shadow-xl">
-                            <span class="mr-3 text-xl">📊</span>
-                            Registrarse en Cuadro de Notas
-                            <span class="ml-3 text-sm">→</span>
-                        </a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="mt-8 bg-yellow-50 border-l-4 border-yellow-400 p-4 rounded-lg">
-                <div class="flex">
-                    <div class="flex-shrink-0">
-                        <span class="text-yellow-400 text-xl">⚠️</span>
-                    </div>
-                    <div class="ml-3">
-                        <h4 class="text-sm font-medium text-yellow-800">Importante:</h4>
-                        <p class="text-sm text-yellow-700 mt-1">
-                            Asegúrate de seleccionar el cuadro correcto según tu carrera.
-                            Si tienes dudas sobre cuál usar, consulta con el profesor.
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Información del Profesor -->
-        <section class="bg-white rounded-xl shadow-lg p-8 mb-8">
-            <h3 class="text-2xl font-bold text-gray-800 mb-6 flex items-center">
-                <span class="bg-ucsar-blue text-white px-3 py-1 rounded-lg mr-3">👨‍🏫</span>
-                Información del Profesor
-            </h3>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div class="bg-gray-50 p-6 rounded-xl">
-                    <h4 class="text-lg font-semibold text-gray-800 mb-2">Lic. Frank Clemente</h4>
-                    <p class="text-gray-600 mb-4">Profesor de Contabilidad de Costo I</p>
-                    <div class="space-y-2">
-                        <p class="text-sm text-gray-500">
-                            <i class="fas fa-envelope mr-2"></i>
-                            profesorfclementeunipap@gmail.com
-                        </p>
-                        <p class="text-sm text-gray-500">
-                            <i class="fas fa-university mr-2"></i>
-                            Universidad Católica Santa Rosa (UCSAR)
-                        </p>
-                    </div>
-                </div>
-                <div class="bg-gray-50 p-6 rounded-xl">
-                    <h4 class="text-lg font-semibold text-gray-800 mb-2">Metodología</h4>
-                    <p class="text-gray-600 mb-4">Enfoque práctico con resolución de problemas</p>
-                    <div class="space-y-2">
-                        <p class="text-sm text-gray-500">
-                            <i class="fas fa-users mr-2"></i>
-                            Trabajo en equipos
-                        </p>
-                        <p class="text-sm text-gray-500">
-                            <i class="fas fa-laptop mr-2"></i>
-                            Recursos digitales integrados
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Documentos Oficiales UCSAR -->
-        <section class="mt-12 bg-white rounded-xl shadow-lg p-8">
-            <h3 class="text-2xl font-bold text-gray-800 mb-6 flex items-center">
-                <span class="bg-red-100 text-red-800 px-3 py-1 rounded-lg mr-3">📋</span>
-                Documentos Oficiales UCSAR
-            </h3>
-            <p class="text-gray-600 mb-8">Documentos institucionales y normativas de la Universidad Católica Santa Rosa</p>
-            
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div class="bg-gray-50 p-6 rounded-xl hover:shadow-lg transition-all duration-300">
-                    <div class="flex items-center mb-4">
-                        <span class="text-3xl mr-4">⚖️</span>
-                        <h4 class="text-lg font-semibold text-gray-800">REGLAMENTO DE SANCIONES Y PROCEDIMIENTOS DISCIPLINARIOS</h4>
-                    </div>
-                    <p class="text-gray-600 mb-4 text-sm">Reglamento de sanciones y procedimientos disciplinarios</p>
-                    <a href="https://drive.google.com/file/d/1uTux84UHrxsVWm57tTAwQnD6574XR8MD/view?usp=drive_link" 
-                       target="_blank"
-                       class="inline-flex items-center px-4 py-2 bg-blue-600 text-white text-sm font-medium rounded-lg hover:bg-blue-700 transition-colors">
-                        <span class="mr-2">📥</span>
-                        Descargar
-                    </a>
-                </div>
-                
-                <div class="bg-gray-50 p-6 rounded-xl hover:shadow-lg transition-all duration-300">
-                    <div class="flex items-center mb-4">
-                        <span class="text-3xl mr-4">📋</span>
-                        <h4 class="text-lg font-semibold text-gray-800">REGLAMENTO DE EVALUACIÓN.pdf</h4>
-                    </div>
-                    <p class="text-gray-600 mb-4 text-sm">Reglamento de evaluación académica</p>
-                    <a href="https://drive.google.com/file/d/17QF8Fu4xKhWAZ1HefkytQv95-2S2gSXf/view?usp=drive_link" 
-                       target="_blank"
-                       class="inline-flex items-center px-4 py-2 bg-blue-600 text-white text-sm font-medium rounded-lg hover:bg-blue-700 transition-colors">
-                        <span class="mr-2">📥</span>
-                        Descargar
-                    </a>
-                </div>
-                
-                <div class="bg-gray-50 p-6 rounded-xl hover:shadow-lg transition-all duration-300">
-                    <div class="flex items-center mb-4">
-                        <span class="text-3xl mr-4">📰</span>
-                        <h4 class="text-lg font-semibold text-gray-800">GACETA OFICIAL 42209 DEL 090921 ESTUDIOS MULTIMODALES</h4>
-                    </div>
-                    <p class="text-gray-600 mb-4 text-sm">Gaceta oficial sobre estudios multimodales</p>
-                    <a href="https://drive.google.com/file/d/1jcvy5tPoSKTBMOUokUJXAKEl55te5tUe/view?usp=sharing" 
-                       target="_blank"
-                       class="inline-flex items-center px-4 py-2 bg-blue-600 text-white text-sm font-medium rounded-lg hover:bg-blue-700 transition-colors">
-                        <span class="mr-2">📥</span>
-                        Descargar
-                    </a>
-                </div>
-                
-                <div class="bg-gray-50 p-6 rounded-xl hover:shadow-lg transition-all duration-300">
-                    <div class="flex items-center mb-4">
-                        <span class="text-3xl mr-4">📅</span>
-                        <h4 class="text-lg font-semibold text-gray-800">Calendario 2026-II.pdf</h4>
-                    </div>
-                    <p class="text-gray-600 mb-4 text-sm">Calendario académico del segundo trimestre 2026</p>
-                    <a href="#" 
-                       target="_blank"
-                       class="inline-flex items-center px-4 py-2 bg-blue-600 text-white text-sm font-medium rounded-lg hover:bg-blue-700 transition-colors">
-                        <span class="mr-2">📥</span>
-                        Descargar
-                    </a>
-                </div>
-            </div>
-        </section>
-
-        <!-- Sesiones del Trimestre -->
-        <section id="sessions" class="mt-12">
-            <h3 class="text-3xl font-bold text-gray-800 mb-8 text-center">Sesiones del Trimestre</h3>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                <!-- Sesión 1 -->
-                <div class="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-all duration-300 cursor-pointer" onclick="window.location.href='sesion-1-introduccion.html'">
-                    <div class="flex items-center mb-4">
-                        <div class="bg-green-100 text-green-800 px-3 py-1 rounded-lg mr-3">1</div>
-                        <h4 class="text-lg font-semibold text-gray-800">Introducción</h4>
-                    </div>
-                    <p class="text-gray-600 text-sm mb-4">18/05/2026</p>
-                    <p class="text-gray-500 text-sm">Acuerdo del plan de evaluación y presentación de la asignatura</p>
-                </div>
-
-                <!-- Sesión 2 -->
-                <div class="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-all duration-300 cursor-pointer" onclick="window.location.href='sesion-2-conceptos-basicos.html'">
-                    <div class="flex items-center mb-4">
-                        <div class="bg-blue-100 text-blue-800 px-3 py-1 rounded-lg mr-3">2</div>
-                        <h4 class="text-lg font-semibold text-gray-800">Conceptos Básicos</h4>
-                    </div>
-                    <p class="text-gray-600 text-sm mb-4">25/05/2026</p>
-                    <p class="text-gray-500 text-sm">Terminología básica de costos y diferencia entre costo y gasto</p>
-                </div>
-
-                <!-- Sesión 3 -->
-                <div class="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-all duration-300 cursor-pointer" onclick="window.location.href='sesion-3-normas-control.html'">
-                    <div class="flex items-center mb-4">
-                        <div class="bg-purple-100 text-purple-800 px-3 py-1 rounded-lg mr-3">3</div>
-                        <h4 class="text-lg font-semibold text-gray-800">Ciclos de Costos I</h4>
-                    </div>
-                    <p class="text-gray-600 text-sm mb-4">01/06/2026</p>
-                    <p class="text-gray-500 text-sm">Flujo de costos en empresas manufactureras</p>
-                </div>
-
-                <!-- Sesión 4 -->
-                <div class="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-all duration-300 cursor-pointer" onclick="window.location.href='sesion-4-toma-decisiones.html'">
-                    <div class="flex items-center mb-4">
-                        <div class="bg-orange-100 text-orange-800 px-3 py-1 rounded-lg mr-3">4</div>
-                        <h4 class="text-lg font-semibold text-gray-800">Estados de Costos</h4>
-                    </div>
-                    <p class="text-gray-600 text-sm mb-4">08/06/2026</p>
-                    <p class="text-gray-500 text-sm">Elaboración de estados de costos de producción y ventas</p>
-                </div>
-
-                <!-- Sesión 5 -->
-                <div class="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-all duration-300 cursor-pointer" onclick="window.location.href='sesion-5-costeo.html'">
-                    <div class="flex items-center mb-4">
-                        <div class="bg-red-100 text-red-800 px-3 py-1 rounded-lg mr-3">5</div>
-                        <h4 class="text-lg font-semibold text-gray-800">Control de Materiales I</h4>
-                    </div>
-                    <p class="text-gray-600 text-sm mb-4">15/06/2026</p>
-                    <p class="text-gray-500 text-sm">Comportamiento de costos y valuación de inventarios</p>
-                </div>
-
-                <!-- Sesión 6 -->
-                <div class="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-all duration-300 cursor-pointer" onclick="window.location.href='sesion-6-analisis-costos.html'">
-                    <div class="flex items-center mb-4">
-                        <div class="bg-indigo-100 text-indigo-800 px-3 py-1 rounded-lg mr-3">6</div>
-                        <h4 class="text-lg font-semibold text-gray-800">Análisis CVU</h4>
-                    </div>
-                    <p class="text-gray-600 text-sm mb-4">22/06/2026</p>
-                    <p class="text-gray-500 text-sm">Relación costo-volumen-utilidad y toma de decisiones</p>
-                </div>
-
-                <!-- Sesión 7 -->
-                <div class="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-all duration-300 cursor-pointer" onclick="window.location.href='sesion-7-estados-costos.html'">
-                    <div class="flex items-center mb-4">
-                        <div class="bg-teal-100 text-teal-800 px-3 py-1 rounded-lg mr-3">7</div>
-                        <h4 class="text-lg font-semibold text-gray-800">Mano de Obra I</h4>
-                    </div>
-                    <p class="text-gray-600 text-sm mb-4">29/06/2026</p>
-                    <p class="text-gray-500 text-sm">Control de mano de obra y carga fabril</p>
-                </div>
-
-                <!-- Sesión 8 -->
-                <div class="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-all duration-300 cursor-pointer" onclick="window.location.href='sesion-8-revision.html'">
-                    <div class="flex items-center mb-4">
-                        <div class="bg-yellow-100 text-yellow-800 px-3 py-1 rounded-lg mr-3">8</div>
-                        <h4 class="text-lg font-semibold text-gray-800">Costos Predeterminados</h4>
-                    </div>
-                    <p class="text-gray-600 text-sm mb-4">06/07/2026</p>
-                    <p class="text-gray-500 text-sm">Costos estándar, variaciones y consolidación</p>
-                </div>
-
-                <!-- Sesión 9 -->
-                <div class="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-all duration-300 cursor-pointer" onclick="window.location.href='sesion-9-cierre.html'">
-                    <div class="flex items-center mb-4">
-                        <div class="bg-gray-100 text-gray-800 px-3 py-1 rounded-lg mr-3">9</div>
-                        <h4 class="text-lg font-semibold text-gray-800">Cierre</h4>
-                    </div>
-                    <p class="text-gray-600 text-sm mb-4">13/07/2026</p>
-                    <p class="text-gray-500 text-sm">Socialización de notas y procedimientos finales</p>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <!-- Footer -->
-    <footer class="bg-gray-800 text-white py-8 mt-12">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center">
-                <p class="text-lg font-semibold mb-2">Contabilidad de Costo I - UCSAR</p>
-                <p class="text-gray-400">Trimestre II 2026 | Lic. Frank Clemente</p>
-                <p class="text-gray-500 text-sm mt-4">
-                    <i class="fas fa-university mr-2"></i>
-                    Universidad Católica Santa Rosa
-                </p>
-            </div>
-        </div>
+    <footer class="mt-20 text-slate-500 text-sm">
+        <p>© 2026 UCSAR | Gestionado por Prof. Frank Clemente</p>
     </footer>
 
-    <script>
-        function scrollToSessions() {
-            document.getElementById('sessions').scrollIntoView({ 
-                behavior: 'smooth' 
-            });
-        }
-    </script>
 </body>
 </html>
