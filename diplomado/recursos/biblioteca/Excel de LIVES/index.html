@@ -1,0 +1,932 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Excel de LIVES - Biblioteca</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>body { font-family: 'Inter', sans-serif; }</style>
+</head>
+<body class="bg-slate-50 p-6 md:p-12">
+    <div class="max-w-4xl mx-auto">
+        <nav class="mb-8 flex items-center space-x-3 text-sm font-bold uppercase tracking-wider">
+            <a href="../../../index.html" class="text-blue-600 hover:text-blue-800 transition flex items-center">
+                <i class="fas fa-university mr-2"></i> Portal
+            </a>
+            <span class="text-slate-300">/</span>
+            <a href="../../../biblioteca.html" class="text-blue-600 hover:text-blue-800 transition">Biblioteca</a>
+            <span class="text-slate-300">/</span>
+            <span class="text-slate-400">Excel de LIVES</span>
+        </nav>
+
+        <div class="bg-white rounded-[2.5rem] p-8 md:p-12 shadow-xl border border-slate-100">
+            <div class="flex items-center space-x-4 mb-8">
+                <div class="w-14 h-14 bg-blue-100 text-blue-600 rounded-2xl flex items-center justify-center">
+                    <i class="fas fa-folder-open text-3xl"></i>
+                </div>
+                <div>
+                    <h1 class="text-3xl font-bold text-slate-800">Excel de LIVES</h1>
+                    <p class="text-slate-500">Recursos y sub-carpetas disponibles.</p>
+                </div>
+            </div>
+
+            <div class="grid gap-3">                <div class="flex items-center justify-between p-5 rounded-2xl bg-slate-50 hover:bg-blue-50 border border-transparent hover:border-blue-200 transition group">
+                    <div class="flex items-center space-x-4">
+                        <i class="fas fa-file-pdf text-red-500 text-xl group-hover:scale-110 transition"></i>
+                        <span class="font-medium text-slate-700 truncate max-w-[200px] md:max-w-md">05 Jul Finanzas en NIIF.xlsx</span>
+                    </div>
+                    <a href="05%20Jul%20Finanzas%20en%20NIIF.xlsx/" download class="bg-blue-600 text-white px-6 py-2 rounded-xl text-sm font-bold hover:bg-blue-700 shadow-md hover:shadow-blue-200 transition">
+                        Descargar
+                    </a>
+                </div>                <div class="flex items-center justify-between p-5 rounded-2xl bg-slate-50 hover:bg-blue-50 border border-transparent hover:border-blue-200 transition group">
+                    <div class="flex items-center space-x-4">
+                        <i class="fas fa-file-pdf text-red-500 text-xl group-hover:scale-110 transition"></i>
+                        <span class="font-medium text-slate-700 truncate max-w-[200px] md:max-w-md">08 Jul Flujo de Efectivo .xlsx</span>
+                    </div>
+                    <a href="08%20Jul%20Flujo%20de%20Efectivo%20.xlsx/" download class="bg-blue-600 text-white px-6 py-2 rounded-xl text-sm font-bold hover:bg-blue-700 shadow-md hover:shadow-blue-200 transition">
+                        Descargar
+                    </a>
+                </div>                <div class="flex items-center justify-between p-5 rounded-2xl bg-slate-50 hover:bg-blue-50 border border-transparent hover:border-blue-200 transition group">
+                    <div class="flex items-center space-x-4">
+                        <i class="fas fa-file-pdf text-red-500 text-xl group-hover:scale-110 transition"></i>
+                        <span class="font-medium text-slate-700 truncate max-w-[200px] md:max-w-md">12 Jun Inst Financieros.xlsx</span>
+                    </div>
+                    <a href="12%20Jun%20Inst%20Financieros.xlsx/" download class="bg-blue-600 text-white px-6 py-2 rounded-xl text-sm font-bold hover:bg-blue-700 shadow-md hover:shadow-blue-200 transition">
+                        Descargar
+                    </a>
+                </div>                <div class="flex items-center justify-between p-5 rounded-2xl bg-slate-50 hover:bg-blue-50 border border-transparent hover:border-blue-200 transition group">
+                    <div class="flex items-center space-x-4">
+                        <i class="fas fa-file-pdf text-red-500 text-xl group-hover:scale-110 transition"></i>
+                        <span class="font-medium text-slate-700 truncate max-w-[200px] md:max-w-md">14 May Valores razonables.xlsx</span>
+                    </div>
+                    <a href="14%20May%20Valores%20razonables.xlsx/" download class="bg-blue-600 text-white px-6 py-2 rounded-xl text-sm font-bold hover:bg-blue-700 shadow-md hover:shadow-blue-200 transition">
+                        Descargar
+                    </a>
+                </div>                <div class="flex items-center justify-between p-5 rounded-2xl bg-slate-50 hover:bg-blue-50 border border-transparent hover:border-blue-200 transition group">
+                    <div class="flex items-center space-x-4">
+                        <i class="fas fa-file-pdf text-red-500 text-xl group-hover:scale-110 transition"></i>
+                        <span class="font-medium text-slate-700 truncate max-w-[200px] md:max-w-md">20 Jun Costo amortizado.xlsx</span>
+                    </div>
+                    <a href="20%20Jun%20Costo%20amortizado.xlsx/" download class="bg-blue-600 text-white px-6 py-2 rounded-xl text-sm font-bold hover:bg-blue-700 shadow-md hover:shadow-blue-200 transition">
+                        Descargar
+                    </a>
+                </div>                <div class="flex items-center justify-between p-5 rounded-2xl bg-slate-50 hover:bg-blue-50 border border-transparent hover:border-blue-200 transition group">
+                    <div class="flex items-center space-x-4">
+                        <i class="fas fa-file-pdf text-red-500 text-xl group-hover:scale-110 transition"></i>
+                        <span class="font-medium text-slate-700 truncate max-w-[200px] md:max-w-md">21 May NIc 21.xlsx</span>
+                    </div>
+                    <a href="21%20May%20NIc%2021.xlsx/" download class="bg-blue-600 text-white px-6 py-2 rounded-xl text-sm font-bold hover:bg-blue-700 shadow-md hover:shadow-blue-200 transition">
+                        Descargar
+                    </a>
+                </div>                <div class="flex items-center justify-between p-5 rounded-2xl bg-slate-50 hover:bg-blue-50 border border-transparent hover:border-blue-200 transition group">
+                    <div class="flex items-center space-x-4">
+                        <i class="fas fa-file-pdf text-red-500 text-xl group-hover:scale-110 transition"></i>
+                        <span class="font-medium text-slate-700 truncate max-w-[200px] md:max-w-md">22 May Subsidios.xlsx</span>
+                    </div>
+                    <a href="22%20May%20Subsidios.xlsx/" download class="bg-blue-600 text-white px-6 py-2 rounded-xl text-sm font-bold hover:bg-blue-700 shadow-md hover:shadow-blue-200 transition">
+                        Descargar
+                    </a>
+                </div>                <div class="flex items-center justify-between p-5 rounded-2xl bg-slate-50 hover:bg-blue-50 border border-transparent hover:border-blue-200 transition group">
+                    <div class="flex items-center space-x-4">
+                        <i class="fas fa-file-pdf text-red-500 text-xl group-hover:scale-110 transition"></i>
+                        <span class="font-medium text-slate-700 truncate max-w-[200px] md:max-w-md">23 Jun el costo amortizado.xlsx</span>
+                    </div>
+                    <a href="23%20Jun%20el%20costo%20amortizado.xlsx/" download class="bg-blue-600 text-white px-6 py-2 rounded-xl text-sm font-bold hover:bg-blue-700 shadow-md hover:shadow-blue-200 transition">
+                        Descargar
+                    </a>
+                </div>                <div class="flex items-center justify-between p-5 rounded-2xl bg-slate-50 hover:bg-blue-50 border border-transparent hover:border-blue-200 transition group">
+                    <div class="flex items-center space-x-4">
+                        <i class="fas fa-file-pdf text-red-500 text-xl group-hover:scale-110 transition"></i>
+                        <span class="font-medium text-slate-700 truncate max-w-[200px] md:max-w-md">24 Jun Impuesto a la renta.xlsx</span>
+                    </div>
+                    <a href="24%20Jun%20Impuesto%20a%20la%20renta.xlsx/" download class="bg-blue-600 text-white px-6 py-2 rounded-xl text-sm font-bold hover:bg-blue-700 shadow-md hover:shadow-blue-200 transition">
+                        Descargar
+                    </a>
+                </div>                <div class="flex items-center justify-between p-5 rounded-2xl bg-slate-50 hover:bg-blue-50 border border-transparent hover:border-blue-200 transition group">
+                    <div class="flex items-center space-x-4">
+                        <i class="fas fa-file-pdf text-red-500 text-xl group-hover:scale-110 transition"></i>
+                        <span class="font-medium text-slate-700 truncate max-w-[200px] md:max-w-md">25 -nov -Marco Conceptual.xlsx</span>
+                    </div>
+                    <a href="25%20-nov%20-Marco%20Conceptual.xlsx/" download class="bg-blue-600 text-white px-6 py-2 rounded-xl text-sm font-bold hover:bg-blue-700 shadow-md hover:shadow-blue-200 transition">
+                        Descargar
+                    </a>
+                </div>                <div class="flex items-center justify-between p-5 rounded-2xl bg-slate-50 hover:bg-blue-50 border border-transparent hover:border-blue-200 transition group">
+                    <div class="flex items-center space-x-4">
+                        <i class="fas fa-file-pdf text-red-500 text-xl group-hover:scale-110 transition"></i>
+                        <span class="font-medium text-slate-700 truncate max-w-[200px] md:max-w-md">25 Jun Flujos de efectivo.xlsx</span>
+                    </div>
+                    <a href="25%20Jun%20Flujos%20de%20efectivo.xlsx/" download class="bg-blue-600 text-white px-6 py-2 rounded-xl text-sm font-bold hover:bg-blue-700 shadow-md hover:shadow-blue-200 transition">
+                        Descargar
+                    </a>
+                </div>                <div class="flex items-center justify-between p-5 rounded-2xl bg-slate-50 hover:bg-blue-50 border border-transparent hover:border-blue-200 transition group">
+                    <div class="flex items-center space-x-4">
+                        <i class="fas fa-file-pdf text-red-500 text-xl group-hover:scale-110 transition"></i>
+                        <span class="font-medium text-slate-700 truncate max-w-[200px] md:max-w-md">25 Jun Live Flujo de Efectivo.xlsx</span>
+                    </div>
+                    <a href="25%20Jun%20Live%20Flujo%20de%20Efectivo.xlsx/" download class="bg-blue-600 text-white px-6 py-2 rounded-xl text-sm font-bold hover:bg-blue-700 shadow-md hover:shadow-blue-200 transition">
+                        Descargar
+                    </a>
+                </div>                <div class="flex items-center justify-between p-5 rounded-2xl bg-slate-50 hover:bg-blue-50 border border-transparent hover:border-blue-200 transition group">
+                    <div class="flex items-center space-x-4">
+                        <i class="fas fa-file-pdf text-red-500 text-xl group-hover:scale-110 transition"></i>
+                        <span class="font-medium text-slate-700 truncate max-w-[200px] md:max-w-md">Analisis de sensibilidad.xlsx</span>
+                    </div>
+                    <a href="Analisis%20de%20sensibilidad.xlsx/" download class="bg-blue-600 text-white px-6 py-2 rounded-xl text-sm font-bold hover:bg-blue-700 shadow-md hover:shadow-blue-200 transition">
+                        Descargar
+                    </a>
+                </div>                <div class="flex items-center justify-between p-5 rounded-2xl bg-slate-50 hover:bg-blue-50 border border-transparent hover:border-blue-200 transition group">
+                    <div class="flex items-center space-x-4">
+                        <i class="fas fa-file-pdf text-red-500 text-xl group-hover:scale-110 transition"></i>
+                        <span class="font-medium text-slate-700 truncate max-w-[200px] md:max-w-md">CINIIF12 INTANGIBLE -Live24 Julio2024 .xlsx</span>
+                    </div>
+                    <a href="CINIIF12%20INTANGIBLE%20-Live24%20Julio2024%20.xlsx/" download class="bg-blue-600 text-white px-6 py-2 rounded-xl text-sm font-bold hover:bg-blue-700 shadow-md hover:shadow-blue-200 transition">
+                        Descargar
+                    </a>
+                </div>                <div class="flex items-center justify-between p-5 rounded-2xl bg-slate-50 hover:bg-blue-50 border border-transparent hover:border-blue-200 transition group">
+                    <div class="flex items-center space-x-4">
+                        <i class="fas fa-file-pdf text-red-500 text-xl group-hover:scale-110 transition"></i>
+                        <span class="font-medium text-slate-700 truncate max-w-[200px] md:max-w-md">CLASE MAESTRA NIIF.xlsx</span>
+                    </div>
+                    <a href="CLASE%20MAESTRA%20NIIF.xlsx/" download class="bg-blue-600 text-white px-6 py-2 rounded-xl text-sm font-bold hover:bg-blue-700 shadow-md hover:shadow-blue-200 transition">
+                        Descargar
+                    </a>
+                </div>                <div class="flex items-center justify-between p-5 rounded-2xl bg-slate-50 hover:bg-blue-50 border border-transparent hover:border-blue-200 transition group">
+                    <div class="flex items-center space-x-4">
+                        <i class="fas fa-file-pdf text-red-500 text-xl group-hover:scale-110 transition"></i>
+                        <span class="font-medium text-slate-700 truncate max-w-[200px] md:max-w-md">Construccion simultánea del diferido.xlsx</span>
+                    </div>
+                    <a href="Construccion%20simult%C3%A1nea%20del%20diferido.xlsx/" download class="bg-blue-600 text-white px-6 py-2 rounded-xl text-sm font-bold hover:bg-blue-700 shadow-md hover:shadow-blue-200 transition">
+                        Descargar
+                    </a>
+                </div>                <div class="flex items-center justify-between p-5 rounded-2xl bg-slate-50 hover:bg-blue-50 border border-transparent hover:border-blue-200 transition group">
+                    <div class="flex items-center space-x-4">
+                        <i class="fas fa-file-pdf text-red-500 text-xl group-hover:scale-110 transition"></i>
+                        <span class="font-medium text-slate-700 truncate max-w-[200px] md:max-w-md">costoamortizado.xlsx</span>
+                    </div>
+                    <a href="costoamortizado.xlsx/" download class="bg-blue-600 text-white px-6 py-2 rounded-xl text-sm font-bold hover:bg-blue-700 shadow-md hover:shadow-blue-200 transition">
+                        Descargar
+                    </a>
+                </div>                <div class="flex items-center justify-between p-5 rounded-2xl bg-slate-50 hover:bg-blue-50 border border-transparent hover:border-blue-200 transition group">
+                    <div class="flex items-center space-x-4">
+                        <i class="fas fa-file-pdf text-red-500 text-xl group-hover:scale-110 transition"></i>
+                        <span class="font-medium text-slate-700 truncate max-w-[200px] md:max-w-md">costoamortizado2.xlsx</span>
+                    </div>
+                    <a href="costoamortizado2.xlsx/" download class="bg-blue-600 text-white px-6 py-2 rounded-xl text-sm font-bold hover:bg-blue-700 shadow-md hover:shadow-blue-200 transition">
+                        Descargar
+                    </a>
+                </div>                <div class="flex items-center justify-between p-5 rounded-2xl bg-slate-50 hover:bg-blue-50 border border-transparent hover:border-blue-200 transition group">
+                    <div class="flex items-center space-x-4">
+                        <i class="fas fa-file-pdf text-red-500 text-xl group-hover:scale-110 transition"></i>
+                        <span class="font-medium text-slate-700 truncate max-w-[200px] md:max-w-md">ESTIMACIONES CONTABLES.pptx</span>
+                    </div>
+                    <a href="ESTIMACIONES%20CONTABLES.pptx/" download class="bg-blue-600 text-white px-6 py-2 rounded-xl text-sm font-bold hover:bg-blue-700 shadow-md hover:shadow-blue-200 transition">
+                        Descargar
+                    </a>
+                </div>                <div class="flex items-center justify-between p-5 rounded-2xl bg-slate-50 hover:bg-blue-50 border border-transparent hover:border-blue-200 transition group">
+                    <div class="flex items-center space-x-4">
+                        <i class="fas fa-file-pdf text-red-500 text-xl group-hover:scale-110 transition"></i>
+                        <span class="font-medium text-slate-700 truncate max-w-[200px] md:max-w-md">Forward ME.xlsx</span>
+                    </div>
+                    <a href="Forward%20ME.xlsx/" download class="bg-blue-600 text-white px-6 py-2 rounded-xl text-sm font-bold hover:bg-blue-700 shadow-md hover:shadow-blue-200 transition">
+                        Descargar
+                    </a>
+                </div>                <div class="flex items-center justify-between p-5 rounded-2xl bg-slate-50 hover:bg-blue-50 border border-transparent hover:border-blue-200 transition group">
+                    <div class="flex items-center space-x-4">
+                        <i class="fas fa-file-pdf text-red-500 text-xl group-hover:scale-110 transition"></i>
+                        <span class="font-medium text-slate-700 truncate max-w-[200px] md:max-w-md">Fronteras contables VDigital 3.pdf</span>
+                    </div>
+                    <a href="Fronteras%20contables%20VDigital%203.pdf/" download class="bg-blue-600 text-white px-6 py-2 rounded-xl text-sm font-bold hover:bg-blue-700 shadow-md hover:shadow-blue-200 transition">
+                        Descargar
+                    </a>
+                </div>                <div class="flex items-center justify-between p-5 rounded-2xl bg-slate-50 hover:bg-blue-50 border border-transparent hover:border-blue-200 transition group">
+                    <div class="flex items-center space-x-4">
+                        <i class="fas fa-file-pdf text-red-500 text-xl group-hover:scale-110 transition"></i>
+                        <span class="font-medium text-slate-700 truncate max-w-[200px] md:max-w-md">impuestodiferido.xlsx</span>
+                    </div>
+                    <a href="impuestodiferido.xlsx/" download class="bg-blue-600 text-white px-6 py-2 rounded-xl text-sm font-bold hover:bg-blue-700 shadow-md hover:shadow-blue-200 transition">
+                        Descargar
+                    </a>
+                </div>                <div class="flex items-center justify-between p-5 rounded-2xl bg-slate-50 hover:bg-blue-50 border border-transparent hover:border-blue-200 transition group">
+                    <div class="flex items-center space-x-4">
+                        <i class="fas fa-file-pdf text-red-500 text-xl group-hover:scale-110 transition"></i>
+                        <span class="font-medium text-slate-700 truncate max-w-[200px] md:max-w-md">Live  El Forward 05 Julio.xlsx</span>
+                    </div>
+                    <a href="Live%20%20El%20Forward%2005%20Julio.xlsx/" download class="bg-blue-600 text-white px-6 py-2 rounded-xl text-sm font-bold hover:bg-blue-700 shadow-md hover:shadow-blue-200 transition">
+                        Descargar
+                    </a>
+                </div>                <div class="flex items-center justify-between p-5 rounded-2xl bg-slate-50 hover:bg-blue-50 border border-transparent hover:border-blue-200 transition group">
+                    <div class="flex items-center space-x-4">
+                        <i class="fas fa-file-pdf text-red-500 text-xl group-hover:scale-110 transition"></i>
+                        <span class="font-medium text-slate-700 truncate max-w-[200px] md:max-w-md">Live  La WACC 07 Julio.xlsx</span>
+                    </div>
+                    <a href="Live%20%20La%20WACC%2007%20Julio.xlsx/" download class="bg-blue-600 text-white px-6 py-2 rounded-xl text-sm font-bold hover:bg-blue-700 shadow-md hover:shadow-blue-200 transition">
+                        Descargar
+                    </a>
+                </div>                <div class="flex items-center justify-between p-5 rounded-2xl bg-slate-50 hover:bg-blue-50 border border-transparent hover:border-blue-200 transition group">
+                    <div class="flex items-center space-x-4">
+                        <i class="fas fa-file-pdf text-red-500 text-xl group-hover:scale-110 transition"></i>
+                        <span class="font-medium text-slate-700 truncate max-w-[200px] md:max-w-md">Live  Mercado de Futuros  10 Julio.xlsx</span>
+                    </div>
+                    <a href="Live%20%20Mercado%20de%20Futuros%20%2010%20Julio.xlsx/" download class="bg-blue-600 text-white px-6 py-2 rounded-xl text-sm font-bold hover:bg-blue-700 shadow-md hover:shadow-blue-200 transition">
+                        Descargar
+                    </a>
+                </div>                <div class="flex items-center justify-between p-5 rounded-2xl bg-slate-50 hover:bg-blue-50 border border-transparent hover:border-blue-200 transition group">
+                    <div class="flex items-center space-x-4">
+                        <i class="fas fa-file-pdf text-red-500 text-xl group-hover:scale-110 transition"></i>
+                        <span class="font-medium text-slate-700 truncate max-w-[200px] md:max-w-md">Live 01 Oct 2025 Ingresos.xlsx</span>
+                    </div>
+                    <a href="Live%2001%20Oct%202025%20Ingresos.xlsx/" download class="bg-blue-600 text-white px-6 py-2 rounded-xl text-sm font-bold hover:bg-blue-700 shadow-md hover:shadow-blue-200 transition">
+                        Descargar
+                    </a>
+                </div>                <div class="flex items-center justify-between p-5 rounded-2xl bg-slate-50 hover:bg-blue-50 border border-transparent hover:border-blue-200 transition group">
+                    <div class="flex items-center space-x-4">
+                        <i class="fas fa-file-pdf text-red-500 text-xl group-hover:scale-110 transition"></i>
+                        <span class="font-medium text-slate-700 truncate max-w-[200px] md:max-w-md">LIVE 01 Oct-arrendamiento financiero.xlsx</span>
+                    </div>
+                    <a href="LIVE%2001%20Oct-arrendamiento%20financiero.xlsx/" download class="bg-blue-600 text-white px-6 py-2 rounded-xl text-sm font-bold hover:bg-blue-700 shadow-md hover:shadow-blue-200 transition">
+                        Descargar
+                    </a>
+                </div>                <div class="flex items-center justify-between p-5 rounded-2xl bg-slate-50 hover:bg-blue-50 border border-transparent hover:border-blue-200 transition group">
+                    <div class="flex items-center space-x-4">
+                        <i class="fas fa-file-pdf text-red-500 text-xl group-hover:scale-110 transition"></i>
+                        <span class="font-medium text-slate-700 truncate max-w-[200px] md:max-w-md">LIVE 02 OCT-MODELOS DE AMORTIZACION DE DEUDA.xlsx</span>
+                    </div>
+                    <a href="LIVE%2002%20OCT-MODELOS%20DE%20AMORTIZACION%20DE%20DEUDA.xlsx/" download class="bg-blue-600 text-white px-6 py-2 rounded-xl text-sm font-bold hover:bg-blue-700 shadow-md hover:shadow-blue-200 transition">
+                        Descargar
+                    </a>
+                </div>                <div class="flex items-center justify-between p-5 rounded-2xl bg-slate-50 hover:bg-blue-50 border border-transparent hover:border-blue-200 transition group">
+                    <div class="flex items-center space-x-4">
+                        <i class="fas fa-file-pdf text-red-500 text-xl group-hover:scale-110 transition"></i>
+                        <span class="font-medium text-slate-700 truncate max-w-[200px] md:max-w-md">Live 02 Octubre NIIF3.xlsx</span>
+                    </div>
+                    <a href="Live%2002%20Octubre%20NIIF3.xlsx/" download class="bg-blue-600 text-white px-6 py-2 rounded-xl text-sm font-bold hover:bg-blue-700 shadow-md hover:shadow-blue-200 transition">
+                        Descargar
+                    </a>
+                </div>                <div class="flex items-center justify-between p-5 rounded-2xl bg-slate-50 hover:bg-blue-50 border border-transparent hover:border-blue-200 transition group">
+                    <div class="flex items-center space-x-4">
+                        <i class="fas fa-file-pdf text-red-500 text-xl group-hover:scale-110 transition"></i>
+                        <span class="font-medium text-slate-700 truncate max-w-[200px] md:max-w-md">LIVE 03 FEB 2025 .xlsx</span>
+                    </div>
+                    <a href="LIVE%2003%20FEB%202025%20.xlsx/" download class="bg-blue-600 text-white px-6 py-2 rounded-xl text-sm font-bold hover:bg-blue-700 shadow-md hover:shadow-blue-200 transition">
+                        Descargar
+                    </a>
+                </div>                <div class="flex items-center justify-between p-5 rounded-2xl bg-slate-50 hover:bg-blue-50 border border-transparent hover:border-blue-200 transition group">
+                    <div class="flex items-center space-x-4">
+                        <i class="fas fa-file-pdf text-red-500 text-xl group-hover:scale-110 transition"></i>
+                        <span class="font-medium text-slate-700 truncate max-w-[200px] md:max-w-md">Live 03 Oct -  NIIF 6 Exploraciones.xls</span>
+                    </div>
+                    <a href="Live%2003%20Oct%20-%20%20NIIF%206%20Exploraciones.xls/" download class="bg-blue-600 text-white px-6 py-2 rounded-xl text-sm font-bold hover:bg-blue-700 shadow-md hover:shadow-blue-200 transition">
+                        Descargar
+                    </a>
+                </div>                <div class="flex items-center justify-between p-5 rounded-2xl bg-slate-50 hover:bg-blue-50 border border-transparent hover:border-blue-200 transition group">
+                    <div class="flex items-center space-x-4">
+                        <i class="fas fa-file-pdf text-red-500 text-xl group-hover:scale-110 transition"></i>
+                        <span class="font-medium text-slate-700 truncate max-w-[200px] md:max-w-md">Live 04 Noviembre.xlsx</span>
+                    </div>
+                    <a href="Live%2004%20Noviembre.xlsx/" download class="bg-blue-600 text-white px-6 py-2 rounded-xl text-sm font-bold hover:bg-blue-700 shadow-md hover:shadow-blue-200 transition">
+                        Descargar
+                    </a>
+                </div>                <div class="flex items-center justify-between p-5 rounded-2xl bg-slate-50 hover:bg-blue-50 border border-transparent hover:border-blue-200 transition group">
+                    <div class="flex items-center space-x-4">
+                        <i class="fas fa-file-pdf text-red-500 text-xl group-hover:scale-110 transition"></i>
+                        <span class="font-medium text-slate-700 truncate max-w-[200px] md:max-w-md">Live 06 Agosto 2025.xlsx</span>
+                    </div>
+                    <a href="Live%2006%20Agosto%202025.xlsx/" download class="bg-blue-600 text-white px-6 py-2 rounded-xl text-sm font-bold hover:bg-blue-700 shadow-md hover:shadow-blue-200 transition">
+                        Descargar
+                    </a>
+                </div>                <div class="flex items-center justify-between p-5 rounded-2xl bg-slate-50 hover:bg-blue-50 border border-transparent hover:border-blue-200 transition group">
+                    <div class="flex items-center space-x-4">
+                        <i class="fas fa-file-pdf text-red-500 text-xl group-hover:scale-110 transition"></i>
+                        <span class="font-medium text-slate-700 truncate max-w-[200px] md:max-w-md">Live 06 Feb Deuda Costo Amortizado.xlsx</span>
+                    </div>
+                    <a href="Live%2006%20Feb%20Deuda%20Costo%20Amortizado.xlsx/" download class="bg-blue-600 text-white px-6 py-2 rounded-xl text-sm font-bold hover:bg-blue-700 shadow-md hover:shadow-blue-200 transition">
+                        Descargar
+                    </a>
+                </div>                <div class="flex items-center justify-between p-5 rounded-2xl bg-slate-50 hover:bg-blue-50 border border-transparent hover:border-blue-200 transition group">
+                    <div class="flex items-center space-x-4">
+                        <i class="fas fa-file-pdf text-red-500 text-xl group-hover:scale-110 transition"></i>
+                        <span class="font-medium text-slate-700 truncate max-w-[200px] md:max-w-md">Live 08 Noviembre.xlsx</span>
+                    </div>
+                    <a href="Live%2008%20Noviembre.xlsx/" download class="bg-blue-600 text-white px-6 py-2 rounded-xl text-sm font-bold hover:bg-blue-700 shadow-md hover:shadow-blue-200 transition">
+                        Descargar
+                    </a>
+                </div>                <div class="flex items-center justify-between p-5 rounded-2xl bg-slate-50 hover:bg-blue-50 border border-transparent hover:border-blue-200 transition group">
+                    <div class="flex items-center space-x-4">
+                        <i class="fas fa-file-pdf text-red-500 text-xl group-hover:scale-110 transition"></i>
+                        <span class="font-medium text-slate-700 truncate max-w-[200px] md:max-w-md">Live 10 FEB_El_impuesto_Diferido_PPE.xlsx</span>
+                    </div>
+                    <a href="Live%2010%20FEB_El_impuesto_Diferido_PPE.xlsx/" download class="bg-blue-600 text-white px-6 py-2 rounded-xl text-sm font-bold hover:bg-blue-700 shadow-md hover:shadow-blue-200 transition">
+                        Descargar
+                    </a>
+                </div>                <div class="flex items-center justify-between p-5 rounded-2xl bg-slate-50 hover:bg-blue-50 border border-transparent hover:border-blue-200 transition group">
+                    <div class="flex items-center space-x-4">
+                        <i class="fas fa-file-pdf text-red-500 text-xl group-hover:scale-110 transition"></i>
+                        <span class="font-medium text-slate-700 truncate max-w-[200px] md:max-w-md">Live 10 Octubre Noche.xlsx</span>
+                    </div>
+                    <a href="Live%2010%20Octubre%20Noche.xlsx/" download class="bg-blue-600 text-white px-6 py-2 rounded-xl text-sm font-bold hover:bg-blue-700 shadow-md hover:shadow-blue-200 transition">
+                        Descargar
+                    </a>
+                </div>                <div class="flex items-center justify-between p-5 rounded-2xl bg-slate-50 hover:bg-blue-50 border border-transparent hover:border-blue-200 transition group">
+                    <div class="flex items-center space-x-4">
+                        <i class="fas fa-file-pdf text-red-500 text-xl group-hover:scale-110 transition"></i>
+                        <span class="font-medium text-slate-700 truncate max-w-[200px] md:max-w-md">LIVE 10 OCTUBRE-FLUJO DE EFECTIVO INDIRECTO.xlsx</span>
+                    </div>
+                    <a href="LIVE%2010%20OCTUBRE-FLUJO%20DE%20EFECTIVO%20INDIRECTO.xlsx/" download class="bg-blue-600 text-white px-6 py-2 rounded-xl text-sm font-bold hover:bg-blue-700 shadow-md hover:shadow-blue-200 transition">
+                        Descargar
+                    </a>
+                </div>                <div class="flex items-center justify-between p-5 rounded-2xl bg-slate-50 hover:bg-blue-50 border border-transparent hover:border-blue-200 transition group">
+                    <div class="flex items-center space-x-4">
+                        <i class="fas fa-file-pdf text-red-500 text-xl group-hover:scale-110 transition"></i>
+                        <span class="font-medium text-slate-700 truncate max-w-[200px] md:max-w-md">Live 11 Agosto 2025.xlsx</span>
+                    </div>
+                    <a href="Live%2011%20Agosto%202025.xlsx/" download class="bg-blue-600 text-white px-6 py-2 rounded-xl text-sm font-bold hover:bg-blue-700 shadow-md hover:shadow-blue-200 transition">
+                        Descargar
+                    </a>
+                </div>                <div class="flex items-center justify-between p-5 rounded-2xl bg-slate-50 hover:bg-blue-50 border border-transparent hover:border-blue-200 transition group">
+                    <div class="flex items-center space-x-4">
+                        <i class="fas fa-file-pdf text-red-500 text-xl group-hover:scale-110 transition"></i>
+                        <span class="font-medium text-slate-700 truncate max-w-[200px] md:max-w-md">Live 11 Nov NIC16 - PPE 2024 - UNT(1).xlsx</span>
+                    </div>
+                    <a href="Live%2011%20Nov%20NIC16%20-%20PPE%202024%20-%20UNT(1).xlsx/" download class="bg-blue-600 text-white px-6 py-2 rounded-xl text-sm font-bold hover:bg-blue-700 shadow-md hover:shadow-blue-200 transition">
+                        Descargar
+                    </a>
+                </div>                <div class="flex items-center justify-between p-5 rounded-2xl bg-slate-50 hover:bg-blue-50 border border-transparent hover:border-blue-200 transition group">
+                    <div class="flex items-center space-x-4">
+                        <i class="fas fa-file-pdf text-red-500 text-xl group-hover:scale-110 transition"></i>
+                        <span class="font-medium text-slate-700 truncate max-w-[200px] md:max-w-md">Live 11 Nov NIC16 - PPE 2024 - UNT.xlsx</span>
+                    </div>
+                    <a href="Live%2011%20Nov%20NIC16%20-%20PPE%202024%20-%20UNT.xlsx/" download class="bg-blue-600 text-white px-6 py-2 rounded-xl text-sm font-bold hover:bg-blue-700 shadow-md hover:shadow-blue-200 transition">
+                        Descargar
+                    </a>
+                </div>                <div class="flex items-center justify-between p-5 rounded-2xl bg-slate-50 hover:bg-blue-50 border border-transparent hover:border-blue-200 transition group">
+                    <div class="flex items-center space-x-4">
+                        <i class="fas fa-file-pdf text-red-500 text-xl group-hover:scale-110 transition"></i>
+                        <span class="font-medium text-slate-700 truncate max-w-[200px] md:max-w-md">Live 13 Agosto 2025.xlsx</span>
+                    </div>
+                    <a href="Live%2013%20Agosto%202025.xlsx/" download class="bg-blue-600 text-white px-6 py-2 rounded-xl text-sm font-bold hover:bg-blue-700 shadow-md hover:shadow-blue-200 transition">
+                        Descargar
+                    </a>
+                </div>                <div class="flex items-center justify-between p-5 rounded-2xl bg-slate-50 hover:bg-blue-50 border border-transparent hover:border-blue-200 transition group">
+                    <div class="flex items-center space-x-4">
+                        <i class="fas fa-file-pdf text-red-500 text-xl group-hover:scale-110 transition"></i>
+                        <span class="font-medium text-slate-700 truncate max-w-[200px] md:max-w-md">Live 13 de Octubre.xlsx</span>
+                    </div>
+                    <a href="Live%2013%20de%20Octubre.xlsx/" download class="bg-blue-600 text-white px-6 py-2 rounded-xl text-sm font-bold hover:bg-blue-700 shadow-md hover:shadow-blue-200 transition">
+                        Descargar
+                    </a>
+                </div>                <div class="flex items-center justify-between p-5 rounded-2xl bg-slate-50 hover:bg-blue-50 border border-transparent hover:border-blue-200 transition group">
+                    <div class="flex items-center space-x-4">
+                        <i class="fas fa-file-pdf text-red-500 text-xl group-hover:scale-110 transition"></i>
+                        <span class="font-medium text-slate-700 truncate max-w-[200px] md:max-w-md">Live 13 noviembre 2025.xlsx</span>
+                    </div>
+                    <a href="Live%2013%20noviembre%202025.xlsx/" download class="bg-blue-600 text-white px-6 py-2 rounded-xl text-sm font-bold hover:bg-blue-700 shadow-md hover:shadow-blue-200 transition">
+                        Descargar
+                    </a>
+                </div>                <div class="flex items-center justify-between p-5 rounded-2xl bg-slate-50 hover:bg-blue-50 border border-transparent hover:border-blue-200 transition group">
+                    <div class="flex items-center space-x-4">
+                        <i class="fas fa-file-pdf text-red-500 text-xl group-hover:scale-110 transition"></i>
+                        <span class="font-medium text-slate-700 truncate max-w-[200px] md:max-w-md">Live 13 Noviembre.xlsx</span>
+                    </div>
+                    <a href="Live%2013%20Noviembre.xlsx/" download class="bg-blue-600 text-white px-6 py-2 rounded-xl text-sm font-bold hover:bg-blue-700 shadow-md hover:shadow-blue-200 transition">
+                        Descargar
+                    </a>
+                </div>                <div class="flex items-center justify-between p-5 rounded-2xl bg-slate-50 hover:bg-blue-50 border border-transparent hover:border-blue-200 transition group">
+                    <div class="flex items-center space-x-4">
+                        <i class="fas fa-file-pdf text-red-500 text-xl group-hover:scale-110 transition"></i>
+                        <span class="font-medium text-slate-700 truncate max-w-[200px] md:max-w-md">Live 14 Agosto 2025.xlsx</span>
+                    </div>
+                    <a href="Live%2014%20Agosto%202025.xlsx/" download class="bg-blue-600 text-white px-6 py-2 rounded-xl text-sm font-bold hover:bg-blue-700 shadow-md hover:shadow-blue-200 transition">
+                        Descargar
+                    </a>
+                </div>                <div class="flex items-center justify-between p-5 rounded-2xl bg-slate-50 hover:bg-blue-50 border border-transparent hover:border-blue-200 transition group">
+                    <div class="flex items-center space-x-4">
+                        <i class="fas fa-file-pdf text-red-500 text-xl group-hover:scale-110 transition"></i>
+                        <span class="font-medium text-slate-700 truncate max-w-[200px] md:max-w-md">Live 14 NOV-NIIF16 y NIC12.xlsx</span>
+                    </div>
+                    <a href="Live%2014%20NOV-NIIF16%20y%20NIC12.xlsx/" download class="bg-blue-600 text-white px-6 py-2 rounded-xl text-sm font-bold hover:bg-blue-700 shadow-md hover:shadow-blue-200 transition">
+                        Descargar
+                    </a>
+                </div>                <div class="flex items-center justify-between p-5 rounded-2xl bg-slate-50 hover:bg-blue-50 border border-transparent hover:border-blue-200 transition group">
+                    <div class="flex items-center space-x-4">
+                        <i class="fas fa-file-pdf text-red-500 text-xl group-hover:scale-110 transition"></i>
+                        <span class="font-medium text-slate-700 truncate max-w-[200px] md:max-w-md">Live 14 Octubre Noche.xlsx</span>
+                    </div>
+                    <a href="Live%2014%20Octubre%20Noche.xlsx/" download class="bg-blue-600 text-white px-6 py-2 rounded-xl text-sm font-bold hover:bg-blue-700 shadow-md hover:shadow-blue-200 transition">
+                        Descargar
+                    </a>
+                </div>                <div class="flex items-center justify-between p-5 rounded-2xl bg-slate-50 hover:bg-blue-50 border border-transparent hover:border-blue-200 transition group">
+                    <div class="flex items-center space-x-4">
+                        <i class="fas fa-file-pdf text-red-500 text-xl group-hover:scale-110 transition"></i>
+                        <span class="font-medium text-slate-700 truncate max-w-[200px] md:max-w-md">LIVE 16 OCT-NIC_7_Estado_de_Flujos_de_Efectivo.xlsx</span>
+                    </div>
+                    <a href="LIVE%2016%20OCT-NIC_7_Estado_de_Flujos_de_Efectivo.xlsx/" download class="bg-blue-600 text-white px-6 py-2 rounded-xl text-sm font-bold hover:bg-blue-700 shadow-md hover:shadow-blue-200 transition">
+                        Descargar
+                    </a>
+                </div>                <div class="flex items-center justify-between p-5 rounded-2xl bg-slate-50 hover:bg-blue-50 border border-transparent hover:border-blue-200 transition group">
+                    <div class="flex items-center space-x-4">
+                        <i class="fas fa-file-pdf text-red-500 text-xl group-hover:scale-110 transition"></i>
+                        <span class="font-medium text-slate-700 truncate max-w-[200px] md:max-w-md">LIVE 16 OCTUBRE NIGHT.xlsx</span>
+                    </div>
+                    <a href="LIVE%2016%20OCTUBRE%20NIGHT.xlsx/" download class="bg-blue-600 text-white px-6 py-2 rounded-xl text-sm font-bold hover:bg-blue-700 shadow-md hover:shadow-blue-200 transition">
+                        Descargar
+                    </a>
+                </div>                <div class="flex items-center justify-between p-5 rounded-2xl bg-slate-50 hover:bg-blue-50 border border-transparent hover:border-blue-200 transition group">
+                    <div class="flex items-center space-x-4">
+                        <i class="fas fa-file-pdf text-red-500 text-xl group-hover:scale-110 transition"></i>
+                        <span class="font-medium text-slate-700 truncate max-w-[200px] md:max-w-md">LIVE 18 NOV NIIF 15 y NIC 12.xlsx</span>
+                    </div>
+                    <a href="LIVE%2018%20NOV%20NIIF%2015%20y%20NIC%2012.xlsx/" download class="bg-blue-600 text-white px-6 py-2 rounded-xl text-sm font-bold hover:bg-blue-700 shadow-md hover:shadow-blue-200 transition">
+                        Descargar
+                    </a>
+                </div>                <div class="flex items-center justify-between p-5 rounded-2xl bg-slate-50 hover:bg-blue-50 border border-transparent hover:border-blue-200 transition group">
+                    <div class="flex items-center space-x-4">
+                        <i class="fas fa-file-pdf text-red-500 text-xl group-hover:scale-110 transition"></i>
+                        <span class="font-medium text-slate-700 truncate max-w-[200px] md:max-w-md">Live 18 Octubre 12 Calculando impuestos.xlsx</span>
+                    </div>
+                    <a href="Live%2018%20Octubre%2012%20Calculando%20impuestos.xlsx/" download class="bg-blue-600 text-white px-6 py-2 rounded-xl text-sm font-bold hover:bg-blue-700 shadow-md hover:shadow-blue-200 transition">
+                        Descargar
+                    </a>
+                </div>                <div class="flex items-center justify-between p-5 rounded-2xl bg-slate-50 hover:bg-blue-50 border border-transparent hover:border-blue-200 transition group">
+                    <div class="flex items-center space-x-4">
+                        <i class="fas fa-file-pdf text-red-500 text-xl group-hover:scale-110 transition"></i>
+                        <span class="font-medium text-slate-700 truncate max-w-[200px] md:max-w-md">Live 18 Octubre El WACC.xlsx</span>
+                    </div>
+                    <a href="Live%2018%20Octubre%20El%20WACC.xlsx/" download class="bg-blue-600 text-white px-6 py-2 rounded-xl text-sm font-bold hover:bg-blue-700 shadow-md hover:shadow-blue-200 transition">
+                        Descargar
+                    </a>
+                </div>                <div class="flex items-center justify-between p-5 rounded-2xl bg-slate-50 hover:bg-blue-50 border border-transparent hover:border-blue-200 transition group">
+                    <div class="flex items-center space-x-4">
+                        <i class="fas fa-file-pdf text-red-500 text-xl group-hover:scale-110 transition"></i>
+                        <span class="font-medium text-slate-700 truncate max-w-[200px] md:max-w-md">Live 20 Feb (1).xlsx</span>
+                    </div>
+                    <a href="Live%2020%20Feb%20(1).xlsx/" download class="bg-blue-600 text-white px-6 py-2 rounded-xl text-sm font-bold hover:bg-blue-700 shadow-md hover:shadow-blue-200 transition">
+                        Descargar
+                    </a>
+                </div>                <div class="flex items-center justify-between p-5 rounded-2xl bg-slate-50 hover:bg-blue-50 border border-transparent hover:border-blue-200 transition group">
+                    <div class="flex items-center space-x-4">
+                        <i class="fas fa-file-pdf text-red-500 text-xl group-hover:scale-110 transition"></i>
+                        <span class="font-medium text-slate-700 truncate max-w-[200px] md:max-w-md">Live 20 Feb (2).xlsx</span>
+                    </div>
+                    <a href="Live%2020%20Feb%20(2).xlsx/" download class="bg-blue-600 text-white px-6 py-2 rounded-xl text-sm font-bold hover:bg-blue-700 shadow-md hover:shadow-blue-200 transition">
+                        Descargar
+                    </a>
+                </div>                <div class="flex items-center justify-between p-5 rounded-2xl bg-slate-50 hover:bg-blue-50 border border-transparent hover:border-blue-200 transition group">
+                    <div class="flex items-center space-x-4">
+                        <i class="fas fa-file-pdf text-red-500 text-xl group-hover:scale-110 transition"></i>
+                        <span class="font-medium text-slate-700 truncate max-w-[200px] md:max-w-md">Live 20 Noviembre2024.xlsx</span>
+                    </div>
+                    <a href="Live%2020%20Noviembre2024.xlsx/" download class="bg-blue-600 text-white px-6 py-2 rounded-xl text-sm font-bold hover:bg-blue-700 shadow-md hover:shadow-blue-200 transition">
+                        Descargar
+                    </a>
+                </div>                <div class="flex items-center justify-between p-5 rounded-2xl bg-slate-50 hover:bg-blue-50 border border-transparent hover:border-blue-200 transition group">
+                    <div class="flex items-center space-x-4">
+                        <i class="fas fa-file-pdf text-red-500 text-xl group-hover:scale-110 transition"></i>
+                        <span class="font-medium text-slate-700 truncate max-w-[200px] md:max-w-md">Live 23 Octubre SOFTWARE CONTABLE.xlsx</span>
+                    </div>
+                    <a href="Live%2023%20Octubre%20SOFTWARE%20CONTABLE.xlsx/" download class="bg-blue-600 text-white px-6 py-2 rounded-xl text-sm font-bold hover:bg-blue-700 shadow-md hover:shadow-blue-200 transition">
+                        Descargar
+                    </a>
+                </div>                <div class="flex items-center justify-between p-5 rounded-2xl bg-slate-50 hover:bg-blue-50 border border-transparent hover:border-blue-200 transition group">
+                    <div class="flex items-center space-x-4">
+                        <i class="fas fa-file-pdf text-red-500 text-xl group-hover:scale-110 transition"></i>
+                        <span class="font-medium text-slate-700 truncate max-w-[200px] md:max-w-md">LIVE 23 SEP 2024 COSTO AMORTIZADO.xlsx</span>
+                    </div>
+                    <a href="LIVE%2023%20SEP%202024%20COSTO%20AMORTIZADO.xlsx/" download class="bg-blue-600 text-white px-6 py-2 rounded-xl text-sm font-bold hover:bg-blue-700 shadow-md hover:shadow-blue-200 transition">
+                        Descargar
+                    </a>
+                </div>                <div class="flex items-center justify-between p-5 rounded-2xl bg-slate-50 hover:bg-blue-50 border border-transparent hover:border-blue-200 transition group">
+                    <div class="flex items-center space-x-4">
+                        <i class="fas fa-file-pdf text-red-500 text-xl group-hover:scale-110 transition"></i>
+                        <span class="font-medium text-slate-700 truncate max-w-[200px] md:max-w-md">Live 24 Sep Material Marco Conceptual.xlsx</span>
+                    </div>
+                    <a href="Live%2024%20Sep%20Material%20Marco%20Conceptual.xlsx/" download class="bg-blue-600 text-white px-6 py-2 rounded-xl text-sm font-bold hover:bg-blue-700 shadow-md hover:shadow-blue-200 transition">
+                        Descargar
+                    </a>
+                </div>                <div class="flex items-center justify-between p-5 rounded-2xl bg-slate-50 hover:bg-blue-50 border border-transparent hover:border-blue-200 transition group">
+                    <div class="flex items-center space-x-4">
+                        <i class="fas fa-file-pdf text-red-500 text-xl group-hover:scale-110 transition"></i>
+                        <span class="font-medium text-slate-700 truncate max-w-[200px] md:max-w-md">Live 24 SepNIIF18 BACKUS.xlsx</span>
+                    </div>
+                    <a href="Live%2024%20SepNIIF18%20BACKUS.xlsx/" download class="bg-blue-600 text-white px-6 py-2 rounded-xl text-sm font-bold hover:bg-blue-700 shadow-md hover:shadow-blue-200 transition">
+                        Descargar
+                    </a>
+                </div>                <div class="flex items-center justify-between p-5 rounded-2xl bg-slate-50 hover:bg-blue-50 border border-transparent hover:border-blue-200 transition group">
+                    <div class="flex items-center space-x-4">
+                        <i class="fas fa-file-pdf text-red-500 text-xl group-hover:scale-110 transition"></i>
+                        <span class="font-medium text-slate-700 truncate max-w-[200px] md:max-w-md">Live 25 Nov- Adopcion de NIIF18.xlsx</span>
+                    </div>
+                    <a href="Live%2025%20Nov-%20Adopcion%20de%20NIIF18.xlsx/" download class="bg-blue-600 text-white px-6 py-2 rounded-xl text-sm font-bold hover:bg-blue-700 shadow-md hover:shadow-blue-200 transition">
+                        Descargar
+                    </a>
+                </div>                <div class="flex items-center justify-between p-5 rounded-2xl bg-slate-50 hover:bg-blue-50 border border-transparent hover:border-blue-200 transition group">
+                    <div class="flex items-center space-x-4">
+                        <i class="fas fa-file-pdf text-red-500 text-xl group-hover:scale-110 transition"></i>
+                        <span class="font-medium text-slate-700 truncate max-w-[200px] md:max-w-md">Live 25 Octubre SOFTWARE CONTABLE.xlsx</span>
+                    </div>
+                    <a href="Live%2025%20Octubre%20SOFTWARE%20CONTABLE.xlsx/" download class="bg-blue-600 text-white px-6 py-2 rounded-xl text-sm font-bold hover:bg-blue-700 shadow-md hover:shadow-blue-200 transition">
+                        Descargar
+                    </a>
+                </div>                <div class="flex items-center justify-between p-5 rounded-2xl bg-slate-50 hover:bg-blue-50 border border-transparent hover:border-blue-200 transition group">
+                    <div class="flex items-center space-x-4">
+                        <i class="fas fa-file-pdf text-red-500 text-xl group-hover:scale-110 transition"></i>
+                        <span class="font-medium text-slate-700 truncate max-w-[200px] md:max-w-md">Live 26 Ago-EL COSTO AMORTIZADO Y LAS NIIF-1.xlsx</span>
+                    </div>
+                    <a href="Live%2026%20Ago-EL%20COSTO%20AMORTIZADO%20Y%20LAS%20NIIF-1.xlsx/" download class="bg-blue-600 text-white px-6 py-2 rounded-xl text-sm font-bold hover:bg-blue-700 shadow-md hover:shadow-blue-200 transition">
+                        Descargar
+                    </a>
+                </div>                <div class="flex items-center justify-between p-5 rounded-2xl bg-slate-50 hover:bg-blue-50 border border-transparent hover:border-blue-200 transition group">
+                    <div class="flex items-center space-x-4">
+                        <i class="fas fa-file-pdf text-red-500 text-xl group-hover:scale-110 transition"></i>
+                        <span class="font-medium text-slate-700 truncate max-w-[200px] md:max-w-md">Live 27 Ago-EL COSTO AMORTIZADO Y LAS NIIF-2.xlsx</span>
+                    </div>
+                    <a href="Live%2027%20Ago-EL%20COSTO%20AMORTIZADO%20Y%20LAS%20NIIF-2.xlsx/" download class="bg-blue-600 text-white px-6 py-2 rounded-xl text-sm font-bold hover:bg-blue-700 shadow-md hover:shadow-blue-200 transition">
+                        Descargar
+                    </a>
+                </div>                <div class="flex items-center justify-between p-5 rounded-2xl bg-slate-50 hover:bg-blue-50 border border-transparent hover:border-blue-200 transition group">
+                    <div class="flex items-center space-x-4">
+                        <i class="fas fa-file-pdf text-red-500 text-xl group-hover:scale-110 transition"></i>
+                        <span class="font-medium text-slate-700 truncate max-w-[200px] md:max-w-md">Live 27 Junio- Costo amortizado.xlsx</span>
+                    </div>
+                    <a href="Live%2027%20Junio-%20Costo%20amortizado.xlsx/" download class="bg-blue-600 text-white px-6 py-2 rounded-xl text-sm font-bold hover:bg-blue-700 shadow-md hover:shadow-blue-200 transition">
+                        Descargar
+                    </a>
+                </div>                <div class="flex items-center justify-between p-5 rounded-2xl bg-slate-50 hover:bg-blue-50 border border-transparent hover:border-blue-200 transition group">
+                    <div class="flex items-center space-x-4">
+                        <i class="fas fa-file-pdf text-red-500 text-xl group-hover:scale-110 transition"></i>
+                        <span class="font-medium text-slate-700 truncate max-w-[200px] md:max-w-md">LIVE 28 ENE 2025-LO_QUE_DEBES_SABER_DE_NIIF.xlsx</span>
+                    </div>
+                    <a href="LIVE%2028%20ENE%202025-LO_QUE_DEBES_SABER_DE_NIIF.xlsx/" download class="bg-blue-600 text-white px-6 py-2 rounded-xl text-sm font-bold hover:bg-blue-700 shadow-md hover:shadow-blue-200 transition">
+                        Descargar
+                    </a>
+                </div>                <div class="flex items-center justify-between p-5 rounded-2xl bg-slate-50 hover:bg-blue-50 border border-transparent hover:border-blue-200 transition group">
+                    <div class="flex items-center space-x-4">
+                        <i class="fas fa-file-pdf text-red-500 text-xl group-hover:scale-110 transition"></i>
+                        <span class="font-medium text-slate-700 truncate max-w-[200px] md:max-w-md">Live 28 Sep-Contablidad Basica.xlsx</span>
+                    </div>
+                    <a href="Live%2028%20Sep-Contablidad%20Basica.xlsx/" download class="bg-blue-600 text-white px-6 py-2 rounded-xl text-sm font-bold hover:bg-blue-700 shadow-md hover:shadow-blue-200 transition">
+                        Descargar
+                    </a>
+                </div>                <div class="flex items-center justify-between p-5 rounded-2xl bg-slate-50 hover:bg-blue-50 border border-transparent hover:border-blue-200 transition group">
+                    <div class="flex items-center space-x-4">
+                        <i class="fas fa-file-pdf text-red-500 text-xl group-hover:scale-110 transition"></i>
+                        <span class="font-medium text-slate-700 truncate max-w-[200px] md:max-w-md">LIVE 28 SEP-Material Marco Conceptual(1).xlsx</span>
+                    </div>
+                    <a href="LIVE%2028%20SEP-Material%20Marco%20Conceptual(1).xlsx/" download class="bg-blue-600 text-white px-6 py-2 rounded-xl text-sm font-bold hover:bg-blue-700 shadow-md hover:shadow-blue-200 transition">
+                        Descargar
+                    </a>
+                </div>                <div class="flex items-center justify-between p-5 rounded-2xl bg-slate-50 hover:bg-blue-50 border border-transparent hover:border-blue-200 transition group">
+                    <div class="flex items-center space-x-4">
+                        <i class="fas fa-file-pdf text-red-500 text-xl group-hover:scale-110 transition"></i>
+                        <span class="font-medium text-slate-700 truncate max-w-[200px] md:max-w-md">LIVE 28 SEP-Material Marco Conceptual.xlsx</span>
+                    </div>
+                    <a href="LIVE%2028%20SEP-Material%20Marco%20Conceptual.xlsx/" download class="bg-blue-600 text-white px-6 py-2 rounded-xl text-sm font-bold hover:bg-blue-700 shadow-md hover:shadow-blue-200 transition">
+                        Descargar
+                    </a>
+                </div>                <div class="flex items-center justify-between p-5 rounded-2xl bg-slate-50 hover:bg-blue-50 border border-transparent hover:border-blue-200 transition group">
+                    <div class="flex items-center space-x-4">
+                        <i class="fas fa-file-pdf text-red-500 text-xl group-hover:scale-110 transition"></i>
+                        <span class="font-medium text-slate-700 truncate max-w-[200px] md:max-w-md">LIVE 29 ENE 2025-LO_QUE_DEBES_SABER_DE_NIIF.xlsx</span>
+                    </div>
+                    <a href="LIVE%2029%20ENE%202025-LO_QUE_DEBES_SABER_DE_NIIF.xlsx/" download class="bg-blue-600 text-white px-6 py-2 rounded-xl text-sm font-bold hover:bg-blue-700 shadow-md hover:shadow-blue-200 transition">
+                        Descargar
+                    </a>
+                </div>                <div class="flex items-center justify-between p-5 rounded-2xl bg-slate-50 hover:bg-blue-50 border border-transparent hover:border-blue-200 transition group">
+                    <div class="flex items-center space-x-4">
+                        <i class="fas fa-file-pdf text-red-500 text-xl group-hover:scale-110 transition"></i>
+                        <span class="font-medium text-slate-700 truncate max-w-[200px] md:max-w-md">LIVE 30ENE2025 IMP DIFERIDO.xlsx</span>
+                    </div>
+                    <a href="LIVE%2030ENE2025%20IMP%20DIFERIDO.xlsx/" download class="bg-blue-600 text-white px-6 py-2 rounded-xl text-sm font-bold hover:bg-blue-700 shadow-md hover:shadow-blue-200 transition">
+                        Descargar
+                    </a>
+                </div>                <div class="flex items-center justify-between p-5 rounded-2xl bg-slate-50 hover:bg-blue-50 border border-transparent hover:border-blue-200 transition group">
+                    <div class="flex items-center space-x-4">
+                        <i class="fas fa-file-pdf text-red-500 text-xl group-hover:scale-110 transition"></i>
+                        <span class="font-medium text-slate-700 truncate max-w-[200px] md:max-w-md">Live Adopcion de NIIF 14Jul.xlsx</span>
+                    </div>
+                    <a href="Live%20Adopcion%20de%20NIIF%2014Jul.xlsx/" download class="bg-blue-600 text-white px-6 py-2 rounded-xl text-sm font-bold hover:bg-blue-700 shadow-md hover:shadow-blue-200 transition">
+                        Descargar
+                    </a>
+                </div>                <div class="flex items-center justify-between p-5 rounded-2xl bg-slate-50 hover:bg-blue-50 border border-transparent hover:border-blue-200 transition group">
+                    <div class="flex items-center space-x-4">
+                        <i class="fas fa-file-pdf text-red-500 text-xl group-hover:scale-110 transition"></i>
+                        <span class="font-medium text-slate-700 truncate max-w-[200px] md:max-w-md">Live El Costo Amortizado.xlsx</span>
+                    </div>
+                    <a href="Live%20El%20Costo%20Amortizado.xlsx/" download class="bg-blue-600 text-white px-6 py-2 rounded-xl text-sm font-bold hover:bg-blue-700 shadow-md hover:shadow-blue-200 transition">
+                        Descargar
+                    </a>
+                </div>                <div class="flex items-center justify-between p-5 rounded-2xl bg-slate-50 hover:bg-blue-50 border border-transparent hover:border-blue-200 transition group">
+                    <div class="flex items-center space-x-4">
+                        <i class="fas fa-file-pdf text-red-500 text-xl group-hover:scale-110 transition"></i>
+                        <span class="font-medium text-slate-700 truncate max-w-[200px] md:max-w-md">Live El valor presente en las NIIF 02 Julio.xlsx</span>
+                    </div>
+                    <a href="Live%20El%20valor%20presente%20en%20las%20NIIF%2002%20Julio.xlsx/" download class="bg-blue-600 text-white px-6 py-2 rounded-xl text-sm font-bold hover:bg-blue-700 shadow-md hover:shadow-blue-200 transition">
+                        Descargar
+                    </a>
+                </div>                <div class="flex items-center justify-between p-5 rounded-2xl bg-slate-50 hover:bg-blue-50 border border-transparent hover:border-blue-200 transition group">
+                    <div class="flex items-center space-x-4">
+                        <i class="fas fa-file-pdf text-red-500 text-xl group-hover:scale-110 transition"></i>
+                        <span class="font-medium text-slate-700 truncate max-w-[200px] md:max-w-md">Live Factos contables 16 Julio.xlsx</span>
+                    </div>
+                    <a href="Live%20Factos%20contables%2016%20Julio.xlsx/" download class="bg-blue-600 text-white px-6 py-2 rounded-xl text-sm font-bold hover:bg-blue-700 shadow-md hover:shadow-blue-200 transition">
+                        Descargar
+                    </a>
+                </div>                <div class="flex items-center justify-between p-5 rounded-2xl bg-slate-50 hover:bg-blue-50 border border-transparent hover:border-blue-200 transition group">
+                    <div class="flex items-center space-x-4">
+                        <i class="fas fa-file-pdf text-red-500 text-xl group-hover:scale-110 transition"></i>
+                        <span class="font-medium text-slate-700 truncate max-w-[200px] md:max-w-md">Live sobre NIC16 - PPE 2024 - copia.xlsx</span>
+                    </div>
+                    <a href="Live%20sobre%20NIC16%20-%20PPE%202024%20-%20copia.xlsx/" download class="bg-blue-600 text-white px-6 py-2 rounded-xl text-sm font-bold hover:bg-blue-700 shadow-md hover:shadow-blue-200 transition">
+                        Descargar
+                    </a>
+                </div>                <div class="flex items-center justify-between p-5 rounded-2xl bg-slate-50 hover:bg-blue-50 border border-transparent hover:border-blue-200 transition group">
+                    <div class="flex items-center space-x-4">
+                        <i class="fas fa-file-pdf text-red-500 text-xl group-hover:scale-110 transition"></i>
+                        <span class="font-medium text-slate-700 truncate max-w-[200px] md:max-w-md">Live Tiktok 16 Ago-NIIF15 AUTOMOTRIZ.xlsx</span>
+                    </div>
+                    <a href="Live%20Tiktok%2016%20Ago-NIIF15%20AUTOMOTRIZ.xlsx/" download class="bg-blue-600 text-white px-6 py-2 rounded-xl text-sm font-bold hover:bg-blue-700 shadow-md hover:shadow-blue-200 transition">
+                        Descargar
+                    </a>
+                </div>                <div class="flex items-center justify-between p-5 rounded-2xl bg-slate-50 hover:bg-blue-50 border border-transparent hover:border-blue-200 transition group">
+                    <div class="flex items-center space-x-4">
+                        <i class="fas fa-file-pdf text-red-500 text-xl group-hover:scale-110 transition"></i>
+                        <span class="font-medium text-slate-700 truncate max-w-[200px] md:max-w-md">Live Tiktok 19 Jun 2024-NIIF16 Y NIC12 .xlsx</span>
+                    </div>
+                    <a href="Live%20Tiktok%2019%20Jun%202024-NIIF16%20Y%20NIC12%20.xlsx/" download class="bg-blue-600 text-white px-6 py-2 rounded-xl text-sm font-bold hover:bg-blue-700 shadow-md hover:shadow-blue-200 transition">
+                        Descargar
+                    </a>
+                </div>                <div class="flex items-center justify-between p-5 rounded-2xl bg-slate-50 hover:bg-blue-50 border border-transparent hover:border-blue-200 transition group">
+                    <div class="flex items-center space-x-4">
+                        <i class="fas fa-file-pdf text-red-500 text-xl group-hover:scale-110 transition"></i>
+                        <span class="font-medium text-slate-700 truncate max-w-[200px] md:max-w-md">Live tiktok 21 Oct Night.xlsx</span>
+                    </div>
+                    <a href="Live%20tiktok%2021%20Oct%20Night.xlsx/" download class="bg-blue-600 text-white px-6 py-2 rounded-xl text-sm font-bold hover:bg-blue-700 shadow-md hover:shadow-blue-200 transition">
+                        Descargar
+                    </a>
+                </div>                <div class="flex items-center justify-between p-5 rounded-2xl bg-slate-50 hover:bg-blue-50 border border-transparent hover:border-blue-200 transition group">
+                    <div class="flex items-center space-x-4">
+                        <i class="fas fa-file-pdf text-red-500 text-xl group-hover:scale-110 transition"></i>
+                        <span class="font-medium text-slate-700 truncate max-w-[200px] md:max-w-md">Live tiktok 22 Oct Night.xlsx</span>
+                    </div>
+                    <a href="Live%20tiktok%2022%20Oct%20Night.xlsx/" download class="bg-blue-600 text-white px-6 py-2 rounded-xl text-sm font-bold hover:bg-blue-700 shadow-md hover:shadow-blue-200 transition">
+                        Descargar
+                    </a>
+                </div>                <div class="flex items-center justify-between p-5 rounded-2xl bg-slate-50 hover:bg-blue-50 border border-transparent hover:border-blue-200 transition group">
+                    <div class="flex items-center space-x-4">
+                        <i class="fas fa-file-pdf text-red-500 text-xl group-hover:scale-110 transition"></i>
+                        <span class="font-medium text-slate-700 truncate max-w-[200px] md:max-w-md">Live Tiktok08 Sep-NIIF 16 Y NIC 12.xlsx</span>
+                    </div>
+                    <a href="Live%20Tiktok08%20Sep-NIIF%2016%20Y%20NIC%2012.xlsx/" download class="bg-blue-600 text-white px-6 py-2 rounded-xl text-sm font-bold hover:bg-blue-700 shadow-md hover:shadow-blue-200 transition">
+                        Descargar
+                    </a>
+                </div>                <div class="flex items-center justify-between p-5 rounded-2xl bg-slate-50 hover:bg-blue-50 border border-transparent hover:border-blue-200 transition group">
+                    <div class="flex items-center space-x-4">
+                        <i class="fas fa-file-pdf text-red-500 text-xl group-hover:scale-110 transition"></i>
+                        <span class="font-medium text-slate-700 truncate max-w-[200px] md:max-w-md">Live Tiktok09 Sep-GUIA MAXIMA DEL COSTO AMORTIZADO.xlsx</span>
+                    </div>
+                    <a href="Live%20Tiktok09%20Sep-GUIA%20MAXIMA%20DEL%20COSTO%20AMORTIZADO.xlsx/" download class="bg-blue-600 text-white px-6 py-2 rounded-xl text-sm font-bold hover:bg-blue-700 shadow-md hover:shadow-blue-200 transition">
+                        Descargar
+                    </a>
+                </div>                <div class="flex items-center justify-between p-5 rounded-2xl bg-slate-50 hover:bg-blue-50 border border-transparent hover:border-blue-200 transition group">
+                    <div class="flex items-center space-x-4">
+                        <i class="fas fa-file-pdf text-red-500 text-xl group-hover:scale-110 transition"></i>
+                        <span class="font-medium text-slate-700 truncate max-w-[200px] md:max-w-md">Live-15SEP2025-DIFERIDOS DE LA NIIF 16-ARRENDADORES.xlsx</span>
+                    </div>
+                    <a href="Live-15SEP2025-DIFERIDOS%20DE%20LA%20NIIF%2016-ARRENDADORES.xlsx/" download class="bg-blue-600 text-white px-6 py-2 rounded-xl text-sm font-bold hover:bg-blue-700 shadow-md hover:shadow-blue-200 transition">
+                        Descargar
+                    </a>
+                </div>                <div class="flex items-center justify-between p-5 rounded-2xl bg-slate-50 hover:bg-blue-50 border border-transparent hover:border-blue-200 transition group">
+                    <div class="flex items-center space-x-4">
+                        <i class="fas fa-file-pdf text-red-500 text-xl group-hover:scale-110 transition"></i>
+                        <span class="font-medium text-slate-700 truncate max-w-[200px] md:max-w-md">Live-19-SEP-2025-DIFERIDOS DE LA NIIF-1.xlsx</span>
+                    </div>
+                    <a href="Live-19-SEP-2025-DIFERIDOS%20DE%20LA%20NIIF-1.xlsx/" download class="bg-blue-600 text-white px-6 py-2 rounded-xl text-sm font-bold hover:bg-blue-700 shadow-md hover:shadow-blue-200 transition">
+                        Descargar
+                    </a>
+                </div>                <div class="flex items-center justify-between p-5 rounded-2xl bg-slate-50 hover:bg-blue-50 border border-transparent hover:border-blue-200 transition group">
+                    <div class="flex items-center space-x-4">
+                        <i class="fas fa-file-pdf text-red-500 text-xl group-hover:scale-110 transition"></i>
+                        <span class="font-medium text-slate-700 truncate max-w-[200px] md:max-w-md">Live-20-SEP-2025-DIFERIDOS DE LA NIIF-1.xlsx</span>
+                    </div>
+                    <a href="Live-20-SEP-2025-DIFERIDOS%20DE%20LA%20NIIF-1.xlsx/" download class="bg-blue-600 text-white px-6 py-2 rounded-xl text-sm font-bold hover:bg-blue-700 shadow-md hover:shadow-blue-200 transition">
+                        Descargar
+                    </a>
+                </div>                <div class="flex items-center justify-between p-5 rounded-2xl bg-slate-50 hover:bg-blue-50 border border-transparent hover:border-blue-200 transition group">
+                    <div class="flex items-center space-x-4">
+                        <i class="fas fa-file-pdf text-red-500 text-xl group-hover:scale-110 transition"></i>
+                        <span class="font-medium text-slate-700 truncate max-w-[200px] md:max-w-md">Live16Octubre.xlsx</span>
+                    </div>
+                    <a href="Live16Octubre.xlsx/" download class="bg-blue-600 text-white px-6 py-2 rounded-xl text-sm font-bold hover:bg-blue-700 shadow-md hover:shadow-blue-200 transition">
+                        Descargar
+                    </a>
+                </div>                <div class="flex items-center justify-between p-5 rounded-2xl bg-slate-50 hover:bg-blue-50 border border-transparent hover:border-blue-200 transition group">
+                    <div class="flex items-center space-x-4">
+                        <i class="fas fa-file-pdf text-red-500 text-xl group-hover:scale-110 transition"></i>
+                        <span class="font-medium text-slate-700 truncate max-w-[200px] md:max-w-md">live20Agosto.xlsx</span>
+                    </div>
+                    <a href="live20Agosto.xlsx/" download class="bg-blue-600 text-white px-6 py-2 rounded-xl text-sm font-bold hover:bg-blue-700 shadow-md hover:shadow-blue-200 transition">
+                        Descargar
+                    </a>
+                </div>                <div class="flex items-center justify-between p-5 rounded-2xl bg-slate-50 hover:bg-blue-50 border border-transparent hover:border-blue-200 transition group">
+                    <div class="flex items-center space-x-4">
+                        <i class="fas fa-file-pdf text-red-500 text-xl group-hover:scale-110 transition"></i>
+                        <span class="font-medium text-slate-700 truncate max-w-[200px] md:max-w-md">live21gosto.xlsx</span>
+                    </div>
+                    <a href="live21gosto.xlsx/" download class="bg-blue-600 text-white px-6 py-2 rounded-xl text-sm font-bold hover:bg-blue-700 shadow-md hover:shadow-blue-200 transition">
+                        Descargar
+                    </a>
+                </div>                <div class="flex items-center justify-between p-5 rounded-2xl bg-slate-50 hover:bg-blue-50 border border-transparent hover:border-blue-200 transition group">
+                    <div class="flex items-center space-x-4">
+                        <i class="fas fa-file-pdf text-red-500 text-xl group-hover:scale-110 transition"></i>
+                        <span class="font-medium text-slate-700 truncate max-w-[200px] md:max-w-md">LIVES FEB 2DASEMANA.xlsx</span>
+                    </div>
+                    <a href="LIVES%20FEB%202DASEMANA.xlsx/" download class="bg-blue-600 text-white px-6 py-2 rounded-xl text-sm font-bold hover:bg-blue-700 shadow-md hover:shadow-blue-200 transition">
+                        Descargar
+                    </a>
+                </div>                <div class="flex items-center justify-between p-5 rounded-2xl bg-slate-50 hover:bg-blue-50 border border-transparent hover:border-blue-200 transition group">
+                    <div class="flex items-center space-x-4">
+                        <i class="fas fa-file-pdf text-red-500 text-xl group-hover:scale-110 transition"></i>
+                        <span class="font-medium text-slate-700 truncate max-w-[200px] md:max-w-md">Lives NIC12 06 Jul.xlsx</span>
+                    </div>
+                    <a href="Lives%20NIC12%2006%20Jul.xlsx/" download class="bg-blue-600 text-white px-6 py-2 rounded-xl text-sm font-bold hover:bg-blue-700 shadow-md hover:shadow-blue-200 transition">
+                        Descargar
+                    </a>
+                </div>                <div class="flex items-center justify-between p-5 rounded-2xl bg-slate-50 hover:bg-blue-50 border border-transparent hover:border-blue-200 transition group">
+                    <div class="flex items-center space-x-4">
+                        <i class="fas fa-file-pdf text-red-500 text-xl group-hover:scale-110 transition"></i>
+                        <span class="font-medium text-slate-700 truncate max-w-[200px] md:max-w-md">LiveTiktok09Oct2025 Ingresos.xlsx</span>
+                    </div>
+                    <a href="LiveTiktok09Oct2025%20Ingresos.xlsx/" download class="bg-blue-600 text-white px-6 py-2 rounded-xl text-sm font-bold hover:bg-blue-700 shadow-md hover:shadow-blue-200 transition">
+                        Descargar
+                    </a>
+                </div>                <div class="flex items-center justify-between p-5 rounded-2xl bg-slate-50 hover:bg-blue-50 border border-transparent hover:border-blue-200 transition group">
+                    <div class="flex items-center space-x-4">
+                        <i class="fas fa-file-pdf text-red-500 text-xl group-hover:scale-110 transition"></i>
+                        <span class="font-medium text-slate-700 truncate max-w-[200px] md:max-w-md">LO_QUE_DEBES_SABER_DE_NIIF.xlsx</span>
+                    </div>
+                    <a href="LO_QUE_DEBES_SABER_DE_NIIF.xlsx/" download class="bg-blue-600 text-white px-6 py-2 rounded-xl text-sm font-bold hover:bg-blue-700 shadow-md hover:shadow-blue-200 transition">
+                        Descargar
+                    </a>
+                </div>                <div class="flex items-center justify-between p-5 rounded-2xl bg-slate-50 hover:bg-blue-50 border border-transparent hover:border-blue-200 transition group">
+                    <div class="flex items-center space-x-4">
+                        <i class="fas fa-file-pdf text-red-500 text-xl group-hover:scale-110 transition"></i>
+                        <span class="font-medium text-slate-700 truncate max-w-[200px] md:max-w-md">MARCO CONCEPTUAL-2.xlsx</span>
+                    </div>
+                    <a href="MARCO%20CONCEPTUAL-2.xlsx/" download class="bg-blue-600 text-white px-6 py-2 rounded-xl text-sm font-bold hover:bg-blue-700 shadow-md hover:shadow-blue-200 transition">
+                        Descargar
+                    </a>
+                </div>                <div class="flex items-center justify-between p-5 rounded-2xl bg-slate-50 hover:bg-blue-50 border border-transparent hover:border-blue-200 transition group">
+                    <div class="flex items-center space-x-4">
+                        <i class="fas fa-file-pdf text-red-500 text-xl group-hover:scale-110 transition"></i>
+                        <span class="font-medium text-slate-700 truncate max-w-[200px] md:max-w-md">NIC12  Live del 4 de junio 2024.xlsx</span>
+                    </div>
+                    <a href="NIC12%20%20Live%20del%204%20de%20junio%202024.xlsx/" download class="bg-blue-600 text-white px-6 py-2 rounded-xl text-sm font-bold hover:bg-blue-700 shadow-md hover:shadow-blue-200 transition">
+                        Descargar
+                    </a>
+                </div>                <div class="flex items-center justify-between p-5 rounded-2xl bg-slate-50 hover:bg-blue-50 border border-transparent hover:border-blue-200 transition group">
+                    <div class="flex items-center space-x-4">
+                        <i class="fas fa-file-pdf text-red-500 text-xl group-hover:scale-110 transition"></i>
+                        <span class="font-medium text-slate-700 truncate max-w-[200px] md:max-w-md">NIC16  Live del 6 de junio 2024.xlsx</span>
+                    </div>
+                    <a href="NIC16%20%20Live%20del%206%20de%20junio%202024.xlsx/" download class="bg-blue-600 text-white px-6 py-2 rounded-xl text-sm font-bold hover:bg-blue-700 shadow-md hover:shadow-blue-200 transition">
+                        Descargar
+                    </a>
+                </div>                <div class="flex items-center justify-between p-5 rounded-2xl bg-slate-50 hover:bg-blue-50 border border-transparent hover:border-blue-200 transition group">
+                    <div class="flex items-center space-x-4">
+                        <i class="fas fa-file-pdf text-red-500 text-xl group-hover:scale-110 transition"></i>
+                        <span class="font-medium text-slate-700 truncate max-w-[200px] md:max-w-md">NIC36  Live del 5 de junio 2024.xls</span>
+                    </div>
+                    <a href="NIC36%20%20Live%20del%205%20de%20junio%202024.xls/" download class="bg-blue-600 text-white px-6 py-2 rounded-xl text-sm font-bold hover:bg-blue-700 shadow-md hover:shadow-blue-200 transition">
+                        Descargar
+                    </a>
+                </div>                <div class="flex items-center justify-between p-5 rounded-2xl bg-slate-50 hover:bg-blue-50 border border-transparent hover:border-blue-200 transition group">
+                    <div class="flex items-center space-x-4">
+                        <i class="fas fa-file-pdf text-red-500 text-xl group-hover:scale-110 transition"></i>
+                        <span class="font-medium text-slate-700 truncate max-w-[200px] md:max-w-md">NIIF AGOSTO 2025.xlsx</span>
+                    </div>
+                    <a href="NIIF%20AGOSTO%202025.xlsx/" download class="bg-blue-600 text-white px-6 py-2 rounded-xl text-sm font-bold hover:bg-blue-700 shadow-md hover:shadow-blue-200 transition">
+                        Descargar
+                    </a>
+                </div>                <div class="flex items-center justify-between p-5 rounded-2xl bg-slate-50 hover:bg-blue-50 border border-transparent hover:border-blue-200 transition group">
+                    <div class="flex items-center space-x-4">
+                        <i class="fas fa-file-pdf text-red-500 text-xl group-hover:scale-110 transition"></i>
+                        <span class="font-medium text-slate-700 truncate max-w-[200px] md:max-w-md">NIIF16 Live del 3 de junio 2024.xlsx</span>
+                    </div>
+                    <a href="NIIF16%20Live%20del%203%20de%20junio%202024.xlsx/" download class="bg-blue-600 text-white px-6 py-2 rounded-xl text-sm font-bold hover:bg-blue-700 shadow-md hover:shadow-blue-200 transition">
+                        Descargar
+                    </a>
+                </div>                <div class="flex items-center justify-between p-5 rounded-2xl bg-slate-50 hover:bg-blue-50 border border-transparent hover:border-blue-200 transition group">
+                    <div class="flex items-center space-x-4">
+                        <i class="fas fa-file-pdf text-red-500 text-xl group-hover:scale-110 transition"></i>
+                        <span class="font-medium text-slate-700 truncate max-w-[200px] md:max-w-md">Pago del Pasivo Diferido por IR.xlsx</span>
+                    </div>
+                    <a href="Pago%20del%20Pasivo%20Diferido%20por%20IR.xlsx/" download class="bg-blue-600 text-white px-6 py-2 rounded-xl text-sm font-bold hover:bg-blue-700 shadow-md hover:shadow-blue-200 transition">
+                        Descargar
+                    </a>
+                </div>                <div class="flex items-center justify-between p-5 rounded-2xl bg-slate-50 hover:bg-blue-50 border border-transparent hover:border-blue-200 transition group">
+                    <div class="flex items-center space-x-4">
+                        <i class="fas fa-file-pdf text-red-500 text-xl group-hover:scale-110 transition"></i>
+                        <span class="font-medium text-slate-700 truncate max-w-[200px] md:max-w-md">Proyeccion EF.xlsx</span>
+                    </div>
+                    <a href="Proyeccion%20EF.xlsx/" download class="bg-blue-600 text-white px-6 py-2 rounded-xl text-sm font-bold hover:bg-blue-700 shadow-md hover:shadow-blue-200 transition">
+                        Descargar
+                    </a>
+                </div>                <div class="flex items-center justify-between p-5 rounded-2xl bg-slate-50 hover:bg-blue-50 border border-transparent hover:border-blue-200 transition group">
+                    <div class="flex items-center space-x-4">
+                        <i class="fas fa-file-pdf text-red-500 text-xl group-hover:scale-110 transition"></i>
+                        <span class="font-medium text-slate-700 truncate max-w-[200px] md:max-w-md">Sesion IFRIC 12 2024.xlsx</span>
+                    </div>
+                    <a href="Sesion%20IFRIC%2012%202024.xlsx/" download class="bg-blue-600 text-white px-6 py-2 rounded-xl text-sm font-bold hover:bg-blue-700 shadow-md hover:shadow-blue-200 transition">
+                        Descargar
+                    </a>
+                </div>                <div class="flex items-center justify-between p-5 rounded-2xl bg-slate-50 hover:bg-blue-50 border border-transparent hover:border-blue-200 transition group">
+                    <div class="flex items-center space-x-4">
+                        <i class="fas fa-file-pdf text-red-500 text-xl group-hover:scale-110 transition"></i>
+                        <span class="font-medium text-slate-700 truncate max-w-[200px] md:max-w-md">TikTok Live 11 Jun 2024 - Marco Conceptual.xlsx</span>
+                    </div>
+                    <a href="TikTok%20Live%2011%20Jun%202024%20-%20Marco%20Conceptual.xlsx/" download class="bg-blue-600 text-white px-6 py-2 rounded-xl text-sm font-bold hover:bg-blue-700 shadow-md hover:shadow-blue-200 transition">
+                        Descargar
+                    </a>
+                </div>                <div class="flex items-center justify-between p-5 rounded-2xl bg-slate-50 hover:bg-blue-50 border border-transparent hover:border-blue-200 transition group">
+                    <div class="flex items-center space-x-4">
+                        <i class="fas fa-file-pdf text-red-500 text-xl group-hover:scale-110 transition"></i>
+                        <span class="font-medium text-slate-700 truncate max-w-[200px] md:max-w-md">TikTok Live 12 Jun 2024 - Marco Conceptual-2.xlsx</span>
+                    </div>
+                    <a href="TikTok%20Live%2012%20Jun%202024%20-%20Marco%20Conceptual-2.xlsx/" download class="bg-blue-600 text-white px-6 py-2 rounded-xl text-sm font-bold hover:bg-blue-700 shadow-md hover:shadow-blue-200 transition">
+                        Descargar
+                    </a>
+                </div>                <div class="flex items-center justify-between p-5 rounded-2xl bg-slate-50 hover:bg-blue-50 border border-transparent hover:border-blue-200 transition group">
+                    <div class="flex items-center space-x-4">
+                        <i class="fas fa-file-pdf text-red-500 text-xl group-hover:scale-110 transition"></i>
+                        <span class="font-medium text-slate-700 truncate max-w-[200px] md:max-w-md">TikTok Live 12Ago24-NIIF 18 Presentación EEFF.xlsx</span>
+                    </div>
+                    <a href="TikTok%20Live%2012Ago24-NIIF%2018%20Presentaci%C3%B3n%20EEFF.xlsx/" download class="bg-blue-600 text-white px-6 py-2 rounded-xl text-sm font-bold hover:bg-blue-700 shadow-md hover:shadow-blue-200 transition">
+                        Descargar
+                    </a>
+                </div>                <div class="flex items-center justify-between p-5 rounded-2xl bg-slate-50 hover:bg-blue-50 border border-transparent hover:border-blue-200 transition group">
+                    <div class="flex items-center space-x-4">
+                        <i class="fas fa-file-pdf text-red-500 text-xl group-hover:scale-110 transition"></i>
+                        <span class="font-medium text-slate-700 truncate max-w-[200px] md:max-w-md">TikTok Live 14 Jun 2024 - Marco Conceptual-2.xlsx</span>
+                    </div>
+                    <a href="TikTok%20Live%2014%20Jun%202024%20-%20Marco%20Conceptual-2.xlsx/" download class="bg-blue-600 text-white px-6 py-2 rounded-xl text-sm font-bold hover:bg-blue-700 shadow-md hover:shadow-blue-200 transition">
+                        Descargar
+                    </a>
+                </div>                <div class="flex items-center justify-between p-5 rounded-2xl bg-slate-50 hover:bg-blue-50 border border-transparent hover:border-blue-200 transition group">
+                    <div class="flex items-center space-x-4">
+                        <i class="fas fa-file-pdf text-red-500 text-xl group-hover:scale-110 transition"></i>
+                        <span class="font-medium text-slate-700 truncate max-w-[200px] md:max-w-md">TiktokLive 01 Julio Costo amortizado y NIC 12l.xlsx</span>
+                    </div>
+                    <a href="TiktokLive%2001%20Julio%20Costo%20amortizado%20y%20NIC%2012l.xlsx/" download class="bg-blue-600 text-white px-6 py-2 rounded-xl text-sm font-bold hover:bg-blue-700 shadow-md hover:shadow-blue-200 transition">
+                        Descargar
+                    </a>
+                </div>                <div class="flex items-center justify-between p-5 rounded-2xl bg-slate-50 hover:bg-blue-50 border border-transparent hover:border-blue-200 transition group">
+                    <div class="flex items-center space-x-4">
+                        <i class="fas fa-file-pdf text-red-500 text-xl group-hover:scale-110 transition"></i>
+                        <span class="font-medium text-slate-700 truncate max-w-[200px] md:max-w-md">TiktokLive 02 Julio Adopcion NIC16-NIIF1.xlsx</span>
+                    </div>
+                    <a href="TiktokLive%2002%20Julio%20Adopcion%20NIC16-NIIF1.xlsx/" download class="bg-blue-600 text-white px-6 py-2 rounded-xl text-sm font-bold hover:bg-blue-700 shadow-md hover:shadow-blue-200 transition">
+                        Descargar
+                    </a>
+                </div>                <div class="flex items-center justify-between p-5 rounded-2xl bg-slate-50 hover:bg-blue-50 border border-transparent hover:border-blue-200 transition group">
+                    <div class="flex items-center space-x-4">
+                        <i class="fas fa-file-pdf text-red-500 text-xl group-hover:scale-110 transition"></i>
+                        <span class="font-medium text-slate-700 truncate max-w-[200px] md:max-w-md">TiktokLive 08 Jul NIC 7 Flujo rápido.xlsx</span>
+                    </div>
+                    <a href="TiktokLive%2008%20Jul%20NIC%207%20Flujo%20r%C3%A1pido.xlsx/" download class="bg-blue-600 text-white px-6 py-2 rounded-xl text-sm font-bold hover:bg-blue-700 shadow-md hover:shadow-blue-200 transition">
+                        Descargar
+                    </a>
+                </div>                <div class="flex items-center justify-between p-5 rounded-2xl bg-slate-50 hover:bg-blue-50 border border-transparent hover:border-blue-200 transition group">
+                    <div class="flex items-center space-x-4">
+                        <i class="fas fa-file-pdf text-red-500 text-xl group-hover:scale-110 transition"></i>
+                        <span class="font-medium text-slate-700 truncate max-w-[200px] md:max-w-md">TiktokLive 26 Junio NIC 12 Diferido facil.xlsx</span>
+                    </div>
+                    <a href="TiktokLive%2026%20Junio%20NIC%2012%20Diferido%20facil.xlsx/" download class="bg-blue-600 text-white px-6 py-2 rounded-xl text-sm font-bold hover:bg-blue-700 shadow-md hover:shadow-blue-200 transition">
+                        Descargar
+                    </a>
+                </div>                <div class="flex items-center justify-between p-5 rounded-2xl bg-slate-50 hover:bg-blue-50 border border-transparent hover:border-blue-200 transition group">
+                    <div class="flex items-center space-x-4">
+                        <i class="fas fa-file-pdf text-red-500 text-xl group-hover:scale-110 transition"></i>
+                        <span class="font-medium text-slate-700 truncate max-w-[200px] md:max-w-md">Tk tok live 08 julio 2024 Indirecto.xls</span>
+                    </div>
+                    <a href="Tk%20tok%20live%2008%20julio%202024%20Indirecto.xls/" download class="bg-blue-600 text-white px-6 py-2 rounded-xl text-sm font-bold hover:bg-blue-700 shadow-md hover:shadow-blue-200 transition">
+                        Descargar
+                    </a>
+                </div>                <div class="flex items-center justify-between p-5 rounded-2xl bg-slate-50 hover:bg-blue-50 border border-transparent hover:border-blue-200 transition group">
+                    <div class="flex items-center space-x-4">
+                        <i class="fas fa-file-pdf text-red-500 text-xl group-hover:scale-110 transition"></i>
+                        <span class="font-medium text-slate-700 truncate max-w-[200px] md:max-w-md">Youtube-El misterio del impuesto diferido.xlsx</span>
+                    </div>
+                    <a href="Youtube-El%20misterio%20del%20impuesto%20diferido.xlsx/" download class="bg-blue-600 text-white px-6 py-2 rounded-xl text-sm font-bold hover:bg-blue-700 shadow-md hover:shadow-blue-200 transition">
+                        Descargar
+                    </a>
+                </div>            </div>
+        </div>
+        
+        <footer class="mt-12 text-center text-slate-400 text-sm">
+            Â© 2026 Portal AcadÃ©mico | Gestionado por Prof. Frank Clemente
+        </footer>
+    </div>
+</body>
+</html>
+
