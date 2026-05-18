@@ -3,97 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portal Académico - Prof. Frank Clemente</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <style>
-        body {
-            font-family: 'Outfit', sans-serif;
-            background-color: #020617;
-            background-image: radial-gradient(circle at 50% -20%, #1e293b 0%, #020617 100%);
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-        }
-        .portal-card {
-            background: rgba(30, 41, 59, 0.5);
-            backdrop-filter: blur(16px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        .portal-card:hover {
-            transform: scale(1.02) translateY(-10px);
-            border-color: rgba(59, 130, 246, 0.5);
-            background: rgba(30, 41, 59, 0.8);
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
-        }
-        .glow {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(circle at center, rgba(59, 130, 246, 0.15) 0%, transparent 70%);
-            top: 0;
-            left: 0;
-            pointer-events: none;
-        }
-    </style>
+    <title>Portal Académico - Redireccionando...</title>
+    <!-- Redirección Instantánea en HTML -->
+    <meta http-equiv="refresh" content="0; url=diplomado/index.html">
+    <!-- Redirección Instantánea en JavaScript (Respaldo) -->
+    <script type="text/javascript">
+        window.location.href = "diplomado/index.html";
+    </script>
 </head>
-<body class="text-white px-6 py-20">
-
-    <div class="text-center mb-16 animate-fade-in">
-        <div class="bg-blue-600 w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-xl shadow-blue-900/20">
-            <i class="fas fa-university text-3xl"></i>
+<body style="background-color: #0f172a; color: #f8fafc; font-family: 'Inter', system-ui, -apple-system, sans-serif; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; text-align: center; px: 6;">
+    <div style="max-w-md; padding: 2rem; background: rgba(30, 41, 59, 0.4); border-radius: 1.5rem; border: 1px solid rgba(255, 255, 255, 0.05); box-shadow: 0 10px 30px rgba(0,0,0,0.3);">
+        <div style="background-color: #3b82f6; width: 3.5rem; height: 3.5rem; border-radius: 1rem; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem auto; box-shadow: 0 10px 20px rgba(59, 130, 246, 0.2);">
+            <svg style="width: 1.8rem; height: 1.8rem; fill: white;" viewBox="0 0 24 24"><path d="M12 3L1 9l11 6 9-4.91V17h2V9L12 3zM5.89 12.55L12 15.89l6.11-3.34c-1.39.75-3.66 1.45-6.11 1.45s-4.72-.7-6.11-1.45z"/></svg>
         </div>
-        <h1 class="text-4xl md:text-5xl font-bold tracking-tight mb-4">Portal Académico Digital</h1>
-        <p class="text-slate-400 text-lg max-w-xl mx-auto">Seleccione el entorno académico al que desea ingresar.</p>
+        <p style="font-size: 1.1rem; font-weight: 600; margin-bottom: 0.5rem;">Cargando el Diplomado...</p>
+        <p style="color: #94a3b8; font-size: 0.9rem; margin-bottom: 1.5rem;">Redireccionando al Diplomado en Contabilidad Financiera.</p>
+        <p style="font-size: 0.85rem;"><a href="diplomado/index.html" style="color: #3b82f6; text-decoration: none; font-weight: 600; border-bottom: 2px solid rgba(59, 130, 246, 0.2); padding-bottom: 2px; transition: border-color 0.2s;">Haga clic aquí si no es redirigido automáticamente</a></p>
     </div>
-
-    <div class="max-w-6xl w-full grid grid-cols-1 md:grid-cols-2 gap-8">
-        
-        <!-- Contabilidad de Costo I -->
-        <a href="costo.html" class="portal-card rounded-[2.5rem] p-10 relative overflow-hidden group">
-            <div class="glow"></div>
-            <div class="relative z-10">
-                <div class="flex justify-between items-start mb-12">
-                    <div class="w-14 h-14 bg-blue-500/20 text-blue-400 rounded-2xl flex items-center justify-center border border-blue-500/30 group-hover:bg-blue-500 group-hover:text-white transition-all duration-500">
-                        <i class="fas fa-calculator text-2xl"></i>
-                    </div>
-                    <span class="text-xs font-bold uppercase tracking-widest bg-blue-500/10 text-blue-400 px-3 py-1 rounded-full border border-blue-500/20">Grado</span>
-                </div>
-                <h2 class="text-3xl font-bold mb-4">Contabilidad de Costo I</h2>
-                <p class="text-slate-400 mb-8 leading-relaxed">Gestión académica integral para el Trimestre 2026-II. Dashboard de sesiones, planificación y notas.</p>
-                <div class="flex items-center text-blue-400 font-bold group-hover:translate-x-2 transition-all">
-                    Ingresar al Aula <i class="fas fa-arrow-right ml-2"></i>
-                </div>
-            </div>
-        </a>
-
-        <!-- Diplomado en Contabilidad Financiera -->
-        <a href="diplomado/index.html" class="portal-card rounded-[2.5rem] p-10 relative overflow-hidden group">
-            <div class="glow"></div>
-            <div class="relative z-10">
-                <div class="flex justify-between items-start mb-12">
-                    <div class="w-14 h-14 bg-indigo-500/20 text-indigo-400 rounded-2xl flex items-center justify-center border border-indigo-500/30 group-hover:bg-indigo-500 group-hover:text-white transition-all duration-500">
-                        <i class="fas fa-award text-2xl"></i>
-                    </div>
-                    <span class="text-xs font-bold uppercase tracking-widest bg-indigo-500/10 text-indigo-400 px-3 py-1 rounded-full border border-indigo-500/20">Diplomado</span>
-                </div>
-                <h2 class="text-3xl font-bold mb-4">Diplomado Contabilidad Financiera</h2>
-                <p class="text-slate-400 mb-8 leading-relaxed">Formación profesional avanzada. Módulos teóricos, casos prácticos y entorno de evaluación.</p>
-                <div class="flex items-center text-indigo-400 font-bold group-hover:translate-x-2 transition-all">
-                    Ingresar al Diplomado <i class="fas fa-arrow-right ml-2"></i>
-                </div>
-            </div>
-        </a>
-
-    </div>
-
-    <footer class="mt-20 text-slate-500 text-sm">
-        <p>© 2026 UCSAR | Gestionado por Prof. Frank Clemente</p>
-    </footer>
-
 </body>
 </html>
