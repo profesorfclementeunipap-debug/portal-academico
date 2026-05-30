@@ -7,19 +7,19 @@
 const SUPABASE_URL = "https://orurkfacxrvxlrkdrqer.supabase.co";
 const SUPABASE_ANON_KEY = "sb_publishable_xRwAgFEbR1ryIePectj_FA_0ZQEs8Vw";
 
+// Lista de correos con acceso de Administrador Master
+const ADMIN_EMAILS = [
+    "profesorfclementeunipap@gmail.com",
+    "fclem@gmail.com"
+];
+
 // Inicializar el cliente con el namespace correcto del CDN (@supabase/supabase-js@2)
-// window.supabase es el namespace del SDK; el cliente real se llama supabaseClient
 const supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
 // 2. PROTEGER RUTA: Función ejecutada al cargar la página
 async function protegerRuta() {
     // admin.html tiene su propio sistema de verificación de rol
     if (window.location.pathname.includes("admin.html")) return;
-
-    if (!supabaseClient) {
-        console.error("El cliente de Supabase no se cargó correctamente.");
-        return;
-    }
 
     const { data: { session } } = await supabaseClient.auth.getSession();
     const pathActual = window.location.pathname;
@@ -32,7 +32,17 @@ async function protegerRuta() {
         return;
     }
 
-    // B) Si el usuario SÍ inició sesión, verificar su autorización en 'profiles'
+    const userEmail = session.user.email;
+
+    // B) Si es Administrador → llevarlo directamente al panel de control
+    if (ADMIN_EMAILS.includes(userEmail)) {
+        if (pathActual.includes("login.html")) {
+            window.location.href = "admin.html";
+        }
+        return;
+    }
+
+    // C) Si es estudiante → verificar su autorización en 'profiles'
     const { data: profile, error } = await supabaseClient
         .from('profiles')
         .select('is_authorized, email')
@@ -48,15 +58,15 @@ async function protegerRuta() {
         return;
     }
 
-    // C) Verificar si el alumno está autorizado
     if (!profile.is_authorized) {
+        // Estudiante sin autorización
         if (!pathActual.includes("login.html")) {
             window.location.href = "login.html?pending=true";
         } else {
             mostrarMensajeEspera(profile.email);
         }
     } else {
-        // D) Si está autorizado e intenta entrar a login, lo enviamos al Dashboard
+        // Estudiante autorizado en login → enviar al Dashboard
         if (pathActual.includes("login.html")) {
             window.location.href = "index.html";
         }
