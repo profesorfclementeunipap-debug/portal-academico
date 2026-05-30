@@ -127,6 +127,56 @@
             box-shadow: 0 15px 35px rgba(37, 99, 235, 0.3);
         }
 
+        /* TOP NAVIGATION BAR */
+        .top-nav-bar {
+            background: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            position: sticky;
+            top: 0;
+            z-index: 999;
+            padding: 14px 40px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .top-nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-back-link {
+            color: #93c5fd;
+            text-decoration: none;
+            font-weight: 700;
+            font-family: 'Outfit', sans-serif;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: var(--transition);
+        }
+
+        .nav-back-link:hover {
+            color: white;
+            transform: translateX(-3px);
+        }
+
+        .nav-brand {
+            color: #64748b;
+            font-family: 'Outfit', sans-serif;
+            font-size: 13px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
         /* 3. MAIN WORKSPACE LAYOUT */
         .workspace-container {
             max-width: 1200px;
@@ -700,6 +750,18 @@
     </style>
 </head>
 <body>
+
+    <!-- Top Modern Navigation Bar -->
+    <nav class="top-nav-bar">
+        <div class="top-nav-container">
+            <a href="index.html" class="nav-back-link">
+                <i class="fa-solid fa-chevron-left"></i> Regresar al Portal Principal
+            </a>
+            <div class="nav-brand">
+                <i class="fa-solid fa-graduation-cap"></i> Diplomado UCSAR
+            </div>
+        </div>
+    </nav>
 
     <!-- Floating Return Button -->
     <a href="index.html" class="btn-float-back">
