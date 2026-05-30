@@ -7,11 +7,8 @@
 const SUPABASE_URL = "https://orurkfacxrvxlrkdrqer.supabase.co"; // URL de tu proyecto Supabase
 const SUPABASE_ANON_KEY = "sb_publishable_xRwAgFEbR1ryIePectj_FA_0ZQEs8Vw"; // Tu clave anon de Supabase
 
-// Inicializar el cliente de Supabase desde la CDN cargada
-let supabase = null;
-if (typeof supabasejs !== "undefined") {
-    supabase = supabasejs.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
-}
+// Inicializar el cliente de Supabase
+const supabase = window.supabase ? window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY) : null;
 
 // 2. PROTEGER RUTA: Función ejecutada al cargar la página
 async function protegerRuta() {
