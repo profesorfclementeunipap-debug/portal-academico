@@ -82,47 +82,123 @@
 
     <!-- Modules Grid -->
     <main class="max-w-7xl mx-auto px-6 pb-20">
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
             
-            <!-- Module 1: Active -->
-            <div id="modulo1" class="md:col-span-2 glass-card rounded-3xl p-8 border-l-4 border-blue-600 relative overflow-hidden module-card">
-                <div class="absolute top-0 right-0 p-4 opacity-10">
-                    <i class="fas fa-balance-scale text-9xl"></i>
-                </div>
-                <div class="flex items-center space-x-3 mb-4">
-                    <span class="bg-blue-600 text-white text-xs font-bold px-2.5 py-0.5 rounded">ACTIVO</span>
-                    <span class="text-slate-400 text-xs font-semibold">MÓDULO I</span>
-                </div>
-                <h3 class="text-2xl font-bold heading-font text-slate-900 mb-4">Fundamentos y Patrimonio Empresarial</h3>
-                <p class="text-slate-600 mb-6 leading-relaxed">
-                    Explore la arquitectura de la riqueza: Activos, Pasivos y Patrimonio Neto. Domine la ecuación contable y el lenguaje universal de los negocios.
-                </p>
-                <div class="grid grid-cols-2 gap-4 mb-8 text-sm">
-                    <div class="flex items-center text-slate-500">
-                        <i class="fas fa-check-circle text-green-500 mr-2"></i> Teoría del Patrimonio
+            <!-- Main Modules Column (Takes 2 columns) -->
+            <div class="lg:col-span-2 space-y-8">
+                
+                <!-- Module 1: Active -->
+                <div id="modulo1" class="glass-card rounded-3xl p-8 border-l-4 border-blue-600 relative overflow-hidden module-card">
+                    <div class="absolute top-0 right-0 p-4 opacity-10">
+                        <i class="fas fa-balance-scale text-9xl"></i>
                     </div>
-                    <div class="flex items-center text-slate-500">
-                        <i class="fas fa-check-circle text-green-500 mr-2"></i> Ecuación Contable
+                    <div class="flex items-center space-x-3 mb-4">
+                        <span class="bg-blue-600 text-white text-xs font-bold px-2.5 py-0.5 rounded">ACTIVO</span>
+                        <span class="text-slate-400 text-xs font-semibold">MÓDULO I</span>
                     </div>
-                    <div class="flex items-center text-slate-500">
-                        <i class="fas fa-check-circle text-green-500 mr-2"></i> Partida Doble
+                    <h3 class="text-2xl font-bold heading-font text-slate-900 mb-4">Fundamentos y Patrimonio Empresarial</h3>
+                    <p class="text-slate-600 mb-6 leading-relaxed">
+                        Explore la arquitectura de la riqueza: Activos, Pasivos y Patrimonio Neto. Domine la ecuación contable y el lenguaje universal de los negocios.
+                    </p>
+                    <div class="grid grid-cols-2 gap-4 mb-8 text-sm">
+                        <div class="flex items-center text-slate-500">
+                            <i class="fas fa-check-circle text-green-500 mr-2"></i> Teoría del Patrimonio
+                        </div>
+                        <div class="flex items-center text-slate-500">
+                            <i class="fas fa-check-circle text-green-500 mr-2"></i> Ecuación Contable
+                        </div>
+                        <div class="flex items-center text-slate-500">
+                            <i class="fas fa-check-circle text-green-500 mr-2"></i> Partida Doble
+                        </div>
+                        <div class="flex items-center text-slate-500">
+                            <i class="fas fa-check-circle text-green-500 mr-2"></i> Balance de Situación
+                        </div>
                     </div>
-                    <div class="flex items-center text-slate-500">
-                        <i class="fas fa-check-circle text-green-500 mr-2"></i> Balance de Situación
+                    <div class="flex flex-wrap gap-4">
+                        <a href="modulo-1-patrimonio.html" class="bg-slate-900 text-white px-6 py-3 rounded-xl font-semibold hover:bg-blue-600 transition flex items-center shadow-lg shadow-slate-200">
+                            Ingresar al Módulo <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                        <a href="#" class="bg-white border border-slate-200 text-slate-700 px-6 py-3 rounded-xl font-semibold hover:bg-slate-50 transition flex items-center">
+                            <i class="fas fa-download mr-2 text-slate-400"></i> Guía PDF
+                        </a>
                     </div>
                 </div>
-                <div class="flex flex-wrap gap-4">
-                    <a href="modulo-1-patrimonio.html" class="bg-slate-900 text-white px-6 py-3 rounded-xl font-semibold hover:bg-blue-600 transition flex items-center shadow-lg shadow-slate-200">
-                        Ingresar al Módulo <i class="fas fa-arrow-right ml-2"></i>
-                    </a>
-                    <a href="#" class="bg-white border border-slate-200 text-slate-700 px-6 py-3 rounded-xl font-semibold hover:bg-slate-50 transition flex items-center">
-                        <i class="fas fa-download mr-2 text-slate-400"></i> Guía PDF
-                    </a>
+
+                <!-- Module 2: Active (Placed right in sequence!) -->
+                <div id="modulo2" class="glass-card rounded-3xl p-8 border-l-4 border-blue-600 relative overflow-hidden module-card">
+                    <div class="absolute top-0 right-0 p-4 opacity-10">
+                        <i class="fas fa-book-bookmark text-9xl text-blue-800"></i>
+                    </div>
+                    <div class="flex items-center space-x-3 mb-4">
+                        <span class="bg-blue-600 text-white text-xs font-bold px-2.5 py-0.5 rounded">ACTIVO</span>
+                        <span class="text-slate-400 text-xs font-semibold">MÓDULO II</span>
+                    </div>
+                    <h3 class="text-2xl font-bold heading-font text-slate-900 mb-4">Ciclo Contable Completo</h3>
+                    <p class="text-slate-600 mb-6 leading-relaxed">
+                        Estudio analítico de registros diarios, pases al mayor, balances de comprobación y hechos contables bajo VEN-NIF. Domine la dinámica transaccional y el equilibrio patrimonial.
+                    </p>
+                    <div class="grid grid-cols-2 gap-4 mb-8 text-sm">
+                        <div class="flex items-center text-slate-500">
+                            <i class="fas fa-check-circle text-blue-500 mr-2"></i> Hechos Contables (Tipificación)
+                        </div>
+                        <div class="flex items-center text-slate-500">
+                            <i class="fas fa-check-circle text-blue-500 mr-2"></i> Libro Diario y Asientos
+                        </div>
+                        <div class="flex items-center text-slate-500">
+                            <i class="fas fa-check-circle text-blue-500 mr-2"></i> Libro Mayor (Cuentas T)
+                        </div>
+                        <div class="flex items-center text-slate-500">
+                            <i class="fas fa-check-circle text-blue-500 mr-2"></i> Balance de Comprobación
+                        </div>
+                    </div>
+                    <div class="flex flex-wrap gap-4">
+                        <a href="modulo2_hechos_contables_VEN_NIF_completo.html" class="bg-slate-900 text-white px-6 py-3 rounded-xl font-semibold hover:bg-blue-600 transition flex items-center shadow-lg shadow-slate-200">
+                            Ingresar al Taller <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                    </div>
                 </div>
+
+                <!-- Module 3: Active -->
+                <div id="modulo3" class="glass-card rounded-3xl p-8 border-l-4 border-emerald-500 relative overflow-hidden module-card">
+                    <div class="absolute top-0 right-0 p-4 opacity-10">
+                        <i class="fas fa-file-invoice-dollar text-9xl text-emerald-800"></i>
+                    </div>
+                    <div class="flex items-center space-x-3 mb-4">
+                        <span class="bg-emerald-600 text-white text-xs font-bold px-2.5 py-0.5 rounded">ACTIVO</span>
+                        <span class="text-slate-400 text-xs font-semibold">MÓDULO III</span>
+                    </div>
+                    <h3 class="text-2xl font-bold heading-font text-slate-900 mb-4">Resultado de la Empresa (VEN-NIF)</h3>
+                    <p class="text-slate-600 mb-6 leading-relaxed">
+                        Análisis de Ganancias, Pérdidas y Presentación de Estados Financieros bajo VEN-NIF. Domine la clasificación técnica de ingresos y gastos, costo de ventas y depreciación sistemática.
+                    </p>
+                    <div class="grid grid-cols-2 gap-4 mb-8 text-sm">
+                        <div class="flex items-center text-slate-500">
+                            <i class="fas fa-check-circle text-emerald-500 mr-2"></i> Estructura de Ingresos y Gastos
+                        </div>
+                        <div class="flex items-center text-slate-500">
+                            <i class="fas fa-check-circle text-emerald-500 mr-2"></i> Costo de Ventas (CV)
+                        </div>
+                        <div class="flex items-center text-slate-500">
+                            <i class="fas fa-check-circle text-emerald-500 mr-2"></i> Depreciación y Amortización
+                        </div>
+                        <div class="flex items-center text-slate-500">
+                            <i class="fas fa-check-circle text-emerald-500 mr-2"></i> Estado de Resultados
+                        </div>
+                    </div>
+                    <div class="flex flex-wrap gap-4">
+                        <a href="Planificacion_Modulo_3.html" class="bg-slate-900 text-white px-6 py-3 rounded-xl font-semibold hover:bg-emerald-600 transition flex items-center shadow-lg shadow-slate-200">
+                            Ingresar al Módulo <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                        <a href="modul3_resultado_empresa_vennif.html" class="bg-white border border-slate-200 text-slate-700 px-6 py-3 rounded-xl font-semibold hover:bg-slate-50 transition flex items-center">
+                            <i class="fas fa-calculator mr-2 text-emerald-600"></i> Simulador Directo
+                        </a>
+                    </div>
+                </div>
+
             </div>
 
-            <!-- Side Info: Evaluation & Progress -->
-            <div class="space-y-8">
+            <!-- Sidebar (Takes 1 column) -->
+            <div class="space-y-8 col-span-1">
                 <!-- Evaluation Card -->
                 <div class="glass-card rounded-3xl p-6 border border-slate-200">
                     <h4 class="text-lg font-bold mb-4 flex items-center">
@@ -185,63 +261,7 @@
                     </ul>
                 </div>
             </div>
-
-            <!-- Module 3: Active -->
-            <div id="modulo3" class="md:col-span-2 glass-card rounded-3xl p-8 border-l-4 border-emerald-600 relative overflow-hidden module-card">
-                <div class="absolute top-0 right-0 p-4 opacity-10">
-                    <i class="fas fa-file-invoice-dollar text-9xl text-emerald-800"></i>
-                </div>
-                <div class="flex items-center space-x-3 mb-4">
-                    <span class="bg-emerald-600 text-white text-xs font-bold px-2.5 py-0.5 rounded">ACTIVO</span>
-                    <span class="text-slate-400 text-xs font-semibold">MÓDULO III</span>
-                </div>
-                <h3 class="text-2xl font-bold heading-font text-slate-900 mb-4">Resultado de la Empresa (VEN-NIF)</h3>
-                <p class="text-slate-600 mb-6 leading-relaxed">
-                    Análisis de Ganancias, Pérdidas y Presentación de Estados Financieros bajo VEN-NIF. Domine la clasificación técnica de ingresos y gastos, costo de ventas y depreciación sistemática.
-                </p>
-                <div class="grid grid-cols-2 gap-4 mb-8 text-sm">
-                    <div class="flex items-center text-slate-500">
-                        <i class="fas fa-check-circle text-emerald-500 mr-2"></i> Estructura de Ingresos y Gastos
-                    </div>
-                    <div class="flex items-center text-slate-500">
-                        <i class="fas fa-check-circle text-emerald-500 mr-2"></i> Costo de Ventas (CV)
-                    </div>
-                    <div class="flex items-center text-slate-500">
-                        <i class="fas fa-check-circle text-emerald-500 mr-2"></i> Depreciación y Amortización
-                    </div>
-                    <div class="flex items-center text-slate-500">
-                        <i class="fas fa-check-circle text-emerald-500 mr-2"></i> Estado de Resultados
-                    </div>
-                </div>
-                <div class="flex flex-wrap gap-4">
-                    <a href="Planificacion_Modulo_3.html" class="bg-slate-900 text-white px-6 py-3 rounded-xl font-semibold hover:bg-emerald-600 transition flex items-center shadow-lg shadow-slate-200">
-                        Ingresar al Módulo <i class="fas fa-arrow-right ml-2"></i>
-                    </a>
-                    <a href="modul3_resultado_empresa_vennif.html" class="bg-white border border-slate-200 text-slate-700 px-6 py-3 rounded-xl font-semibold hover:bg-slate-50 transition flex items-center">
-                        <i class="fas fa-calculator mr-2 text-emerald-600"></i> Simulador Directo
-                    </a>
-                </div>
-            </div>
-
-            <!-- Module 2: Active -->
-            <div id="modulo2" class="glass-card rounded-3xl p-8 border-l-4 border-blue-600 relative overflow-hidden module-card">
-                <div class="absolute top-0 right-0 p-4 opacity-10">
-                    <i class="fas fa-book-bookmark text-9xl text-blue-800"></i>
-                </div>
-                <div class="flex items-center space-x-3 mb-4">
-                    <span class="bg-blue-600 text-white text-xs font-bold px-2.5 py-0.5 rounded">ACTIVO</span>
-                    <span class="text-slate-400 text-xs font-semibold">MÓDULO II</span>
-                </div>
-                <h3 class="text-xl font-bold heading-font text-slate-900 mb-2">Ciclo Contable Completo</h3>
-                <p class="text-sm text-slate-600 mb-6 leading-relaxed">
-                    Estudio analítico de registros diarios, pases al mayor, balances de comprobación y hechos contables bajo VEN-NIF.
-                </p>
-                <div class="flex flex-wrap gap-4">
-                    <a href="modulo2_hechos_contables_VEN_NIF_completo.html" class="bg-slate-900 text-white px-5 py-2.5 rounded-xl font-semibold hover:bg-blue-600 transition flex items-center shadow-lg shadow-slate-200 text-sm">
-                        Ingresar al Taller <i class="fas fa-arrow-right ml-2"></i>
-                    </a>
-                </div>
-            </div>
+        </div>           </div>
         </div>
 
         <!-- NEW SECTION: Laboratorio de Aprendizaje -->
