@@ -13,6 +13,9 @@ const supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_
 
 // 2. PROTEGER RUTA: Función ejecutada al cargar la página
 async function protegerRuta() {
+    // admin.html tiene su propio sistema de verificación de rol
+    if (window.location.pathname.includes("admin.html")) return;
+
     if (!supabaseClient) {
         console.error("El cliente de Supabase no se cargó correctamente.");
         return;
