@@ -374,138 +374,127 @@
         </p>
     </div>
 
-    <!-- NÚCLEO DE RUTAS DE AUTENTICACIÓN -->
-    <script src="js/auth.js?v=2"></script>
-
+    <!-- Admin panel is fully self-contained (no auth.js dependency) -->
     <script>
-        // LISTA DE MAILS AUTORIZADOS COMO ADMIN/MASTER (Modifica con tus correos!)
-        const ADMIN_EMAILS = [
+        // ── CONFIGURACIÓN SUPABASE ────────────────────────────────────────────
+        const SUPABASE_URL  = "https://orurkfacxrvxlrkdrqer.supabase.co";
+        const SUPABASE_ANON = "sb_publishable_xRwAgFEbR1ryIePectj_FA_0ZQEs8Vw";
+        const ADMIN_EMAILS  = [
             "profesorfclementeunipap@gmail.com",
-            "fclem@gmail.com",
-            "tu-correo@gmail.com" // Puedes agregar los tuyos
+            "fclem@gmail.com"
         ];
 
-        // Verificar el rol administrativo del usuario logueado
-        async function verificarRolAdmin() {
-            if (!supabase) return;
+        // Mostrar spinner de carga mientras Supabase inicializa
+        document.body.style.background = "#f8fafc";
 
-            const { data: { session } } = await supabaseClient.auth.getSession();
-            if (!session) {
-                window.location.href = "login.html";
+        // Esperar a que el CDN de Supabase esté disponible antes de ejecutar
+        function iniciarAdmin() {
+            if (typeof window.supabase === "undefined" || typeof window.supabase.createClient !== "function") {
+                setTimeout(iniciarAdmin, 100);
                 return;
             }
 
-            const userEmail = session.user.email;
+            const db = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON);
 
-            // Si es un correo administrador autorizado
-            if (ADMIN_EMAILS.includes(userEmail)) {
-                document.getElementById("admin-view").style.display = "block";
-                cargarEstudiantes();
-            } else {
-                // Si no, expulsarlo
-                document.getElementById("denied-view").style.display = "block";
-                setTimeout(() => {
-                    window.location.href = "index.html";
-                }, 3000);
-            }
+            // ── VERIFICAR ROL ADMINISTRADOR ───────────────────────────────────
+            db.auth.getSession().then(({ data: { session } }) => {
+                if (!session) {
+                    // Sin sesión → ir a login
+                    window.location.href = "login.html";
+                    return;
+                }
+
+                const userEmail = session.user.email;
+
+                if (ADMIN_EMAILS.includes(userEmail)) {
+                    // Es Admin → mostrar panel
+                    document.getElementById("admin-view").style.display = "block";
+                    cargarEstudiantes(db);
+                } else {
+                    // No es Admin → mostrar aviso y redirigir
+                    document.getElementById("denied-view").style.display = "block";
+                    setTimeout(() => { window.location.href = "login.html"; }, 3000);
+                }
+            });
+
+            // ── CERRAR SESIÓN ─────────────────────────────────────────────────
+            window.logout = function() {
+                db.auth.signOut().then(() => {
+                    window.location.href = "login.html";
+                });
+            };
+
+            // ── ACTUALIZAR ESTADO DE AUTORIZACIÓN ────────────────────────────
+            window.updateAuthStatus = function(studentId, isAuthorized) {
+                db.from('profiles')
+                  .update({ is_authorized: isAuthorized })
+                  .eq('id', studentId)
+                  .then(({ error }) => {
+                      if (error) {
+                          alert("Error al actualizar acceso: " + error.message);
+                      } else {
+                          cargarEstudiantes(db);
+                      }
+                  });
+            };
         }
 
-        // Cargar registros de perfiles desde Supabase
-        async function cargarEstudiantes() {
-            if (!supabase) return;
-
+        // ── CARGAR REGISTROS DE ESTUDIANTES ──────────────────────────────────
+        function cargarEstudiantes(db) {
             document.getElementById("loading-spinner").style.display = "block";
             document.getElementById("table-view").style.display = "none";
 
-            const { data: profiles, error } = await supabaseClient
-                .from('profiles')
-                .select('*')
-                .order('created_at', { ascending: false });
+            db.from('profiles')
+              .select('*')
+              .order('created_at', { ascending: false })
+              .then(({ data: profiles, error }) => {
+                  if (error || !profiles) {
+                      console.error("Error cargando perfiles:", error);
+                      return;
+                  }
 
-            if (error) {
-                console.error("Error cargando perfiles:", error);
-                return;
-            }
+                  const total      = profiles.length;
+                  const pending    = profiles.filter(p => !p.is_authorized).length;
+                  const authorized = total - pending;
 
-            // Calcular y renderizar métricas
-            const total = profiles.length;
-            const pending = profiles.filter(p => !p.is_authorized).length;
-            const authorized = total - pending;
+                  document.getElementById("metric-total").innerText      = total;
+                  document.getElementById("metric-pending").innerText    = pending;
+                  document.getElementById("metric-authorized").innerText = authorized;
 
-            document.getElementById("metric-total").innerText = total;
-            document.getElementById("metric-pending").innerText = pending;
-            document.getElementById("metric-authorized").innerText = authorized;
+                  const tbody = document.getElementById("student-rows");
+                  tbody.innerHTML = "";
 
-            // Renderizar filas de la tabla
-            const tbody = document.getElementById("student-rows");
-            tbody.innerHTML = "";
+                  if (total === 0) {
+                      tbody.innerHTML = `<tr><td colspan="5" style="text-align:center;color:#64748b;padding:30px;">No hay estudiantes registrados actualmente.</td></tr>`;
+                  } else {
+                      profiles.forEach(student => {
+                          const row = document.createElement("tr");
+                          const dateFormatted = new Date(student.created_at).toLocaleDateString("es-VE", {
+                              year: 'numeric', month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit'
+                          });
+                          const statusHTML = student.is_authorized
+                              ? `<span class="badge-status authorized"><i class="fa-solid fa-circle-check"></i> Autorizado</span>`
+                              : `<span class="badge-status pending"><i class="fa-solid fa-circle-notch fa-spin"></i> Pendiente</span>`;
+                          const actionHTML = student.is_authorized
+                              ? `<button class="btn-action revoke" onclick="updateAuthStatus('${student.id}', false)"><i class="fa-solid fa-user-slash"></i> Revocar</button>`
+                              : `<button class="btn-action approve" onclick="updateAuthStatus('${student.id}', true)"><i class="fa-solid fa-user-check"></i> Autorizar</button>`;
+                          row.innerHTML = `
+                              <td style="font-weight:600;color:var(--text-heading);">${student.full_name || 'Estudiante'}</td>
+                              <td>${student.email}</td>
+                              <td style="color:#64748b;font-size:0.85rem;">${dateFormatted}</td>
+                              <td>${statusHTML}</td>
+                              <td>${actionHTML}</td>`;
+                          tbody.appendChild(row);
+                      });
+                  }
 
-            if (total === 0) {
-                tbody.innerHTML = `
-                    <tr>
-                        <td colspan="5" style="text-align: center; color: #64748b; padding: 30px;">
-                            No hay estudiantes registrados actualmente.
-                        </td>
-                    </tr>
-                `;
-            } else {
-                profiles.forEach(student => {
-                    const row = document.createElement("tr");
-                    const dateFormatted = new Date(student.created_at).toLocaleDateString("es-VE", {
-                        year: 'numeric', month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit'
-                    });
-
-                    const statusHTML = student.is_authorized 
-                        ? `<span class="badge-status authorized"><i class="fa-solid fa-circle-check"></i> Autorizado</span>`
-                        : `<span class="badge-status pending"><i class="fa-solid fa-circle-notch fa-spin"></i> Pendiente</span>`;
-
-                    const actionHTML = student.is_authorized
-                        ? `<button class="btn-action revoke" onclick="updateAuthStatus('${student.id}', false)">
-                               <i class="fa-solid fa-user-slash"></i> Revocar
-                           </button>`
-                        : `<button class="btn-action approve" onclick="updateAuthStatus('${student.id}', true)">
-                               <i class="fa-solid fa-user-check"></i> Autorizar
-                           </button>`;
-
-                    row.innerHTML = `
-                        <td style="font-weight: 600; color: var(--text-heading);">${student.full_name || 'Estudiante'}</td>
-                        <td>${student.email}</td>
-                        <td style="color: #64748b; font-size: 0.85rem;">${dateFormatted}</td>
-                        <td>${statusHTML}</td>
-                        <td>${actionHTML}</td>
-                    `;
-                    tbody.appendChild(row);
-                });
-            }
-
-            document.getElementById("loading-spinner").style.display = "none";
-            document.getElementById("table-view").style.display = "block";
+                  document.getElementById("loading-spinner").style.display = "none";
+                  document.getElementById("table-view").style.display = "block";
+              });
         }
 
-        // Actualizar el estado de autorización en Supabase
-        async function updateAuthStatus(studentId, isAuthorized) {
-            if (!supabase) return;
-
-            const { data, error } = await supabaseClient
-                .from('profiles')
-                .update({ is_authorized: isAuthorized })
-                .eq('id', studentId);
-
-            if (error) {
-                alert("Error al actualizar acceso: " + error.message);
-                console.error(error);
-            } else {
-                cargarEstudiantes(); // Recargar datos
-            }
-        }
-
-        // Ejecutar verificación de rol al cargar la página
-        document.addEventListener("DOMContentLoaded", () => {
-            // Un pequeño delay para asegurar la sesión de Supabase
-            setTimeout(() => {
-                verificarRolAdmin();
-            }, 500);
-        });
+        // Iniciar cuando el DOM esté listo
+        document.addEventListener("DOMContentLoaded", iniciarAdmin);
     </script>
 </body>
 </html>
