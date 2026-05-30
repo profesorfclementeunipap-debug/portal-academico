@@ -11,7 +11,12 @@
     <style>
         /* 1. CONFIGURACIÓN BASE (ESTILO PREMIUM MANAGEMENT) */
         * { box-sizing: border-box; margin: 0; padding: 0; }
-        body { background-color: #cbd5e1; display: grid; gap: 40px; grid-template-columns: 1fr; margin: 0; padding: 40px 0; place-items: center; }
+        body { background-color: #cbd5e1; display: grid; gap: 40px; grid-template-columns: 1fr; margin: 0; padding: 80px 0 40px 0; place-items: center; }
+        
+        @media (max-width: 768px) {
+            body { padding-top: 130px; }
+            .top-nav { flex-direction: column !important; gap: 10px; padding: 12px !important; text-align: center; }
+        }
         
         .slide-container {
             width: 1280px;
@@ -104,6 +109,24 @@
     </style>
 </head>
 <body>
+
+<!-- Barra de Navegación Superior Fija (Sticky Top Navbar) -->
+<div class="top-nav no-print" style="position: fixed; top: 0; left: 0; right: 0; background: rgba(15, 23, 42, 0.95); backdrop-filter: blur(8px); padding: 12px 40px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(255,255,255,0.1); color: white; z-index: 10000; font-family: 'DM Sans', sans-serif;">
+    <a href="index.html" style="color: white; text-decoration: none; font-weight: bold; display: inline-flex; align-items: center; gap: 8px; font-size: 0.95rem; transition: all 0.2s;" onmouseover="this.style.color='#11caa0';" onmouseout="this.style.color='white';">
+        <i class="fa-solid fa-arrow-left"></i> Volver al Menú Principal (Dashboard)
+    </a>
+    <span style="font-size: 0.9rem; font-weight: 500; color: #94a3b8; text-transform: uppercase; letter-spacing: 1px;">
+        Planificación Didáctica: Módulo III
+    </span>
+    <div style="display: flex; gap: 15px; align-items: center;">
+        <a href="material_lectura_modulo3.html" style="color: #11caa0; text-decoration: none; font-weight: bold; font-size: 0.9rem; display: inline-flex; align-items: center; gap: 6px;" onmouseover="this.style.color='white';" onmouseout="this.style.color='#11caa0';">
+            <i class="fa-solid fa-book-open"></i> Material de Lectura
+        </a>
+        <a href="modul3_resultado_empresa_vennif.html" style="color: #93c5fd; text-decoration: none; font-weight: bold; font-size: 0.9rem; display: inline-flex; align-items: center; gap: 6px;" onmouseover="this.style.color='white';" onmouseout="this.style.color='#93c5fd';">
+            <i class="fa-solid fa-calculator"></i> Simulador Contable
+        </a>
+    </div>
+</div>
 
 <div class="slide-container" id="slide1">
     <div class="title-layout">
