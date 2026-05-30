@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Acceso al Portal - Diplomado UCSAR</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <!-- Supabase JS Library CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+    <style>
+        :root {
+            --primary: #1e3a8a;
+            --primary-light: #3b82f6;
+            --accent: #10b981;
+            --bg-body: #0f172a; /* Fondo oscuro premium */
+            --bg-card: rgba(30, 41, 59, 0.7); /* Translucidez de cristal */
+            --text-main: #94a3b8;
+            --text-heading: #ffffff;
+            --border-color: rgba(255, 255, 255, 0.1);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: radial-gradient(circle at top right, rgba(16, 185, 129, 0.1), transparent), 
+                        radial-gradient(circle at bottom left, rgba(30, 58, 138, 0.2), transparent),
+                        var(--bg-body);
+            color: var(--text-main);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .auth-card {
+            background: var(--bg-card);
+            backdrop-filter: blur(16px);
+            border: 1px solid var(--border-color);
+            border-radius: 24px;
+            width: 100%;
+            max-width: 480px;
+            padding: 40px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .auth-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-light), var(--accent));
+        }
+
+        .brand-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .brand-logo {
+            font-size: 2.5rem;
+            color: var(--accent);
+            margin-bottom: 10px;
+        }
+
+        .brand-title {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: var(--text-heading);
+            margin-bottom: 5px;
+        }
+
+        .brand-subtitle {
+            font-size: 0.9rem;
+            color: #64748b;
+        }
+
+        /* TABS SWITCHER */
+        .auth-tabs {
+            display: flex;
+            border-bottom: 1px solid var(--border-color);
+            margin-bottom: 25px;
+        }
+
+        .auth-tab {
+            flex: 1;
+            text-align: center;
+            padding: 12px;
+            color: var(--text-main);
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+            border-bottom: 2px solid transparent;
+            font-size: 0.95rem;
+        }
+
+        .auth-tab.active {
+            color: var(--accent);
+            border-bottom-color: var(--accent);
+        }
+
+        /* FORM CONTROLS */
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-label {
+            display: block;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: #cbd5e1;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 12px 16px;
+            background: rgba(15, 23, 42, 0.6);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            color: white;
+            font-family: inherit;
+            font-size: 0.95rem;
+            transition: all 0.2s;
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: var(--primary-light);
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15);
+        }
+
+        .btn-submit {
+            width: 100%;
+            padding: 14px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-weight: 700;
+            font-family: inherit;
+            font-size: 0.95rem;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        .btn-submit:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
+        }
+
+        /* SEPARATOR */
+        .auth-separator {
+            display: flex;
+            align-items: center;
+            text-align: center;
+            margin: 25px 0;
+            font-size: 0.8rem;
+            color: #475569;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .auth-separator::before, .auth-separator::after {
+            content: '';
+            flex: 1;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .auth-separator:not(:empty)::before { margin-right: 15px; }
+        .auth-separator:not(:empty)::after { margin-left: 15px; }
+
+        /* GOOGLE SSO BUTTON */
+        .btn-google {
+            width: 100%;
+            padding: 12px;
+            background: white;
+            color: #1e293b;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            font-weight: 600;
+            font-family: inherit;
+            font-size: 0.95rem;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .btn-google:hover {
+            background: #f8fafc;
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(255, 255, 255, 0.05);
+        }
+
+        .btn-google img {
+            width: 18px;
+            height: 18px;
+        }
+
+        /* AVISOS DE FEEDBACK */
+        .auth-feedback {
+            padding: 12px;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            margin-bottom: 20px;
+            display: none;
+        }
+
+        .auth-feedback.error {
+            background: rgba(239, 68, 68, 0.15);
+            border: 1px solid rgba(239, 68, 68, 0.3);
+            color: #f87171;
+            display: block;
+        }
+
+        .auth-feedback.success {
+            background: rgba(16, 185, 129, 0.15);
+            border: 1px solid rgba(16, 185, 129, 0.3);
+            color: #34d399;
+            display: block;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="auth-card" id="auth-container">
+        <!-- CABECERA BRANDING -->
+        <div class="brand-header">
+            <div class="brand-logo"><i class="fa-solid fa-graduation-cap"></i></div>
+            <h1 class="brand-title">Portal Académico UCSAR</h1>
+            <p class="brand-subtitle">Diplomado en Contabilidad Financiera</p>
+        </div>
+
+        <!-- TABS DE ACCIÓN -->
+        <div class="auth-tabs">
+            <div class="auth-tab active" id="tab-login" onclick="switchTab('login')">Iniciar Sesión</div>
+            <div class="auth-tab" id="tab-register" onclick="switchTab('register')">Registrarse</div>
+        </div>
+
+        <!-- AVISOS DE MENSAJES -->
+        <div id="feedback-alert" class="auth-feedback"></div>
+
+        <!-- FORMULARIO DE ACCESO -->
+        <form id="auth-form" onsubmit="handleFormSubmit(event)">
+            <!-- CAMPO NOMBRE (Solo se muestra en Registrarse) -->
+            <div class="form-group" id="group-name" style="display: none;">
+                <label class="form-label" for="input-name">Nombre Completo</label>
+                <input class="form-input" type="text" id="input-name" placeholder="Ej. Juan Pérez">
+            </div>
+
+            <!-- CAMPO CORREO -->
+            <div class="form-group">
+                <label class="form-label" for="input-email">Correo Electrónico</label>
+                <input class="form-input" type="email" id="input-email" required placeholder="correo@ejemplo.com">
+            </div>
+
+            <!-- CAMPO CONTRASEÑA -->
+            <div class="form-group">
+                <label class="form-label" for="input-password">Contraseña</label>
+                <input class="form-input" type="password" id="input-password" required minlength="6" placeholder="******">
+            </div>
+
+            <!-- BOTÓN ENVIAR -->
+            <button class="btn-submit" type="submit" id="btn-submit-text">
+                <i class="fa-solid fa-right-to-bracket"></i> Iniciar Sesión
+            </button>
+        </form>
+
+        <!-- SEPARADOR -->
+        <div class="auth-separator">o accede con</div>
+
+        <!-- BOTÓN GOOGLE SSO -->
+        <button class="btn-google" onclick="handleGoogleLogin()">
+            <img src="https://lh3.googleusercontent.com/COxitfg2urnEe-75ZotCF2Bgv2v-2eg0Ja6aO121gUBj5wbN1_Pf80C3RlZa4L52SCx5XI8IFT3Ma_P9V5vp30G5GN2C9G05GPg" alt="Google Logo">
+            Google Workspace
+        </button>
+    </div>
+
+    <!-- NÚCLEO DE RUTAS DE AUTENTICACIÓN -->
+    <script src="js/auth.js"></script>
+
+    <script>
+        let currentMode = "login";
+
+        // Cambiar pestañas entre Iniciar Sesión y Registro
+        function switchTab(mode) {
+            currentMode = mode;
+            const tabLogin = document.getElementById("tab-login");
+            const tabRegister = document.getElementById("tab-register");
+            const groupName = document.getElementById("group-name");
+            const btnSubmitText = document.getElementById("btn-submit-text");
+            const feedbackAlert = document.getElementById("feedback-alert");
+
+            feedbackAlert.style.display = "none";
+
+            if (mode === "login") {
+                tabLogin.classList.add("active");
+                tabRegister.classList.remove("active");
+                groupName.style.display = "none";
+                document.getElementById("input-name").required = false;
+                btnSubmitText.innerHTML = `<i class="fa-solid fa-right-to-bracket"></i> Iniciar Sesión`;
+            } else {
+                tabLogin.classList.remove("active");
+                tabRegister.classList.add("active");
+                groupName.style.display = "block";
+                document.getElementById("input-name").required = true;
+                btnSubmitText.innerHTML = `<i class="fa-solid fa-user-plus"></i> Crear Cuenta`;
+            }
+        }
+
+        // Manejar el envío del formulario (Login / Registro por email)
+        async function handleFormSubmit(event) {
+            event.preventDefault();
+            const feedbackAlert = document.getElementById("feedback-alert");
+            feedbackAlert.style.display = "none";
+
+            const email = document.getElementById("input-email").value.trim();
+            const password = document.getElementById("input-password").value;
+            const fullName = document.getElementById("input-name").value.trim();
+
+            if (!supabase) {
+                showFeedback("Error: No se pudo conectar con el sistema de autenticación.", "error");
+                return;
+            }
+
+            try {
+                if (currentMode === "login") {
+                    // A) INICIAR SESIÓN
+                    const { data, error } = await supabase.auth.signInWithPassword({
+                        email: email,
+                        password: password
+                    });
+
+                    if (error) throw error;
+                    
+                    showFeedback("Acceso concedido. Verificando perfil...", "success");
+                    protegerRuta(); // Redirige automáticamente
+                } else {
+                    // B) REGISTRARSE
+                    const { data, error } = await supabase.auth.signUp({
+                        email: email,
+                        password: password,
+                        options: {
+                            data: {
+                                full_name: fullName
+                            }
+                        }
+                    });
+
+                    if (error) throw error;
+
+                    showFeedback("¡Registro exitoso! Espere la aprobación del facilitador.", "success");
+                    setTimeout(() => {
+                        protegerRuta(); // Esto detectará que no está autorizado y mostrará el aviso de espera
+                    }, 1500);
+                }
+            } catch (err) {
+                showFeedback("Error: " + err.message, "error");
+            }
+        }
+
+        // Manejar el login con Google SSO
+        async function handleGoogleLogin() {
+            if (!supabase) {
+                showFeedback("Error: No se pudo conectar con el sistema de autenticación.", "error");
+                return;
+            }
+
+            try {
+                const { data, error } = await supabase.auth.signInWithOAuth({
+                    provider: 'google',
+                    options: {
+                        redirectTo: window.location.origin + window.location.pathname.replace("login.html", "index.html")
+                    }
+                });
+
+                if (error) throw error;
+            } catch (err) {
+                showFeedback("Error Google: " + err.message, "error");
+            }
+        }
+
+        // Mostrar alertas de feedback
+        function showFeedback(message, type) {
+            const alert = document.getElementById("feedback-alert");
+            alert.innerText = message;
+            alert.className = "auth-feedback " + type;
+        }
+
+        // Verificar si la URL trae un parámetro de espera/pendiente
+        document.addEventListener("DOMContentLoaded", () => {
+            const params = new URLSearchParams(window.location.search);
+            if (params.get("pending") === "true") {
+                showFeedback("Su perfil requiere autorización del profesor para poder continuar.", "error");
+            }
+        });
+    </script>
+</body>
+</html>
