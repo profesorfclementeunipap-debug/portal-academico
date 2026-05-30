@@ -3,28 +3,38 @@
 // Incluye este script en todas tus páginas protegidas.
 // ====================================================================
 
-// 1. CONFIGURACIÓN: Credenciales de Supabase
 const SUPABASE_URL = "https://orurkfacxrvxlrkdrqer.supabase.co";
 const SUPABASE_ANON_KEY = "sb_publishable_xRwAgFEbR1ryIePectj_FA_0ZQEs8Vw";
 
-// Lista de correos con acceso de Administrador Master
 const ADMIN_EMAILS = [
     "profesorfclementeunipap@gmail.com",
     "fclem@gmail.com"
 ];
 
-// Inicializar el cliente con el namespace correcto del CDN (@supabase/supabase-js@2)
-const supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+let supabaseClient = null;
 
-// 2. PROTEGER RUTA: Función ejecutada al cargar la página
+// Inicialización segura esperando al CDN
+function initSupabaseAuth() {
+    if (typeof window.supabase === "undefined") {
+        // Reintentar en 50ms si el CDN no ha cargado
+        setTimeout(initSupabaseAuth, 50);
+        return;
+    }
+    
+    // Crear el cliente una vez que el CDN está listo
+    supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+    
+    // Proteger la ruta inmediatamente
+    protegerRuta();
+}
+
 async function protegerRuta() {
-    // admin.html tiene su propio sistema de verificación de rol
     if (window.location.pathname.includes("admin.html")) return;
 
-    const { data: { session } } = await supabaseClient.auth.getSession();
+    const { data: { session }, error: sessionError } = await supabaseClient.auth.getSession();
     const pathActual = window.location.pathname;
 
-    // A) Si el usuario NO ha iniciado sesión
+    // A) Si no hay sesión, ir a login
     if (!session) {
         if (!pathActual.includes("login.html")) {
             window.location.href = "login.html";
@@ -34,7 +44,7 @@ async function protegerRuta() {
 
     const userEmail = session.user.email;
 
-    // B) Si es Administrador → llevarlo directamente al panel de control
+    // B) Si es Admin
     if (ADMIN_EMAILS.includes(userEmail)) {
         if (pathActual.includes("login.html")) {
             window.location.href = "admin.html";
@@ -42,7 +52,7 @@ async function protegerRuta() {
         return;
     }
 
-    // C) Si es estudiante → verificar su autorización en 'profiles'
+    // C) Estudiante regular
     const { data: profile, error } = await supabaseClient
         .from('profiles')
         .select('is_authorized, email')
@@ -50,7 +60,6 @@ async function protegerRuta() {
         .single();
 
     if (error || !profile) {
-        console.error("Error obteniendo el perfil del alumno:", error);
         if (!pathActual.includes("login.html")) {
             await supabaseClient.auth.signOut();
             window.location.href = "login.html?pending=true";
@@ -59,21 +68,18 @@ async function protegerRuta() {
     }
 
     if (!profile.is_authorized) {
-        // Estudiante sin autorización
         if (!pathActual.includes("login.html")) {
             window.location.href = "login.html?pending=true";
         } else {
             mostrarMensajeEspera(profile.email);
         }
     } else {
-        // Estudiante autorizado en login → enviar al Dashboard
         if (pathActual.includes("login.html")) {
             window.location.href = "index.html";
         }
     }
 }
 
-// 3. CERRAR SESIÓN
 async function logout() {
     if (supabaseClient) {
         await supabaseClient.auth.signOut();
@@ -81,7 +87,6 @@ async function logout() {
     }
 }
 
-// 4. MOSTRAR MENSAJE DE ESPERA DE AUTORIZACIÓN (Se ejecuta en login.html)
 function mostrarMensajeEspera(email) {
     const container = document.getElementById("auth-container");
     if (container) {
@@ -107,9 +112,5 @@ function mostrarMensajeEspera(email) {
     }
 }
 
-// Ejecutar protección automática
-if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", protegerRuta);
-} else {
-    protegerRuta();
-}
+// Iniciar el proceso
+initSupabaseAuth();
