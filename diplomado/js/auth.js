@@ -3,21 +3,22 @@
 // Incluye este script en todas tus páginas protegidas.
 // ====================================================================
 
-// 1. CONFIGURACIÓN: Ingresa tus credenciales de Supabase aquí
-const SUPABASE_URL = "https://orurkfacxrvxlrkdrqer.supabase.co"; // URL de tu proyecto Supabase
-const SUPABASE_ANON_KEY = "sb_publishable_xRwAgFEbR1ryIePectj_FA_0ZQEs8Vw"; // Tu clave anon de Supabase
+// 1. CONFIGURACIÓN: Credenciales de Supabase
+const SUPABASE_URL = "https://orurkfacxrvxlrkdrqer.supabase.co";
+const SUPABASE_ANON_KEY = "sb_publishable_xRwAgFEbR1ryIePectj_FA_0ZQEs8Vw";
 
-// Inicializar el cliente de Supabase
-const supabase = window.supabase ? window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY) : null;
+// Inicializar el cliente con el namespace correcto del CDN (@supabase/supabase-js@2)
+// window.supabase es el namespace del SDK; el cliente real se llama supabaseClient
+const supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
 // 2. PROTEGER RUTA: Función ejecutada al cargar la página
 async function protegerRuta() {
-    if (!supabase) {
+    if (!supabaseClient) {
         console.error("El cliente de Supabase no se cargó correctamente.");
         return;
     }
 
-    const { data: { session } } = await supabase.auth.getSession();
+    const { data: { session } } = await supabaseClient.auth.getSession();
     const pathActual = window.location.pathname;
 
     // A) Si el usuario NO ha iniciado sesión
@@ -29,7 +30,7 @@ async function protegerRuta() {
     }
 
     // B) Si el usuario SÍ inició sesión, verificar su autorización en 'profiles'
-    const { data: profile, error } = await supabase
+    const { data: profile, error } = await supabaseClient
         .from('profiles')
         .select('is_authorized, email')
         .eq('id', session.user.id)
@@ -38,8 +39,7 @@ async function protegerRuta() {
     if (error || !profile) {
         console.error("Error obteniendo el perfil del alumno:", error);
         if (!pathActual.includes("login.html")) {
-            // Si el perfil no existe por retraso del trigger, forzar salida a login
-            await supabase.auth.signOut();
+            await supabaseClient.auth.signOut();
             window.location.href = "login.html?pending=true";
         }
         return;
@@ -48,10 +48,8 @@ async function protegerRuta() {
     // C) Verificar si el alumno está autorizado
     if (!profile.is_authorized) {
         if (!pathActual.includes("login.html")) {
-            // Si intenta entrar a otra página, lo expulsamos a login con aviso de espera
             window.location.href = "login.html?pending=true";
         } else {
-            // Si ya está en login, le mostramos el aviso visual de espera
             mostrarMensajeEspera(profile.email);
         }
     } else {
@@ -64,8 +62,8 @@ async function protegerRuta() {
 
 // 3. CERRAR SESIÓN
 async function logout() {
-    if (supabase) {
-        await supabase.auth.signOut();
+    if (supabaseClient) {
+        await supabaseClient.auth.signOut();
         window.location.href = "login.html";
     }
 }

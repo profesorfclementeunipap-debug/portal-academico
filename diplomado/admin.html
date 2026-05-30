@@ -389,7 +389,7 @@
         async function verificarRolAdmin() {
             if (!supabase) return;
 
-            const { data: { session } } = await supabase.auth.getSession();
+            const { data: { session } } = await supabaseClient.auth.getSession();
             if (!session) {
                 window.location.href = "login.html";
                 return;
@@ -417,7 +417,7 @@
             document.getElementById("loading-spinner").style.display = "block";
             document.getElementById("table-view").style.display = "none";
 
-            const { data: profiles, error } = await supabase
+            const { data: profiles, error } = await supabaseClient
                 .from('profiles')
                 .select('*')
                 .order('created_at', { ascending: false });
@@ -486,7 +486,7 @@
         async function updateAuthStatus(studentId, isAuthorized) {
             if (!supabase) return;
 
-            const { data, error } = await supabase
+            const { data, error } = await supabaseClient
                 .from('profiles')
                 .update({ is_authorized: isAuthorized })
                 .eq('id', studentId);
