@@ -107,7 +107,9 @@ function mostrarMensajeEspera(email) {
     }
 }
 
-// Ejecutar protección automática en la carga del script
-document.addEventListener("DOMContentLoaded", () => {
+// Ejecutar protección automática
+if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", protegerRuta);
+} else {
     protegerRuta();
-});
+}
