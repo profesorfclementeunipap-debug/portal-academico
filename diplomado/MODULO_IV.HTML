@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Módulo IV: Interpretación Normativa | Diplomado UCSAR</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Outfit:wght@400;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary: #0f172a;
+            --accent: #3b82f6;
+            --success: #10b981;
+            --warning: #f59e0b;
+            --bg-gradient: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg-gradient);
+            color: #334155;
+            line-height: 1.6;
+        }
+        h1, h2, h3, h4 {
+            font-family: 'Outfit', sans-serif;
+            color: var(--primary);
+        }
+        .tab-content { display: none; }
+        .tab-content.active { display: block; animation: fadeIn 0.5s ease-in-out; }
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+        }
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            border-radius: 0.75rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- Navegación -->
+    <nav class="bg-white/80 backdrop-blur-md sticky top-0 z-50 border-b border-slate-200 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center gap-3">
+                    <div class="bg-blue-600 text-white p-2 rounded-lg">
+                        <i class="fa-solid fa-chart-line"></i>
+                    </div>
+                    <div>
+                        <span class="font-bold text-xl text-slate-900 block leading-none">UCSAR</span>
+                        <span class="text-[10px] text-slate-500 font-semibold tracking-wider uppercase">Diplomado Contabilidad</span>
+                    </div>
+                </div>
+                <div class="hidden md:flex space-x-6 text-sm font-semibold">
+                    <a href="index.html" class="text-slate-500 hover:text-blue-600 transition">Dashboard</a>
+                    <a href="index.html" class="text-slate-500 hover:text-blue-600 transition">Módulos</a>
+                    <a href="biblioteca.html" class="text-slate-500 hover:text-blue-600 transition">Biblioteca</a>
+                </div>
+                <div>
+                    <button onclick="logout()" class="text-slate-500 hover:text-red-500 transition text-sm font-bold">
+                        <i class="fa-solid fa-sign-out-alt mr-1"></i> Salir
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Header del Módulo -->
+    <header class="bg-slate-900 text-white py-16">
+        <div class="max-w-5xl mx-auto px-6 text-center">
+            <span class="bg-blue-600 text-white text-xs font-bold uppercase tracking-widest py-1 px-3 rounded-full mb-4 inline-block">Módulo IV</span>
+            <h1 class="text-4xl md:text-5xl font-bold mb-6">Interpretación de la Documentación y Normativa Mercantil y Contable</h1>
+            <p class="text-lg text-slate-300 max-w-3xl mx-auto">
+                Análisis integral del marco legal venezolano: Código de Comercio, normativas tributarias del SENIAT, y lineamientos financieros bajo estándares VEN-NIF.
+            </p>
+        </div>
+    </header>
+
+    <main class="max-w-6xl mx-auto px-4 py-12">
+        
+        <!-- Tabs de Navegación -->
+        <div class="flex flex-wrap border-b border-slate-200 mb-8" id="tabs">
+            <button class="tab-btn active px-6 py-4 font-semibold text-blue-600 border-b-2 border-blue-600 focus:outline-none" onclick="openTab(event, 'unidad1')">1. Normativa Tributaria (SENIAT)</button>
+            <button class="tab-btn px-6 py-4 font-semibold text-slate-500 hover:text-blue-600 focus:outline-none" onclick="openTab(event, 'unidad2')">2. Código de Comercio</button>
+            <button class="tab-btn px-6 py-4 font-semibold text-slate-500 hover:text-blue-600 focus:outline-none" onclick="openTab(event, 'unidad3')">3. Marco Contable VEN-NIF</button>
+            <button class="tab-btn px-6 py-4 font-semibold text-slate-500 hover:text-blue-600 focus:outline-none" onclick="openTab(event, 'evaluacion')">4. Evaluaciones</button>
+        </div>
+
+        <!-- UNIDAD 1: Normativa Tributaria -->
+        <div id="unidad1" class="tab-content active">
+            <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-8 mb-8 card-hover">
+                <h2 class="text-3xl font-bold mb-6 border-b pb-4"><i class="fa-solid fa-file-invoice-dollar text-blue-500 mr-3"></i>Unidad I: Documentación y Fiscalización del SENIAT</h2>
+                
+                <div class="prose max-w-none text-slate-600">
+                    <p class="mb-4">En Venezuela, la documentación mercantil trasciende la mera justificación de un gasto; es el elemento probatorio fundamental ante las fiscalizaciones del <strong>Servicio Nacional Integrado de Administración Aduanera y Tributaria (SENIAT)</strong>. El incumplimiento de los Deberes Formales acarrea severas sanciones tipificadas en el Código Orgánico Tributario (COT).</p>
+                    
+                    <h3 class="text-xl font-bold text-slate-800 mt-8 mb-4">La Facturación y la Providencia Administrativa 0071</h3>
+                    <p>La emisión de facturas y otros documentos está regulada rigurosamente. Los contribuyentes ordinarios del IVA deben emitir facturas a través de Máquinas Fiscales o Formatos elaborados por imprentas autorizadas, dependiendo de su clasificación. Las Providencias más recientes exigen que los sistemas informáticos posean características de transmisión de datos directas o sistemas centralizados homologados.</p>
+
+                    <!-- Cuadro Comparativo -->
+                    <div class="overflow-x-auto my-8">
+                        <table class="min-w-full bg-white border border-slate-200 rounded-lg">
+                            <thead class="bg-slate-50">
+                                <tr>
+                                    <th class="px-6 py-3 text-left text-xs font-bold text-slate-500 uppercase tracking-wider border-b">Infracción (Ilícito Formal)</th>
+                                    <th class="px-6 py-3 text-left text-xs font-bold text-slate-500 uppercase tracking-wider border-b">Sanción Pecuniaria (COT)</th>
+                                    <th class="px-6 py-3 text-left text-xs font-bold text-slate-500 uppercase tracking-wider border-b">Medida Adicional</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-slate-200">
+                                <tr>
+                                    <td class="px-6 py-4 text-sm font-medium text-slate-900">No emitir facturas o usar un medio no autorizado</td>
+                                    <td class="px-6 py-4 text-sm text-slate-600">150 veces el tipo de cambio oficial de mayor valor</td>
+                                    <td class="px-6 py-4 text-sm text-red-600 font-bold">Clausura por 10 días continuos</td>
+                                </tr>
+                                <tr class="bg-slate-50">
+                                    <td class="px-6 py-4 text-sm font-medium text-slate-900">Emitir facturas con datos falsos o incompletos</td>
+                                    <td class="px-6 py-4 text-sm text-slate-600">150 veces el tipo de cambio oficial</td>
+                                    <td class="px-6 py-4 text-sm text-red-600 font-bold">Clausura por 10 días continuos</td>
+                                </tr>
+                                <tr>
+                                    <td class="px-6 py-4 text-sm font-medium text-slate-900">No exigir factura al realizar compras</td>
+                                    <td class="px-6 py-4 text-sm text-slate-600">5 veces el tipo de cambio oficial</td>
+                                    <td class="px-6 py-4 text-sm text-slate-500">Ninguna</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="bg-blue-50 border-l-4 border-blue-500 p-6 rounded-r-lg my-6">
+                        <h4 class="font-bold text-blue-900 flex items-center mb-2">
+                            <i class="fa-solid fa-gavel mr-2"></i> Caso Práctico Venezolano: El Plan "Evasión Cero"
+                        </h4>
+                        <p class="text-sm text-blue-800">
+                            <strong>Situación Real:</strong> Durante operativos en centros comerciales de Caracas y Valencia, el SENIAT clausuró múltiples establecimientos por el uso de "sistemas administrativos paralelos" (software no autorizado que emitía notas de entrega en lugar de facturas legales). <br>
+                            <strong>Consecuencia:</strong> Multas en la moneda de mayor cotización del BCV (generalmente el Euro) más la clausura de 10 a 15 días por tratarse de Sujetos Pasivos Especiales. El contribuyente debió readaptar su sistema, someterlo a inspección y pagar la sanción para levantar la medida.
+                        </p>
+                    </div>
+
+                    <!-- Video embebido -->
+                    <div class="mt-10">
+                        <h4 class="font-bold text-slate-800 mb-4"><i class="fa-brands fa-youtube text-red-600 mr-2"></i> Material de Apoyo: Ilícitos Tributarios en Venezuela</h4>
+                        <div class="video-container">
+                            <iframe src="https://www.youtube.com/embed/j1uS1m0x_Hk" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        </div>
+                        <p class="text-xs text-slate-500 mt-2 text-center">Video de análisis legal sobre las multas por facturación (Explicación del COT).</p>
+                    </div>
+
+                    <!-- Bibliografía Unidad 1 -->
+                    <div class="mt-8 pt-6 border-t border-dashed border-slate-300">
+                        <h5 class="text-sm font-bold text-slate-700 uppercase tracking-widest mb-3">Fuentes y Bibliografía</h5>
+                        <ul class="list-disc pl-5 text-sm text-slate-600 space-y-1">
+                            <li>Asamblea Nacional Constituyente (2020). <em>Código Orgánico Tributario</em>. Gaceta Oficial N° 6.507 Extraordinario.</li>
+                            <li>SENIAT (2011). <em>Providencia Administrativa SNAT/2011/0071</em>. Normas Generales de Emisión de Facturas y Otros Documentos.</li>
+                            <li>Ruiz, C. (2023). "Impacto de las reformas tributarias en el flujo de caja de las PYMES venezolanas". <em>Revista FACES, Universidad de Carabobo</em>.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- UNIDAD 2: Código de Comercio -->
+        <div id="unidad2" class="tab-content">
+            <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-8 mb-8 card-hover">
+                <h2 class="text-3xl font-bold mb-6 border-b pb-4"><i class="fa-solid fa-scale-balanced text-emerald-500 mr-3"></i>Unidad II: Normativa Mercantil y Libros Legales</h2>
+                
+                <div class="prose max-w-none text-slate-600">
+                    <p>El <strong>Código de Comercio de Venezuela (1955)</strong> dicta las bases sobre las cuales todo comerciante debe asentar su contabilidad. A pesar de su antigüedad, las exigencias fundamentales de este cuerpo normativo siguen siendo el pilar de la contabilidad legal en el país.</p>
+                    
+                    <h3 class="text-xl font-bold text-slate-800 mt-8 mb-4">Los Libros Obligatorios (Art. 32)</h3>
+                    <p>Todo comerciante debe llevar en idioma castellano su contabilidad. Los libros principales deben estar foliados, sellados y habilitados por el Registro Mercantil correspondiente a su jurisdicción antes de ser utilizados.</p>
+
+                    <!-- Acordeones -->
+                    <div class="space-y-4 my-8">
+                        <div class="border border-slate-200 rounded-lg">
+                            <button class="w-full px-6 py-4 text-left font-bold text-slate-800 flex justify-between items-center focus:outline-none" onclick="toggleAccordion('acc1')">
+                                <span>1. Libro Diario (Art. 34)</span>
+                                <i class="fa-solid fa-chevron-down text-slate-400 transition-transform duration-300" id="icon-acc1"></i>
+                            </button>
+                            <div id="acc1" class="accordion-content px-6 bg-slate-50">
+                                <p class="py-4 text-sm">Debe registrar día a día las operaciones que haga el comerciante. Alternativamente, permite un resumen mensual si se llevan libros auxiliares (común en los sistemas computarizados actuales).</p>
+                            </div>
+                        </div>
+
+                        <div class="border border-slate-200 rounded-lg">
+                            <button class="w-full px-6 py-4 text-left font-bold text-slate-800 flex justify-between items-center focus:outline-none" onclick="toggleAccordion('acc2')">
+                                <span>2. Libro Mayor</span>
+                                <i class="fa-solid fa-chevron-down text-slate-400 transition-transform duration-300" id="icon-acc2"></i>
+                            </button>
+                            <div id="acc2" class="accordion-content px-6 bg-slate-50">
+                                <p class="py-4 text-sm">Recibe y clasifica la información del Libro Diario por cuentas contables, permitiendo conocer el saldo de cada partida (Activos, Pasivos, Patrimonio, Ingresos y Gastos).</p>
+                            </div>
+                        </div>
+
+                        <div class="border border-slate-200 rounded-lg">
+                            <button class="w-full px-6 py-4 text-left font-bold text-slate-800 flex justify-between items-center focus:outline-none" onclick="toggleAccordion('acc3')">
+                                <span>3. Libro de Inventarios (Art. 35)</span>
+                                <i class="fa-solid fa-chevron-down text-slate-400 transition-transform duration-300" id="icon-acc3"></i>
+                            </button>
+                            <div id="acc3" class="accordion-content px-6 bg-slate-50">
+                                <p class="py-4 text-sm">Al inicio de la actividad y al cierre de cada ejercicio económico, se debe registrar el balance general y el estado de resultados, firmado por el comerciante (y el contador público).</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-emerald-50 border-l-4 border-emerald-500 p-6 rounded-r-lg my-6">
+                        <h4 class="font-bold text-emerald-900 flex items-center mb-2">
+                            <i class="fa-solid fa-building-circle-exclamation mr-2"></i> Caso Práctico Venezolano: Atraso de Libros y Asambleas
+                        </h4>
+                        <p class="text-sm text-emerald-800">
+                            <strong>Situación Real:</strong> Una empresa venezolana requería solicitar un crédito bancario y actualizar el documento de la junta directiva en el SAREN (Registro Mercantil).<br>
+                            <strong>Consecuencia:</strong> El Registro rechazó el trámite porque la empresa no tenía al día los Libros de Actas de Asambleas (Art. 260) y el Libro de Accionistas. Además, la entidad financiera detectó que el Comisario no había presentado su informe anual (Art. 327), bloqueando el financiamiento hasta que el contador público colegiado restituyera toda la contabilidad con fecha retroactiva.
+                        </p>
+                    </div>
+
+                    <!-- Bibliografía Unidad 2 -->
+                    <div class="mt-8 pt-6 border-t border-dashed border-slate-300">
+                        <h5 class="text-sm font-bold text-slate-700 uppercase tracking-widest mb-3">Fuentes y Bibliografía</h5>
+                        <ul class="list-disc pl-5 text-sm text-slate-600 space-y-1">
+                            <li>Congreso de la República de Venezuela (1955). <em>Código de Comercio</em>. Gaceta Oficial N° 475 Extraordinaria.</li>
+                            <li>SAREN. <em>Requisitos para actas de asambleas ordinarias y extraordinarias</em>.</li>
+                            <li>Gómez, J. (2019). "Actualidad del Derecho Mercantil Venezolano". <em>Universidad Central de Venezuela (UCV)</em>.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- UNIDAD 3: VEN-NIF -->
+        <div id="unidad3" class="tab-content">
+            <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-8 mb-8 card-hover">
+                <h2 class="text-3xl font-bold mb-6 border-b pb-4"><i class="fa-solid fa-book-open-reader text-purple-500 mr-3"></i>Unidad III: Marco Contable VEN-NIF</h2>
+                
+                <div class="prose max-w-none text-slate-600">
+                    <p>Los Principios de Contabilidad Generalmente Aceptados en Venezuela se denominan <strong>VEN-NIF</strong>. Son emitidos y actualizados por la Federación de Colegios de Contadores Públicos de Venezuela (FCCPV), integrando las Normas Internacionales y los Boletines de Aplicación Nacional (BA VEN-NIF).</p>
+                    
+                    <h3 class="text-xl font-bold text-slate-800 mt-8 mb-4">Estructura del VEN-NIF</h3>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 my-6">
+                        <div class="bg-slate-50 p-6 rounded-lg border border-slate-200">
+                            <h4 class="font-bold text-slate-800 text-lg mb-2">Grandes Entidades (VEN-NIF GE)</h4>
+                            <p class="text-sm">Empresas que cotizan en bolsa, bancos, aseguradoras o empresas de gran tamaño e ingresos. Utilizan las NIIF Completas (IFRS) emitidas por el IASB, adaptadas al marco local mediante los boletines.</p>
+                        </div>
+                        <div class="bg-slate-50 p-6 rounded-lg border border-slate-200">
+                            <h4 class="font-bold text-slate-800 text-lg mb-2">Pequeñas y Medianas Entidades (VEN-NIF PYME)</h4>
+                            <p class="text-sm">El 95% del tejido empresarial venezolano. Se guían por la "NIIF para las PYMES" del IASB, un estándar simplificado enfocado en flujos de caja y liquidez, menos exigente en valoraciones complejas de mercado.</p>
+                        </div>
+                    </div>
+
+                    <h3 class="text-xl font-bold text-slate-800 mt-8 mb-4">Boletines de Aplicación (BA VEN-NIF) Críticos</h3>
+                    <ul class="list-disc pl-5 space-y-2 text-sm">
+                        <li><strong>BA VEN-NIF 0:</strong> Marco de adopción de las NIIF en Venezuela (Derogado y actualizado en versiones recientes para definir Grandes y PYMES).</li>
+                        <li><strong>BA VEN-NIF 2:</strong> Criterios para el reconocimiento de la Inflación (Reexpresión de estados financieros). Obligatorio en Venezuela dado el contexto hiperinflacionario.</li>
+                        <li><strong>BA VEN-NIF 8:</strong> Principios Contables Generalmente Aceptados en Venezuela.</li>
+                    </ul>
+
+                    <div class="bg-purple-50 border-l-4 border-purple-500 p-6 rounded-r-lg my-6">
+                        <h4 class="font-bold text-purple-900 flex items-center mb-2">
+                            <i class="fa-solid fa-chart-pie mr-2"></i> Caso Práctico Venezolano: El Efecto de la Hiperinflación
+                        </h4>
+                        <p class="text-sm text-purple-800">
+                            <strong>Situación Real:</strong> Una empresa presenta a sus socios estados financieros históricos. Muestran una ganancia de 100.000 Bs que "parece" alta nominalmente. <br>
+                            <strong>Consecuencia:</strong> El auditor externo emite una opinión con salvedad porque los estados no cumplen con el <em>BA VEN-NIF 2</em> y la <em>Sección 31 de la NIIF para PYMES</em>. Al aplicar el INPC (Índice Nacional de Precios al Consumidor) emitido por el BCV, se demuestra que la empresa no tuvo ganancias reales, sino que consumió su patrimonio debido a la pérdida del poder adquisitivo de sus activos monetarios.
+                        </p>
+                    </div>
+
+                    <!-- Bibliografía Unidad 3 -->
+                    <div class="mt-8 pt-6 border-t border-dashed border-slate-300">
+                        <h5 class="text-sm font-bold text-slate-700 uppercase tracking-widest mb-3">Fuentes y Bibliografía</h5>
+                        <ul class="list-disc pl-5 text-sm text-slate-600 space-y-1">
+                            <li>Federación de Colegios de Contadores Públicos de Venezuela (FCCPV). <em>Boletines de Aplicación VEN-NIF</em> (Actualizados 2024).</li>
+                            <li>IASB (2015). <em>Norma Internacional de Información Financiera para Pequeñas y Medianas Entidades (NIIF para las PYMES)</em>.</li>
+                            <li>Brito, J. (2020). <em>Contabilidad Financiera Avanzada en entornos inflacionarios</em>. Ediciones UCAB, Caracas.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- EVALUACIONES -->
+        <div id="evaluacion" class="tab-content">
+            <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-8 mb-8 card-hover">
+                <h2 class="text-3xl font-bold mb-6 border-b pb-4"><i class="fa-solid fa-clipboard-question text-orange-500 mr-3"></i>Evaluación Formativa</h2>
+                
+                <p class="mb-6 text-slate-600">Ponga a prueba sus conocimientos sobre los temas desarrollados en este módulo. Responda a las siguientes preguntas desplegables para autoevaluarse.</p>
+                
+                <div class="space-y-4">
+                    
+                    <!-- Pregunta 1 -->
+                    <div class="bg-slate-50 border border-slate-200 rounded-lg p-5">
+                        <h4 class="font-bold text-slate-800 mb-3">1. ¿Qué sanción impone el COT por no emitir factura en una venta?</h4>
+                        <button class="text-sm bg-orange-100 text-orange-700 px-4 py-2 rounded font-bold hover:bg-orange-200 transition" onclick="toggleAnswer('ans1')">Ver Respuesta</button>
+                        <div id="ans1" class="hidden mt-4 p-4 bg-white border-l-4 border-orange-400 text-sm text-slate-600">
+                            <strong>Respuesta:</strong> Según el Código Orgánico Tributario, la sanción es de 150 veces el tipo de cambio oficial de mayor valor y la clausura del establecimiento por 10 días continuos.
+                        </div>
+                    </div>
+
+                    <!-- Pregunta 2 -->
+                    <div class="bg-slate-50 border border-slate-200 rounded-lg p-5">
+                        <h4 class="font-bold text-slate-800 mb-3">2. ¿Cuáles son los libros contables obligatorios según el Art. 32 del Código de Comercio Venezolano?</h4>
+                        <button class="text-sm bg-orange-100 text-orange-700 px-4 py-2 rounded font-bold hover:bg-orange-200 transition" onclick="toggleAnswer('ans2')">Ver Respuesta</button>
+                        <div id="ans2" class="hidden mt-4 p-4 bg-white border-l-4 border-orange-400 text-sm text-slate-600">
+                            <strong>Respuesta:</strong> Todo comerciante debe llevar obligatoriamente el Libro Diario, el Libro Mayor y el Libro de Inventarios. Para sociedades, se suman el Libro de Accionistas, Actas de Asamblea y Actas de Junta Directiva.
+                        </div>
+                    </div>
+
+                    <!-- Pregunta 3 -->
+                    <div class="bg-slate-50 border border-slate-200 rounded-lg p-5">
+                        <h4 class="font-bold text-slate-800 mb-3">3. ¿Qué instrumento emite la FCCPV para adaptar las NIIF a la realidad hiperinflacionaria venezolana?</h4>
+                        <button class="text-sm bg-orange-100 text-orange-700 px-4 py-2 rounded font-bold hover:bg-orange-200 transition" onclick="toggleAnswer('ans3')">Ver Respuesta</button>
+                        <div id="ans3" class="hidden mt-4 p-4 bg-white border-l-4 border-orange-400 text-sm text-slate-600">
+                            <strong>Respuesta:</strong> Los Boletines de Aplicación (BA VEN-NIF), específicamente el BA VEN-NIF 2, que establece los criterios para el reconocimiento de la inflación en los estados financieros basándose en el Índice Nacional de Precios al Consumidor (INPC).
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <footer class="py-12 border-t border-slate-200 text-center bg-white">
+        <p class="text-sm text-slate-500">© 2026 UCSAR | Diplomado Contabilidad Financiera | Módulo IV</p>
+    </footer>
+
+    <!-- Scripts de interactividad Vanilla JS -->
+    <script>
+        // Navegación por Pestañas
+        function openTab(evt, tabName) {
+            var i, tabcontent, tablinks;
+            
+            // Ocultar contenidos
+            tabcontent = document.getElementsByClassName("tab-content");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].classList.remove("active");
+            }
+            
+            // Quitar clase activa a botones
+            tablinks = document.getElementsByClassName("tab-btn");
+            for (i = 0; i < tablinks.length; i++) {
+                tablinks[i].className = tablinks[i].className.replace(" active text-blue-600 border-b-2 border-blue-600", " text-slate-500 hover:text-blue-600");
+                if(!tablinks[i].className.includes("text-slate-500")) {
+                    tablinks[i].className += " text-slate-500 hover:text-blue-600";
+                }
+            }
+            
+            // Mostrar contenido actual y activar botón
+            document.getElementById(tabName).classList.add("active");
+            evt.currentTarget.className = evt.currentTarget.className.replace(" text-slate-500 hover:text-blue-600", " active text-blue-600 border-b-2 border-blue-600");
+        }
+
+        // Acordeones
+        function toggleAccordion(id) {
+            var content = document.getElementById(id);
+            var icon = document.getElementById('icon-' + id);
+            
+            if (content.style.maxHeight) {
+                content.style.maxHeight = null;
+                icon.style.transform = "rotate(0deg)";
+            } else {
+                content.style.maxHeight = content.scrollHeight + "px";
+                icon.style.transform = "rotate(180deg)";
+            }
+        }
+
+        // Respuestas desplegables (Evaluación)
+        function toggleAnswer(id) {
+            var el = document.getElementById(id);
+            if (el.classList.contains("hidden")) {
+                el.classList.remove("hidden");
+                el.classList.add("block");
+                el.classList.add("animate-pulse");
+                setTimeout(() => el.classList.remove("animate-pulse"), 500);
+            } else {
+                el.classList.add("hidden");
+                el.classList.remove("block");
+            }
+        }
+    </script>
+
+    <!-- PROTECCIÓN DE ACCESO - Portal Académico UCSAR -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="js/auth.js?v=4"></script>
+</body>
+</html>
