@@ -352,6 +352,7 @@
                         <tr>
                             <th>Estudiante</th>
                             <th>Correo Electrónico</th>
+                            <th>Teléfono</th>
                             <th>Fecha de Registro</th>
                             <th>Estado de Acceso</th>
                             <th>Acciones</th>
@@ -437,6 +438,21 @@
                       }
                   });
             };
+            // ── ELIMINAR USUARIO ──────────────────────────────────────────────
+            window.eliminarUsuario = function(studentId) {
+                if(confirm("¿Está seguro de que desea eliminar este perfil? El estudiante perderá el acceso y sus datos de perfil serán borrados.")) {
+                    db.from('profiles')
+                      .delete()
+                      .eq('id', studentId)
+                      .then(({ error }) => {
+                          if (error) {
+                              alert("Error al eliminar usuario: " + error.message);
+                          } else {
+                              cargarEstudiantes(db);
+                          }
+                      });
+                }
+            };
         }
 
         // ── CARGAR REGISTROS DE ESTUDIANTES ──────────────────────────────────
@@ -478,12 +494,18 @@
                           const actionHTML = student.is_authorized
                               ? `<button class="btn-action revoke" onclick="updateAuthStatus('${student.id}', false)"><i class="fa-solid fa-user-slash"></i> Revocar</button>`
                               : `<button class="btn-action approve" onclick="updateAuthStatus('${student.id}', true)"><i class="fa-solid fa-user-check"></i> Autorizar</button>`;
+                          const phoneHTML = student.phone ? student.phone : '<span style="color:#94a3b8;font-style:italic;">No registrado</span>';
+                          
                           row.innerHTML = `
                               <td style="font-weight:600;color:var(--text-heading);">${student.full_name || 'Estudiante'}</td>
                               <td>${student.email}</td>
+                              <td style="font-weight:500;">${phoneHTML}</td>
                               <td style="color:#64748b;font-size:0.85rem;">${dateFormatted}</td>
                               <td>${statusHTML}</td>
-                              <td>${actionHTML}</td>`;
+                              <td style="display: flex; gap: 8px;">
+                                  ${actionHTML}
+                                  <button class="btn-action revoke" style="background-color: #fee2e2; color: #ef4444; padding: 8px 12px;" onclick="eliminarUsuario('${student.id}')" title="Eliminar perfil del alumno"><i class="fa-solid fa-trash"></i></button>
+                              </td>`;
                           tbody.appendChild(row);
                       });
                   }
