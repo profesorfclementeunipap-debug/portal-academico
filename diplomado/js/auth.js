@@ -114,3 +114,33 @@ function mostrarMensajeEspera(email) {
 
 // Iniciar el proceso
 initSupabaseAuth();
+
+// ====================================================================
+// BOTÓN GLOBAL DE CERRAR SESIÓN (Flotante para páginas secundarias)
+// ====================================================================
+function inyectarBotonCerrarSesion() {
+    const pathActual = window.location.pathname;
+    
+    // No inyectar en login, admin, ni en el index (ya tiene su propio botón en el navbar)
+    if (pathActual.includes("login.html") || pathActual.includes("admin.html") || pathActual.includes("index.html") || pathActual.endsWith("/")) {
+        return;
+    }
+    
+    // Crear el botón flotante
+    const btn = document.createElement("button");
+    btn.onclick = logout;
+    btn.title = "Cerrar Sesión";
+    // Clases de Tailwind CSS para un diseño hermoso, responsivo y fijo en la esquina inferior derecha
+    btn.className = "fixed bottom-6 right-6 z-[9999] text-sm font-semibold bg-red-50 hover:bg-red-100 border border-red-200 text-red-600 px-4 py-3 rounded-full transition-all flex items-center shadow-lg hover:shadow-xl hover:-translate-y-1 cursor-pointer";
+    btn.innerHTML = '<i class="fas fa-sign-out-alt sm:mr-2"></i> <span class="hidden sm:inline">Cerrar Sesión</span>';
+    
+    // Insertar en el body
+    document.body.appendChild(btn);
+}
+
+// Ejecutar inyección al cargar el DOM
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', inyectarBotonCerrarSesion);
+} else {
+    inyectarBotonCerrarSesion();
+}
