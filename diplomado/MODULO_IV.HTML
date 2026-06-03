@@ -303,36 +303,105 @@
         <!-- RESUMEN AUTOEVALUACIÓN -->
         <div id="eval" class="tab-content">
             <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-8 mb-8 card-hover">
-                <h2 class="text-3xl font-bold mb-6 border-b pb-4"><i class="fa-solid fa-clipboard-check text-purple-500 mr-3"></i>Resumen Autoevaluación</h2>
+                <h2 class="text-3xl font-bold mb-6 border-b pb-4"><i class="fa-solid fa-brain text-purple-500 mr-3"></i>Reto Epistemológico: Autoevaluación</h2>
                 
-                <p class="mb-6 text-slate-600">Ponga a prueba sus conocimientos sobre las Unidades Didácticas estudiadas.</p>
+                <p class="mb-6 text-slate-600 text-lg">Para validar la aprehensión del conocimiento (episteme) en este módulo, debes analizar los siguientes planteamientos. <strong class="text-purple-700">Dispones de 3 intentos</strong> por pregunta para descifrar la respuesta correcta; de lo contrario, se revelará la retroalimentación para afianzar el aprendizaje.</p>
                 
-                <div class="space-y-4">
+                <div class="space-y-8">
                     
                     <!-- Pregunta 1 -->
-                    <div class="bg-slate-50 border border-slate-200 rounded-lg p-5">
-                        <h4 class="font-bold text-slate-800 mb-3">1. Según el Código de Comercio venezolano, ¿Cuáles son los libros contables mínimos obligatorios?</h4>
-                        <button class="text-sm bg-purple-100 text-purple-700 px-4 py-2 rounded font-bold hover:bg-purple-200 transition" onclick="toggleAnswer('ans1')">Ver Respuesta</button>
-                        <div id="ans1" class="hidden mt-4 p-4 bg-white border-l-4 border-purple-400 text-sm text-slate-600">
-                            <strong>Respuesta:</strong> El Libro Diario, el Libro Mayor y el Libro de Inventarios (Art. 32). Todos deben estar sellados y foliados por el Registro Mercantil (SAREN).
+                    <div class="bg-slate-50 border border-slate-200 rounded-xl p-6 shadow-inner relative overflow-hidden">
+                        <div class="absolute top-0 left-0 w-1 h-full bg-purple-500"></div>
+                        <h4 class="font-bold text-slate-800 mb-4 text-lg">1. Episteme de la Normativa Mercantil y Fiscal</h4>
+                        <p class="text-slate-700 mb-4">La Providencia 0071 del SENIAT y el Art. 32 del Código de Comercio convergen en la documentación de operaciones. ¿Cuál es el riesgo material de registrar un "Gasto-Pago" soportado únicamente con un recibo informal en un entorno de fiscalización?</p>
+                        
+                        <div class="space-y-3 mb-5 pl-2">
+                            <label class="flex items-start gap-3 cursor-pointer p-2 hover:bg-slate-100 rounded transition">
+                                <input type="radio" name="q1" value="A" class="mt-1 accent-purple-600">
+                                <span class="text-sm text-slate-700">A) Solo afecta la presentación del Libro de Inventarios, pero el gasto sigue siendo deducible para efectos del ISLR.</span>
+                            </label>
+                            <label class="flex items-start gap-3 cursor-pointer p-2 hover:bg-slate-100 rounded transition">
+                                <input type="radio" name="q1" value="B" class="mt-1 accent-purple-600">
+                                <span class="text-sm text-slate-700">B) Constituye una ruptura de la coherencia fondo-forma, generando ilícitos materiales al desconocerse el gasto y no poder practicar las retenciones de ley.</span>
+                            </label>
+                            <label class="flex items-start gap-3 cursor-pointer p-2 hover:bg-slate-100 rounded transition">
+                                <input type="radio" name="q1" value="C" class="mt-1 accent-purple-600">
+                                <span class="text-sm text-slate-700">C) No tiene consecuencias legales ni fiscales siempre que el pago se haya realizado de manera transparente a través del sistema bancario nacional.</span>
+                            </label>
+                        </div>
+                        
+                        <div class="flex items-center gap-4">
+                            <button id="btn-q1" class="text-sm bg-purple-600 text-white px-5 py-2.5 rounded-lg font-bold hover:bg-purple-700 transition shadow-md" onclick="validarRespuesta('q1', 'B')">Validar Análisis</button>
+                            <span id="feedback-q1" class="text-sm font-semibold"></span>
+                        </div>
+                        
+                        <div id="ans-q1" class="hidden mt-5 p-5 bg-white border border-purple-200 rounded-lg text-sm text-slate-600 shadow-sm">
+                            <h5 class="text-purple-700 font-bold mb-2"><i class="fa-solid fa-lightbulb mr-2"></i>Sustento Epistemológico:</h5>
+                            La respuesta correcta es la <strong>B</strong>. En el paradigma contable y fiscal venezolano, el "fondo" (la salida del dinero) no es suficiente sin la "forma" (factura legal). Un recibo informal rompe esta coherencia, anulando la deducibilidad del gasto ante el SENIAT y exponiendo a la empresa a severas multas por omitir retenciones bajo el Código Orgánico Tributario.
                         </div>
                     </div>
 
                     <!-- Pregunta 2 -->
-                    <div class="bg-slate-50 border border-slate-200 rounded-lg p-5">
-                        <h4 class="font-bold text-slate-800 mb-3">2. ¿A qué hace referencia la clasificación "IAE" en el contexto municipal venezolano?</h4>
-                        <button class="text-sm bg-purple-100 text-purple-700 px-4 py-2 rounded font-bold hover:bg-purple-200 transition" onclick="toggleAnswer('ans2')">Ver Respuesta</button>
-                        <div id="ans2" class="hidden mt-4 p-4 bg-white border-l-4 border-purple-400 text-sm text-slate-600">
-                            <strong>Respuesta:</strong> Se refiere al Impuesto sobre Actividades Económicas (Patente de Industria y Comercio), donde cada Alcaldía clasifica a las empresas en su Ordenanza Municipal para aplicar la alícuota de impuesto sobre sus ingresos brutos.
+                    <div class="bg-slate-50 border border-slate-200 rounded-xl p-6 shadow-inner relative overflow-hidden">
+                        <div class="absolute top-0 left-0 w-1 h-full bg-blue-500"></div>
+                        <h4 class="font-bold text-slate-800 mb-4 text-lg">2. Episteme de la Clasificación Empresarial</h4>
+                        <p class="text-slate-700 mb-4">La clasificación empresarial según su tamaño (BA VEN-NIF 0) y su actividad económica (IAE) responden a dogmas distintos. ¿Por qué el contador debe aplicar ambas clasificaciones simultáneamente en su estructuración contable?</p>
+                        
+                        <div class="space-y-3 mb-5 pl-2">
+                            <label class="flex items-start gap-3 cursor-pointer p-2 hover:bg-slate-100 rounded transition">
+                                <input type="radio" name="q2" value="A" class="mt-1 accent-blue-600">
+                                <span class="text-sm text-slate-700">A) Porque el BA VEN-NIF 0 determina la tarifa de la patente municipal y el IAE exige el uso de los libros contables.</span>
+                            </label>
+                            <label class="flex items-start gap-3 cursor-pointer p-2 hover:bg-slate-100 rounded transition">
+                                <input type="radio" name="q2" value="B" class="mt-1 accent-blue-600">
+                                <span class="text-sm text-slate-700">B) Ambas clasificaciones son meramente referenciales y solo aplican de manera obligatoria a las Grandes Entidades reguladas.</span>
+                            </label>
+                            <label class="flex items-start gap-3 cursor-pointer p-2 hover:bg-slate-100 rounded transition">
+                                <input type="radio" name="q2" value="C" class="mt-1 accent-blue-600">
+                                <span class="text-sm text-slate-700">C) Porque el VEN-NIF define el marco técnico (PYMES o Grandes) para presentar los estados financieros, mientras el IAE rige la carga tributaria local (Ingresos Brutos).</span>
+                            </label>
+                        </div>
+                        
+                        <div class="flex items-center gap-4">
+                            <button id="btn-q2" class="text-sm bg-blue-600 text-white px-5 py-2.5 rounded-lg font-bold hover:bg-blue-700 transition shadow-md" onclick="validarRespuesta('q2', 'C')">Validar Análisis</button>
+                            <span id="feedback-q2" class="text-sm font-semibold"></span>
+                        </div>
+                        
+                        <div id="ans-q2" class="hidden mt-5 p-5 bg-white border border-blue-200 rounded-lg text-sm text-slate-600 shadow-sm">
+                            <h5 class="text-blue-700 font-bold mb-2"><i class="fa-solid fa-lightbulb mr-2"></i>Sustento Epistemológico:</h5>
+                            La respuesta correcta es la <strong>C</strong>. La epistemología contable actual exige una visión multifocal. El contador no puede presentar finanzas sin seguir las VEN-NIF (determinado por el tamaño de la empresa), ni puede obviar la contabilidad fiscal separada por municipio y actividad que exige el IAE local. Ambas realidades coexisten.
                         </div>
                     </div>
 
                     <!-- Pregunta 3 -->
-                    <div class="bg-slate-50 border border-slate-200 rounded-lg p-5">
-                        <h4 class="font-bold text-slate-800 mb-3">3. ¿Qué es el Fondo de Maniobra o Capital de Trabajo?</h4>
-                        <button class="text-sm bg-purple-100 text-purple-700 px-4 py-2 rounded font-bold hover:bg-purple-200 transition" onclick="toggleAnswer('ans3')">Ver Respuesta</button>
-                        <div id="ans3" class="hidden mt-4 p-4 bg-white border-l-4 border-purple-400 text-sm text-slate-600">
-                            <strong>Respuesta:</strong> Es la diferencia entre el Activo Corriente (líquido) y el Pasivo Corriente (exigible a corto plazo). Refleja la capacidad financiera de la empresa para operar a corto plazo sin endeudarse adicionalmente.
+                    <div class="bg-slate-50 border border-slate-200 rounded-xl p-6 shadow-inner relative overflow-hidden">
+                        <div class="absolute top-0 left-0 w-1 h-full bg-emerald-500"></div>
+                        <h4 class="font-bold text-slate-800 mb-4 text-lg">3. Episteme del Patrimonio y la Inflación</h4>
+                        <p class="text-slate-700 mb-4">El Fondo de Maniobra es el indicador clásico de solvencia a corto plazo. No obstante, bajo la realidad económica venezolana (evaluada mediante el BA VEN-NIF 2), ¿qué impacto tiene mantener un Fondo de Maniobra excesivamente líquido (efectivo en bolívares)?</p>
+                        
+                        <div class="space-y-3 mb-5 pl-2">
+                            <label class="flex items-start gap-3 cursor-pointer p-2 hover:bg-slate-100 rounded transition">
+                                <input type="radio" name="q3" value="A" class="mt-1 accent-emerald-600">
+                                <span class="text-sm text-slate-700">A) Aumenta dramáticamente la rentabilidad financiera debido a los altos intereses pasivos bancarios.</span>
+                            </label>
+                            <label class="flex items-start gap-3 cursor-pointer p-2 hover:bg-slate-100 rounded transition">
+                                <input type="radio" name="q3" value="B" class="mt-1 accent-emerald-600">
+                                <span class="text-sm text-slate-700">B) Expone a la empresa a severas pérdidas monetarias a causa de la pérdida del poder adquisitivo por hiperinflación.</span>
+                            </label>
+                            <label class="flex items-start gap-3 cursor-pointer p-2 hover:bg-slate-100 rounded transition">
+                                <input type="radio" name="q3" value="C" class="mt-1 accent-emerald-600">
+                                <span class="text-sm text-slate-700">C) Disminuye proporcionalmente el valor histórico de los pasivos a largo plazo, generando una ganancia fiscal automática.</span>
+                            </label>
+                        </div>
+                        
+                        <div class="flex items-center gap-4">
+                            <button id="btn-q3" class="text-sm bg-emerald-600 text-white px-5 py-2.5 rounded-lg font-bold hover:bg-emerald-700 transition shadow-md" onclick="validarRespuesta('q3', 'B')">Validar Análisis</button>
+                            <span id="feedback-q3" class="text-sm font-semibold"></span>
+                        </div>
+                        
+                        <div id="ans-q3" class="hidden mt-5 p-5 bg-white border border-emerald-200 rounded-lg text-sm text-slate-600 shadow-sm">
+                            <h5 class="text-emerald-700 font-bold mb-2"><i class="fa-solid fa-lightbulb mr-2"></i>Sustento Epistemológico:</h5>
+                            La respuesta correcta es la <strong>B</strong>. En economías inflacionarias, los paradigmas financieros cambian. Lo que en teoría clásica es bueno (alta liquidez en moneda base), en Venezuela resulta destructivo. Mantener un Activo Corriente (caja o bancos en Bs) superior al Pasivo Corriente genera una Posición Monetaria Neta Activa, que se traduce matemáticamente en el Estado de Resultados como una Pérdida Monetaria (DPC 10 / BA VEN-NIF 2).
                         </div>
                     </div>
 
@@ -381,16 +450,49 @@
             }
         }
 
-        function toggleAnswer(id) {
-            var el = document.getElementById(id);
-            if (el.classList.contains("hidden")) {
-                el.classList.remove("hidden");
-                el.classList.add("block");
-                el.classList.add("animate-pulse");
-                setTimeout(() => el.classList.remove("animate-pulse"), 500);
+        let attempts = { q1: 3, q2: 3, q3: 3 };
+
+        function validarRespuesta(qId, correctOption) {
+            if (attempts[qId] <= 0) return;
+            
+            let radios = document.getElementsByName(qId);
+            let selected = null;
+            for (let i of radios) {
+                if (i.checked) selected = i.value;
+            }
+            
+            let feedbackEl = document.getElementById('feedback-' + qId);
+            let ansEl = document.getElementById('ans-' + qId);
+            let btnEl = document.getElementById('btn-' + qId);
+            
+            if (!selected) {
+                feedbackEl.innerHTML = "<span class='text-orange-600'><i class='fa-solid fa-triangle-exclamation'></i> Selecciona una opción.</span>";
+                return;
+            }
+            
+            if (selected === correctOption) {
+                feedbackEl.innerHTML = "<span class='text-emerald-600 font-bold'><i class='fa-solid fa-check-circle'></i> ¡Correcto! Episteme validada.</span>";
+                ansEl.classList.remove('hidden');
+                ansEl.classList.add('animate-fadeIn');
+                btnEl.disabled = true;
+                btnEl.classList.add('opacity-50', 'cursor-not-allowed');
+                
+                // Deshabilitar radios
+                for (let i of radios) i.disabled = true;
             } else {
-                el.classList.add("hidden");
-                el.classList.remove("block");
+                attempts[qId]--;
+                if (attempts[qId] > 0) {
+                    feedbackEl.innerHTML = `<span class='text-red-500 font-medium'><i class='fa-solid fa-circle-xmark'></i> Análisis incorrecto. Te quedan ${attempts[qId]} intentos.</span>`;
+                } else {
+                    feedbackEl.innerHTML = "<span class='text-red-600 font-bold'><i class='fa-solid fa-ban'></i> Intentos agotados.</span>";
+                    ansEl.classList.remove('hidden');
+                    ansEl.classList.add('animate-fadeIn');
+                    btnEl.disabled = true;
+                    btnEl.classList.add('opacity-50', 'cursor-not-allowed');
+                    
+                    // Deshabilitar radios
+                    for (let i of radios) i.disabled = true;
+                }
             }
         }
     </script>
