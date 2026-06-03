@@ -21,8 +21,15 @@ function initSupabaseAuth() {
         return;
     }
     
-    // Crear el cliente una vez que el CDN está listo
-    supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+    // Crear el cliente usando sessionStorage para que la sesión muera al cerrar el navegador
+    supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY, {
+        auth: {
+            storage: window.sessionStorage,
+            autoRefreshToken: true,
+            persistSession: true,
+            detectSessionInUrl: true
+        }
+    });
     
     // Proteger la ruta inmediatamente
     protegerRuta();
@@ -55,7 +62,7 @@ async function protegerRuta() {
     // C) Estudiante regular
     const { data: profile, error } = await supabaseClient
         .from('profiles')
-        .select('is_authorized, email')
+        .select('is_authorized, email, phone')
         .eq('id', session.user.id)
         .single();
 
@@ -76,6 +83,12 @@ async function protegerRuta() {
     } else {
         if (pathActual.includes("login.html")) {
             window.location.href = "index.html";
+            return;
+        }
+        
+        // Si el usuario está autorizado y ya en una página protegida, verificamos el teléfono
+        if (!profile.phone) {
+            mostrarModalTelefono(session.user.id);
         }
     }
 }
@@ -109,6 +122,86 @@ function mostrarMensajeEspera(email) {
                 </button>
             </div>
         `;
+    }
+}
+
+// ====================================================================
+// MODAL PARA RECOPILAR NÚMERO DE TELÉFONO
+// ====================================================================
+function mostrarModalTelefono(userId) {
+    // Evitar duplicados
+    if (document.getElementById("modal-telefono")) return;
+
+    const modal = document.createElement("div");
+    modal.id = "modal-telefono";
+    modal.className = "fixed inset-0 z-[10000] flex items-center justify-center bg-slate-900/80 backdrop-blur-sm";
+    
+    // Solo mostramos un diseño minimalista si Tailwind no carga, pero usamos clases de Tailwind que ya existen en el proyecto
+    modal.innerHTML = `
+        <div class="bg-white rounded-2xl p-8 max-w-md w-[90%] shadow-2xl relative animate-fadeIn" style="border-top: 4px solid #10b981;">
+            <div class="text-center mb-6">
+                <i class="fa-solid fa-mobile-screen-button text-4xl text-emerald-500 mb-3"></i>
+                <h2 class="text-2xl font-bold text-slate-800" style="font-family: 'Outfit', sans-serif;">Actualiza tus datos</h2>
+                <p class="text-sm text-slate-500 mt-2">Para continuar accediendo al contenido del diplomado, necesitamos un número telefónico de contacto.</p>
+            </div>
+            
+            <div class="mb-4">
+                <label class="block text-sm font-semibold text-slate-600 mb-2 uppercase tracking-wider">Número de WhatsApp / Teléfono</label>
+                <div class="relative">
+                    <span class="absolute inset-y-0 left-0 flex items-center pl-3 text-slate-400">
+                        <i class="fa-solid fa-phone"></i>
+                    </span>
+                    <input type="tel" id="input-telefono" class="w-full pl-10 pr-4 py-3 rounded-lg border border-slate-300 focus:outline-none focus:border-emerald-500 focus:ring-2 focus:ring-emerald-200 transition-all text-slate-700" placeholder="+58 414 1234567" required>
+                </div>
+                <p id="error-telefono" class="text-red-500 text-xs mt-2 hidden">Por favor, ingresa un número válido.</p>
+            </div>
+            
+            <button onclick="guardarTelefono('${userId}')" id="btn-guardar-telefono" class="w-full bg-emerald-500 hover:bg-emerald-600 text-white font-bold py-3 px-4 rounded-lg transition-all flex justify-center items-center gap-2">
+                <i class="fa-solid fa-floppy-disk"></i> Guardar y Continuar
+            </button>
+        </div>
+    `;
+
+    document.body.appendChild(modal);
+}
+
+async function guardarTelefono(userId) {
+    const input = document.getElementById("input-telefono");
+    const errorMsg = document.getElementById("error-telefono");
+    const btn = document.getElementById("btn-guardar-telefono");
+    const phone = input.value.trim();
+
+    if (phone.length < 10) {
+        errorMsg.classList.remove("hidden");
+        return;
+    }
+    errorMsg.classList.add("hidden");
+
+    // UX: Estado de carga
+    btn.innerHTML = '<i class="fa-solid fa-circle-notch fa-spin"></i> Guardando...';
+    btn.disabled = true;
+    btn.classList.add("opacity-70");
+
+    try {
+        const { error } = await supabaseClient
+            .from('profiles')
+            .update({ phone: phone })
+            .eq('id', userId);
+
+        if (error) throw error;
+
+        // Éxito: Cerrar modal y continuar
+        const modal = document.getElementById("modal-telefono");
+        if (modal) modal.remove();
+        
+    } catch (err) {
+        console.error("Error al guardar teléfono:", err);
+        errorMsg.innerText = "Error al guardar. Inténtelo de nuevo.";
+        errorMsg.classList.remove("hidden");
+        
+        btn.innerHTML = '<i class="fa-solid fa-floppy-disk"></i> Guardar y Continuar';
+        btn.disabled = false;
+        btn.classList.remove("opacity-70");
     }
 }
 
