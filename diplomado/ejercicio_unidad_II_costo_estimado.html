@@ -1,0 +1,1270 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio: Sistema de Costos Estimados | Diplomado UCSAR</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Outfit:wght@400;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary: #0f172a;
+            --accent: #0ea5e9;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #f8fafc;
+            color: #334155;
+            line-height: 1.6;
+        }
+        h1, h2, h3, h4 {
+            font-family: 'Outfit', sans-serif;
+            color: var(--primary);
+        }
+        
+        .section-card {
+            background: #ffffff;
+            border-radius: 1rem;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            border: 1px solid #e2e8f0;
+        }
+
+        h2 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            border-bottom: 2px solid #38bdf8;
+            padding-bottom: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: #0284c7;
+            margin-top: 1.5rem;
+            margin-bottom: 1rem;
+            border-left: 4px solid #38bdf8;
+            padding-left: 0.5rem;
+        }
+
+        .data-box {
+            background-color: #f0f9ff;
+            border-left: 4px solid #0284c7;
+            padding: 1rem;
+            margin: 1rem 0;
+            border-radius: 0 0.5rem 0.5rem 0;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0 1.5rem 0;
+            font-size: 0.875rem;
+            border: 1px solid #e2e8f0;
+        }
+
+        th, td {
+            padding: 0.75rem 1rem;
+            text-align: left;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        th {
+            background-color: #f1f5f9;
+            color: #0f172a;
+            font-weight: 600;
+        }
+
+        tr:hover {
+            background-color: #f8fafc;
+        }
+
+        .text-right { text-align: right; }
+        .text-center { text-align: center; }
+        .bold { font-weight: bold; }
+
+        /* Estructura de Cuentas T */
+        .ledger-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .t-account {
+            background: #fff;
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            overflow: hidden;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+        }
+
+        .t-title {
+            background: #e2e8f0;
+            color: var(--primary-color);
+            text-align: center;
+            font-weight: bold;
+            padding: 0.5rem;
+            border-bottom: 2px solid var(--primary-color);
+        }
+
+        .t-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            min-height: 100px;
+        }
+
+        .t-side {
+            padding: 0.5rem;
+        }
+
+        .t-left {
+            border-right: 1px solid #cbd5e1;
+        }
+
+        .t-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.25rem;
+            font-size: 0.9rem;
+        }
+
+        .t-total {
+            border-top: 1px solid #94a3b8;
+            font-weight: bold;
+            margin-top: 0.5rem;
+            padding-top: 0.25rem;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .t-balance {
+            border-top: 2px double #94a3b8;
+            font-weight: bold;
+            color: var(--primary-color);
+            margin-top: 0.25rem;
+            padding-top: 0.25rem;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        /* Formato de Asientos Contables */
+        .entry-table td { vertical-align: top; }
+        .indent { padding-left: 2rem; }
+        .explanation { font-size: 0.8rem; font-style: italic; color: #64748b; }
+
+        /* Estados Financieros */
+        .financial-statement {
+            max-width: 600px;
+            margin: 1.5rem auto;
+            border: 1px solid #cbd5e1;
+            padding: 1.5rem;
+            background: #fff;
+            border-radius: 0.5rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+        }
+        .statement-header { text-align: center; margin-bottom: 1.5rem; }
+        .statement-header h4 { margin: 0; font-size: 1.1rem; color: var(--primary); font-weight: bold; }
+        .statement-header p { margin: 0.2rem 0; font-size: 0.875rem; color: #64748b; }
+
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- Navegación -->
+    <nav class="bg-white/80 backdrop-blur-md sticky top-0 z-50 border-b border-slate-200 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center gap-3">
+                    <div class="bg-sky-500 text-white p-2 rounded-lg">
+                        <i class="fa-solid fa-chart-line"></i>
+                    </div>
+                    <div>
+                        <span class="font-bold text-xl text-slate-900 block leading-none">UCSAR</span>
+                        <span class="text-[10px] text-slate-500 font-semibold tracking-wider uppercase">Diplomado Contabilidad</span>
+                    </div>
+                </div>
+                <div class="hidden md:flex space-x-6 text-sm font-semibold">
+                    <a href="MODULO_V.HTML" class="text-slate-500 hover:text-sky-500 transition"><i class="fa-solid fa-arrow-left mr-1"></i> Volver al Módulo V</a>
+                    <a href="#datos" class="text-slate-500 hover:text-sky-500 transition">Datos</a>
+                    <a href="#fase1" class="text-slate-500 hover:text-sky-500 transition">Fase 1</a>
+                    <a href="#fase2" class="text-slate-500 hover:text-sky-500 transition">Fase 2</a>
+                </div>
+                <div>
+                    <button onclick="logout()" class="text-slate-500 hover:text-red-500 transition text-sm font-bold">
+                        <i class="fa-solid fa-sign-out-alt mr-1"></i> Salir
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Header del Módulo -->
+    <header class="bg-slate-900 text-white py-12">
+        <div class="max-w-5xl mx-auto px-6 text-center">
+            <span class="bg-sky-500 text-white text-xs font-bold uppercase tracking-widest py-1 px-3 rounded-full mb-4 inline-block">Ejercicio Práctico</span>
+            <h1 class="text-3xl md:text-4xl font-bold mb-4">Sistema de Costos Estimados</h1>
+            <p class="text-lg text-slate-300 max-w-3xl mx-auto">
+                Manufacturas del Valle C.A. - Ciclo Contable Completo (Enero 2026)
+            </p>
+        </div>
+    </header>
+
+    <div class="max-w-6xl mx-auto px-4 py-12">
+
+        <section id="datos" class="section-card">
+            <h2>Datos Generales del Problema</h2>
+            <p>Se presentan las variables de producción operadas por la entidad durante el periodo de enero de 2026:</p>
+            
+            <div class="data-box">
+                <strong>Movimiento de Unidades del Mes:</strong><br>
+                <ul>
+                    <li>Inventario Inicial de Producción: 0 unidades</li>
+                    <li>Producción Procesada/Fabricada: 800 unidades</li>
+                    <li>Producción Terminada y Transferida: 700 unidades</li>
+                    <li>Producción en Proceso (Grado de avance 100%): 100 unidades</li>
+                    <li>Volumen de Ventas: 600 unidades</li>
+                </ul>
+            </div>
+
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(450px, 1fr)); gap: 1.5rem;">
+                <div>
+                    <h3>Costos Unitarios Predeterminados (Estimados)</h3>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Elemento del Costo</th>
+                                <th class="text-right">Costo Estimado Unitario</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Materiales Directos</td>
+                                <td class="text-right">$15,00</td>
+                            </tr>
+                            <tr>
+                                <td>Mano de Obra Directa</td>
+                                <td class="text-right">$10,00</td>
+                            </tr>
+                            <tr>
+                                <td>Carga Fabril</td>
+                                <td class="text-right">$8,00</td>
+                            </tr>
+                            <tr class="bold">
+                                <td>Total Costo Estimado Unitario</td>
+                                <td class="text-right">$33,00</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div>
+                    <h3>Costos Históricos (Reales Totales del Mes)</h3>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Elemento del Costo</th>
+                                <th class="text-right">Costo Real Total</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Materiales Directos</td>
+                                <td class="text-right">$12.500,00</td>
+                            </tr>
+                            <tr>
+                                <td>Mano de Obra Directa</td>
+                                <td class="text-right">$8.200,00</td>
+                            </tr>
+                            <tr>
+                                <td>Carga Fabril</td>
+                                <td class="text-right">$6.800,00</td>
+                            </tr>
+                            <tr class="bold">
+                                <td>Total Incurrencia Real del Mes</td>
+                                <td class="text-right">$27.500,00</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <section id="fase1" class="section-card">
+            <h2>Fase 1: Flujo a Costos Estimados (Carga Inicial)</h2>
+            <p>En esta etapa se simulan las operaciones contables del mes cargando y acreditando las cuentas de Inventario de Producción en Proceso bajo la base predeterminada de $33,00 por unidad equivalente.</p>
+
+            <h3>1.1 Valuaciones de la Producción a Costo Estimado</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Elemento</th>
+                        <th class="text-center">Costo Unit.</th>
+                        <th class="text-center">Prod. Terminada (700 un)</th>
+                        <th class="text-center">Prod. en Proceso (100 un)</th>
+                        <th class="text-right">Total Estimado Valuado</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Materiales Directos</td>
+                        <td class="text-center">$15,00</td>
+                        <td class="text-center">$10.500,00</td>
+                        <td class="text-center">$1.500,00</td>
+                        <td class="text-right bold">$12.000,00</td>
+                    </tr>
+                    <tr>
+                        <td>Mano de Obra Directa</td>
+                        <td class="text-center">$10,00</td>
+                        <td class="text-center">$7.000,00</td>
+                        <td class="text-center">$1.000,00</td>
+                        <td class="text-right bold">$8.000,00</td>
+                    </tr>
+                    <tr>
+                        <td>Carga Fabril</td>
+                        <td class="text-center">$8,00</td>
+                        <td class="text-center">$5.600,00</td>
+                        <td class="text-center">$800,00</td>
+                        <td class="text-right bold">$6.400,00</td>
+                    </tr>
+                    <tr class="bold" style="background-color: #f8fafc;">
+                        <td>Totales</td>
+                        <td class="text-center">$33,00</td>
+                        <td class="text-center">$23.100,00</td>
+                        <td class="text-center">$3.300,00</td>
+                        <td class="text-right">$26.400,00</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>1.2 Asientos de Diario (Bajo Base Estimada)</h3>
+            <table class="entry-table">
+                <thead>
+                    <tr>
+                        <th style="width: 15%;">Fecha</th>
+                        <th style="width: 55%;">Código y Detalle de Cuentas</th>
+                        <th style="width: 15%; text-align: right;">Debe ($)</th>
+                        <th style="width: 15%; text-align: right;">Haber ($)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="bold">31/01/2026</td>
+                        <td class="bold">--- Asiento E-1 ---</td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>Inventario de Producción en Proceso - Materiales Directos</td>
+                        <td class="text-right">12.000,00</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>Inventario de Producción en Proceso - Mano de Obra Directa</td>
+                        <td class="text-right">8.000,00</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>Inventario de Producción en Proceso - Carga Fabril</td>
+                        <td class="text-right">6.400,00</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td class="indent">Cuentas por Pagar / Almacén (Asignación Estimada Transitoria)</td>
+                        <td></td>
+                        <td class="text-right">26.400,00</td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td class="explanation">P/R: Apertura y cargo de la producción del mes valuada a costos estimados originarios.</td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td class="bold">31/01/2026</td>
+                        <td class="bold">--- Asiento E-2 ---</td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>Inventario de Artículos Terminados</td>
+                        <td class="text-right">23.100,00</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td class="indent">Inventario de Producción en Proceso - Materiales Directos</td>
+                        <td></td>
+                        <td class="text-right">10.500,00</td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td class="indent">Inventario de Producción en Proceso - Mano de Obra Directa</td>
+                        <td></td>
+                        <td class="text-right">7.000,00</td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td class="indent">Inventario de Producción en Proceso - Carga Fabril</td>
+                        <td></td>
+                        <td class="text-right">5.600,00</td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td class="explanation">P/R: Envío al almacén de productos terminados de 700 unidades valuadas a costo estimado de $33,00 c/u.</td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td class="bold">31/01/2026</td>
+                        <td class="bold">--- Asiento E-3 ---</td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>Costo de Ventas (Estimado)</td>
+                        <td class="text-right">19.800,00</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td class="indent">Inventario de Artículos Terminados</td>
+                        <td></td>
+                        <td class="text-right">19.800,00</td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td class="explanation">P/R: Registro del costo de salida de almacén por 600 unidades vendidas a razón de $33,00 c/u.</td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>1.3 Libro Mayor Mayorizado (Fase Estimada Pura)</h3>
+            <div class="ledger-grid">
+                <div class="t-account">
+                    <div class="t-title">Inv. Prod. Proceso - Materiales</div>
+                    <div class="t-content">
+                        <div class="t-side t-left"><div class="t-row"><span>As.E-1</span><span>12.000,00</span></div></div>
+                        <div class="t-side"><div class="t-row"><span>As.E-2</span><span>10.500,00</span></div></div>
+                    </div>
+                    <div class="t-total"><span>Suma:</span><span>12.000,00</span><span>Suma:</span><span>10.500,00</span></div>
+                    <div class="t-balance"><span>Saldo Deudor:</span><span>1.500,00</span><span></span></div>
+                </div>
+
+                <div class="t-account">
+                    <div class="t-title">Inv. Prod. Proceso - M.O.D.</div>
+                    <div class="t-content">
+                        <div class="t-side t-left"><div class="t-row"><span>As.E-1</span><span>8.000,00</span></div></div>
+                        <div class="t-side"><div class="t-row"><span>As.E-2</span><span>7.000,00</span></div></div>
+                    </div>
+                    <div class="t-total"><span>Suma:</span><span>8.000,00</span><span>Suma:</span><span>7.000,00</span></div>
+                    <div class="t-balance"><span>Saldo Deudor:</span><span>1.000,00</span><span></span></div>
+                </div>
+
+                <div class="t-account">
+                    <div class="t-title">Inv. Prod. Proceso - Carga Fabril</div>
+                    <div class="t-content">
+                        <div class="t-side t-left"><div class="t-row"><span>As.E-1</span><span>6.400,00</span></div></div>
+                        <div class="t-side"><div class="t-row"><span>As.E-2</span><span>5.600,00</span></div></div>
+                    </div>
+                    <div class="t-total"><span>Suma:</span><span>6.400,00</span><span>Suma:</span><span>5.600,00</span></div>
+                    <div class="t-balance"><span>Saldo Deudor:</span><span>800,00</span><span></span></div>
+                </div>
+
+                <div class="t-account">
+                    <div class="t-title">Inventario de Artículos Terminados</div>
+                    <div class="t-content">
+                        <div class="t-side t-left"><div class="t-row"><span>As.E-2</span><span>23.100,00</span></div></div>
+                        <div class="t-side"><div class="t-row"><span>As.E-3</span><span>19.800,00</span></div></div>
+                    </div>
+                    <div class="t-total"><span>Suma:</span><span>23.100,00</span><span>Suma:</span><span>19.800,00</span></div>
+                    <div class="t-balance"><span>Saldo Deudor:</span><span>3.300,00</span><span></span></div>
+                </div>
+
+                <div class="t-account">
+                    <div class="t-title">Costo de Ventas (Estimado)</div>
+                    <div class="t-content">
+                        <div class="t-side t-left"><div class="t-row"><span>As.E-3</span><span>19.800,00</span></div></div>
+                        <div class="t-side"></div>
+                    </div>
+                    <div class="t-total"><span>Suma:</span><span>19.800,00</span><span>Suma:</span><span>0,00</span></div>
+                    <div class="t-balance"><span>Saldo Deudor:</span><span>19.800,00</span><span></span></div>
+                </div>
+            </div>
+
+            <h3>1.4 Estados Financieros Provisionales (Estimados)</h3>
+            <div style="display: flex; flex-wrap: wrap; justify-content: space-around; gap: 1rem;">
+                <div class="financial-statement">
+                    <div class="statement-header">
+                        <h4>Manufacturas del Valle C.A.</h4>
+                        <p class="bold">Estado de Resultados (Provisional - Estimado)</p>
+                        <p>Al 31 de Enero de 2026</p>
+                    </div>
+                    <table style="font-size: 0.9rem;">
+                        <tr>
+                            <td>Ingresos por Ventas (600 un. × $50,00 hipotéticos)</td>
+                            <td class="text-right">30.000,00</td>
+                        </tr>
+                        <tr>
+                            <td>(-) Costo de Ventas Estimado</td>
+                            <td class="text-right">(19.800,00)</td>
+                        </tr>
+                        <tr class="bold" style="border-top: 2px solid #000;">
+                            <td>Utilidad Bruta en Ventas Estimada</td>
+                            <td class="text-right">10.200,00</td>
+                        </tr>
+                    </table>
+                </div>
+
+                <div class="financial-statement">
+                    <div class="statement-header">
+                        <h4>Manufacturas del Valle C.A.</h4>
+                        <p class="bold">Estado de Situación Financiera (Provisional - Estimado)</p>
+                        <p>Al 31 de Enero de 2026</p>
+                    </div>
+                    <table style="font-size: 0.85rem;">
+                        <tr class="bold"><td colspan="2">ACTIVOS</td></tr>
+                        <tr><td>Efectivo en Bancos (Ingreso por Ventas asumido)</td><td class="text-right">30.000,00</td></tr>
+                        <tr><td>Inventario de Artículos Terminados</td><td class="text-right">3.300,00</td></tr>
+                        <tr><td>Inventario de Prod. en Proceso - Materiales</td><td class="text-right">1.500,00</td></tr>
+                        <tr><td>Inventario de Prod. en Proceso - M.O.D.</td><td class="text-right">1.000,00</td></tr>
+                        <tr><td>Inventario de Prod. en Proceso - Carga Fabril</td><td class="text-right">800,00</td></tr>
+                        <tr class="bold" style="background:#f1f5f9;"><td>TOTAL ACTIVOS</td><td class="text-right">36.600,00</td></tr>
+                        
+                        <tr class="bold"><td colspan="2">PASIVOS Y PATRIMONIO</td></tr>
+                        <tr><td>Cuentas por Pagar (Provisión Costo Estimado)</td><td class="text-right">26.400,00</td></tr>
+                        <tr><td>Utilidad del Ejercicio (Estimada)</td><td class="text-right">10.200,00</td></tr>
+                        <tr class="bold" style="background:#f1f5f9;"><td>TOTAL PASIVO Y PATRIMONIO</td><td class="text-right">36.600,00</td></tr>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <section id="fase2" class="section-card">
+            <h2>Fase 2: Confrontación con Costos Reales y Rectificación</h2>
+            <p>Al finalizar el mes se incorporan los valores históricos reales. Se calculan las variaciones (sobre/subestimaciones), los coeficientes rectificadores y se ajusta la contabilidad a valores reales absorbiendo las variaciones contra los inventarios y el costo de ventas.</p>
+
+            <h3>2.1 Hoja de Trabajo: Determinación de Variaciones y Coeficientes Rectificadores</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Elemento del Costo</th>
+                        <th class="text-right">Costo Real Total (A)</th>
+                        <th class="text-right">Costo Estimado Total (B)</th>
+                        <th class="text-right">Variación Absoluta (A - B)</th>
+                        <th class="text-center">Condición</th>
+                        <th class="text-right">Coeficiente Rectificador</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="bold">Materiales Directos</td>
+                        <td class="text-right">$12.500,00</td>
+                        <td class="text-right">$12.000,00</td>
+                        <td class="text-right" style="color: #b91c1c;">+$500,00</td>
+                        <td class="text-center bold" style="color: #b91c1c;">Subestimado</td>
+                        <td class="text-right bold">0,04166667</td>
+                    </tr>
+                    <tr>
+                        <td class="bold">Mano de Obra Directa</td>
+                        <td class="text-right">$8.200,00</td>
+                        <td class="text-right">$8.000,00</td>
+                        <td class="text-right" style="color: #b91c1c;">+$200,00</td>
+                        <td class="text-center bold" style="color: #b91c1c;">Subestimado</td>
+                        <td class="text-right bold">0,02500000</td>
+                    </tr>
+                    <tr>
+                        <td class="bold">Carga Fabril</td>
+                        <td class="text-right">$6.800,00</td>
+                        <td class="text-right">$6.400,00</td>
+                        <td class="text-right" style="color: #b91c1c;">+$400,00</td>
+                        <td class="text-center bold" style="color: #b91c1c;">Subestimado</td>
+                        <td class="text-right bold">0,06250000</td>
+                    </tr>
+                    <tr class="bold" style="background-color: #f1f5f9; font-size: 1rem;">
+                        <td>TOTALES</td>
+                        <td class="text-right">$27.500,00</td>
+                        <td class="text-right">$26.400,00</td>
+                        <td class="text-right" style="color: #b91c1c;">+$1.100,00</td>
+                        <td class="text-center">Subestimado Neto</td>
+                        <td class="text-right">—</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>2.2 Rectificación del Costo Unitario de Producción</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Elemento del Costo</th>
+                        <th class="text-right">Costo Unitario Estimado</th>
+                        <th class="text-right">Coeficiente Rectificador</th>
+                        <th class="text-right">Ajuste Unitario de Costo</th>
+                        <th class="text-right">Costo Unitario Real Corregido</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Materiales Directos</td>
+                        <td class="text-right">$15,00</td>
+                        <td class="text-right">0,04166667</td>
+                        <td class="text-right">+$0,625</td>
+                        <td class="text-right bold" style="background-color: #ecfdf5;">$15,625</td>
+                    </tr>
+                    <tr>
+                        <td>Mano de Obra Directa</td>
+                        <td class="text-right">$10,00</td>
+                        <td class="text-right">0,02500000</td>
+                        <td class="text-right">+$0,250</td>
+                        <td class="text-right bold" style="background-color: #ecfdf5;">$10,250</td>
+                    </tr>
+                    <tr>
+                        <td>Carga Fabril</td>
+                        <td class="text-right">$8,00</td>
+                        <td class="text-right">0,06250000</td>
+                        <td class="text-right">+$0,500</td>
+                        <td class="text-right bold" style="background-color: #ecfdf5;">$8,500</td>
+                    </tr>
+                    <tr class="bold" style="background-color: #e2e8f0;">
+                        <td>TOTALES</td>
+                        <td class="text-right">$33,00</td>
+                        <td class="text-right">—</td>
+                        <td class="text-right">+$1,375</td>
+                        <td class="text-right">$34,375</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>2.3 Asientos de Ajuste y Regularización en el Libro Diario</h3>
+            <table class="entry-table">
+                <thead>
+                    <tr>
+                        <th style="width: 15%;">Fecha</th>
+                        <th style="width: 55%;">Código y Detalle de Cuentas</th>
+                        <th style="width: 15%; text-align: right;">Debe ($)</th>
+                        <th style="width: 15%; text-align: right;">Haber ($)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="bold">31/01/2026</td>
+                        <td class="bold">--- Asiento R-1 (Reconocimiento del Costo Real) ---</td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>Variación de Costos Estimados (Cuenta Control Transitoria)</td>
+                        <td class="text-right">1.100,00</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td class="indent">Cuentas por Pagar Comerciales (Ajuste a Costos Reales)</td>
+                        <td></td>
+                        <td class="text-right">1.100,00</td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td class="explanation">P/R: Registro de la variación global por subestimación (Costo Real $27.500,00 - Costo Estimado $26.400,00).</td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td class="bold">31/01/2026</td>
+                        <td class="bold">--- Asiento R-2 (Prorrateo de Rectificación) ---</td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>Costo de Ventas (Ajuste Real - 600 un × $1,375)</td>
+                        <td class="text-right">825,00</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>Inventario de Artículos Terminados (Existencia 100 un × $1,375)</td>
+                        <td class="text-right">137,50</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>Inventario de Producción en Proceso - Materiales Directos (100 un × $0,625)</td>
+                        <td class="text-right">62,50</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>Inventario de Producción en Proceso - Mano de Obra Directa (100 un × $0,250)</td>
+                        <td class="text-right">25,00</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>Inventario de Producción en Proceso - Carga Fabril (100 un × $0,500)</td>
+                        <td class="text-right">50,00</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td class="indent">Variación de Costos Estimados</td>
+                        <td></td>
+                        <td class="text-right">1.100,00</td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td class="explanation">P/R: Cierre de la cuenta de Variación y liquidación definitiva mediante la distribución técnica y rectificación proporcional de los saldos.</td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>2.4 Libro Mayor Definitivo (Saldados a Costo Real)</h3>
+            <div class="ledger-grid">
+                <div class="t-account">
+                    <div class="t-title">Inv. Prod. Proceso - Materiales</div>
+                    <div class="t-content">
+                        <div class="t-side t-left">
+                            <div class="t-row"><span>As.E-1</span><span>12.000,00</span></div>
+                            <div class="t-row"><span>As.R-2</span><span>62,50</span></div>
+                        </div>
+                        <div class="t-side">
+                            <div class="t-row"><span>As.E-2</span><span>10.500,00</span></div>
+                        </div>
+                    </div>
+                    <div class="t-total"><span>Suma:</span><span>12.062,50</span><span>Suma:</span><span>10.500,00</span></div>
+                    <div class="t-balance"><span>Saldo Real:</span><span>1.562,50</span><span></span></div>
+                </div>
+
+                <div class="t-account">
+                    <div class="t-title">Inv. Prod. Proceso - M.O.D.</div>
+                    <div class="t-content">
+                        <div class="t-side t-left">
+                            <div class="t-row"><span>As.E-1</span><span>8.000,00</span></div>
+                            <div class="t-row"><span>As.R-2</span><span>25,00</span></div>
+                        </div>
+                        <div class="t-side">
+                            <div class="t-row"><span>As.E-2</span><span>7.000,00</span></div>
+                        </div>
+                    </div>
+                    <div class="t-total"><span>Suma:</span><span>8.025,00</span><span>Suma:</span><span>7.000,00</span></div>
+                    <div class="t-balance"><span>Saldo Real:</span><span>1.025,00</span><span></span></div>
+                </div>
+
+                <div class="t-account">
+                    <div class="t-title">Inv. Prod. Proceso - Carga Fabril</div>
+                    <div class="t-content">
+                        <div class="t-side t-left">
+                            <div class="t-row"><span>As.E-1</span><span>6.400,00</span></div>
+                            <div class="t-row"><span>As.R-2</span><span>50,00</span></div>
+                        </div>
+                        <div class="t-side">
+                            <div class="t-row"><span>As.E-2</span><span>5.600,00</span></div>
+                        </div>
+                    </div>
+                    <div class="t-total"><span>Suma:</span><span>6.450,00</span><span>Suma:</span><span>5.600,00</span></div>
+                    <div class="t-balance"><span>Saldo Real:</span><span>850,00</span><span></span></div>
+                </div>
+
+                <div class="t-account">
+                    <div class="t-title">Inventario de Artículos Terminados</div>
+                    <div class="t-content">
+                        <div class="t-side t-left">
+                            <div class="t-row"><span>As.E-2</span><span>23.100,00</span></div>
+                            <div class="t-row"><span>As.R-2</span><span>137,50</span></div>
+                        </div>
+                        <div class="t-side">
+                            <div class="t-row"><span>As.E-3</span><span>19.800,00</span></div>
+                        </div>
+                    </div>
+                    <div class="t-total"><span>Suma:</span><span>23.237,50</span><span>Suma:</span><span>19.800,00</span></div>
+                    <div class="t-balance"><span>Saldo Real:</span><span>3.437,50</span><span></span></div>
+                </div>
+
+                <div class="t-account">
+                    <div class="t-title">Costo de Ventas (Histórico Real)</div>
+                    <div class="t-content">
+                        <div class="t-side t-left">
+                            <div class="t-row"><span>As.E-3</span><span>19.800,00</span></div>
+                            <div class="t-row"><span>As.R-2</span><span>825,00</span></div>
+                        </div>
+                        <div class="t-side"></div>
+                    </div>
+                    <div class="t-total"><span>Suma:</span><span>20.625,00</span><span>Suma:</span><span>0,00</span></div>
+                    <div class="t-balance"><span>Saldo Real:</span><span>20.625,00</span><span></span></div>
+                </div>
+
+                <div class="t-account">
+                    <div class="t-title">Variación Costos Estimados (Control)</div>
+                    <div class="t-content">
+                        <div class="t-side t-left">
+                            <div class="t-row"><span>As.R-1</span><span>1.100,00</span></div>
+                        </div>
+                        <div class="t-side">
+                            <div class="t-row"><span>As.R-2</span><span>1.100,00</span></div>
+                        </div>
+                    </div>
+                    <div class="t-total"><span>Suma:</span><span>1.100,00</span><span>Suma:</span><span>1.100,00</span></div>
+                    <div class="t-balance" style="color: #64748b;"><span>Saldo Ajustado:</span><span>0,00 (Cerrada)</span><span></span></div>
+                </div>
+            </div>
+
+            <h3>2.5 Estados Financieros Definitivos (Reales)</h3>
+            <div style="display: flex; flex-wrap: wrap; justify-content: space-around; gap: 1rem;">
+                <div class="financial-statement">
+                    <div class="statement-header">
+                        <h4>Manufacturas del Valle C.A.</h4>
+                        <p class="bold">Estado de Resultados (Real Absorbente)</p>
+                        <p>Del 1° al 31 de Enero de 2026</p>
+                    </div>
+                    <table style="font-size: 0.9rem;">
+                        <tr>
+                            <td>Ingresos por Ventas (600 un. × $50,00)</td>
+                            <td class="text-right">30.000,00</td>
+                        </tr>
+                        <tr>
+                            <td>(-) Costo de Ventas Real Reajustado</td>
+                            <td class="text-right" style="border-bottom: 1px solid #000;">(20.625,00)</td>
+                        </tr>
+                        <tr class="bold" style="font-size: 1.05rem;">
+                            <td>UTILIDAD BRUTA EN VENTAS REAL</td>
+                            <td class="text-right">$9.375,00</td>
+                        </tr>
+                    </table>
+                </div>
+
+                <div class="financial-statement">
+                    <div class="statement-header">
+                        <h4>Manufacturas del Valle C.A.</h4>
+                        <p class="bold">Estado de Situación Financiera (Histórico Real)</p>
+                        <p>Al 31 de Enero de 2026</p>
+                    </div>
+                    <table style="font-size: 0.85rem;">
+                        <tr class="bold" style="color: var(--primary-color);"><td colspan="2">ACTIVOS CORRIENTES</td></tr>
+                        <tr><td>Efectivo y Equivalentes de Efectivo</td><td class="text-right">30.000,00</td></tr>
+                        <tr><td>Inventario de Artículos Terminados (Real)</td><td class="text-right">3.437,50</td></tr>
+                        <tr><td>Inventario de Prod. en Proceso - Materiales</td><td class="text-right">1.562,50</td></tr>
+                        <tr><td>Inventario de Prod. en Proceso - M.O.D.</td><td class="text-right">1.025,00</td></tr>
+                        <tr><td>Inventario de Prod. en Proceso - Carga Fabril</td><td class="text-right">850,00</td></tr>
+                        <tr class="bold" style="background:#e2e8f0; border-top: 1px solid #000; border-bottom: 2px solid #000;">
+                            <td>TOTAL ACTIVOS</td>
+                            <td class="text-right">$36.875,00</td>
+                        </tr>
+                        
+                        <tr class="bold" style="color: var(--primary-color); margin-top: 0.5rem;"><td colspan="2">PASIVOS Y PATRIMONIO</td></tr>
+                        <tr><td>Cuentas por Pagar Comerciales (Costo Real Total)</td><td class="text-right">27.500,00</td></tr>
+                        <tr><td>Utilidad del Ejercicio Real (Enero 2026)</td><td class="text-right">9.375,00</td></tr>
+                        <tr class="bold" style="background:#e2e8f0; border-top: 1px solid #000; border-bottom: 2px solid #000;">
+                            <td>TOTAL PASIVO Y PATRIMONIO</td>
+                            <td class="text-right">$36.875,00</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <section id="comparativa" class="section-card">
+            <h2>Cuadro Comparativo de Control y Validación</h2>
+            <p>Muestra analítica del impacto del ajuste por coeficiente rectificador. El control interno valida la conciliación perfecta entre la predeterminación contable y la incurrencia del gasto real.</p>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Rubros del Inventario y Costos</th>
+                        <th class="text-right">Base Estimada Inicial</th>
+                        <th class="text-right">Monto Ajuste Proporcional</th>
+                        <th class="text-right">Base Real Definitiva</th>
+                        <th class="text-center">Porcentaje de Variación</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="bold">Costo de Ventas (600 unidades)</td>
+                        <td class="text-right">$19.800,00</td>
+                        <td class="text-right">+$825,00</td>
+                        <td class="text-right bold" style="color: var(--primary-color);">$20.625,00</td>
+                        <td class="text-center">4,16%</td>
+                    </tr>
+                    <tr>
+                        <td class="bold">Inv. Artículos Terminados (100 unidades)</td>
+                        <td class="text-right">$3.300,00</td>
+                        <td class="text-right">+$137,50</td>
+                        <td class="text-right bold" style="color: var(--primary-color);">$3.437,50</td>
+                        <td class="text-center">4,16%</td>
+                    </tr>
+                    <tr>
+                        <td class="bold">Inv. Producción en Proceso (100 unidades)</td>
+                        <td class="text-right">$3.300,00</td>
+                        <td class="text-right">+$137,50</td>
+                        <td class="text-right bold" style="color: var(--primary-color);">$3.437,50</td>
+                        <td class="text-center">4,16%</td>
+                    </tr>
+                    <tr class="bold" style="background-color: #ecfdf5; font-size: 1.05rem;">
+                        <td>Costo Total Asignado a la Producción</td>
+                        <td class="text-right">$26.400,00</td>
+                        <td class="text-right">+$1.100,00</td>
+                        <td class="text-right">$27.500,00</td>
+                        <td class="text-center">4,1667% (Subestimación)</td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="data-box" style="border-left-color: var(--accent-color);">
+                <strong>Conclusión Técnica de Auditoría de Costos:</strong> El análisis demuestra que la tasa de error predeterminada fue de **4,1667% por defecto**. Tras la aplicación del coeficiente rectificador, los estados financieros reflejan con exactitud la materialidad de la inversión económica del periodo, garantizando la razonabilidad contable conforme a los principios de contabilidad generalmente aceptados.
+            </div>
+        </section>
+
+        <section id="resolucion" class="section-card">
+            <h2>Resolución Directa: Asientos, Mayor y Estados Financieros</h2>
+            <p>A continuación, se presentan los Asientos de Diario, las cuentas del Libro Mayor en formato T, el Estado de Resultados y el Estado de Situación Financiera para Manufacturas del Valle C.A. al 31 de enero de 2026.</p>
+            <p>Para mantener la exactitud matemática y cumplir con la directiva técnica requerida, todas las cifras financieras utilizan el punto (.) como separador de miles y la coma (,) como separador de decimales.</p>
+
+            <h3>1. Asientos del Libro Diario</h3>
+            <div class="statement-header">
+                <h4>Manufacturas del Valle C.A.</h4>
+                <p class="bold">Asientos de Diario</p>
+                <p>Mes: Enero 2026</p>
+            </div>
+            <table class="entry-table">
+                <thead>
+                    <tr>
+                        <th style="width: 15%;">Fecha</th>
+                        <th style="width: 55%;">Detalle y Cuentas</th>
+                        <th style="width: 15%; text-align: right;">Debe ($)</th>
+                        <th style="width: 15%; text-align: right;">Haber ($)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="bold">Ene 31</td>
+                        <td class="bold">--- Asiento 1 ---</td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>Inventario de Producción en Proceso - Materiales</td>
+                        <td class="text-right">12.000,00</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>Inventario de Producción en Proceso - Mano de Obra</td>
+                        <td class="text-right">8.000,00</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>Inventario de Producción en Proceso - Carga Fabril</td>
+                        <td class="text-right">6.400,00</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td class="indent">Inventario de Materiales / Cuentas por Pagar (Costos Reales)</td>
+                        <td></td>
+                        <td class="text-right">27.500,00</td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td class="indent">Variación de Costos Estimados</td>
+                        <td></td>
+                        <td class="text-right">1.100,00</td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td class="explanation">P/R: Registro de la carga a la producción a costo estimado, los costos reales incurridos y el saldo inicial de la variación (Subestimación).</td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    
+                    <tr>
+                        <td class="bold">Ene 31</td>
+                        <td class="bold">--- Asiento 2 ---</td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>Inventario de Artículos Terminados</td>
+                        <td class="text-right">23.100,00</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td class="indent">Inventario de Producción en Proceso - Materiales (700 un &times; $15)</td>
+                        <td></td>
+                        <td class="text-right">10.500,00</td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td class="indent">Inventario de Producción en Proceso - Mano de Obra (700 un &times; $10)</td>
+                        <td></td>
+                        <td class="text-right">7.000,00</td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td class="indent">Inventario de Producción en Proceso - Carga Fabril (700 un &times; $8)</td>
+                        <td></td>
+                        <td class="text-right">5.600,00</td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td class="explanation">P/R: Envío al almacén de 700 unidades terminadas a costo estimado.</td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <td class="bold">Ene 31</td>
+                        <td class="bold">--- Asiento 3 ---</td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>Costo de Ventas (Estimado)</td>
+                        <td class="text-right">19.800,00</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td class="indent">Inventario de Artículos Terminados (600 un &times; $33)</td>
+                        <td></td>
+                        <td class="text-right">19.800,00</td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td class="explanation">P/R: Venta y despacho de 600 unidades registradas a costo estimado.</td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <td class="bold">Ene 31</td>
+                        <td class="bold">--- Asiento 4 ---</td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>Costo de Ventas (Ajuste por Coeficiente Rectificador)</td>
+                        <td class="text-right">825,00</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>Inventario de Artículos Terminados (Ajuste - Existencia 100 un)</td>
+                        <td class="text-right">137,50</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>Inventario de Producción en Proceso - Materiales (Ajuste 100 un)</td>
+                        <td class="text-right">62,50</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>Inventario de Producción en Proceso - Mano de Obra (Ajuste 100 un)</td>
+                        <td class="text-right">25,00</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>Inventario de Producción en Proceso - Carga Fabril (Ajuste 100 un)</td>
+                        <td class="text-right">50,00</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td class="indent">Variación de Costos Estimados</td>
+                        <td></td>
+                        <td class="text-right">1.100,00</td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td class="explanation">P/R: Cierre y prorrateo de la cuenta Variación mediante la rectificación de las cuentas de inventarios y costo de ventas al valor real.</td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>2. Cuentas del Libro Mayor (Formato T)</h3>
+            <p>A continuación se muestra el movimiento de las cuentas de inventarios, costo de ventas y variaciones tras la aplicación del ajuste.</p>
+            
+            <div class="ledger-grid">
+                <div class="t-account">
+                    <div class="t-title">Inv. Prod. en Proceso - Mat.</div>
+                    <div class="t-content">
+                        <div class="t-side t-left">
+                            <div class="t-row"><span>(1)</span><span>12.000,00</span></div>
+                            <div class="t-row"><span>(4)</span><span>62,50</span></div>
+                        </div>
+                        <div class="t-side">
+                            <div class="t-row"><span>(2)</span><span>10.500,00</span></div>
+                        </div>
+                    </div>
+                    <div class="t-balance"><span>Sal:</span><span>1.562,50</span><span></span></div>
+                </div>
+
+                <div class="t-account">
+                    <div class="t-title">Inv. Prod. en Proceso - M.O.</div>
+                    <div class="t-content">
+                        <div class="t-side t-left">
+                            <div class="t-row"><span>(1)</span><span>8.000,00</span></div>
+                            <div class="t-row"><span>(4)</span><span>25,00</span></div>
+                        </div>
+                        <div class="t-side">
+                            <div class="t-row"><span>(2)</span><span>7.000,00</span></div>
+                        </div>
+                    </div>
+                    <div class="t-balance"><span>Sal:</span><span>1.025,00</span><span></span></div>
+                </div>
+
+                <div class="t-account">
+                    <div class="t-title">Inv. Prod. en Proceso - C.F.</div>
+                    <div class="t-content">
+                        <div class="t-side t-left">
+                            <div class="t-row"><span>(1)</span><span>6.400,00</span></div>
+                            <div class="t-row"><span>(4)</span><span>50,00</span></div>
+                        </div>
+                        <div class="t-side">
+                            <div class="t-row"><span>(2)</span><span>5.600,00</span></div>
+                        </div>
+                    </div>
+                    <div class="t-balance"><span>Sal:</span><span>850,00</span><span></span></div>
+                </div>
+
+                <div class="t-account">
+                    <div class="t-title">Inv. Artículos Terminados</div>
+                    <div class="t-content">
+                        <div class="t-side t-left">
+                            <div class="t-row"><span>(2)</span><span>23.100,00</span></div>
+                            <div class="t-row"><span>(4)</span><span>137,50</span></div>
+                        </div>
+                        <div class="t-side">
+                            <div class="t-row"><span>(3)</span><span>19.800,00</span></div>
+                        </div>
+                    </div>
+                    <div class="t-balance"><span>Sal:</span><span>3.437,50</span><span></span></div>
+                </div>
+
+                <div class="t-account">
+                    <div class="t-title">Costo de Ventas</div>
+                    <div class="t-content">
+                        <div class="t-side t-left">
+                            <div class="t-row"><span>(3)</span><span>19.800,00</span></div>
+                            <div class="t-row"><span>(4)</span><span>825,00</span></div>
+                        </div>
+                        <div class="t-side"></div>
+                    </div>
+                    <div class="t-balance"><span>Sal:</span><span>20.625,00</span><span></span></div>
+                </div>
+
+                <div class="t-account">
+                    <div class="t-title">Variación Costos Estimados</div>
+                    <div class="t-content">
+                        <div class="t-side t-left">
+                            <div class="t-row"><span>(4)</span><span>1.100,00</span></div>
+                        </div>
+                        <div class="t-side">
+                            <div class="t-row"><span>(1)</span><span>1.100,00</span></div>
+                        </div>
+                    </div>
+                    <div class="t-balance"><span>Sal:</span><span>0,00</span><span></span></div>
+                </div>
+            </div>
+
+            <h3>3. Estado de Resultados</h3>
+            <p><strong>Nota:</strong> Dado que el enunciado no especifica el precio de venta unitario ni los gastos operativos del periodo, este estado determina la Utilidad Bruta en Ventas en función de un precio estimado hipotético de $50 por unidad, a los fines de ilustrar la estructura analítica.</p>
+            
+            <div class="financial-statement">
+                <div class="statement-header">
+                    <h4>Manufacturas del Valle C.A.</h4>
+                    <p class="bold">Estado de Resultados</p>
+                    <p>Del 1 de enero al 31 de enero de 2026<br>(Expresado en Dólares)</p>
+                </div>
+                <table style="font-size: 0.9rem; width: 100%;">
+                    <tr>
+                        <td>Ingresos por Ventas (600 unidades &times; $50,00)</td>
+                        <td class="text-right">30.000,00</td>
+                    </tr>
+                    <tr>
+                        <td>Menos: Costo de Ventas Real</td>
+                        <td class="text-right" style="border-bottom: 1px solid #000;">(20.625,00)</td>
+                    </tr>
+                    <tr class="bold" style="font-size: 1.05rem;">
+                        <td>UTILIDAD BRUTA EN VENTAS</td>
+                        <td class="text-right">$9.375,00</td>
+                    </tr>
+                </table>
+            </div>
+
+            <h3>4. Estado de Situación Financiera</h3>
+            <p>Este estado refleja la posición de los activos generados y los saldos reales de los inventarios al cierre del ciclo.</p>
+            <p><strong>Nota de cuadre:</strong> El pasivo asume que los costos reales incurridos ($27.500,00) se encuentran pendientes de pago en cuentas comerciales. Los activos corrientes en Efectivo / Banco incorporan los $30.000,00 originados por la venta para mantener la partida doble perfecta con el patrimonio de la empresa.</p>
+
+            <div class="financial-statement">
+                <div class="statement-header">
+                    <h4>Manufacturas del Valle C.A.</h4>
+                    <p class="bold">Estado de Situación Financiera</p>
+                    <p>Al 31 de enero de 2026<br>(Expresado en Dólares)</p>
+                </div>
+                <table style="font-size: 0.85rem; width: 100%;">
+                    <tr class="bold" style="color: var(--primary-color);"><td colspan="2">ACTIVO</td></tr>
+                    <tr class="bold"><td colspan="2">Activo Corriente</td></tr>
+                    <tr><td>Efectivo y Equivalentes de Efectivo</td><td class="text-right">30.000,00</td></tr>
+                    <tr><td>Inventario de Artículos Terminados (Real)</td><td class="text-right">3.437,50</td></tr>
+                    <tr class="bold"><td colspan="2">Inventarios de Producción en Proceso (Real):</td></tr>
+                    <tr><td class="indent">Materiales Directos</td><td class="text-right">1.562,50</td></tr>
+                    <tr><td class="indent">Mano de Obra Directa</td><td class="text-right">1.025,00</td></tr>
+                    <tr><td class="indent">Carga Fabril</td><td class="text-right">850,00</td></tr>
+                    <tr class="bold" style="background:#e2e8f0; border-top: 1px solid #000; border-bottom: 2px solid #000;">
+                        <td>TOTAL ACTIVO</td>
+                        <td class="text-right">$36.875,00</td>
+                    </tr>
+                    
+                    <tr class="bold" style="color: var(--primary-color); margin-top: 0.5rem;"><td colspan="2">PASIVO Y PATRIMONIO</td></tr>
+                    <tr class="bold"><td colspan="2">Pasivo Corriente</td></tr>
+                    <tr><td>Cuentas por Pagar Comerciales</td><td class="text-right">27.500,00</td></tr>
+                    <tr class="bold"><td>Total Pasivo</td><td class="text-right">27.500,00</td></tr>
+                    
+                    <tr class="bold"><td colspan="2">Patrimonio</td></tr>
+                    <tr><td>Utilidad del Ejercicio (Enero 2026)</td><td class="text-right">9.375,00</td></tr>
+                    <tr class="bold"><td>Total Patrimonio</td><td class="text-right">9.375,00</td></tr>
+                    
+                    <tr class="bold" style="background:#e2e8f0; border-top: 1px solid #000; border-bottom: 2px solid #000;">
+                        <td>TOTAL PASIVO Y PATRIMONIO</td>
+                        <td class="text-right">$36.875,00</td>
+                    </tr>
+                </table>
+            </div>
+        </section>
+
+    </div>
+
+    <footer class="py-12 border-t border-slate-200 text-center bg-white mt-12">
+        <p class="text-sm text-slate-500">© 2026 UCSAR | Diplomado Contabilidad Financiera | Módulo V</p>
+    </footer>
+
+    <!-- PROTECCIÓN DE ACCESO - Portal Académico UCSAR -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="js/auth.js?v=5"></script>
+</body>
+</html>
