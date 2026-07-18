@@ -395,7 +395,14 @@
                 return;
             }
 
-            const db = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON);
+            const db = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON, {
+                auth: {
+                    storage: window.sessionStorage,
+                    autoRefreshToken: true,
+                    persistSession: true,
+                    detectSessionInUrl: true
+                }
+            });
 
             // ── VERIFICAR ROL ADMINISTRADOR ───────────────────────────────────
             db.auth.getSession().then(({ data: { session } }) => {
