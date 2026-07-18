@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Módulo VI: Arquitectura Contable Venezolana | Diplomado UCSAR</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Outfit:wght@400;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary: #0f172a;
+            --accent: #0ea5e9;
+            --bg-gradient: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #f8fafc;
+            color: #334155;
+            line-height: 1.6;
+        }
+        h1, h2, h3, h4 {
+            font-family: 'Outfit', sans-serif;
+            color: var(--primary);
+        }
+        .tab-content { display: none; }
+        .tab-content.active { display: block; animation: fadeIn 0.4s ease-in-out; }
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(5px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .card-hover:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- Navegación -->
+    <nav class="bg-white/80 backdrop-blur-md sticky top-0 z-50 border-b border-slate-200 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center gap-3">
+                    <div class="bg-sky-500 text-white p-2 rounded-lg">
+                        <i class="fa-solid fa-landmark"></i>
+                    </div>
+                    <div>
+                        <span class="font-bold text-xl text-slate-900 block leading-none">UCSAR</span>
+                        <span class="text-[10px] text-slate-500 font-semibold tracking-wider uppercase">Diplomado Contabilidad</span>
+                    </div>
+                </div>
+                <div class="hidden md:flex space-x-6 text-sm font-semibold">
+                    <a href="index.html" class="text-slate-500 hover:text-sky-500 transition">Dashboard</a>
+                    <a href="index.html" class="text-slate-500 hover:text-sky-500 transition">Módulos</a>
+                    <a href="biblioteca.html" class="text-slate-500 hover:text-sky-500 transition">Biblioteca</a>
+                </div>
+                <div>
+                    <button onclick="logout()" class="text-slate-500 hover:text-red-500 transition text-sm font-bold">
+                        <i class="fa-solid fa-sign-out-alt mr-1"></i> Salir
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Header del Módulo -->
+    <header class="bg-slate-900 text-white py-16">
+        <div class="max-w-5xl mx-auto px-6 text-center">
+            <span class="bg-sky-500 text-white text-xs font-bold uppercase tracking-widest py-1 px-3 rounded-full mb-4 inline-block">Módulo VI</span>
+            <h1 class="text-4xl md:text-5xl font-bold mb-6">Arquitectura Contable Venezolana</h1>
+            <p class="text-lg text-slate-300 max-w-3xl mx-auto">
+                Análisis profundo del marco normativo y los Principios de Contabilidad Generalmente Aceptados en Venezuela (VEN-NIF), su estructura, aplicación y los Boletines de Aplicación emitidos por la FCCPV.
+            </p>
+        </div>
+    </header>
+
+    <main class="max-w-6xl mx-auto px-4 py-12">
+        
+        <!-- Tabs de Navegación -->
+        <div class="flex flex-wrap border-b border-slate-200 mb-8" id="tabs">
+            <button class="tab-btn active px-6 py-4 font-semibold text-sky-600 border-b-2 border-sky-600 focus:outline-none" onclick="openTab(event, 'ud1')">Marco Regulatorio</button>
+            <button class="tab-btn px-6 py-4 font-semibold text-slate-500 hover:text-sky-600 focus:outline-none" onclick="openTab(event, 'ud2')">Boletines (BA VEN-NIF)</button>
+            <button class="tab-btn px-6 py-4 font-semibold text-slate-500 hover:text-sky-600 focus:outline-none" onclick="openTab(event, 'ejercicio')">Ejercicio Práctico</button>
+            <button class="tab-btn px-6 py-4 font-semibold text-slate-500 hover:text-sky-600 focus:outline-none" onclick="openTab(event, 'eval')">Reto Autoevaluación</button>
+        </div>
+
+        <!-- UNIDAD DIDÁCTICA 1 -->
+        <div id="ud1" class="tab-content active">
+            <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-8 mb-8 card-hover">
+                <h2 class="text-3xl font-bold mb-6 border-b pb-4"><i class="fa-solid fa-scale-balanced text-sky-500 mr-3"></i>El Marco Regulatorio en Venezuela (VEN-NIF)</h2>
+                
+                <div class="prose max-w-none text-slate-600 space-y-6">
+                    <p class="text-lg font-medium text-slate-800">
+                        La Federación de Colegios de Contadores Públicos de Venezuela (FCCPV) es el ente responsable de emitir la normativa técnica contable en el país, conocida como los Principios de Contabilidad Generalmente Aceptados (PCGA) en Venezuela, formalmente denominados VEN-NIF.
+                    </p>
+                    
+                    <div class="grid md:grid-cols-2 gap-6 mt-6">
+                        <div class="bg-slate-50 p-6 rounded-lg border border-slate-200">
+                            <h3 class="font-bold text-slate-800 mb-3 text-lg"><i class="fa-solid fa-building text-blue-500 mr-2"></i>VEN-NIF GE (Grandes Entidades)</h3>
+                            <p class="text-sm">Aplicable a grandes empresas (cotizadas en bolsa o con gran relevancia pública). Se basa en la adopción integral de las Normas Internacionales de Información Financiera (NIIF Completas) emitidas por el IASB, junto con los Boletines de Aplicación correspondientes.</p>
+                        </div>
+                        
+                        <div class="bg-slate-50 p-6 rounded-lg border border-slate-200">
+                            <h3 class="font-bold text-slate-800 mb-3 text-lg"><i class="fa-solid fa-store text-emerald-500 mr-2"></i>VEN-NIF PYME</h3>
+                            <p class="text-sm">Diseñado para la Pequeña y Mediana Entidad. Adopta la Norma NIIF para las PYMES del IASB (con exenciones y simplificaciones en su tratamiento contable), en combinación con los Boletines de Aplicación emitidos por la FCCPV para ajustar ciertos tratamientos a la realidad económica venezolana.</p>
+                        </div>
+                    </div>
+
+                    <div class="bg-amber-50 border-l-4 border-amber-500 p-6 rounded-r-xl shadow-sm my-8">
+                        <div class="flex items-start gap-4">
+                            <div class="bg-amber-100 p-3 rounded-full text-amber-600 mt-1">
+                                <i class="fa-solid fa-lightbulb text-xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-lg font-bold text-amber-900 mb-2">Particularidad del Entorno Venezolano</h4>
+                                <p class="text-sm text-amber-800">
+                                    Debido al entorno hiperinflacionario y a las particularidades cambiarias, la simple adopción de las NIIF internacionales no era suficiente. Por ello, la Arquitectura Contable Venezolana incorpora los <strong>Boletines de Aplicación (BA VEN-NIF)</strong>, que actúan como normas locales vinculantes para reglamentar cómo se aplican las NIIF en el contexto socioeconómico del país.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- UNIDAD DIDÁCTICA 2 -->
+        <div id="ud2" class="tab-content">
+            <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-8 mb-8 card-hover">
+                <h2 class="text-3xl font-bold mb-6 border-b pb-4"><i class="fa-solid fa-file-contract text-sky-500 mr-3"></i>Boletines de Aplicación (BA VEN-NIF)</h2>
+                
+                <div class="prose max-w-none text-slate-600">
+                    <p class="mb-6">
+                        Los Boletines de Aplicación son el corazón de la adaptación de las NIIF a Venezuela. Resuelven aspectos no contemplados o que requieren especificidad en la norma internacional debido a la legislación o entorno económico del país.
+                    </p>
+
+                    <div class="grid grid-cols-1 gap-4 my-6">
+                        <div class="border border-slate-200 rounded-lg p-5 bg-slate-50">
+                            <h4 class="font-bold text-slate-800 text-lg mb-2">BA VEN-NIF Nº 0: Acuerdo Marco</h4>
+                            <p class="text-sm text-slate-600">Establece el marco general para la adopción de las Normas Internacionales y dicta las pautas sobre la estructura y clasificación de los VEN-NIF en GE y PYME.</p>
+                        </div>
+
+                        <div class="border border-slate-200 rounded-lg p-5 bg-slate-50 border-l-4 border-l-red-500">
+                            <h4 class="font-bold text-slate-800 text-lg mb-2">BA VEN-NIF Nº 2: Reconocimiento de la Inflación</h4>
+                            <p class="text-sm text-slate-600">Fundamental en Venezuela. Establece el criterio para la reexpresión de los estados financieros, regulando el reconocimiento del impacto de la inflación de acuerdo a la Sección 31 de la NIIF para las PYMES o NIC 29. Dictamina que el índice aplicable es el INPC emitido por el BCV.</p>
+                        </div>
+
+                        <div class="border border-slate-200 rounded-lg p-5 bg-slate-50 border-l-4 border-l-green-500">
+                            <h4 class="font-bold text-slate-800 text-lg mb-2">BA VEN-NIF Nº 8: Principios de Contabilidad (PCGA)</h4>
+                            <p class="text-sm text-slate-600">Oficializa la denominación de los Principios de Contabilidad Generalmente Aceptados en Venezuela y formaliza la lista de normativas vigentes, derogaciones y actualizaciones de la estructura contable nacional.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- EJERCICIO PRÁCTICO -->
+        <div id="ejercicio" class="tab-content">
+            <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-8 mb-8 card-hover">
+                <h2 class="text-3xl font-bold mb-6 border-b pb-4"><i class="fa-solid fa-briefcase text-emerald-500 mr-3"></i>Ejercicio Práctico: Diagnóstico Contable</h2>
+                
+                <div class="prose max-w-none text-slate-600">
+                    <p class="text-lg font-medium text-slate-800 mb-4">
+                        Taller de Clasificación y Adopción Normativa
+                    </p>
+                    
+                    <div class="bg-slate-50 p-6 rounded-lg border border-slate-200 mb-6">
+                        <h4 class="font-bold text-slate-800 mb-3">Contexto Empresarial:</h4>
+                        <p class="text-sm text-slate-700 mb-3">
+                            Usted ha sido contratado como Auditor Externo para evaluar tres empresas venezolanas. Las tres empresas están preparando sus estados financieros para el cierre del ejercicio, pero existe confusión en la gerencia sobre qué normativas exactas aplicar (VEN-NIF GE o VEN-NIF PYME) y si deben o no aplicar el BA VEN-NIF Nº 2 (Inflación).
+                        </p>
+                    </div>
+
+                    <div class="space-y-6">
+                        <!-- Empresa 1 -->
+                        <div class="border border-indigo-200 rounded-lg p-5 shadow-sm">
+                            <h4 class="font-bold text-indigo-800 mb-2">Empresa A: "Corporación Siderúrgica de Los Andes, C.A."</h4>
+                            <p class="text-sm text-slate-600 mb-3">Empresa con más de 1.000 empleados. Sus acciones se cotizan en la Bolsa de Valores de Caracas (BVC). Presentó una rentabilidad nominal del 300% durante un año con hiperinflación oficial reportada del 1.200%.</p>
+                            
+                            <div class="bg-white p-4 rounded border border-slate-100 mt-2">
+                                <h5 class="text-sm font-bold text-slate-700 mb-2">Preguntas de Análisis:</h5>
+                                <ul class="list-disc pl-5 text-sm text-slate-600">
+                                    <li>¿A qué marco normativo (GE o PYME) pertenece esta empresa y por qué?</li>
+                                    <li>¿Debe aplicar obligatoriamente el BA VEN-NIF Nº 2 para reexpresar sus estados financieros? ¿Qué pasaría con esa "rentabilidad nominal del 300%" tras el ajuste?</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!-- Empresa 2 -->
+                        <div class="border border-emerald-200 rounded-lg p-5 shadow-sm">
+                            <h4 class="font-bold text-emerald-800 mb-2">Empresa B: "Ferretería El Tornillo Familiar, S.R.L."</h4>
+                            <p class="text-sm text-slate-600 mb-3">Empresa familiar con 15 empleados. No cotiza en bolsa y no tiene obligación pública de rendir cuentas. Su contador insiste en usar NIIF Completas porque "son las mejores".</p>
+                            
+                            <div class="bg-white p-4 rounded border border-slate-100 mt-2">
+                                <h5 class="text-sm font-bold text-slate-700 mb-2">Preguntas de Análisis:</h5>
+                                <ul class="list-disc pl-5 text-sm text-slate-600">
+                                    <li>Según el BA VEN-NIF Nº 8, ¿Cuál es el marco normativo diseñado para esta entidad?</li>
+                                    <li>¿Es válido que el contador decida unilateralmente aplicar NIIF Completas (VEN-NIF GE) a esta empresa? Discuta el costo-beneficio de esta decisión de acuerdo a la Arquitectura Contable Venezolana.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-8 bg-sky-50 border-l-4 border-sky-500 p-4 rounded-r-lg">
+                        <p class="text-sm text-sky-800 font-semibold"><i class="fa-solid fa-bullhorn mr-2"></i>Instrucciones de Entrega:</p>
+                        <p class="text-sm text-sky-700 mt-1">Redacte un dictamen profesional de máximo 2 páginas respondiendo los análisis de la Empresa A y B. Deberá subirlo en formato PDF al módulo de tareas antes del cierre de la semana.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- RESUMEN AUTOEVALUACIÓN -->
+        <div id="eval" class="tab-content">
+            <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-8 mb-8 card-hover">
+                <h2 class="text-3xl font-bold mb-6 border-b pb-4"><i class="fa-solid fa-brain text-sky-500 mr-3"></i>Reto Autoevaluación</h2>
+                
+                <p class="mb-6 text-slate-600 text-lg">Mide tus conocimientos sobre la arquitectura normativa de Venezuela. Tienes 3 intentos por pregunta.</p>
+                
+                <div class="space-y-8">
+                    <!-- Pregunta 1 -->
+                    <div class="bg-slate-50 border border-slate-200 rounded-xl p-6 shadow-inner relative overflow-hidden">
+                        <div class="absolute top-0 left-0 w-1 h-full bg-sky-500"></div>
+                        <h4 class="font-bold text-slate-800 mb-4 text-lg">1. ¿Qué ente tiene la potestad exclusiva de emitir los VEN-NIF en Venezuela?</h4>
+                        
+                        <div class="space-y-3 mb-5 pl-2">
+                            <label class="flex items-start gap-3 cursor-pointer p-2 hover:bg-slate-100 rounded transition">
+                                <input type="radio" name="q1" value="A" class="mt-1 accent-sky-600">
+                                <span class="text-sm text-slate-700">A) El Servicio Nacional Integrado de Administración Aduanera y Tributaria (SENIAT).</span>
+                            </label>
+                            <label class="flex items-start gap-3 cursor-pointer p-2 hover:bg-slate-100 rounded transition">
+                                <input type="radio" name="q1" value="B" class="mt-1 accent-sky-600">
+                                <span class="text-sm text-slate-700">B) El Banco Central de Venezuela (BCV).</span>
+                            </label>
+                            <label class="flex items-start gap-3 cursor-pointer p-2 hover:bg-slate-100 rounded transition">
+                                <input type="radio" name="q1" value="C" class="mt-1 accent-sky-600">
+                                <span class="text-sm text-slate-700">C) La Federación de Colegios de Contadores Públicos de Venezuela (FCCPV).</span>
+                            </label>
+                        </div>
+                        
+                        <div class="flex items-center gap-4">
+                            <button id="btn-q1" class="text-sm bg-sky-600 text-white px-5 py-2.5 rounded-lg font-bold hover:bg-sky-700 transition shadow-md" onclick="validarRespuesta('q1', 'C')">Validar Respuesta</button>
+                            <span id="feedback-q1" class="text-sm font-semibold"></span>
+                        </div>
+                        
+                        <div id="ans-q1" class="hidden mt-5 p-5 bg-white border border-sky-200 rounded-lg text-sm text-slate-600 shadow-sm">
+                            <h5 class="text-sky-700 font-bold mb-2"><i class="fa-solid fa-lightbulb mr-2"></i>Retroalimentación:</h5>
+                            La respuesta correcta es la <strong>C</strong>. La FCCPV, a través del Directorio Nacional Ampliado y el Comité Permanente de Principios de Contabilidad, es el único gremio autorizado para emitir y regular los Principios de Contabilidad Generalmente Aceptados en Venezuela (VEN-NIF).
+                        </div>
+                    </div>
+
+                    <!-- Pregunta 2 -->
+                    <div class="bg-slate-50 border border-slate-200 rounded-xl p-6 shadow-inner relative overflow-hidden">
+                        <div class="absolute top-0 left-0 w-1 h-full bg-blue-500"></div>
+                        <h4 class="font-bold text-slate-800 mb-4 text-lg">2. ¿Para qué sirven los Boletines de Aplicación (BA VEN-NIF)?</h4>
+                        
+                        <div class="space-y-3 mb-5 pl-2">
+                            <label class="flex items-start gap-3 cursor-pointer p-2 hover:bg-slate-100 rounded transition">
+                                <input type="radio" name="q2" value="A" class="mt-1 accent-blue-600">
+                                <span class="text-sm text-slate-700">A) Para derogar todas las normas internacionales (NIIF) y crear un sistema contable 100% independiente para Venezuela.</span>
+                            </label>
+                            <label class="flex items-start gap-3 cursor-pointer p-2 hover:bg-slate-100 rounded transition">
+                                <input type="radio" name="q2" value="B" class="mt-1 accent-blue-600">
+                                <span class="text-sm text-slate-700">B) Para regular y especificar el tratamiento de aspectos particulares del entorno económico o legal venezolano que requieren un tratamiento específico en la adopción de las NIIF.</span>
+                            </label>
+                            <label class="flex items-start gap-3 cursor-pointer p-2 hover:bg-slate-100 rounded transition">
+                                <input type="radio" name="q2" value="C" class="mt-1 accent-blue-600">
+                                <span class="text-sm text-slate-700">C) Son guías fiscales emitidas por el Ministerio de Finanzas para pagar el ISLR.</span>
+                            </label>
+                        </div>
+                        
+                        <div class="flex items-center gap-4">
+                            <button id="btn-q2" class="text-sm bg-blue-600 text-white px-5 py-2.5 rounded-lg font-bold hover:bg-blue-700 transition shadow-md" onclick="validarRespuesta('q2', 'B')">Validar Respuesta</button>
+                            <span id="feedback-q2" class="text-sm font-semibold"></span>
+                        </div>
+                        
+                        <div id="ans-q2" class="hidden mt-5 p-5 bg-white border border-blue-200 rounded-lg text-sm text-slate-600 shadow-sm">
+                            <h5 class="text-blue-700 font-bold mb-2"><i class="fa-solid fa-lightbulb mr-2"></i>Retroalimentación:</h5>
+                            La respuesta correcta es la <strong>B</strong>. Los BA VEN-NIF no derogan el modelo NIIF, sino que lo complementan o aclaran su aplicación en contextos específicos como hiperinflación, control de cambios o legislación local.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <footer class="py-12 border-t border-slate-200 text-center bg-white">
+        <p class="text-sm text-slate-500">© 2026 UCSAR | Diplomado Contabilidad Financiera | Módulo VI</p>
+    </footer>
+
+    <!-- Scripts de interactividad -->
+    <script>
+        function openTab(evt, tabName) {
+            var i, tabcontent, tablinks;
+            
+            tabcontent = document.getElementsByClassName("tab-content");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].classList.remove("active");
+            }
+            
+            tablinks = document.getElementsByClassName("tab-btn");
+            for (i = 0; i < tablinks.length; i++) {
+                tablinks[i].className = tablinks[i].className.replace(" active text-sky-600 border-b-2 border-sky-600", " text-slate-500 hover:text-sky-600");
+                if(!tablinks[i].className.includes("text-slate-500")) {
+                    tablinks[i].className += " text-slate-500 hover:text-sky-600";
+                }
+            }
+            
+            document.getElementById(tabName).classList.add("active");
+            evt.currentTarget.className = evt.currentTarget.className.replace(" text-slate-500 hover:text-sky-600", " active text-sky-600 border-b-2 border-sky-600");
+        }
+
+        // Lógica del Quiz (3 Intentos)
+        let attempts = { q1: 3, q2: 3 };
+
+        function validarRespuesta(qId, correctOption) {
+            if (attempts[qId] <= 0) return;
+            
+            let radios = document.getElementsByName(qId);
+            let selected = null;
+            for (let i of radios) {
+                if (i.checked) selected = i.value;
+            }
+            
+            let feedbackEl = document.getElementById('feedback-' + qId);
+            let ansEl = document.getElementById('ans-' + qId);
+            let btnEl = document.getElementById('btn-' + qId);
+            
+            if (!selected) {
+                feedbackEl.innerHTML = "<span class='text-orange-600'><i class='fa-solid fa-triangle-exclamation'></i> Selecciona una opción.</span>";
+                return;
+            }
+            
+            if (selected === correctOption) {
+                feedbackEl.innerHTML = "<span class='text-emerald-600 font-bold'><i class='fa-solid fa-check-circle'></i> ¡Correcto!</span>";
+                ansEl.classList.remove('hidden');
+                ansEl.classList.add('animate-fadeIn');
+                btnEl.disabled = true;
+                btnEl.classList.add('opacity-50', 'cursor-not-allowed');
+                
+                for (let i of radios) i.disabled = true;
+            } else {
+                attempts[qId]--;
+                if (attempts[qId] > 0) {
+                    feedbackEl.innerHTML = `<span class='text-red-500 font-medium'><i class='fa-solid fa-circle-xmark'></i> Incorrecto. Te quedan ${attempts[qId]} intentos.</span>`;
+                } else {
+                    feedbackEl.innerHTML = "<span class='text-red-600 font-bold'><i class='fa-solid fa-ban'></i> Intentos agotados.</span>";
+                    ansEl.classList.remove('hidden');
+                    ansEl.classList.add('animate-fadeIn');
+                    btnEl.disabled = true;
+                    btnEl.classList.add('opacity-50', 'cursor-not-allowed');
+                    
+                    for (let i of radios) i.disabled = true;
+                }
+            }
+        }
+    </script>
+</body>
+</html>
