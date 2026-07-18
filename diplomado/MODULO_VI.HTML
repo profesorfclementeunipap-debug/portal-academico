@@ -211,9 +211,27 @@
                         </div>
                     </div>
                     
-                    <div class="mt-8 bg-sky-50 border-l-4 border-sky-500 p-4 rounded-r-lg">
-                        <p class="text-sm text-sky-800 font-semibold"><i class="fa-solid fa-bullhorn mr-2"></i>Instrucciones de Entrega:</p>
-                        <p class="text-sm text-sky-700 mt-1">Redacte un dictamen profesional de máximo 2 páginas respondiendo los análisis de la Empresa A y B. Deberá subirlo en formato PDF al módulo de tareas antes del cierre de la semana.</p>
+                    <div class="mt-8 bg-sky-50 border-l-4 border-sky-500 p-6 rounded-r-lg shadow-sm">
+                        <p class="text-sm text-sky-800 font-bold mb-2"><i class="fa-solid fa-bullhorn mr-2"></i>Instrucciones de Entrega:</p>
+                        <p class="text-sm text-sky-700 mb-4">Redacte un dictamen profesional de máximo 2 páginas respondiendo los análisis de la Empresa A y B. Deberá subirlo en formato PDF al módulo de tareas antes del cierre de la semana.</p>
+                        
+                        <div class="bg-white p-6 rounded-xl border-2 border-dashed border-sky-300 text-center hover:bg-sky-50 transition-colors">
+                            <i class="fa-solid fa-cloud-arrow-up text-4xl text-sky-400 mb-3"></i>
+                            <h5 class="text-slate-700 font-bold mb-1">Cargar Dictamen Profesional</h5>
+                            <p class="text-xs text-slate-500 mb-4">Solo archivos PDF (Max. 5MB)</p>
+                            
+                            <form id="uploadForm" class="flex flex-col items-center gap-3">
+                                <label class="cursor-pointer bg-sky-100 text-sky-700 hover:bg-sky-200 px-4 py-2 rounded-lg font-semibold text-sm transition">
+                                    <i class="fa-solid fa-folder-open mr-2"></i> Seleccionar Archivo
+                                    <input type="file" id="pdfUpload" accept="application/pdf" class="hidden" onchange="document.getElementById('fileName').textContent = this.files[0]?.name || 'Ningún archivo seleccionado'">
+                                </label>
+                                <span id="fileName" class="text-xs text-slate-600 italic">Ningún archivo seleccionado</span>
+                                
+                                <button type="button" onclick="alert('Funcionalidad de carga simulada. En producción, esto enviaría el archivo al servidor o base de datos (Supabase/Firebase).')" class="mt-2 bg-sky-600 hover:bg-sky-700 text-white font-bold py-2 px-6 rounded-lg text-sm transition shadow-md flex items-center">
+                                    <i class="fa-solid fa-paper-plane mr-2"></i> Enviar Evaluación
+                                </button>
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>
