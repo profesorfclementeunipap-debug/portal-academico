@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Módulo VII: Registros Contables de la Actividad Empresarial | Diplomado UCSAR</title>
+    <title>Guía Didáctica Interactiva Módulo VII | Diplomado UCSAR</title>
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- FontAwesome -->
@@ -16,7 +16,6 @@
             --primary: #0f172a;
             --accent: #6366f1;
             --accent-hover: #4f46e5;
-            --bg-gradient: linear-gradient(135deg, #f8fafc 0%, #eef2ff 100%);
         }
         body {
             font-family: 'Inter', sans-serif;
@@ -37,29 +36,15 @@
             box-shadow: 0 4px 14px 0 rgba(99, 102, 241, 0.39);
         }
 
-        .accordion-content {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.3s ease-out;
-        }
-
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(6px); }
             to { opacity: 1; transform: translateY(0); }
         }
 
-        .card-hover {
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        .card-hover:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 12px 28px -5px rgba(15, 23, 42, 0.08);
-        }
-
         .glass-card {
-            background: rgba(255, 255, 255, 0.85);
+            background: rgba(255, 255, 255, 0.9);
             backdrop-filter: blur(12px);
-            border: 1px solid rgba(226, 232, 240, 0.8);
+            border: 1px solid rgba(226, 232, 240, 0.9);
         }
     </style>
 </head>
@@ -90,45 +75,27 @@
 
     <!-- Header Hero Banner -->
     <header class="bg-gradient-to-r from-slate-900 via-indigo-950 to-slate-900 text-white py-12 px-4 relative overflow-hidden">
-        <div class="absolute inset-0 opacity-10 bg-[radial-gradient(#6366f1_1px,transparent_1px)] [background-size:16px_16px]"></div>
         <div class="max-w-7xl mx-auto relative z-10">
             <div class="flex flex-wrap items-center justify-between gap-6">
                 <div class="max-w-3xl">
                     <div class="inline-flex items-center gap-2 bg-indigo-500/20 border border-indigo-400/30 px-3.5 py-1 rounded-full text-indigo-300 text-xs font-bold uppercase tracking-wider mb-4">
-                        <i class="fas fa-star text-amber-400"></i> Módulo VII • Transición, Ciclo y Libros Legales
+                        <i class="fas fa-graduation-cap text-amber-400"></i> Guía Didáctica Asíncrona • Módulo VII
                     </div>
                     <h1 class="text-3xl sm:text-5xl font-extrabold text-white mb-4 leading-tight">
                         Registros Contables de la Actividad Empresarial
                     </h1>
                     <p class="text-slate-300 text-base sm:text-lg leading-relaxed mb-6">
-                        Dominio integral de la adaptación a NIIF/VEN-NIF, teoría de cuentas, ciclo contable completo de apertura y cierre, formulación del Estado de Resultados y marco normativo del Código de Comercio Venezolano.
+                        Guía de estudio detallada con explicaciones tema por tema, infografías de apoyo y cuestionarios prácticos interactivos diseñados para el aprendizaje a tu propio ritmo.
                     </p>
-                    
-                    <div class="flex flex-wrap gap-4 text-xs sm:text-sm text-slate-300">
-                        <span class="bg-slate-800/80 px-3 py-1.5 rounded-lg border border-slate-700/60 flex items-center gap-2">
-                            <i class="fas fa-balance-scale text-indigo-400"></i> VEN-NIF & NIIF PYME
-                        </span>
-                        <span class="bg-slate-800/80 px-3 py-1.5 rounded-lg border border-slate-700/60 flex items-center gap-2">
-                            <i class="fas fa-gavel text-amber-400"></i> Cód. Comercio Arts. 32-44
-                        </span>
-                        <span class="bg-slate-800/80 px-3 py-1.5 rounded-lg border border-slate-700/60 flex items-center gap-2">
-                            <i class="fas fa-calculator text-emerald-400"></i> Simuladores Prácticos
-                        </span>
-                    </div>
                 </div>
 
-                <!-- Tarjeta Resumen Rápido -->
                 <div class="bg-white/10 backdrop-blur-md p-6 rounded-2xl border border-white/10 max-w-xs w-full shadow-2xl">
                     <h3 class="text-white text-sm font-bold uppercase tracking-wider mb-3 flex items-center gap-2">
-                        <i class="fas fa-list-check text-indigo-400"></i> 5 Unidades Didácticas
+                        <i class="fas fa-laptop-file text-indigo-400"></i> Modalidad Asíncrona
                     </h3>
-                    <ul class="text-xs text-slate-200 space-y-2">
-                        <li class="flex items-center gap-2"><i class="fas fa-check-circle text-emerald-400"></i> 1. Adaptación NIIF / VEN-NIF</li>
-                        <li class="flex items-center gap-2"><i class="fas fa-check-circle text-emerald-400"></i> 2. Teoría de Cuentas & Partida Doble</li>
-                        <li class="flex items-center gap-2"><i class="fas fa-check-circle text-emerald-400"></i> 3. Ciclo Contable: Apertura y Cierre</li>
-                        <li class="flex items-center gap-2"><i class="fas fa-check-circle text-emerald-400"></i> 4. Pérdidas y Ganancias</li>
-                        <li class="flex items-center gap-2"><i class="fas fa-check-circle text-emerald-400"></i> 5. Libros Oficiales & Responsabilidad</li>
-                    </ul>
+                    <p class="text-xs text-slate-300 leading-relaxed mb-3">
+                        Puedes leer la guía, responder el cuestionario interactivo en cada unidad y copiar tus respuestas para enviarlas al grupo de Telegram.
+                    </p>
                 </div>
             </div>
         </div>
@@ -153,7 +120,7 @@
                     <i class="fas fa-chart-line"></i> U4. Estado de Resultados
                 </button>
                 <button onclick="switchTab('unidad5')" id="tab-unidad5" class="tab-button px-5 py-3 rounded-xl font-semibold text-slate-600 hover:text-indigo-600 hover:bg-slate-50 text-sm transition-all duration-200 flex items-center gap-2">
-                    <i class="fas fa-book-bookmark"></i> U5. Libros Oficiales
+                    <i class="fas fa-book-bookmark"></i> U5. Libros & Leyes
                 </button>
             </div>
         </div>
@@ -165,91 +132,67 @@
             <div class="bg-white rounded-3xl p-8 shadow-sm border border-slate-200">
                 <div class="flex items-center gap-3 mb-6">
                     <span class="bg-indigo-100 text-indigo-700 text-xs font-extrabold px-3 py-1 rounded-full uppercase tracking-wider">Unidad Didáctica 1</span>
-                    <h2 class="text-2xl sm:text-3xl font-bold">Adaptación del PGC a Normas Internacionales de Información Financiera (NIIF-UE / VEN-NIF)</h2>
+                    <h2 class="text-2xl sm:text-3xl font-bold">Adaptación del PGC a Normas Internacionales de Información Financiera (VEN-NIF)</h2>
                 </div>
 
-                <!-- Marco Teórico -->
-                <div class="prose max-w-none text-slate-600 space-y-4 mb-8">
-                    <p class="text-base sm:text-lg leading-relaxed">
-                        La adopción de las Normas Internacionales de Información Financiera en Venezuela (denominadas **VEN-NIF** por la Federación de Colegios de Contadores Públicos de Venezuela - FCCPV) representa una evolución cualitativa fundamental respecto a los antiguos Principios de Contabilidad Generalmente Aceptados (DPC). 
-                    </p>
-                    <p>
-                        Esta transición no se limita a un simple renombre en el plan de cuentas; exige la **depuración patrimonial** bajo el principio rector de la <strong class="text-slate-900">primacía de la realidad económica sobre la forma legal</strong> (NIIF para las PYMES, Sección 2 / Marco Conceptual).
-                    </p>
-                </div>
-
-                <!-- Tarjetas de Criterios Clave -->
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-                    <div class="glass-card rounded-2xl p-6 border-l-4 border-indigo-500">
-                        <div class="flex items-center gap-3 mb-3">
-                            <i class="fas fa-broom text-indigo-600 text-xl"></i>
-                            <h3 class="font-bold text-lg text-slate-900">Depuración de Activos</h3>
-                        </div>
-                        <p class="text-sm text-slate-600 leading-relaxed">
-                            Bajo VEN-NIF PYME (Sección 35 - Adopción por Primera Vez), los activos intangibles o partidas diferidas que no tengan capacidad de generar beneficios económicos futuros (como los históricos *gastos de organización o constitución capitalizados*) deben darse de baja contra ganancias retenidas.
+                <!-- Guía Teórica Detallada -->
+                <div class="space-y-6 text-slate-600 text-sm sm:text-base leading-relaxed mb-8">
+                    <div class="bg-slate-50 p-6 rounded-2xl border border-slate-200">
+                        <h3 class="text-lg font-bold text-slate-900 mb-2">1.1. Depuración Patrimonial en Adopción por Primera Vez (Sección 35 NIIF PYME)</h3>
+                        <p>
+                            Al migrar de la contabilidad histórica tradicional a las Normas Ven-NIF, el primer paso es la **depuración patrimonial**. Bajo la Sección 35.7, se exige dar de baja cualquier partida de activo que no genere beneficios económicos futuros aislables. Los históricos *Gastos de Organización o Constitución Capitalizados* deben eliminarse contra las Ganancias Retenidas en el balance de apertura.
                         </p>
                     </div>
 
-                    <div class="glass-card rounded-2xl p-6 border-l-4 border-amber-500">
-                        <div class="flex items-center gap-3 mb-3">
-                            <i class="fas fa-coins text-amber-600 text-xl"></i>
-                            <h3 class="font-bold text-lg text-slate-900">Valor Razonable</h3>
-                        </div>
-                        <p class="text-sm text-slate-600 leading-relaxed">
-                            Sustituye la rigidez del costo histórico puro en rubros clave. Permite la revaluación o medición a Valor Razonable (Secciones 11 y 16 NIIF PYME) con impacto directo en el patrimonio o estado de resultados.
+                    <div class="bg-slate-50 p-6 rounded-2xl border border-slate-200">
+                        <h3 class="text-lg font-bold text-slate-900 mb-2">1.2. Representación Fiel y Valor Razonable (Sección 17)</h3>
+                        <p>
+                            Mantener en libros por 0 BS un activo que continúa en pleno funcionamiento productivo destruye la **representación fiel** (Sección 2). La norma permite medir el activo a su **Costo Atribuido** (Valor Razonable) en la fecha de transición, re-estimando su vida útil remanente y ajustando la revaluación contra el patrimonio.
                         </p>
                     </div>
 
-                    <div class="glass-card rounded-2xl p-6 border-l-4 border-rose-500">
-                        <div class="flex items-center gap-3 mb-3">
-                            <i class="fas fa-chart-line-down text-rose-600 text-xl"></i>
-                            <h3 class="font-bold text-lg text-slate-900">Deterioro del Valor</h3>
-                        </div>
-                        <p class="text-sm text-slate-600 leading-relaxed">
-                            Bajo la Sección 27 (NIIF PYME) y NIC 36, se exige evaluar al cierre de cada periodo si existe indicio de que un activo ha sufrido un deterioro de valor, reconociendo el importe recuperable de manera inmediata.
+                    <div class="bg-slate-50 p-6 rounded-2xl border border-slate-200">
+                        <h3 class="text-lg font-bold text-slate-900 mb-2">1.3. Deterioro del Valor de Activos (Sección 27 / NIC 36)</h3>
+                        <p>
+                            Un activo sufre deterioro cuando su **Valor en Libros supera su Importe Recuperable**. El Importe Recuperable se define como el **MAYOR** entre el *Valor Razonable menos Costos de Venta* y el *Valor de Uso*. La pérdida se reconoce inmediatamente en el Estado de Resultados.
                         </p>
                     </div>
                 </div>
 
-                <!-- Marco Normativo e Histórico Venezolano -->
-                <div class="bg-indigo-50/60 rounded-2xl p-6 border border-indigo-100 mb-8">
-                    <h3 class="font-bold text-indigo-950 text-lg mb-4 flex items-center gap-2">
-                        <i class="fas fa-landmark text-indigo-600"></i> Marco Legal y Resoluciones en Venezuela
+                <!-- CUESTIONARIO INTERACTIVO U1 -->
+                <div class="bg-indigo-950 text-white rounded-3xl p-6 sm:p-8 shadow-xl">
+                    <h3 class="text-xl font-bold text-indigo-300 mb-4 flex items-center gap-2">
+                        <i class="fas fa-pen-to-square"></i> Cuestionario Práctico - Unidad Didáctica 1
                     </h3>
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm text-slate-700">
-                        <div class="bg-white p-4 rounded-xl shadow-xs border border-indigo-100">
-                            <strong class="text-indigo-900 block mb-1">BA VEN-NIF N° 8 (Versión 10):</strong>
-                            Regula la aplicación marco de los PCGA en Venezuela, clasificando a las entidades en Grandes Empresas (VEN-NIF GE) y Pequeñas/Medianas Empresas (VEN-NIF PYME).
-                        </div>
-                        <div class="bg-white p-4 rounded-xl shadow-xs border border-indigo-100">
-                            <strong class="text-indigo-900 block mb-1">BA VEN-NIF N° 0:</strong>
-                            Establece el marco de adopción y los criterios obligatorios emitidos por los Boletines de Adopción por parte de la FCCPV.
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Citas Bibliográficas -->
-                <div class="bg-slate-900 text-white rounded-2xl p-6">
-                    <h4 class="text-xs font-bold uppercase tracking-wider text-indigo-400 mb-3 flex items-center gap-2">
-                        <i class="fas fa-quote-left"></i> Citas Bibliográficas y Fundamentos teóricos
-                    </h4>
-                    <blockquote class="italic text-sm text-slate-300 leading-relaxed mb-3">
-                        "La adopción por primera vez de las NIIF representa un proceso de reajuste patrimonial sustancial donde priman la representación fiel, la relevancia y el principio de realidad económica sobre la mera forma jurídica formal."
-                    </blockquote>
-                    <p class="text-xs font-semibold text-slate-400">— Kieso, Weygandt & Warfield (2020). <em>Contabilidad Intermedia</em>, Editorial Limusa / Wiley.</p>
-                </div>
-
-                <!-- Foro / Pregunta de Reflexión -->
-                <div class="mt-8 bg-amber-50 rounded-2xl p-6 border border-amber-200">
-                    <div class="flex items-center gap-3 text-amber-900 font-bold mb-2">
-                        <i class="fas fa-comments text-amber-600 text-xl"></i> Case Study & Foro de Discusión
-                    </div>
-                    <p class="text-sm text-amber-950 font-medium mb-3">
-                        <strong>Escenario Práctico:</strong> Supongamos que su empresa está realizando la transición hacia las VEN-NIF. Al revisar el balance histórico, observan maquinarias totalmente depreciadas (valor cero en libros) pero que continúan en pleno funcionamiento operativo.
+                    <p class="text-xs sm:text-sm text-slate-300 mb-6">
+                        Lee cada pregunta, redacta tus respuestas y asientos contables en la casilla y usa el botón para copiar tus respuestas listas para enviar a Telegram.
                     </p>
-                    <p class="text-xs text-amber-850 italic">
-                        ¿Deberían estas maquinarias mantenerse registradas en valor cero o debe realizarse un reajuste inicial del valor en libros para reflejar la realidad económica? Reflexione basándose en la Sección 35 y Sección 17 de la NIIF para las PYMES.
-                    </p>
+
+                    <div class="space-y-6 text-sm">
+                        <div class="bg-slate-900 p-4 rounded-xl border border-slate-800">
+                            <strong class="text-amber-400 block mb-1">Pregunta 1.1 (Depuración):</strong>
+                            Al revisar el balance histórico se encuentran 50.000 BS en "Gastos de Constitución Capitalizados". ¿Cuál es el asiento contable de ajuste en el balance de apertura?
+                        </div>
+
+                        <div class="bg-slate-900 p-4 rounded-xl border border-slate-800">
+                            <strong class="text-amber-400 block mb-1">Pregunta 1.2 (Dilema del Activo Depreciado):</strong>
+                            Una máquina en 0 BS en libros produce 5.000 unidades/mes. Se realiza avalúo técnico a costo atribuido por 120.000 BS. ¿Cuál es el asiento de ajuste?
+                        </div>
+
+                        <div class="bg-slate-900 p-4 rounded-xl border border-slate-800">
+                            <strong class="text-amber-400 block mb-1">Pregunta 1.3 (Deterioro):</strong>
+                            Valor en Libros: 100.000 BS. Valor Razonable neto: 70.000 BS. Valor de Uso: 75.000 BS. Indique el Importe Recuperable, la Pérdida por Deterioro y redacte el asiento contable al 31/12.
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-semibold text-indigo-200 mb-2">Escribe tus Respuestas y Asientos Contables aquí:</label>
+                            <textarea id="ans-u1" rows="6" placeholder="Respuesta 1.1: ...&#10;Respuesta 1.2: ...&#10;Respuesta 1.3: ..." class="w-full bg-slate-900 border border-slate-700 text-white rounded-xl p-4 text-xs font-mono focus:outline-none focus:border-indigo-500"></textarea>
+                        </div>
+
+                        <button onclick="copiarRespuestas('ans-u1', 'Unidad 1')" class="bg-indigo-600 hover:bg-indigo-500 text-white font-bold px-5 py-3 rounded-xl text-xs transition flex items-center gap-2 shadow-lg">
+                            <i class="fas fa-copy"></i> Copiar Mis Respuestas para Telegram
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>
@@ -264,103 +207,58 @@
                     <h2 class="text-2xl sm:text-3xl font-bold">Gestión y Representación Contable: Teoría de las Cuentas</h2>
                 </div>
 
-                <!-- 1. Partida Doble -->
-                <div class="mb-8">
-                    <h3 class="text-xl font-bold text-slate-900 mb-3 flex items-center gap-2">
-                        <i class="fas fa-scale-balanced text-indigo-600"></i> 1. La Partida Doble y la Ecuación Patrimonial
-                    </h3>
-                    <p class="text-slate-600 text-sm leading-relaxed mb-4">
-                        Formulada históricamente por Fray Luca Pacioli en 1494 (*Summa de Arithmetica*), la partida doble establece que toda transacción económica afecta al menos a dos cuentas, manteniendo intacto el equilibrio matemático del patrimonio:
-                    </p>
-                    <div class="bg-indigo-900 text-white p-6 rounded-2xl text-center shadow-lg mb-4">
-                        <span class="text-sm font-semibold text-indigo-300 block mb-1 uppercase tracking-widest">Ecuación Patrimonial Fundamental</span>
-                        <div class="text-2xl sm:text-4xl font-extrabold tracking-tight">
-                            ACTIVO = PASIVO + PATRIMONIO
-                        </div>
-                    </div>
-                </div>
-
-                <!-- 2. Balance de Comprobación -->
-                <div class="mb-8">
-                    <h3 class="text-xl font-bold text-slate-900 mb-3 flex items-center gap-2">
-                        <i class="fas fa-table-list text-indigo-600"></i> 2. Balance de Comprobación de Sumas y Saldos
-                    </h3>
-                    <p class="text-slate-600 text-sm leading-relaxed mb-4">
-                        Es el instrumento contable utilizado para verificar el cumplimiento del principio de la partida doble ($\sum \text{Debe} = \sum \text{Haber}$). Sin embargo, **un balance cuadrado no garantiza que la contabilidad esté exenta de errores**.
-                    </p>
-
-                    <!-- Limitaciones del Balance -->
-                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-6 text-sm">
-                        <div class="bg-rose-50 p-4 rounded-xl border border-rose-200">
-                            <strong class="text-rose-900 block mb-1"><i class="fas fa-eye-slash mr-1"></i> Errores de Omisión:</strong>
-                            Si una transacción no fue asentada en el libro diario, el balance cuadrará pero los saldos estarán incompletos.
-                        </div>
-                        <div class="bg-amber-50 p-4 rounded-xl border border-amber-200">
-                            <strong class="text-amber-900 block mb-1"><i class="fas fa-tags mr-1"></i> Errores de Imputación:</strong>
-                            Cargar un gasto a una cuenta incorrecta (ej. Gastos de Limpieza en lugar de Gastos de Alquiler) no altera el descuadre.
-                        </div>
-                        <div class="bg-blue-50 p-4 rounded-xl border border-blue-200">
-                            <strong class="text-blue-900 block mb-1"><i class="fas fa-arrows-rotate mr-1"></i> Errores de Compensación:</strong>
-                            Cometer dos errores del mismo monto en sentido opuesto en el Debe y en el Haber.
-                        </div>
-                    </div>
-                </div>
-
-                <!-- 3 & 4. Depreciación, Provisiones y Periodificación -->
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                <div class="space-y-6 text-slate-600 text-sm sm:text-base leading-relaxed mb-8">
                     <div class="bg-slate-50 p-6 rounded-2xl border border-slate-200">
-                        <h4 class="font-bold text-slate-900 mb-2 flex items-center gap-2">
-                            <i class="fas fa-calculator text-indigo-600"></i> 3. Depreciación y Provisiones
-                        </h4>
-                        <ul class="text-xs text-slate-600 space-y-2">
-                            <li>• <strong>Depreciación Acumulada (Sección 17):</strong> Distribución sistemática del importe depreciable de un activo a lo largo de su vida útil.</li>
-                            <li>• <strong>Provisiones (Sección 21 / NIC 37):</strong> Pasivos sobre los cuales existe incertidumbre acerca de su cuantía o vencimiento, pero que son probables y cuantificables.</li>
-                            <li>• <strong>Deterioro de Cuentas por Cobrar (Sección 11):</strong> Estimación para pérdidas crediticias esperadas.</li>
-                        </ul>
-                    </div>
-
-                    <div class="bg-slate-50 p-6 rounded-2xl border border-slate-200">
-                        <h4 class="font-bold text-slate-900 mb-2 flex items-center gap-2">
-                            <i class="fas fa-calendar-check text-indigo-600"></i> 4. Periodificación (Devengado)
-                        </h4>
-                        <p class="text-xs text-slate-600 leading-relaxed mb-3">
-                            Bajo la NIIF PYME (Sección 2.36), las transacciones y hechos se reconocen cuando ocurren y no cuando se cobra o se paga el efectivo:
+                        <h3 class="text-lg font-bold text-slate-900 mb-2">2.1. La Partida Doble y la Ecuación Patrimonial</h3>
+                        <p>
+                            Toda transacción económica afecta al menos a dos cuentas, conservando el equilibrio matemático del patrimonio: **Activo = Pasivo + Patrimonio**. Los débitos al Debe aumentan Activos y Gastos, mientras que los créditos al Haber aumentan Pasivos, Patrimonio e Ingresos.
                         </p>
-                        <ul class="text-xs text-slate-600 space-y-1">
-                            <li>• Gastos pagados por anticipado (Activo)</li>
-                            <li>• Ingresos diferidos o cobrados por anticipado (Pasivo)</li>
-                            <li>• Gastos acumulados por pagar (Pasivo)</li>
-                        </ul>
+                    </div>
+
+                    <div class="bg-slate-50 p-6 rounded-2xl border border-slate-200">
+                        <h3 class="text-lg font-bold text-slate-900 mb-2">2.2. Balance de Comprobación y sus Limitaciones</h3>
+                        <p>
+                            El Balance de Comprobación sólo demuestra la igualdad aritmética (Total Debe = Total Haber). No detecta errores de omisión (facturas no registradas), errores de imputación (cargar en una cuenta de gasto equivocada) o errores de compensación.
+                        </p>
+                    </div>
+
+                    <div class="bg-slate-50 p-6 rounded-2xl border border-slate-200">
+                        <h3 class="text-lg font-bold text-slate-900 mb-2">2.3. Periodificación y Devengado (Sección 2 NIIF PYME)</h3>
+                        <p>
+                            Los efectos de las transacciones se reconocen cuando ocurren (base de acumulación o devengado). Los pagos por anticipado constituyen Activos que se convierten en Gastos a medida que transcurre el tiempo o se consume el servicio.
+                        </p>
                     </div>
                 </div>
 
-                <!-- SIMULADOR INTERACTIVO 1 -->
-                <div class="bg-gradient-to-r from-indigo-900 to-slate-900 text-white rounded-3xl p-6 sm:p-8 shadow-xl">
-                    <h3 class="text-lg sm:text-xl font-extrabold text-white mb-4 flex items-center gap-2">
-                        <i class="fas fa-vial text-indigo-400"></i> Simulador Interactivo: Verificador del Balance de Comprobación
+                <!-- CUESTIONARIO INTERACTIVO U2 -->
+                <div class="bg-indigo-950 text-white rounded-3xl p-6 sm:p-8 shadow-xl">
+                    <h3 class="text-xl font-bold text-indigo-300 mb-4 flex items-center gap-2">
+                        <i class="fas fa-pen-to-square"></i> Cuestionario Práctico - Unidad Didáctica 2
                     </h3>
-                    <p class="text-xs sm:text-sm text-slate-300 mb-6">
-                        Ingrese los montos correspondientes para verificar si la Ecuación Patrimonial y el Balance de Comprobación están en equilibrio.
-                    </p>
 
-                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-6">
-                        <div>
-                            <label class="block text-xs font-semibold text-indigo-200 mb-1">Total Activos (BS)</label>
-                            <input type="number" id="sim-activo" value="50000" class="w-full bg-slate-800 border border-slate-700 text-white rounded-xl px-4 py-2 text-sm focus:outline-none focus:border-indigo-500" oninput="calcularEcuacion()">
+                    <div class="space-y-6 text-sm">
+                        <div class="bg-slate-900 p-4 rounded-xl border border-slate-800">
+                            <strong class="text-amber-400 block mb-1">Pregunta 2.1 (Partida Doble):</strong>
+                            Compra de mercancías por 30.000 BS (40% contado banco, 60% crédito 30 días). Redacte el asiento contable e indique cómo varía la Ecuación Patrimonial.
                         </div>
-                        <div>
-                            <label class="block text-xs font-semibold text-indigo-200 mb-1">Total Pasivos (BS)</label>
-                            <input type="number" id="sim-pasivo" value="20000" class="w-full bg-slate-800 border border-slate-700 text-white rounded-xl px-4 py-2 text-sm focus:outline-none focus:border-indigo-500" oninput="calcularEcuacion()">
-                        </div>
-                        <div>
-                            <label class="block text-xs font-semibold text-indigo-200 mb-1">Total Patrimonio (BS)</label>
-                            <input type="number" id="sim-patrimonio" value="30000" class="w-full bg-slate-800 border border-slate-700 text-white rounded-xl px-4 py-2 text-sm focus:outline-none focus:border-indigo-500" oninput="calcularEcuacion()">
-                        </div>
-                    </div>
 
-                    <div id="sim-resultado" class="p-4 rounded-xl bg-emerald-500/20 border border-emerald-500/40 text-emerald-300 text-sm font-semibold flex items-center gap-3">
-                        <i class="fas fa-circle-check text-xl text-emerald-400"></i>
-                        <span>¡Ecuación en Equilibrio Perfecto! Activo (50,000) = Pasivo + Patrimonio (50,000).</span>
+                        <div class="bg-slate-900 p-4 rounded-xl border border-slate-800">
+                            <strong class="text-amber-400 block mb-1">Pregunta 2.2 (Errores de Balance):</strong>
+                            ¿Por qué un Balance de Comprobación sigue cuadrando si se omitió una compra de 5.000 BS o si se cargaron 2.000 BS de alquiler en la cuenta de gastos de limpieza?
+                        </div>
+
+                        <div class="bg-slate-900 p-4 rounded-xl border border-slate-800">
+                            <strong class="text-amber-400 block mb-1">Pregunta 2.3 (Periodificación):</strong>
+                            El 01/11 se pagan 12.000 BS por 6 meses de alquiler cobrando Nov a Abr. Redacte el asiento del 01/11 y el asiento de ajuste al 31/12 (2 meses consumidos).
+                        </div>
+
+                        <div>
+                            <textarea id="ans-u2" rows="6" placeholder="Respuesta 2.1: ...&#10;Respuesta 2.2: ...&#10;Respuesta 2.3: ..." class="w-full bg-slate-900 border border-slate-700 text-white rounded-xl p-4 text-xs font-mono focus:outline-none focus:border-indigo-500"></textarea>
+                        </div>
+
+                        <button onclick="copiarRespuestas('ans-u2', 'Unidad 2')" class="bg-indigo-600 hover:bg-indigo-500 text-white font-bold px-5 py-3 rounded-xl text-xs transition flex items-center gap-2 shadow-lg">
+                            <i class="fas fa-copy"></i> Copiar Mis Respuestas para Telegram
+                        </button>
                     </div>
                 </div>
             </div>
@@ -376,83 +274,58 @@
                     <h2 class="text-2xl sm:text-3xl font-bold">Realizar un Ciclo Contable Básico Completo: Apertura y Cierre</h2>
                 </div>
 
-                <p class="text-slate-600 text-base leading-relaxed mb-6">
-                    El ciclo contable representa la secuencia cronológica y metódica de operaciones registradas desde la apertura del ejercicio económico hasta su cierre definitivo, garantizando la delimitación periódica de los resultados de gestión.
-                </p>
-
-                <!-- Pasos del Ciclo Contable -->
-                <div class="space-y-4 mb-8">
-                    <div class="flex gap-4 items-start bg-slate-50 p-4 rounded-2xl border border-slate-200">
-                        <span class="bg-indigo-600 text-white font-extrabold w-8 h-8 rounded-xl flex items-center justify-center text-sm shrink-0">1</span>
-                        <div>
-                            <strong class="text-slate-900 block font-bold text-sm">Asiento de Apertura e Inventario Inicial:</strong>
-                            <p class="text-xs text-slate-600">Basado en el balance inicial del periodo, reactiva las cuentas reales de Activo (Debe), Pasivo y Patrimonio (Haber).</p>
-                        </div>
+                <div class="space-y-6 text-slate-600 text-sm sm:text-base leading-relaxed mb-8">
+                    <div class="bg-slate-50 p-6 rounded-2xl border border-slate-200">
+                        <h3 class="text-lg font-bold text-slate-900 mb-2">3.1. Naturaleza de las Cuentas Reales vs. Nominales</h3>
+                        <p>
+                            Las Cuentas Reales (Balance) son permanentes y continúan en el periodo siguiente mediante el Asiento de Apertura. Las Cuentas Nominales (Ingresos, Costos y Gastos) son temporales y se cancelan contra la cuenta Pérdidas y Ganancias al cierre del ejercicio.
+                        </p>
                     </div>
 
-                    <div class="flex gap-4 items-start bg-slate-50 p-4 rounded-2xl border border-slate-200">
-                        <span class="bg-indigo-600 text-white font-extrabold w-8 h-8 rounded-xl flex items-center justify-center text-sm shrink-0">2</span>
-                        <div>
-                            <strong class="text-slate-900 block font-bold text-sm">Registro Diario y Mayorización:</strong>
-                            <p class="text-xs text-slate-600">Asentamiento continuo de comprobantes de diario y traslado a los folios del Libro Mayor (Cuentas T).</p>
-                        </div>
+                    <div class="bg-slate-50 p-6 rounded-2xl border border-slate-200">
+                        <h3 class="text-lg font-bold text-slate-900 mb-2">3.2. Asiento de Cierre Nominal y Resultado Neta</h3>
+                        <p>
+                            El Asiento de Cierre Nominal cancela los Ingresos (cargándolos al Debe) y los Gastos/Costos (abonándolos al Haber). El resultado neto saldo en Pérdidas y Ganancias determina si hubo Utilidad o Pérdida.
+                        </p>
                     </div>
 
-                    <div class="flex gap-4 items-start bg-slate-50 p-4 rounded-2xl border border-slate-200">
-                        <span class="bg-indigo-600 text-white font-extrabold w-8 h-8 rounded-xl flex items-center justify-center text-sm shrink-0">3</span>
-                        <div>
-                            <strong class="text-slate-900 block font-bold text-sm">Asientos de Ajuste y Regularización:</strong>
-                            <p class="text-xs text-slate-600">Depreciaciones, amortizaciones, provisión de incobrables y devengamiento de diferidos al cierre del periodo.</p>
-                        </div>
-                    </div>
-
-                    <div class="flex gap-4 items-start bg-slate-50 p-4 rounded-2xl border border-slate-200">
-                        <span class="bg-indigo-600 text-white font-extrabold w-8 h-8 rounded-xl flex items-center justify-center text-sm shrink-0">4</span>
-                        <div>
-                            <strong class="text-slate-900 block font-bold text-sm">Cierre de Cuentas Nominales (Pérdidas y Ganancias):</strong>
-                            <p class="text-xs text-slate-600">Cancelación de ingresos (al Debe) y gastos/costos (al Haber) traspasando el saldo neto a la cuenta del resultado del ejercicio.</p>
-                        </div>
+                    <div class="bg-slate-50 p-6 rounded-2xl border border-slate-200">
+                        <h3 class="text-lg font-bold text-slate-900 mb-2">3.3. Hechos Posteriores a la Fecha de Cierre (Sección 32 NIIF PYME)</h3>
+                        <p>
+                            Si entre la fecha de cierre (31 de diciembre) y la fecha de autorización de los estados financieros se recibe evidencia de hechos ocurridos antes del cierre (ej. factura de servicios de diciembre recibida en enero), se debe realizar un asiento de reajuste antes de emitir los informes.
+                        </p>
                     </div>
                 </div>
 
-                <!-- Tratamieto Hechos Posteriores -->
-                <div class="bg-amber-50 rounded-2xl p-6 border border-amber-200 mb-8">
-                    <h4 class="font-bold text-amber-950 text-sm mb-2 flex items-center gap-2">
-                        <i class="fas fa-triangle-exclamation text-amber-600"></i> Sección 32 NIIF PYME: Hechos Posteriores al Cierre
-                    </h4>
-                    <p class="text-xs text-amber-900 leading-relaxed">
-                        Si tras realizar el cierre de cuentas (ej. a principios de enero) llega una factura correspondiente a consumos o servicios del periodo cerrado en diciembre, debe aplicarse el principio de devengado reabriendo temporalmente el periodo de ajuste o registrando la contingencia/ajuste según corresponda a hechos que implican ajuste (Sección 32.4).
-                    </p>
-                </div>
-
-                <!-- SIMULADOR INTERACTIVO 2: ASIENTO DE CIERRE -->
-                <div class="bg-white border-2 border-indigo-200 rounded-3xl p-6 sm:p-8 shadow-sm">
-                    <h3 class="text-xl font-bold text-slate-900 mb-4 flex items-center gap-2">
-                        <i class="fas fa-calculator text-indigo-600"></i> Simulador de Asiento de Cierre de Cuentas Nominales
+                <!-- CUESTIONARIO INTERACTIVO U3 -->
+                <div class="bg-indigo-950 text-white rounded-3xl p-6 sm:p-8 shadow-xl">
+                    <h3 class="text-xl font-bold text-indigo-300 mb-4 flex items-center gap-2">
+                        <i class="fas fa-pen-to-square"></i> Cuestionario Práctico - Unidad Didáctica 3
                     </h3>
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
-                        <div>
-                            <label class="block text-xs font-semibold text-slate-700 mb-1">Total Ingresos Operativos (BS)</label>
-                            <input type="number" id="cierre-ingresos" value="120000" class="w-full bg-slate-50 border border-slate-300 rounded-xl px-4 py-2 text-sm focus:outline-none focus:border-indigo-500" oninput="simularCierre()">
-                        </div>
-                        <div>
-                            <label class="block text-xs font-semibold text-slate-700 mb-1">Total Gastos y Costos (BS)</label>
-                            <input type="number" id="cierre-gastos" value="85000" class="w-full bg-slate-50 border border-slate-300 rounded-xl px-4 py-2 text-sm focus:outline-none focus:border-indigo-500" oninput="simularCierre()">
-                        </div>
-                    </div>
 
-                    <div class="bg-slate-900 text-slate-100 p-4 rounded-2xl text-xs font-mono mb-4 overflow-x-auto">
-                        <div class="text-slate-400 mb-2">--- ESTRUCTURA DEL ASIENTO EN LIBRO DIARIO ---</div>
-                        <div id="asiento-diario-demo">
-                            <div>31/12/202X - ASIENTO DE CIERRE NOMINAL</div>
-                            <div class="pl-4 text-emerald-400">DEBE: Ingresos por Ventas ........... BS <span id="lbl-ing">120,000.00</span></div>
-                            <div class="pl-8 text-rose-400">HABER: Gastos Operativos ......... BS <span id="lbl-gas">85,000.00</span></div>
-                            <div class="pl-8 text-amber-400">HABER: Pérdidas y Ganancias (Utilidad) BS <span id="lbl-res">35,000.00</span></div>
+                    <div class="space-y-6 text-sm">
+                        <div class="bg-slate-900 p-4 rounded-xl border border-slate-800">
+                            <strong class="text-amber-400 block mb-1">Pregunta 3.1 (Naturaleza):</strong>
+                            ¿Por qué las cuentas de Activo y Pasivo no se cancelan contra Pérdidas y Ganancias al 31 de diciembre?
                         </div>
-                    </div>
 
-                    <div id="cierre-resultado-card" class="p-4 rounded-xl bg-indigo-50 border border-indigo-200 text-indigo-900 text-sm font-semibold">
-                        Resultado Neto: Utilidad del Ejercicio por BS 35,000.00.
+                        <div class="bg-slate-900 p-4 rounded-xl border border-slate-800">
+                            <strong class="text-amber-400 block mb-1">Pregunta 3.2 (Asiento de Cierre):</strong>
+                            Ventas: 200.000 BS. Gastos y Costos Operativos: 230.000 BS. Redacte el Asiento de Cierre Nominal e indique si hubo Utilidad o Pérdida.
+                        </div>
+
+                        <div class="bg-slate-900 p-4 rounded-xl border border-slate-800">
+                            <strong class="text-amber-400 block mb-1">Pregunta 3.3 (Hecho Posterior):</strong>
+                            El 10 de enero se recibe la factura de electricidad de diciembre por 15.000 BS con libros no publicados. Redacte el asiento de reajuste según la Sección 32.
+                        </div>
+
+                        <div>
+                            <textarea id="ans-u3" rows="6" placeholder="Respuesta 3.1: ...&#10;Respuesta 3.2: ...&#10;Respuesta 3.3: ..." class="w-full bg-slate-900 border border-slate-700 text-white rounded-xl p-4 text-xs font-mono focus:outline-none focus:border-indigo-500"></textarea>
+                        </div>
+
+                        <button onclick="copiarRespuestas('ans-u3', 'Unidad 3')" class="bg-indigo-600 hover:bg-indigo-500 text-white font-bold px-5 py-3 rounded-xl text-xs transition flex items-center gap-2 shadow-lg">
+                            <i class="fas fa-copy"></i> Copiar Mis Respuestas para Telegram
+                        </button>
                     </div>
                 </div>
             </div>
@@ -465,64 +338,47 @@
             <div class="bg-white rounded-3xl p-8 shadow-sm border border-slate-200">
                 <div class="flex items-center gap-3 mb-6">
                     <span class="bg-indigo-100 text-indigo-700 text-xs font-extrabold px-3 py-1 rounded-full uppercase tracking-wider">Unidad Didáctica 4</span>
-                    <h2 class="text-2xl sm:text-3xl font-bold">Resultado de la Gestión y su Representación Contable: Cuenta de Pérdidas y Ganancias</h2>
+                    <h2 class="text-2xl sm:text-3xl font-bold">Resultado de la Gestión: La Cuenta de Pérdidas y Ganancias</h2>
                 </div>
 
-                <p class="text-slate-600 text-base leading-relaxed mb-6">
-                    El Estado de Resultados (o Estado del Resultado Integral, Sección 5 de la NIIF PYME) refleja la capacidad operativa y financiera de la gerencia para generar ganancias durante un ejercicio determinado.
-                </p>
+                <div class="space-y-6 text-slate-600 text-sm sm:text-base leading-relaxed mb-8">
+                    <div class="bg-slate-50 p-6 rounded-2xl border border-slate-200">
+                        <h3 class="text-lg font-bold text-slate-900 mb-2">4.1. Estructura Cascada del Estado de Resultados (Sección 5)</h3>
+                        <p>
+                            El Estado de Resultados revela en cascada la formación del beneficio:  
+                            <strong>Ventas Netas - Costo de Ventas = Margen Bruto</strong>  
+                            <strong>Margen Bruto - Gastos Operativos = Resultado Operativo (EBIT)</strong>  
+                            <strong>EBIT - Intereses e ISLR = Utilidad Neta</strong>
+                        </p>
+                    </div>
 
-                <!-- Estructura Cascada -->
-                <div class="bg-slate-900 text-white p-6 sm:p-8 rounded-3xl mb-8">
-                    <h3 class="text-lg font-bold text-indigo-400 mb-4 flex items-center gap-2">
-                        <i class="fas fa-layer-group"></i> Estructura Jerárquica del Estado de Resultados
+                    <div class="bg-slate-50 p-6 rounded-2xl border border-slate-200">
+                        <h3 class="text-lg font-bold text-slate-900 mb-2">4.2. ¿Qué es el EBIT y por qué es vital?</h3>
+                        <p>
+                            EBIT significa <em>Earnings Before Interest and Taxes</em> (Utilidad Antes de Intereses e Impuestos o Utilidad Operativa). Mide la ganancia pura de la operación del negocio sin verse distorsionada por el nivel de endeudamiento o la tasa impositiva.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- CUESTIONARIO INTERACTIVO U4 -->
+                <div class="bg-indigo-950 text-white rounded-3xl p-6 sm:p-8 shadow-xl">
+                    <h3 class="text-xl font-bold text-indigo-300 mb-4 flex items-center gap-2">
+                        <i class="fas fa-pen-to-square"></i> Cuestionario Práctico - Unidad Didáctica 4
                     </h3>
-                    <div class="space-y-3 font-mono text-xs sm:text-sm">
-                        <div class="flex justify-between border-b border-slate-800 pb-2">
-                            <span>(+) Ventas / Ingresos Actividad Ordinaria</span>
-                            <span class="text-emerald-400">BS 200,000</span>
-                        </div>
-                        <div class="flex justify-between border-b border-slate-800 pb-2">
-                            <span>(-) Costo de Ventas</span>
-                            <span class="text-rose-400">BS (110,000)</span>
-                        </div>
-                        <div class="flex justify-between bg-slate-800/80 p-2 rounded text-amber-300 font-bold">
-                            <span>(=) MARGEN BRUTO</span>
-                            <span>BS 90,000</span>
-                        </div>
-                        <div class="flex justify-between border-b border-slate-800 pb-2 pl-4 text-slate-300">
-                            <span>(-) Gastos de Administración y Ventas</span>
-                            <span class="text-rose-400">BS (45,000)</span>
-                        </div>
-                        <div class="flex justify-between bg-slate-800/80 p-2 rounded text-indigo-300 font-bold">
-                            <span>(=) RESULTADO OPERATIVO (EBIT)</span>
-                            <span>BS 45,000</span>
-                        </div>
-                        <div class="flex justify-between border-b border-slate-800 pb-2 pl-4 text-slate-300">
-                            <span>(-) Gastos Financieros / Impuesto (ISLR)</span>
-                            <span class="text-rose-400">BS (15,000)</span>
-                        </div>
-                        <div class="flex justify-between bg-indigo-600 text-white p-3 rounded-xl font-extrabold text-base">
-                            <span>(=) RESULTADO NETO DEL EJERCICIO</span>
-                            <span>BS 30,000</span>
-                        </div>
-                    </div>
-                </div>
 
-                <!-- Citas y Análisis Gerencial -->
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div class="glass-card p-6 rounded-2xl border-l-4 border-indigo-600">
-                        <h4 class="font-bold text-slate-900 text-sm mb-2">Diagnóstico Financiero Gerencial</h4>
-                        <p class="text-xs text-slate-600 leading-relaxed">
-                            Un crecimiento en el Margen Bruto acompañado de una caída en la Utilidad Neta alerta sobre **ineficiencias en los gastos operacionales o sobreendeudamiento financiero**.
-                        </p>
-                    </div>
-                    <div class="glass-card p-6 rounded-2xl border-l-4 border-emerald-600">
-                        <h4 class="font-bold text-slate-900 text-sm mb-2">Referencia de Autor</h4>
-                        <p class="text-xs text-slate-600 leading-relaxed">
-                            "El estado de resultados resume los resultados de las operaciones de la entidad. Permite a los usuarios evaluar la rentabilidad y la efectividad con que la gerencia ha administrado los recursos confiados."
-                        </p>
-                        <span class="text-xs text-slate-400 mt-2 block font-semibold">— Fernando Catacora, <em>Sistemas y Procedimientos Contables</em>.</span>
+                    <div class="space-y-6 text-sm">
+                        <div class="bg-slate-900 p-4 rounded-xl border border-slate-800">
+                            <strong class="text-amber-400 block mb-1">Pregunta 4.1 (Cálculos de Formulación):</strong>
+                            Ventas: 500.000 BS | Costo de Ventas: 300.000 BS | Gastos Operativos: 120.000 BS | Gastos Financieros e ISLR: 30.000 BS. Determine: 1) Margen Bruto. 2) Utilidad Operativa (EBIT). 3) Utilidad Neta.
+                        </div>
+
+                        <div>
+                            <textarea id="ans-u4" rows="5" placeholder="Respuesta Margen Bruto: ...&#10;Respuesta EBIT: ...&#10;Respuesta Utilidad Neta: ..." class="w-full bg-slate-900 border border-slate-700 text-white rounded-xl p-4 text-xs font-mono focus:outline-none focus:border-indigo-500"></textarea>
+                        </div>
+
+                        <button onclick="copiarRespuestas('ans-u4', 'Unidad 4')" class="bg-indigo-600 hover:bg-indigo-500 text-white font-bold px-5 py-3 rounded-xl text-xs transition flex items-center gap-2 shadow-lg">
+                            <i class="fas fa-copy"></i> Copiar Mis Respuestas para Telegram
+                        </button>
                     </div>
                 </div>
             </div>
@@ -535,68 +391,73 @@
             <div class="bg-white rounded-3xl p-8 shadow-sm border border-slate-200">
                 <div class="flex items-center gap-3 mb-6">
                     <span class="bg-indigo-100 text-indigo-700 text-xs font-extrabold px-3 py-1 rounded-full uppercase tracking-wider">Unidad Didáctica 5</span>
-                    <h2 class="text-2xl sm:text-3xl font-bold">Libros Oficiales y Responsabilidad Contable</h2>
+                    <h2 class="text-2xl sm:text-3xl font-bold">Libros Oficiales, Ética, Delito Contable y Secreto Mercantil</h2>
                 </div>
 
-                <p class="text-slate-600 text-base leading-relaxed mb-6">
-                    En la legislación mercantil venezolana, la contabilidad no es únicamente un registro interno, sino un conjunto de documentos con **valor probatorio legal** ante tribunales, el Registro Mercantil y la administración tributaria (SENIAT).
-                </p>
-
-                <!-- Marco del Código de Comercio -->
-                <div class="bg-amber-50 rounded-2xl p-6 border border-amber-200 mb-8">
-                    <h3 class="font-bold text-amber-950 text-lg mb-3 flex items-center gap-2">
-                        <i class="fas fa-gavel text-amber-600"></i> Código de Comercio de Venezuela (Artículos 32 a 44)
-                    </h3>
-                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs text-amber-900">
-                        <div class="bg-white/80 p-4 rounded-xl border border-amber-200">
-                            <strong class="block text-amber-950 font-bold mb-1">Art. 32 - Libros Obligatorios:</strong>
-                            Todo comerciante debe llevar en idioma castellano su Libro Diario, su Libro Mayor y su Libro de Inventarios.
-                        </div>
-                        <div class="bg-white/80 p-4 rounded-xl border border-amber-200">
-                            <strong class="block text-amber-950 font-bold mb-1">Art. 33 - Legalización:</strong>
-                            Presentación de libros ante el Registro Mercantil para ser sellados y foliados antes de su uso.
-                        </div>
-                        <div class="bg-white/80 p-4 rounded-xl border border-amber-200">
-                            <strong class="block text-amber-950 font-bold mb-1">Art. 37 - Prohibiciones:</strong>
-                            Se prohíbe alterar el orden de los asientos, dejar espacios en blanco, hacer raspaduras, enmiendas o tachaduras.
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Subsanación Legal de Errores -->
-                <div class="bg-slate-900 text-white rounded-3xl p-6 sm:p-8 mb-8">
-                    <h3 class="text-lg font-bold text-indigo-400 mb-3 flex items-center gap-2">
-                        <i class="fas fa-shield-halved"></i> ¿Cómo Subsanar un Error en Libros Impresos o Asentados?
-                    </h3>
-                    <p class="text-xs sm:text-sm text-slate-300 leading-relaxed mb-4">
-                        Dado que el Art. 37 del Código de Comercio prohíbe alterar físicamente los libros asentados, cualquier omisión o error detectado posteriormente debe corregirse mediante un **Asiento de Reclasificación o Contraasiento** registrado en la fecha actual en que se descubre la falla.
-                    </p>
-                    <div class="bg-slate-800 p-4 rounded-xl border border-slate-700 text-xs font-mono text-slate-300">
-                        // EJEMPLO DE ASIENTO DE CORRECCIÓN <br>
-                        Fecha Actual: 15/10/202X <br>
-                        DEBE: Gastos de Publicidad (Reclasificación por omisión de fecha 05/08/202X) ... BS 5,000 <br>
-                        HABER: Cuentas por Pagar Comerciales ....................................... BS 5,000
-                    </div>
-                </div>
-
-                <!-- Responsabilidad Ética y Penal -->
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div class="bg-rose-50 p-6 rounded-2xl border border-rose-200">
-                        <h4 class="font-bold text-rose-950 text-sm mb-2 flex items-center gap-2">
-                            <i class="fas fa-file-invoice-dollar text-rose-600"></i> Código Orgánico Tributario (COT)
-                        </h4>
-                        <p class="text-xs text-rose-900 leading-relaxed">
-                            Establece sanciones pecuniarias y clausura temporal de establecimientos por no mantener los libros exigidos por las leyes tributarias o llevarlos con atraso superior al permitido.
+                <div class="space-y-6 text-slate-600 text-sm sm:text-base leading-relaxed mb-8">
+                    <div class="bg-slate-50 p-6 rounded-2xl border border-slate-200">
+                        <h3 class="text-lg font-bold text-slate-900 mb-2">5.1. Libros Regulados por Entes Venezolanos</h3>
+                        <p>
+                            El Código de Comercio (Art. 32) exige Libro Diario, Mayor e Inventarios foliados y sellados ante el Registro Mercantil. El SENIAT exige Libros de Compras y Ventas de IVA (Providencia 0049), sancionando su omisión con clausura del local (COT Art. 155).
                         </p>
                     </div>
 
-                    <div class="bg-indigo-50 p-6 rounded-2xl border border-indigo-200">
-                        <h4 class="font-bold text-indigo-950 text-sm mb-2 flex items-center gap-2">
-                            <i class="fas fa-user-shield text-indigo-600"></i> Ética del Contador Público
-                        </h4>
-                        <p class="text-xs text-indigo-900 leading-relaxed">
-                            Bajo la Ley del Ejercicio de la Contaduría Pública en Venezuela y el Código de Ética de la FCCPV, la fe pública otorgada por el contador exige imparcialidad, rectitud e independencia de criterio.
+                    <div class="bg-slate-50 p-6 rounded-2xl border border-slate-200">
+                        <h3 class="text-lg font-bold text-slate-900 mb-2">5.2. Código Deontológico y Fe Pública</h3>
+                        <p>
+                            El Contador Público otorga fe pública (Ley del Ejercicio Art. 11). Bajo el Código de Ética de la FCCPV, debe mantener estricta Integridad, Objetividad e Independencia de Criterio, rechazando cualquier intento de maquillar estados financieros.
                         </p>
+                    </div>
+
+                    <div class="bg-slate-50 p-6 rounded-2xl border border-slate-200">
+                        <h3 class="text-lg font-bold text-slate-900 mb-2">5.3. Delito Contable y Legitimación de Capitales (LOCDOFT)</h3>
+                        <p>
+                            Bajo la Ley Orgánica contra la Delincuencia Organizada y Financiamiento al Terrorismo (LOCDOFT) y resoluciones SUDEBAN/UNIF, el Contador es Sujeto Obligado. Debe aplicar Debida Diligencia (DDC) y reportar actividades sospechosas (RAS).
+                        </p>
+                    </div>
+
+                    <div class="bg-slate-50 p-6 rounded-2xl border border-slate-200">
+                        <h3 class="text-lg font-bold text-slate-900 mb-2">5.4. Normativa Mercantil del Secreto Contable (Arts. 41-44)</h3>
+                        <p>
+                            El Art. 41 del Código de Comercio establece la reserva de la contabilidad. La Exhibición General (total) sólo procede en 4 casos taxativos (Art. 42): Sucesión, Comunidad de Bienes, Liquidación o Quiebra. En cualquier otro juicio sólo procede la Exhibición Parcial (Art. 43).
+                        </p>
+                    </div>
+                </div>
+
+                <!-- CUESTIONARIO INTERACTIVO U5 -->
+                <div class="bg-indigo-950 text-white rounded-3xl p-6 sm:p-8 shadow-xl">
+                    <h3 class="text-xl font-bold text-indigo-300 mb-4 flex items-center gap-2">
+                        <i class="fas fa-pen-to-square"></i> Cuestionario Práctico - Unidad Didáctica 5
+                    </h3>
+
+                    <div class="space-y-6 text-sm">
+                        <div class="bg-slate-900 p-4 rounded-xl border border-slate-800">
+                            <strong class="text-amber-400 block mb-1">Pregunta 5.1 (Sanción COT):</strong>
+                            ¿Cuál es la sanción del COT por no llevar al día el Libro de IVA exigido por el SENIAT?
+                        </div>
+
+                        <div class="bg-slate-900 p-4 rounded-xl border border-slate-800">
+                            <strong class="text-amber-400 block mb-1">Pregunta 5.2 (Corrección Legal Art. 37):</strong>
+                            El 15/10 se descubre la omisión de una compra por 8.000 BS del 05/08. Redacte el Asiento de Reclasificación sin violar la prohibición de tachaduras o alteración cronológica del Art. 37.
+                        </div>
+
+                        <div class="bg-slate-900 p-4 rounded-xl border border-slate-800">
+                            <strong class="text-amber-400 block mb-1">Pregunta 5.3 (LOCDOFT):</strong>
+                            Un cliente realiza depósitos millonarios en efectivo sin facturas de soporte. ¿Cuál es el deber del Contador Público como Sujeto Obligado?
+                        </div>
+
+                        <div class="bg-slate-900 p-4 rounded-xl border border-slate-800">
+                            <strong class="text-amber-400 block mb-1">Pregunta 5.4 (Secreto Contable Art. 42):</strong>
+                            ¿En qué 4 casos únicos sí procede legalmente la Exhibición General (total) de los libros contables?
+                        </div>
+
+                        <div>
+                            <textarea id="ans-u5" rows="7" placeholder="Respuesta 5.1: ...&#10;Respuesta 5.2: ...&#10;Respuesta 5.3: ...&#10;Respuesta 5.4: ..." class="w-full bg-slate-900 border border-slate-700 text-white rounded-xl p-4 text-xs font-mono focus:outline-none focus:border-indigo-500"></textarea>
+                        </div>
+
+                        <button onclick="copiarRespuestas('ans-u5', 'Unidad 5')" class="bg-indigo-600 hover:bg-indigo-500 text-white font-bold px-5 py-3 rounded-xl text-xs transition flex items-center gap-2 shadow-lg">
+                            <i class="fas fa-copy"></i> Copiar Mis Respuestas para Telegram
+                        </button>
                     </div>
                 </div>
             </div>
@@ -614,7 +475,6 @@
 
     <!-- Scripts de Funcionalidad e Interacción -->
     <script>
-        // Cambio de Pestañas
         function switchTab(tabId) {
             document.querySelectorAll('.tab-content').forEach(content => {
                 content.classList.remove('active');
@@ -627,42 +487,18 @@
             document.getElementById('tab-' + tabId).classList.add('active');
         }
 
-        // Simulador de Ecuación Patrimonial (Unidad 2)
-        function calcularEcuacion() {
-            const activo = parseFloat(document.getElementById('sim-activo').value) || 0;
-            const pasivo = parseFloat(document.getElementById('sim-pasivo').value) || 0;
-            const patrimonio = parseFloat(document.getElementById('sim-patrimonio').value) || 0;
-            
-            const sumaDerecha = pasivo + patrimonio;
-            const card = document.getElementById('sim-resultado');
-
-            if (Math.abs(activo - sumaDerecha) < 0.01) {
-                card.className = "p-4 rounded-xl bg-emerald-500/20 border border-emerald-500/40 text-emerald-300 text-sm font-semibold flex items-center gap-3";
-                card.innerHTML = `<i class="fas fa-circle-check text-xl text-emerald-400"></i><span>¡Ecuación en Equilibrio Perfecto! Activo (${activo.toLocaleString()}) = Pasivo + Patrimonio (${sumaDerecha.toLocaleString()}).</span>`;
-            } else {
-                card.className = "p-4 rounded-xl bg-rose-500/20 border border-rose-500/40 text-rose-300 text-sm font-semibold flex items-center gap-3";
-                card.innerHTML = `<i class="fas fa-triangle-exclamation text-xl text-rose-400"></i><span>Desbalance Detectado: Activo (${activo.toLocaleString()}) ≠ Pasivo + Patrimonio (${sumaDerecha.toLocaleString()}). Diferencia: BS ${(activo - sumaDerecha).toLocaleString()}.</span>`;
+        function copiarRespuestas(textareaId, unidadNombre) {
+            const txt = document.getElementById(textareaId).value;
+            if (!txt.trim()) {
+                alert("Por favor escribe primero tus respuestas en la casilla antes de copiar.");
+                return;
             }
-        }
-
-        // Simulador de Asiento de Cierre (Unidad 3)
-        function simularCierre() {
-            const ing = parseFloat(document.getElementById('cierre-ingresos').value) || 0;
-            const gas = parseFloat(document.getElementById('cierre-gastos').value) || 0;
-            const res = ing - gas;
-
-            document.getElementById('lbl-ing').innerText = ing.toLocaleString('en-US', {minimumFractionDigits: 2});
-            document.getElementById('lbl-gas').innerText = gas.toLocaleString('en-US', {minimumFractionDigits: 2});
-            document.getElementById('lbl-res').innerText = Math.abs(res).toLocaleString('en-US', {minimumFractionDigits: 2});
-
-            const card = document.getElementById('cierre-resultado-card');
-            if (res >= 0) {
-                card.className = "p-4 rounded-xl bg-indigo-50 border border-indigo-200 text-indigo-900 text-sm font-semibold";
-                card.innerText = `Resultado Neto: Utilidad del Ejercicio por BS ${res.toLocaleString('en-US', {minimumFractionDigits: 2})}.`;
-            } else {
-                card.className = "p-4 rounded-xl bg-rose-50 border border-rose-200 text-rose-900 text-sm font-semibold";
-                card.innerText = `Resultado Neto: Pérdida del Ejercicio por BS ${Math.abs(res).toLocaleString('en-US', {minimumFractionDigits: 2})}.`;
-            }
+            const formato = `📝 RESPUESTAS DEL CUESTIONARIO (${unidadNombre})\n-----------------------------------\n` + txt;
+            navigator.clipboard.writeText(formato).then(() => {
+                alert("¡Respuestas copiadas al portapapeles! Ahora puedes pegarlas directamente en el canal de Telegram.");
+            }).catch(err => {
+                alert("Copie manualmente el siguiente texto:\n\n" + formato);
+            });
         }
     </script>
 
