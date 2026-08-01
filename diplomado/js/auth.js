@@ -38,6 +38,7 @@ function initSupabaseAuth() {
 function esRutaRestringida(path) {
     const p = decodeURIComponent(path).toUpperCase();
     if (p.includes("MODULO_VIII") || p.includes("MODULO VIII")) return true;
+    if (p.includes("MODULO_IX") || p.includes("MODULO IX")) return true;
     if (p.includes("MODULO_XI") || p.includes("MODULO XI")) return true;
     if (p.includes("MODULO_XII") || p.includes("MODULO XII")) return true;
     if (p.includes("MODULO_X.HTML") || p.includes("MODULO X/") || p.includes("MODULO_X/")) return true;
@@ -51,6 +52,7 @@ function actualizarVistaModulosIndex(isAdmin) {
 
         const modulos = [
             { id: "modulo8", num: "VIII", url: "MODULO VIII/MODULO_VIII.html" },
+            { id: "modulo9", num: "IX", url: "MODULO IX/MODULO_IX.html" },
             { id: "modulo10", num: "X", url: "MODULO X/MODULO_X.html" },
             { id: "modulo11", num: "XI", url: "MODULO XI/MODULO_XI.html" },
             { id: "modulo12", num: "XII", url: "MODULO XII/MODULO_XII.html" }
