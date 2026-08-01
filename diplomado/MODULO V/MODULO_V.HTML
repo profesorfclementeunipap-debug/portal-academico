@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Módulo V: Contabilidad de Gestión | Diplomado UCSAR</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Outfit:wght@400;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary: #0f172a;
+            --accent: #0ea5e9;
+            --bg-gradient: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #f8fafc;
+            color: #334155;
+            line-height: 1.6;
+        }
+        h1, h2, h3, h4 {
+            font-family: 'Outfit', sans-serif;
+            color: var(--primary);
+        }
+        .tab-content { display: none; }
+        .tab-content.active { display: block; animation: fadeIn 0.4s ease-in-out; }
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(5px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .card-hover:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- Navegación -->
+    <nav class="bg-white/80 backdrop-blur-md sticky top-0 z-50 border-b border-slate-200 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center gap-3">
+                    <div class="bg-sky-500 text-white p-2 rounded-lg">
+                        <i class="fa-solid fa-chart-line"></i>
+                    </div>
+                    <div>
+                        <span class="font-bold text-xl text-slate-900 block leading-none">UCSAR</span>
+                        <span class="text-[10px] text-slate-500 font-semibold tracking-wider uppercase">Diplomado Contabilidad</span>
+                    </div>
+                </div>
+                <div class="hidden md:flex space-x-6 text-sm font-semibold">
+                    <a href="index.html" class="text-slate-500 hover:text-sky-500 transition">Dashboard</a>
+                    <a href="index.html" class="text-slate-500 hover:text-sky-500 transition">Módulos</a>
+                    <a href="biblioteca.html" class="text-slate-500 hover:text-sky-500 transition">Biblioteca</a>
+                </div>
+                <div>
+                    <button onclick="logout()" class="text-slate-500 hover:text-red-500 transition text-sm font-bold">
+                        <i class="fa-solid fa-sign-out-alt mr-1"></i> Salir
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Header del Módulo -->
+    <header class="bg-slate-900 text-white py-16">
+        <div class="max-w-5xl mx-auto px-6 text-center">
+            <span class="bg-sky-500 text-white text-xs font-bold uppercase tracking-widest py-1 px-3 rounded-full mb-4 inline-block">Módulo V</span>
+            <h1 class="text-4xl md:text-5xl font-bold mb-6">Contabilidad de Gestión</h1>
+            <p class="text-lg text-slate-300 max-w-3xl mx-auto">
+                Rama de la contabilidad orientada al análisis interno. Su finalidad principal es ayudar a la administración a planificar, controlar y tomar decisiones en contextos empresariales complejos como el venezolano.
+            </p>
+        </div>
+    </header>
+
+    <main class="max-w-6xl mx-auto px-4 py-12">
+        
+        <!-- Tabs de Navegación -->
+        <div class="flex flex-wrap border-b border-slate-200 mb-8" id="tabs">
+            <button class="tab-btn active px-6 py-4 font-semibold text-sky-600 border-b-2 border-sky-600 focus:outline-none" onclick="openTab(event, 'ud1')">UD 1. ¿Qué es?</button>
+            <button class="tab-btn px-6 py-4 font-semibold text-slate-500 hover:text-sky-600 focus:outline-none" onclick="openTab(event, 'ud2')">UD 2. Tipos de Costes</button>
+            <button class="tab-btn px-6 py-4 font-semibold text-slate-500 hover:text-sky-600 focus:outline-none" onclick="openTab(event, 'ud3')">UD 3. Sistemas de Costes</button>
+            <button class="tab-btn px-6 py-4 font-semibold text-slate-500 hover:text-sky-600 focus:outline-none" onclick="openTab(event, 'ejemplos')">Ejemplos Prácticos</button>
+            <button class="tab-btn px-6 py-4 font-semibold text-slate-500 hover:text-sky-600 focus:outline-none" onclick="openTab(event, 'eval')">Reto Autoevaluación</button>
+        </div>
+
+        <!-- UNIDAD DIDÁCTICA 1 -->
+        <div id="ud1" class="tab-content active">
+            <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-8 mb-8 card-hover">
+                <h2 class="text-3xl font-bold mb-6 border-b pb-4"><i class="fa-solid fa-magnifying-glass-chart text-sky-500 mr-3"></i>Unidad Didáctica 1. ¿Qué es la contabilidad de gestión?</h2>
+                
+                <div class="prose max-w-none text-slate-600 space-y-6">
+                    <p class="text-lg font-medium text-slate-800">
+                        La contabilidad de gestión es el sistema de información interna que permite medir, analizar e interpretar los recursos utilizados por una organización para facilitar la toma de decisiones.
+                    </p>
+                    <p>
+                        Su enfoque <strong>no está en cumplir una obligación legal externa</strong>, sino en proporcionar información útil para la dirección. Esto incluye datos sobre costos, eficiencia, productividad, capacidad instalada, márgenes de contribución, desviaciones presupuestarias y comportamiento de las operaciones.
+                    </p>
+                    <p>
+                        Su finalidad es servir a la gestión empresarial respondiendo preguntas que la contabilidad financiera no resuelve por sí sola:
+                    </p>
+                    <ul class="list-disc pl-6 space-y-2 text-slate-700 bg-slate-50 p-6 rounded-lg border border-slate-100">
+                        <li>¿Qué producto deja más utilidad neta?</li>
+                        <li>¿Qué área consume más recursos innecesarios?</li>
+                        <li>¿Qué costo se puede reducir sin afectar la calidad final?</li>
+                        <li>¿Qué línea conviene mantener o cerrar?</li>
+                        <li>¿Qué actividad puede externalizarse (Outsourcing)?</li>
+                        <li>¿Qué nivel de producción maximiza el beneficio corporativo?</li>
+                    </ul>
+
+                    <div class="mt-10 mb-8 border border-sky-200 rounded-xl overflow-hidden shadow-sm">
+                        <div class="bg-sky-50 px-6 py-4 border-b border-sky-200">
+                            <h3 class="text-xl font-bold text-sky-900 m-0"><i class="fa-solid fa-code-compare mr-2"></i>Contabilidad de Gestión vs. Contabilidad Financiera</h3>
+                        </div>
+                        <div class="p-6 bg-white">
+                            <div class="overflow-x-auto">
+                                <table class="w-full text-left border-collapse">
+                                    <thead>
+                                        <tr>
+                                            <th class="border-b-2 border-slate-200 p-3 text-slate-800">Característica</th>
+                                            <th class="border-b-2 border-slate-200 p-3 text-slate-800">Contabilidad Financiera</th>
+                                            <th class="border-b-2 border-slate-200 p-3 text-sky-700 bg-sky-50 rounded-t-md">Contabilidad de Gestión</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="text-sm">
+                                        <tr class="border-b border-slate-100">
+                                            <td class="p-3 font-semibold text-slate-700">Usuarios Principales</td>
+                                            <td class="p-3">Terceros externos: Accionistas, SENIAT, Bancos, Inversionistas.</td>
+                                            <td class="p-3 bg-sky-50">Usuarios internos: Gerentes, directores, jefes de planta.</td>
+                                        </tr>
+                                        <tr class="border-b border-slate-100">
+                                            <td class="p-3 font-semibold text-slate-700">Tipo de Información</td>
+                                            <td class="p-3">Monetaria y estrictamente histórica (ya realizada).</td>
+                                            <td class="p-3 bg-sky-50">Monetaria y NO monetaria (horas, desperdicios, capacidad ociosa), predictiva.</td>
+                                        </tr>
+                                        <tr class="border-b border-slate-100">
+                                            <td class="p-3 font-semibold text-slate-700">Normativa</td>
+                                            <td class="p-3">Estrictamente regulada por VEN-NIF y Leyes Tributarias.</td>
+                                            <td class="p-3 bg-sky-50">Flexible y adaptable a las necesidades de la organización. Sin regulaciones.</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="p-3 font-semibold text-slate-700">Propósito</td>
+                                            <td class="p-3">Informar lo que ocurrió (Pasado).</td>
+                                            <td class="p-3 bg-sky-50 font-bold text-sky-800">Decidir lo que conviene hacer (Futuro).</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <p class="text-sm mt-4 text-slate-500 italic">En consecuencia, no compiten entre sí: se complementan. Una empresa sana en Venezuela necesita ambas.</p>
+                        </div>
+                    </div>
+
+                    <!-- CASO REAL VENEZUELA -->
+                    <div class="bg-amber-50 border-l-4 border-amber-500 p-6 rounded-r-xl shadow-sm my-8">
+                        <div class="flex items-start gap-4">
+                            <div class="bg-amber-100 p-3 rounded-full text-amber-600 mt-1">
+                                <i class="fa-solid fa-map-location-dot text-xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-lg font-bold text-amber-900 mb-2">Caso Real de Venezuela: Industria Farmacéutica</h4>
+                                <p class="text-sm text-amber-800 mb-3">
+                                    Un caso verificable en Venezuela es el estudio sobre contabilidad de costos y de gestión en la industria farmacéutica venezolana, publicado en la <em>Revista Venezolana de Gerencia (SciELO)</em>. El trabajo analiza cómo una empresa del estado Mérida utiliza prácticas de costos y destaca la necesidad de sistemas que apoyen la toma de decisiones administrativas.
+                                </p>
+                                <p class="text-sm text-amber-800 mb-3">
+                                    El artículo muestra que el control de costos y la información interna son esenciales para sectores donde el consumo de recursos, la producción y la rentabilidad deben vigilarse con precisión exhaustiva.
+                                </p>
+                                <p class="text-sm text-amber-800 font-semibold">
+                                    Otra investigación sobre tendencias en Venezuela confirma que la contabilidad de gestión no es una moda técnica, sino una <strong>herramienta de supervivencia</strong> y adaptación para sostener la administración en entornos económicos complejos.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <!-- UNIDAD DIDÁCTICA 2 -->
+        <div id="ud2" class="tab-content">
+            <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-8 mb-8 card-hover">
+                <h2 class="text-3xl font-bold mb-6 border-b pb-4"><i class="fa-solid fa-coins text-sky-500 mr-3"></i>Unidad Didáctica 2. Tipos de Costes</h2>
+                
+                <div class="prose max-w-none text-slate-600">
+                    <p class="mb-6">
+                        La clasificación de costos es uno de los pilares de la contabilidad de gestión. Un costo representa el <strong>sacrificio de recursos</strong> realizado para producir un bien o prestar un servicio. Clasificarlos correctamente permite calcular mejor el costo unitario, fijar precios, controlar la rentabilidad y tomar decisiones más acertadas.
+                    </p>
+
+                    <div class="grid grid-cols-1 gap-6 my-6">
+                        <!-- Acordeón 1 -->
+                        <div class="border border-slate-200 rounded-lg">
+                            <button class="w-full px-6 py-4 text-left font-bold text-slate-800 flex justify-between items-center focus:outline-none" onclick="toggleAccordion('acc-cost-1')">
+                                <span>1. Costes Fijos y Variables</span>
+                                <i class="fa-solid fa-chevron-down text-slate-400 transition-transform duration-300" id="icon-acc-cost-1"></i>
+                            </button>
+                            <div id="acc-cost-1" class="accordion-content px-6 bg-slate-50">
+                                <div class="py-4 text-sm border-t border-slate-200 mt-2 space-y-3">
+                                    <p><strong>Costos Fijos:</strong> Permanecen relativamente constantes dentro de un rango de actividad. No aumentan ni disminuyen de forma directa con el volumen de producción en el corto plazo. <br><em>Ejemplos: Alquiler de planta, salarios fijos administrativos, seguros, depreciación línea recta.</em></p>
+                                    <p><strong>Costos Variables:</strong> Cambian en proporción al nivel de actividad. Si se produce más, aumentan; si se produce menos, disminuyen. <br><em>Ejemplos típicos: Materia prima, insumos directos, comisiones de venta, empaques.</em> Esta clasificación es crucial para calcular el punto de equilibrio y el margen de contribución.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Acordeón 2 -->
+                        <div class="border border-slate-200 rounded-lg">
+                            <button class="w-full px-6 py-4 text-left font-bold text-slate-800 flex justify-between items-center focus:outline-none" onclick="toggleAccordion('acc-cost-2')">
+                                <span>2. Costes Directos e Indirectos</span>
+                                <i class="fa-solid fa-chevron-down text-slate-400 transition-transform duration-300" id="icon-acc-cost-2"></i>
+                            </button>
+                            <div id="acc-cost-2" class="accordion-content px-6 bg-slate-50">
+                                <div class="py-4 text-sm border-t border-slate-200 mt-2 space-y-3">
+                                    <p><strong>Costos Directos:</strong> Pueden asignarse de manera clara y económicamente factible a un objeto de costo (un producto, orden o servicio). <br><em>Por ejemplo: la materia prima principal de un producto o la mano de obra directa del operario de ensamblaje.</em></p>
+                                    <p><strong>Costos Indirectos:</strong> No pueden asociarse fácilmente a un solo objeto de costo, por lo que deben distribuirse según criterios técnicos (prorrateo). <br><em>Ejemplos: Supervisión, mantenimiento, energía general, limpieza de planta.</em> Un error en su distribución puede alterar fatalmente la rentabilidad por línea.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Acordeón 3 -->
+                        <div class="border border-slate-200 rounded-lg">
+                            <button class="w-full px-6 py-4 text-left font-bold text-slate-800 flex justify-between items-center focus:outline-none" onclick="toggleAccordion('acc-cost-3')">
+                                <span>3. Costes Históricos y Previstos</span>
+                                <i class="fa-solid fa-chevron-down text-slate-400 transition-transform duration-300" id="icon-acc-cost-3"></i>
+                            </button>
+                            <div id="acc-cost-3" class="accordion-content px-6 bg-slate-50">
+                                <div class="py-4 text-sm border-t border-slate-200 mt-2 space-y-3">
+                                    <p><strong>Históricos:</strong> Son los que ya ocurrieron y se registran después del hecho. Son útiles para medir resultados reales y evaluar desviaciones.</p>
+                                    <p><strong>Previstos (Estimados/Estándar):</strong> Son proyecciones que se hacen antes de operar. Se usan para planificar, presupuestar y tomar decisiones anticipadas.</p>
+                                    <p class="italic">El costo histórico sirve para el control; el previsto, para la gestión del futuro.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- CASO REAL VENEZUELA -->
+                    <div class="bg-blue-50 border-l-4 border-blue-500 p-6 rounded-r-xl shadow-sm mt-8">
+                        <div class="flex items-start gap-4">
+                            <div class="bg-blue-100 p-3 rounded-full text-blue-600 mt-1">
+                                <i class="fa-solid fa-industry text-xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-lg font-bold text-blue-900 mb-2">Caso Real de Venezuela: Sector Metalmecánico Zuliano</h4>
+                                <p class="text-sm text-blue-800 mb-3">
+                                    Un estudio relevante sobre la <em>"Gestión de costos de las actividades en el sector metalmecánico de la región zuliana"</em> (SciELO) evidencia que las empresas necesitan clasificar adecuadamente sus costos para controlar procesos y mejorar su desempeño.
+                                </p>
+                                <p class="text-sm text-blue-800">
+                                    En la práctica, muchas empresas en Venezuela enfrentan graves dificultades porque <strong>mezclan costos fijos con variables</strong>, o porque asignan incorrectamente costos indirectos a sus productos (como repartir la factura eléctrica en partes iguales sin medir el consumo de cada máquina). Eso provoca precios mal calculados, márgenes irreales y decisiones de venta que generan pérdidas operativas ocultas. 
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <!-- UNIDAD DIDÁCTICA 3 -->
+        <div id="ud3" class="tab-content">
+            <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-8 mb-8 card-hover">
+                <h2 class="text-3xl font-bold mb-6 border-b pb-4"><i class="fa-solid fa-sitemap text-sky-500 mr-3"></i>Unidad Didáctica 3. Sistemas de Costes</h2>
+                
+                <div class="prose max-w-none text-slate-600">
+                    <p class="mb-6">
+                        Los sistemas de costos son métodos estructurados para acumular, medir y asignar los recursos consumidos en la producción. Su función es ofrecer un costo más realista. La elección depende del tipo de empresa y el nivel de precisión requerido.
+                    </p>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 my-8">
+                        <div class="bg-slate-50 p-6 rounded-xl border-l-4 border-sky-500">
+                            <h3 class="font-bold text-slate-800 mb-3 text-lg">1. Enfoques Tradicionales</h3>
+                            
+                            <h4 class="font-semibold text-slate-700 mt-4 mb-1">Empresas Uniproducto</h4>
+                            <p class="text-sm mb-4">Fabricación o comercialización de un solo bien homogéneo. El cálculo es más simple porque el objeto de costo es único. Se acumulan los costos totales y se dividen entre las unidades producidas.</p>
+                            
+                            <h4 class="font-semibold text-slate-700 mb-1">Direct Costing (Costeo Variable)</h4>
+                            <p class="text-sm mb-4">Asigna al producto <strong>solo los costos variables</strong>. Los fijos se consideran gastos del período y van al estado de resultados. Valiosísimo para evaluar el Margen de Contribución y decidir a corto plazo qué línea mantener activa.</p>
+                            
+                            <h4 class="font-semibold text-slate-700 mb-1">Full Costing (Costeo por Absorción)</h4>
+                            <p class="text-sm">Incorpora en el costo del producto <strong>tanto variables como fijos de fabricación</strong>. Da una visión completa y es el método exigido por normativas para valorar inventarios, aunque puede ocultar ineficiencias de capacidad.</p>
+                        </div>
+
+                        <div class="bg-slate-50 p-6 rounded-xl border-l-4 border-indigo-500 flex flex-col justify-between">
+                            <div>
+                                <h3 class="font-bold text-slate-800 mb-3 text-lg">2. Sistema ABC (Activity-Based Costing)</h3>
+                                <p class="text-sm mb-4">El Costeo Basado en Actividades distribuye primero los costos a las <em>actividades</em> y luego a los <em>objetos de costo</em> mediante inductores (Cost Drivers).</p>
+                                <p class="text-sm mb-4">Este modelo busca mayor precisión en empresas donde los costos indirectos son muy elevados y distintos productos consumen recursos de manera desigual. Es ideal para identificar qué actividades agregan valor y cuáles generan desperdicio.</p>
+                            </div>
+                            <div class="mt-4 p-4 bg-white border border-indigo-100 rounded-lg text-sm shadow-sm">
+                                <h4 class="text-indigo-800 font-bold mb-2"><i class="fa-solid fa-book-journal-whills mr-2"></i>Caso de Éxito: Vitalim C.A.</h4>
+                                <p class="text-slate-600 text-xs">Una investigación en Venezuela sobre la aplicación del costeo ABC en la empresa <strong>Vitalim C.A. en Chivacoa</strong> demuestra cómo este método mejora drásticamente la asignación de recursos. En empresas venezolanas con costos indirectos complejos, el ABC ayuda a asignar con mayor justicia los recursos consumidos por cada actividad, cambiando completamente las decisiones de producción frente a la crisis.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- EJEMPLOS PRÁCTICOS DE COSTOS -->
+        <div id="ejemplos" class="tab-content">
+            <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-8 mb-8 card-hover">
+                <h2 class="text-3xl font-bold mb-6 border-b pb-4"><i class="fa-solid fa-chalkboard-user text-sky-500 mr-3"></i>Ejemplos Prácticos de Contabilidad de Costos</h2>
+                
+                <div class="space-y-8">
+                    <!-- Ejemplo 1: Panadería -->
+                    <div class="bg-slate-50 border border-slate-200 rounded-xl overflow-hidden">
+                        <div class="bg-slate-800 text-white p-4">
+                            <h3 class="font-bold text-lg"><i class="fa-solid fa-bread-slice mr-2"></i>Ejemplo 1: Costos Directos e Indirectos en una Panadería</h3>
+                        </div>
+                        <div class="p-6">
+                            <p class="text-slate-600 mb-4">Si analizamos la elaboración de Pan Canilla (Objeto de costo), podemos desglosar sus costos así:</p>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div class="bg-white p-4 rounded-lg border border-emerald-100 shadow-sm">
+                                    <h4 class="text-emerald-700 font-bold mb-2 border-b border-emerald-100 pb-2">Costos Directos</h4>
+                                    <ul class="text-sm text-slate-600 space-y-1 list-disc pl-5">
+                                        <li><strong>Materia Prima Directa:</strong> Harina de trigo, levadura, sal.</li>
+                                        <li><strong>Mano de Obra Directa:</strong> El salario del maestro panadero que amasa exclusivamente ese producto.</li>
+                                    </ul>
+                                </div>
+                                <div class="bg-white p-4 rounded-lg border border-orange-100 shadow-sm">
+                                    <h4 class="text-orange-700 font-bold mb-2 border-b border-orange-100 pb-2">Costos Indirectos (CIF)</h4>
+                                    <ul class="text-sm text-slate-600 space-y-1 list-disc pl-5">
+                                        <li><strong>Materiales Indirectos:</strong> Manteca para engrasar la bandeja (difícil de medir por canilla).</li>
+                                        <li><strong>Mano de Obra Indirecta:</strong> Salario de la cajera y personal de limpieza.</li>
+                                        <li><strong>Otros:</strong> Depreciación del horno y recibo eléctrico. (Requieren prorrateo).</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Ejemplo 2: Toma de Decisiones -->
+                    <div class="bg-slate-50 border border-slate-200 rounded-xl overflow-hidden">
+                        <div class="bg-slate-800 text-white p-4">
+                            <h3 class="font-bold text-lg"><i class="fa-solid fa-scale-unbalanced mr-2"></i>Ejemplo 2: Toma de Decisiones (Problema de Costos Fijos)</h3>
+                        </div>
+                        <div class="p-6">
+                            <p class="text-slate-600 mb-4"><strong>Situación:</strong> Una empresa ensambladora en Venezuela tiene ventas muy bajas pero unos Costos Fijos altísimos (alquiler del galpón enorme, personal de seguridad contratado, sistemas de licencias caras).</p>
+                            <p class="text-slate-600 mb-4"><strong>El Problema que surge:</strong> Al producir pocas unidades, todo el "peso" del gigantesco costo fijo se reparte entre poquísimos productos. Esto dispara el <strong>Costo Unitario Total</strong> a las nubes, obligando a subir el precio de venta hasta quedar fuera del mercado.</p>
+                            <div class="bg-sky-100 p-4 rounded-lg border border-sky-200 text-sm text-sky-900 font-medium">
+                                <i class="fa-solid fa-lightbulb text-sky-600 mr-2"></i><strong>Decisión de Gestión:</strong> La contabilidad gerencial sugeriría: a) Mudarse a un galpón más pequeño (reducir costo fijo), b) Vender capacidad ociosa (alquilar la mitad del galpón a terceros), o c) Ampliar agresivamente el mercado para lograr Economía de Escala.
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Ejemplo 3: ABC vs Tradicional -->
+                    <div class="bg-slate-50 border border-slate-200 rounded-xl overflow-hidden">
+                        <div class="bg-slate-800 text-white p-4">
+                            <h3 class="font-bold text-lg"><i class="fa-solid fa-gears mr-2"></i>Ejemplo 3: Inductores de Costo en el Sistema ABC</h3>
+                        </div>
+                        <div class="p-6 text-slate-600">
+                            <p class="mb-4">Para repartir los costos indirectos de forma justa y científica, el ABC define Actividades y busca un "Inductor" o detonante que origine ese costo:</p>
+                            <ul class="list-disc pl-6 space-y-3">
+                                <li><strong>Actividad:</strong> Departamento de Mantenimiento de Maquinaria. <br><span class="text-indigo-600 font-semibold">Inductor de Costo (Cost Driver):</span> Horas-máquina utilizadas por cada producto.</li>
+                                <li><strong>Actividad:</strong> Departamento de Compras e Importaciones. <br><span class="text-indigo-600 font-semibold">Inductor de Costo (Cost Driver):</span> Número de órdenes de compra emitidas.</li>
+                                <li><strong>Actividad:</strong> Control de Calidad. <br><span class="text-indigo-600 font-semibold">Inductor de Costo (Cost Driver):</span> Cantidad de inspecciones realizadas.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- RESUMEN AUTOEVALUACIÓN -->
+        <div id="eval" class="tab-content">
+            <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-8 mb-8 card-hover">
+                <h2 class="text-3xl font-bold mb-6 border-b pb-4"><i class="fa-solid fa-brain text-sky-500 mr-3"></i>Reto Epistemológico: Autoevaluación</h2>
+                
+                <p class="mb-6 text-slate-600 text-lg">Para validar la aprehensión del conocimiento (episteme) en este módulo, debes analizar los siguientes planteamientos. <strong class="text-sky-700">Dispones de 3 intentos</strong> por pregunta para descifrar la respuesta correcta; de lo contrario, se revelará la retroalimentación.</p>
+                
+                <div class="space-y-8">
+                    
+                    <!-- Pregunta 1 -->
+                    <div class="bg-slate-50 border border-slate-200 rounded-xl p-6 shadow-inner relative overflow-hidden">
+                        <div class="absolute top-0 left-0 w-1 h-full bg-sky-500"></div>
+                        <h4 class="font-bold text-slate-800 mb-4 text-lg">1. Episteme de la Contabilidad de Gestión</h4>
+                        <p class="text-slate-700 mb-4">A diferencia de la contabilidad financiera, regida por las VEN-NIF para terceros, la contabilidad de gestión tiene un enfoque interno. ¿Cuál es el valor epistemológico fundamental de la contabilidad de gestión en un entorno empresarial volátil como el venezolano?</p>
+                        
+                        <div class="space-y-3 mb-5 pl-2">
+                            <label class="flex items-start gap-3 cursor-pointer p-2 hover:bg-slate-100 rounded transition">
+                                <input type="radio" name="q1" value="A" class="mt-1 accent-sky-600">
+                                <span class="text-sm text-slate-700">A) Garantizar el estricto cumplimiento tributario ante entidades fiscales.</span>
+                            </label>
+                            <label class="flex items-start gap-3 cursor-pointer p-2 hover:bg-slate-100 rounded transition">
+                                <input type="radio" name="q1" value="B" class="mt-1 accent-sky-600">
+                                <span class="text-sm text-slate-700">B) Proporcionar información oportuna, predictiva y no necesariamente monetaria para la toma de decisiones gerenciales.</span>
+                            </label>
+                            <label class="flex items-start gap-3 cursor-pointer p-2 hover:bg-slate-100 rounded transition">
+                                <input type="radio" name="q1" value="C" class="mt-1 accent-sky-600">
+                                <span class="text-sm text-slate-700">C) Generar estados financieros estandarizados y auditables para la bolsa de valores.</span>
+                            </label>
+                        </div>
+                        
+                        <div class="flex items-center gap-4">
+                            <button id="btn-q1" class="text-sm bg-sky-600 text-white px-5 py-2.5 rounded-lg font-bold hover:bg-sky-700 transition shadow-md" onclick="validarRespuesta('q1', 'B')">Validar Análisis</button>
+                            <span id="feedback-q1" class="text-sm font-semibold"></span>
+                        </div>
+                        
+                        <div id="ans-q1" class="hidden mt-5 p-5 bg-white border border-sky-200 rounded-lg text-sm text-slate-600 shadow-sm">
+                            <h5 class="text-sky-700 font-bold mb-2"><i class="fa-solid fa-lightbulb mr-2"></i>Sustento Epistemológico:</h5>
+                            La respuesta correcta es la <strong>B</strong>. El paradigma de gestión rompe con la rigidez contable financiera. No se preocupa por auditorías externas ni regulaciones, sino por brindar a los directivos las métricas exactas (como desperdicios, capacidad ociosa o cuellos de botella) para actuar rápidamente ante las turbulencias del mercado.
+                        </div>
+                    </div>
+
+                    <!-- Pregunta 2 -->
+                    <div class="bg-slate-50 border border-slate-200 rounded-xl p-6 shadow-inner relative overflow-hidden">
+                        <div class="absolute top-0 left-0 w-1 h-full bg-blue-500"></div>
+                        <h4 class="font-bold text-slate-800 mb-4 text-lg">2. Episteme del Comportamiento de Costes</h4>
+                        <p class="text-slate-700 mb-4">La distinción entre costos fijos y variables es vital para el análisis del punto de equilibrio. Si una fábrica de calzados duplica exitosamente su volumen de producción en un mes, ¿cómo se comporta analíticamente el costo fijo unitario?</p>
+                        
+                        <div class="space-y-3 mb-5 pl-2">
+                            <label class="flex items-start gap-3 cursor-pointer p-2 hover:bg-slate-100 rounded transition">
+                                <input type="radio" name="q2" value="A" class="mt-1 accent-blue-600">
+                                <span class="text-sm text-slate-700">A) Aumenta en proporción a la producción debido al mayor desgaste de la maquinaria.</span>
+                            </label>
+                            <label class="flex items-start gap-3 cursor-pointer p-2 hover:bg-slate-100 rounded transition">
+                                <input type="radio" name="q2" value="B" class="mt-1 accent-blue-600">
+                                <span class="text-sm text-slate-700">B) Permanece constante y estático independientemente de los volúmenes producidos.</span>
+                            </label>
+                            <label class="flex items-start gap-3 cursor-pointer p-2 hover:bg-slate-100 rounded transition">
+                                <input type="radio" name="q2" value="C" class="mt-1 accent-blue-600">
+                                <span class="text-sm text-slate-700">C) Disminuye, ya que el costo fijo total del período se diluye entre un mayor número de unidades producidas.</span>
+                            </label>
+                        </div>
+                        
+                        <div class="flex items-center gap-4">
+                            <button id="btn-q2" class="text-sm bg-blue-600 text-white px-5 py-2.5 rounded-lg font-bold hover:bg-blue-700 transition shadow-md" onclick="validarRespuesta('q2', 'C')">Validar Análisis</button>
+                            <span id="feedback-q2" class="text-sm font-semibold"></span>
+                        </div>
+                        
+                        <div id="ans-q2" class="hidden mt-5 p-5 bg-white border border-blue-200 rounded-lg text-sm text-slate-600 shadow-sm">
+                            <h5 class="text-blue-700 font-bold mb-2"><i class="fa-solid fa-lightbulb mr-2"></i>Sustento Epistemológico:</h5>
+                            La respuesta correcta es la <strong>C</strong>. Aunque el Costo Fijo TOTAL permanece igual (el alquiler de la planta cuesta lo mismo produzcas 100 o 200 zapatos), el Costo Fijo UNITARIO es inversamente proporcional al volumen. Al producir más, se logra la "Economía de Escala", abaratando el costo por cada zapato producido.
+                        </div>
+                    </div>
+
+                    <!-- Pregunta 3 -->
+                    <div class="bg-slate-50 border border-slate-200 rounded-xl p-6 shadow-inner relative overflow-hidden">
+                        <div class="absolute top-0 left-0 w-1 h-full bg-indigo-500"></div>
+                        <h4 class="font-bold text-slate-800 mb-4 text-lg">3. Episteme de los Sistemas de Costeo (ABC vs Tradicional)</h4>
+                        <p class="text-slate-700 mb-4">El Sistema de Costeo Basado en Actividades (ABC) representa una evolución filosófica frente a los métodos tradicionales de absorción que prorratean a conveniencia. ¿Cuál es la lógica central (episteme) del modelo ABC?</p>
+                        
+                        <div class="space-y-3 mb-5 pl-2">
+                            <label class="flex items-start gap-3 cursor-pointer p-2 hover:bg-slate-100 rounded transition">
+                                <input type="radio" name="q3" value="A" class="mt-1 accent-indigo-600">
+                                <span class="text-sm text-slate-700">A) Los productos consumen costos directamente en función exclusiva de su volumen de mano de obra directa.</span>
+                            </label>
+                            <label class="flex items-start gap-3 cursor-pointer p-2 hover:bg-slate-100 rounded transition">
+                                <input type="radio" name="q3" value="B" class="mt-1 accent-indigo-600">
+                                <span class="text-sm text-slate-700">B) Los productos consumen actividades organizacionales, y son estas actividades las verdaderas generadoras de los costos indirectos.</span>
+                            </label>
+                            <label class="flex items-start gap-3 cursor-pointer p-2 hover:bg-slate-100 rounded transition">
+                                <input type="radio" name="q3" value="C" class="mt-1 accent-indigo-600">
+                                <span class="text-sm text-slate-700">C) Todos los costos indirectos deben ser considerados como gastos administrativos del período y no reflejarse en el inventario.</span>
+                            </label>
+                        </div>
+                        
+                        <div class="flex items-center gap-4">
+                            <button id="btn-q3" class="text-sm bg-indigo-600 text-white px-5 py-2.5 rounded-lg font-bold hover:bg-indigo-700 transition shadow-md" onclick="validarRespuesta('q3', 'B')">Validar Análisis</button>
+                            <span id="feedback-q3" class="text-sm font-semibold"></span>
+                        </div>
+                        
+                        <div id="ans-q3" class="hidden mt-5 p-5 bg-white border border-indigo-200 rounded-lg text-sm text-slate-600 shadow-sm">
+                            <h5 class="text-indigo-700 font-bold mb-2"><i class="fa-solid fa-lightbulb mr-2"></i>Sustento Epistemológico:</h5>
+                            La respuesta correcta es la <strong>B</strong>. El ABC desplaza el centro de atención del producto a la "actividad". Reconoce que hacer un escritorio requiere actividades previas (cortar, ensamblar, importar madera, inspeccionar calidad) y esas tareas son las que originan el consumo de recursos (Costos). Como demostró el caso de la empresa Vitalim C.A., es la forma más científica de repartir los temibles Costos Indirectos de Fabricación (CIF).
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <footer class="py-12 border-t border-slate-200 text-center bg-white">
+        <p class="text-sm text-slate-500">© 2026 UCSAR | Diplomado Contabilidad Financiera | Módulo V</p>
+    </footer>
+
+    <!-- Scripts de interactividad -->
+    <script>
+        function openTab(evt, tabName) {
+            var i, tabcontent, tablinks;
+            
+            tabcontent = document.getElementsByClassName("tab-content");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].classList.remove("active");
+            }
+            
+            tablinks = document.getElementsByClassName("tab-btn");
+            for (i = 0; i < tablinks.length; i++) {
+                tablinks[i].className = tablinks[i].className.replace(" active text-sky-600 border-b-2 border-sky-600", " text-slate-500 hover:text-sky-600");
+                if(!tablinks[i].className.includes("text-slate-500")) {
+                    tablinks[i].className += " text-slate-500 hover:text-sky-600";
+                }
+            }
+            
+            document.getElementById(tabName).classList.add("active");
+            evt.currentTarget.className = evt.currentTarget.className.replace(" text-slate-500 hover:text-sky-600", " active text-sky-600 border-b-2 border-sky-600");
+        }
+
+        function toggleAccordion(id) {
+            var content = document.getElementById(id);
+            var icon = document.getElementById('icon-' + id);
+            
+            if (content.style.maxHeight) {
+                content.style.maxHeight = null;
+                icon.style.transform = "rotate(0deg)";
+            } else {
+                content.style.maxHeight = content.scrollHeight + "px";
+                icon.style.transform = "rotate(180deg)";
+            }
+        }
+
+        // Lógica del Quiz Epistemológico (3 Intentos)
+        let attempts = { q1: 3, q2: 3, q3: 3 };
+
+        function validarRespuesta(qId, correctOption) {
+            if (attempts[qId] <= 0) return;
+            
+            let radios = document.getElementsByName(qId);
+            let selected = null;
+            for (let i of radios) {
+                if (i.checked) selected = i.value;
+            }
+            
+            let feedbackEl = document.getElementById('feedback-' + qId);
+            let ansEl = document.getElementById('ans-' + qId);
+            let btnEl = document.getElementById('btn-' + qId);
+            
+            if (!selected) {
+                feedbackEl.innerHTML = "<span class='text-orange-600'><i class='fa-solid fa-triangle-exclamation'></i> Selecciona una opción.</span>";
+                return;
+            }
+            
+            if (selected === correctOption) {
+                feedbackEl.innerHTML = "<span class='text-emerald-600 font-bold'><i class='fa-solid fa-check-circle'></i> ¡Correcto! Episteme validada.</span>";
+                ansEl.classList.remove('hidden');
+                ansEl.classList.add('animate-fadeIn');
+                btnEl.disabled = true;
+                btnEl.classList.add('opacity-50', 'cursor-not-allowed');
+                
+                // Deshabilitar radios
+                for (let i of radios) i.disabled = true;
+            } else {
+                attempts[qId]--;
+                if (attempts[qId] > 0) {
+                    feedbackEl.innerHTML = `<span class='text-red-500 font-medium'><i class='fa-solid fa-circle-xmark'></i> Análisis incorrecto. Te quedan ${attempts[qId]} intentos.</span>`;
+                } else {
+                    feedbackEl.innerHTML = "<span class='text-red-600 font-bold'><i class='fa-solid fa-ban'></i> Intentos agotados.</span>";
+                    ansEl.classList.remove('hidden');
+                    ansEl.classList.add('animate-fadeIn');
+                    btnEl.disabled = true;
+                    btnEl.classList.add('opacity-50', 'cursor-not-allowed');
+                    
+                    // Deshabilitar radios
+                    for (let i of radios) i.disabled = true;
+                }
+            }
+        }
+    </script>
+
+    <!-- PROTECCIÓN DE ACCESO - Portal Académico UCSAR -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="js/auth.js?v=5"></script>
+</body>
+</html>
+

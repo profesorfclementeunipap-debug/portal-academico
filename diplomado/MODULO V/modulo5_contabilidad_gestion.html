@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Módulo 5 · Contabilidad de Gestión</title>
+<style>
+:root{--bg:#07111f;--panel:#101827;--panel2:#0c1524;--accent:#38bdf8;--accent2:#22c55e;--warn:#f59e0b;--text:#e5e7eb;--muted:#94a3b8;--border:rgba(148,163,184,.18)}
+*{box-sizing:border-box} body{margin:0;font-family:Arial,Helvetica,sans-serif;background:linear-gradient(180deg,#020617,#0f172a);color:var(--text);line-height:1.65}
+header{padding:56px 18px;text-align:center;background:rgba(15,23,42,.96);border-bottom:1px solid var(--border)}
+header h1{margin:0;font-size:2.2rem} header p{max-width:980px;margin:12px auto 0;color:var(--muted)}
+nav{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;padding:14px 16px;background:#0f172a;position:sticky;top:0;border-bottom:1px solid var(--border);z-index:10}
+nav a{color:var(--text);text-decoration:none;padding:9px 13px;border-radius:999px;border:1px solid rgba(56,189,248,.25);background:rgba(56,189,248,.08)}
+main{max-width:1150px;margin:0 auto;padding:26px 16px 64px}
+section{background:rgba(17,24,39,.96);border:1px solid var(--border);border-radius:18px;padding:24px;margin:18px 0;box-shadow:0 10px 28px rgba(0,0,0,.18)}
+h2{margin-top:0} h3{color:#dbeafe}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:16px;margin-top:18px}
+.card{background:var(--panel2);border:1px solid rgba(56,189,248,.15);border-radius:14px;padding:16px}
+.badge{display:inline-block;padding:4px 10px;border-radius:999px;font-size:.85rem;margin-bottom:10px;background:rgba(56,189,248,.14);color:#bae6fd}
+.badge.green{background:rgba(34,197,94,.14);color:#bbf7d0}.badge.warn{background:rgba(245,158,11,.14);color:#fde68a}
+.accordion{margin-top:14px}.acc-item{border:1px solid rgba(148,163,184,.15);border-radius:14px;overflow:hidden;margin-bottom:10px;background:#0b1220}
+.acc-btn{width:100%;text-align:left;padding:14px 16px;background:transparent;color:var(--text);border:0;font-size:1rem;cursor:pointer;display:flex;justify-content:space-between;align-items:center}
+.acc-content{display:none;padding:0 16px 14px;color:#cbd5e1}
+.exercise{margin:12px 0;padding:14px 16px;border-left:4px solid var(--accent);background:rgba(56,189,248,.08);border-radius:12px;cursor:pointer}
+.answer{display:none;margin-top:10px;padding-top:10px;border-top:1px dashed rgba(148,163,184,.2);color:#cbd5e1}
+ul{padding-left:18px} .footer{text-align:center;padding:24px;color:var(--muted)} .mini{color:var(--muted);font-size:.95rem}
+</style>
+</head>
+<body>
+<header>
+  <h1>MÓDULO 5. CONTABILIDAD DE GESTIÓN</h1>
+  <p>Contenidos desarrollados con enfoque experto, pedagógico y listos para estudio, exposición o adaptación a clase. Incluye unidades, ejercicios, resumen y autoevaluación.</p>
+</header>
+<nav>
+  <a href="#u1">Unidad 1</a>
+  <a href="#u2">Unidad 2</a>
+  <a href="#u3">Unidad 3</a>
+  <a href="#resumen">Resumen</a>
+  <a href="#auto">Autoevaluación</a>
+</nav>
+<main>
+  <section id="u1">
+    <h2>Unidad Didáctica 1. ¿Qué es la contabilidad de gestión?</h2>
+    <p>La contabilidad de gestión es el sistema de información interna que permite medir, analizar e interpretar los recursos utilizados por una organización para facilitar la toma de decisiones. Su propósito no es cumplir una obligación externa, sino apoyar a la gerencia con datos oportunos, relevantes y detallados sobre costos, eficiencia, productividad, rentabilidad y control.</p>
+    <p>A diferencia de la contabilidad financiera, la de gestión puede trabajar con información monetaria y no monetaria, con periodicidad flexible y con un nivel de detalle mucho mayor. Mientras la financiera mira hacia terceros y se ajusta a normas de presentación, la de gestión se orienta a la acción: decidir precios, mejorar procesos, evaluar productos, controlar desperdicios y planificar escenarios.</p>
+    <div class="grid">
+      <div class="card"><span class="badge">Enfoque</span><h3>Interno</h3><p>Sirve para gerentes, administradores y responsables operativos.</p></div>
+      <div class="card"><span class="badge green">Utilidad</span><h3>Decisión</h3><p>Ayuda a decidir qué producir, cuánto vender y dónde reducir costos.</p></div>
+      <div class="card"><span class="badge warn">Comparación</span><h3>Financiera vs. gestión</h3><p>La financiera informa; la de gestión analiza y orienta la acción.</p></div>
+    </div>
+    <div class="accordion">
+      <div class="acc-item"><button class="acc-btn" onclick="toggleAcc(this)">Contabilidad de gestión vs. contabilidad financiera <span>+</span></button><div class="acc-content">La financiera se dirige a usuarios externos, usa estados resumidos y sigue marcos normativos. La de gestión se dirige a usuarios internos, acepta mayor detalle y se adapta a la necesidad de cada decisión.</div></div>
+    </div>
+    <div class="exercise" onclick="toggleAnswer('a1')"><strong>Ejercicio.</strong> Menciona dos preguntas que puede responder la contabilidad de gestión y que la financiera no responde con suficiente detalle.<div class="answer" id="a1">Ejemplo: ¿qué producto deja mayor margen?, ¿qué proceso genera más desperdicio?</div></div>
+  </section>
+  <section id="u2">
+    <h2>Unidad Didáctica 2. Tipos de costes</h2>
+    <p>Clasificar los costos correctamente es esencial para calcular el costo unitario, determinar márgenes, fijar precios y tomar decisiones. Un costo representa un sacrificio de recursos para producir bienes o prestar servicios, pero no todos se comportan igual. Por eso se analizan según su comportamiento, su relación con el objeto de costo y su momento de medición.</p>
+    <div class="accordion">
+      <div class="acc-item"><button class="acc-btn" onclick="toggleAcc(this)">Costes fijos y variables <span>+</span></button><div class="acc-content">Los fijos permanecen relativamente constantes dentro de un rango de actividad: alquiler, sueldos administrativos, seguros. Los variables cambian con el volumen de producción: materia prima, comisiones, ciertos insumos.</div></div>
+      <div class="acc-item"><button class="acc-btn" onclick="toggleAcc(this)">Costes directos e indirectos <span>+</span></button><div class="acc-content">Los directos se asignan de forma clara a un producto o servicio, como materiales directos o mano de obra directa. Los indirectos requieren distribución: supervisión, mantenimiento, energía general, arrendamiento de planta.</div></div>
+      <div class="acc-item"><button class="acc-btn" onclick="toggleAcc(this)">Costes históricos y previstos <span>+</span></button><div class="acc-content">Los históricos ya ocurrieron y se usan para evaluar resultados reales. Los previstos son estimaciones para planificar, presupuestar y anticipar decisiones.</div></div>
+    </div>
+    <div class="grid">
+      <div class="card"><span class="badge">Clave 1</span><h3>Fijos vs. variables</h3><p>Ayudan a calcular el punto de equilibrio y el margen de contribución.</p></div>
+      <div class="card"><span class="badge green">Clave 2</span><h3>Directos vs. indirectos</h3><p>Permiten asignar costos con mayor precisión al producto o servicio.</p></div>
+      <div class="card"><span class="badge warn">Clave 3</span><h3>Históricos vs. previstos</h3><p>Conectan el control del pasado con la planificación del futuro.</p></div>
+    </div>
+    <div class="exercise" onclick="toggleAnswer('a2')"><strong>Ejercicio.</strong> Clasifica: alquiler, materia prima, comisión de ventas y salario administrativo.<div class="answer" id="a2">Alquiler: fijo. Materia prima: variable. Comisión de ventas: variable. Salario administrativo: fijo.</div></div>
+  </section>
+  <section id="u3">
+    <h2>Unidad Didáctica 3. Sistemas de costes</h2>
+    <p>Los sistemas de costos son métodos organizados para acumular, medir y asignar los recursos consumidos por una empresa. La elección del sistema depende del tipo de empresa, la complejidad del proceso y el nivel de precisión requerido. Un sistema bien diseñado mejora el control, la rentabilidad y la toma de decisiones.</p>
+    <div class="accordion">
+      <div class="acc-item"><button class="acc-btn" onclick="toggleAcc(this)">Empresas uniproducto <span>+</span></button><div class="acc-content">Tienen una sola línea de producto o una gama muy homogénea. Su costo puede calcularse con mayor simplicidad, aunque siguen requiriendo control de materiales, mano de obra y costos indirectos.</div></div>
+      <div class="acc-item"><button class="acc-btn" onclick="toggleAcc(this)">Direct costing y Full costing <span>+</span></button><div class="acc-content">Direct costing asigna al producto solo costos variables y trata los fijos como gastos del período. Full costing incorpora variables y fijos de fabricación al costo del producto.</div></div>
+      <div class="acc-item"><button class="acc-btn" onclick="toggleAcc(this)">Sistema ABC <span>+</span></button><div class="acc-content">Asigna primero los costos a las actividades y luego a los objetos de costo mediante inductores. Es útil cuando existen muchos costos indirectos y productos que consumen recursos de forma desigual.</div></div>
+    </div>
+    <div class="grid">
+      <div class="card"><span class="badge">Modelo</span><h3>Uniproducto</h3><p>Útil cuando la empresa maneja un solo bien o servicio principal.</p></div>
+      <div class="card"><span class="badge green">Modelo</span><h3>Direct costing</h3><p>Excelente para decisiones de corto plazo y análisis de margen.</p></div>
+      <div class="card"><span class="badge warn">Modelo</span><h3>ABC</h3><p>Mejora la precisión en el reparto de costos indirectos.</p></div>
+    </div>
+    <div class="exercise" onclick="toggleAnswer('a3')"><strong>Ejercicio.</strong> Explica cuándo conviene usar ABC en lugar de un costeo tradicional.<div class="answer" id="a3">Cuando hay muchos costos indirectos, varias actividades y productos que consumen recursos de forma diferente.</div></div>
+  </section>
+  <section id="resumen">
+    <h2>Resumen</h2>
+    <p>La contabilidad de gestión permite analizar los recursos internos de la organización para apoyar la toma de decisiones. Sus herramientas principales son la clasificación de costos y los sistemas de costeo, que ayudan a controlar márgenes, planificar escenarios y mejorar la eficiencia. En conjunto, la información de gestión aporta una visión operativa que complementa a la contabilidad financiera.</p>
+    <p class="mini">Idea clave: si la empresa no conoce sus costos reales, no puede decidir con precisión.</p>
+  </section>
+  <section id="auto">
+    <h2>Autoevaluación</h2>
+    <ul>
+      <li>¿Qué es la contabilidad de gestión?</li>
+      <li>¿En qué se diferencia de la contabilidad financiera?</li>
+      <li>¿Qué son los costos fijos y variables?</li>
+      <li>¿Qué diferencia existe entre costos directos e indirectos?</li>
+      <li>¿Cuándo conviene utilizar el sistema ABC?</li>
+    </ul>
+  </section>
+</main>
+<div class="footer">Módulo 5 · Contabilidad de Gestión</div>
+<script>
+function toggleAcc(btn){const c=btn.nextElementSibling;const s=btn.querySelector('span');const open=c.style.display==='block';c.style.display=open?'none':'block';s.textContent=open?'+':'−';}
+function toggleAnswer(id){const el=document.getElementById(id);el.style.display=el.style.display==='block'?'none':'block';}
+</script>
+</body>
+</html>

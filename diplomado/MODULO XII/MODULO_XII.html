@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guía Didáctica Interactiva Módulo XII | Diplomado UCSAR</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <!-- Supabase JS Library CDN & Auth Core -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="../js/auth.js?v=4"></script>
+    
+    <style>
+        body { font-family: 'Inter', sans-serif; background: #f8fafc; color: #334155; }
+        h1, h2, h3, h4 { font-family: 'Outfit', sans-serif; color: #0f172a; }
+        .tab-content { display: none; }
+        .tab-content.active { display: block; animation: fadeIn 0.4s ease-in-out; }
+        .tab-button.active { background-color: #0891b2; color: #ffffff; box-shadow: 0 4px 14px 0 rgba(8, 145, 178, 0.39); }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
+    </style>
+</head>
+<body class="antialiased bg-slate-50 min-h-screen flex flex-col">
+
+    <nav class="bg-slate-900 text-white sticky top-0 z-50 shadow-md border-b border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center gap-3">
+                    <div class="bg-cyan-600 p-2 rounded-xl text-white shadow-lg">
+                        <i class="fas fa-microchip text-xl"></i>
+                    </div>
+                    <div>
+                        <span class="font-bold text-lg text-white block leading-tight">UCSAR Portal Académico</span>
+                        <span class="text-xs text-indigo-300 font-medium">Diplomado en Contabilidad Financiera</span>
+                    </div>
+                </div>
+                <a href="../index.html" class="text-slate-300 hover:text-white px-3 py-2 rounded-lg text-sm font-semibold transition border border-slate-700 hover:bg-slate-800">
+                    <i class="fas fa-home"></i> Inicio
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <header class="bg-gradient-to-r from-slate-900 via-cyan-950 to-slate-900 text-white py-12 px-4">
+        <div class="max-w-7xl mx-auto">
+            <div class="inline-flex items-center gap-2 bg-cyan-500/20 border border-cyan-400/30 px-3.5 py-1 rounded-full text-cyan-300 text-xs font-bold uppercase mb-4">
+                <i class="fas fa-graduation-cap text-amber-400"></i> Guía Didáctica Asíncrona • Módulo XII
+            </div>
+            <h1 class="text-3xl sm:text-5xl font-extrabold text-white mb-4">Registro Contable Automatizado y Cuentas Anuales</h1>
+            <p class="text-slate-300 text-base sm:text-lg max-w-3xl">
+                Automatización de asientos predefinidos, liquidación de IVA, cierre de ejercicio, generación de Estados Financieros NIIF y protocolos de confidencialidad.
+            </p>
+        </div>
+    </header>
+
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 flex-grow">
+
+        <div class="bg-white p-2 rounded-2xl shadow-sm border border-slate-200 mb-8 overflow-x-auto">
+            <div class="flex space-x-2 min-w-max">
+                <button onclick="switchTab('u1')" id="tab-u1" class="tab-button active px-5 py-3 rounded-xl font-bold text-sm">U1. Asientos Predefinidos & IVA</button>
+                <button onclick="switchTab('u2')" id="tab-u2" class="tab-button px-5 py-3 rounded-xl font-semibold text-slate-600 text-sm">U2. Cierre de Ejercicio Automatizado</button>
+                <button onclick="switchTab('u3')" id="tab-u3" class="tab-button px-5 py-3 rounded-xl font-semibold text-slate-600 text-sm">U3. Cuentas Anuales & Confidencialidad</button>
+            </div>
+        </div>
+
+        <!-- U1 -->
+        <div id="u1" class="tab-content active space-y-6">
+            <div class="bg-white rounded-3xl p-8 shadow-sm border border-slate-200">
+                <h2 class="text-2xl font-bold mb-4">Unidad 1: Introducción de Datos y Asientos Predefinidos</h2>
+                <div class="space-y-4 text-slate-600 text-sm sm:text-base">
+                    <p>Uso de plantillas predefinidas para transacciones recurrentes (compras, ventas, servicios) con cálculo automático del IVA 16% y retenciones de ley.</p>
+                </div>
+
+                <div class="mt-8 bg-cyan-950 text-white rounded-3xl p-6 shadow-xl">
+                    <h3 class="text-lg font-bold text-cyan-300 mb-4"><i class="fas fa-pen-to-square"></i> Cuestionario Práctico - Unidad 1</h3>
+                    <div class="space-y-4 text-sm">
+                        <div class="bg-slate-900 p-4 rounded-xl border border-slate-800">
+                            <strong>Pregunta 1.1:</strong> ¿Qué ventaja ofrece la configuración de asientos predefinidos en la automatización del IVA?
+                        </div>
+
+                        <!-- Instrucciones -->
+                        <div class="bg-cyan-900/60 border border-cyan-500/30 p-4 rounded-xl text-xs text-cyan-200">
+                            <h4 class="font-bold text-amber-300 mb-1 flex items-center gap-2">
+                                <i class="fas fa-circle-info"></i> ¿Cómo enviar tus respuestas por Telegram?
+                            </h4>
+                            <ol class="list-decimal list-inside space-y-1 text-slate-300">
+                                <li>Escribe tus respuestas abajo.</li>
+                                <li>Presiona <strong>"Copiar Mis Respuestas para Telegram"</strong>.</li>
+                                <li>Abre Telegram y presiona <strong>Pegar (Ctrl + V)</strong>.</li>
+                            </ol>
+                        </div>
+
+                        <textarea id="ans-m12-u1" rows="4" placeholder="Escribe tus respuestas aquí..." class="w-full bg-slate-900 border border-slate-700 text-white rounded-xl p-4 text-xs font-mono"></textarea>
+                        <button onclick="copiarRespuestas('ans-m12-u1', 'Módulo 12 - Unidad 1')" class="bg-cyan-600 hover:bg-cyan-500 text-white font-bold px-5 py-3 rounded-xl text-xs">
+                            <i class="fas fa-copy"></i> Copiar Mis Respuestas para Telegram
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Sala de Debate U1 -->
+                <div class="mt-8 bg-slate-900 text-white rounded-3xl p-6 shadow-xl border border-slate-800">
+                    <div class="flex items-center justify-between mb-4 border-b border-slate-800 pb-3">
+                        <div>
+                            <h3 class="text-lg font-bold text-amber-400 flex items-center gap-2">
+                                <i class="fas fa-comments"></i> Sala de Debate y Consultas - Unidad 1
+                            </h3>
+                            <p class="text-xs text-slate-400">Foro de discusión sobre asientos automatización contable.</p>
+                        </div>
+                        <span class="bg-cyan-900/80 text-cyan-300 text-xs px-3 py-1 rounded-full font-bold">Chat de Unidad</span>
+                    </div>
+
+                    <div id="comments-list-u1" class="space-y-3 mb-4 max-h-60 overflow-y-auto pr-2"></div>
+
+                    <div class="bg-slate-950 p-4 rounded-2xl border border-slate-800 space-y-3">
+                        <div class="flex items-center justify-between bg-slate-900 border border-slate-800 p-2.5 rounded-xl text-xs">
+                            <span class="text-slate-400"><i class="fas fa-user-check text-emerald-400 mr-1"></i> Usuario Autenticado:</span>
+                            <span id="user-badge-u1" class="font-bold text-cyan-300 flex items-center gap-1">
+                                <i class="fas fa-circle-notch fa-spin text-amber-400"></i> Verificando datos de sesión...
+                            </span>
+                        </div>
+                        <textarea id="msg-u1" rows="2" placeholder="Escribe tu mensaje sobre la Unidad 1..." class="w-full bg-slate-900 border border-slate-700 text-white rounded-xl p-3 text-xs focus:outline-none focus:border-amber-400"></textarea>
+                        <button onclick="publicarComentario('u1')" class="bg-amber-500 hover:bg-amber-600 text-slate-950 font-bold px-4 py-2 rounded-xl text-xs flex items-center gap-2 transition">
+                            <i class="fas fa-paper-plane"></i> Publicar en la Sala de Debate
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- U2 -->
+        <div id="u2" class="tab-content space-y-6">
+            <div class="bg-white rounded-3xl p-8 shadow-sm border border-slate-200">
+                <h2 class="text-2xl font-bold mb-4">Unidad 2: Regularización y Cierre de Ejercicio Automatizado</h2>
+                <div class="space-y-4 text-slate-600 text-sm sm:text-base">
+                    <p>Generación del Balance de Comprobación, asiento automático de cancelación de cuentas nominales contra Pérdidas y Ganancias, y creación del Asiento de Apertura del ejercicio siguiente.</p>
+                </div>
+
+                <div class="mt-8 bg-cyan-950 text-white rounded-3xl p-6 shadow-xl">
+                    <h3 class="text-lg font-bold text-cyan-300 mb-4"><i class="fas fa-pen-to-square"></i> Cuestionario Práctico - Unidad 2</h3>
+                    <div class="space-y-4 text-sm">
+                        <div class="bg-slate-900 p-4 rounded-xl border border-slate-800">
+                            <strong>Pregunta 2.1:</strong> Mencione los 4 pasos que ejecuta un programa contable al procesar el Cierre de Ejercicio.
+                        </div>
+
+                        <!-- Instrucciones -->
+                        <div class="bg-cyan-900/60 border border-cyan-500/30 p-4 rounded-xl text-xs text-cyan-200">
+                            <h4 class="font-bold text-amber-300 mb-1 flex items-center gap-2">
+                                <i class="fas fa-circle-info"></i> ¿Cómo enviar tus respuestas por Telegram?
+                            </h4>
+                            <ol class="list-decimal list-inside space-y-1 text-slate-300">
+                                <li>Escribe tus respuestas abajo.</li>
+                                <li>Presiona <strong>"Copiar Mis Respuestas para Telegram"</strong>.</li>
+                                <li>Abre Telegram y presiona <strong>Pegar (Ctrl + V)</strong>.</li>
+                            </ol>
+                        </div>
+
+                        <textarea id="ans-m12-u2" rows="4" placeholder="Escribe tus respuestas aquí..." class="w-full bg-slate-900 border border-slate-700 text-white rounded-xl p-4 text-xs font-mono"></textarea>
+                        <button onclick="copiarRespuestas('ans-m12-u2', 'Módulo 12 - Unidad 2')" class="bg-cyan-600 hover:bg-cyan-500 text-white font-bold px-5 py-3 rounded-xl text-xs">
+                            <i class="fas fa-copy"></i> Copiar Mis Respuestas para Telegram
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Sala de Debate U2 -->
+                <div class="mt-8 bg-slate-900 text-white rounded-3xl p-6 shadow-xl border border-slate-800">
+                    <div class="flex items-center justify-between mb-4 border-b border-slate-800 pb-3">
+                        <div>
+                            <h3 class="text-lg font-bold text-amber-400 flex items-center gap-2">
+                                <i class="fas fa-comments"></i> Sala de Debate y Consultas - Unidad 2
+                            </h3>
+                            <p class="text-xs text-slate-400">Foro de discusión sobre cierre de ejercicio automatizado.</p>
+                        </div>
+                        <span class="bg-cyan-900/80 text-cyan-300 text-xs px-3 py-1 rounded-full font-bold">Chat de Unidad</span>
+                    </div>
+
+                    <div id="comments-list-u2" class="space-y-3 mb-4 max-h-60 overflow-y-auto pr-2"></div>
+
+                    <div class="bg-slate-950 p-4 rounded-2xl border border-slate-800 space-y-3">
+                        <div class="flex items-center justify-between bg-slate-900 border border-slate-800 p-2.5 rounded-xl text-xs">
+                            <span class="text-slate-400"><i class="fas fa-user-check text-emerald-400 mr-1"></i> Usuario Autenticado:</span>
+                            <span id="user-badge-u2" class="font-bold text-cyan-300 flex items-center gap-1">
+                                <i class="fas fa-circle-notch fa-spin text-amber-400"></i> Verificando datos de sesión...
+                            </span>
+                        </div>
+                        <textarea id="msg-u2" rows="2" placeholder="Escribe tu duda sobre el cierre de ejercicio..." class="w-full bg-slate-900 border border-slate-700 text-white rounded-xl p-3 text-xs focus:outline-none focus:border-amber-400"></textarea>
+                        <button onclick="publicarComentario('u2')" class="bg-amber-500 hover:bg-amber-600 text-slate-950 font-bold px-4 py-2 rounded-xl text-xs flex items-center gap-2 transition">
+                            <i class="fas fa-paper-plane"></i> Publicar en la Sala de Debate
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- U3 -->
+        <div id="u3" class="tab-content space-y-6">
+            <div class="bg-white rounded-3xl p-8 shadow-sm border border-slate-200">
+                <h2 class="text-2xl font-bold mb-4">Unidad 3: Cuentas Anuales y Confidencialidad</h2>
+                <div class="space-y-4 text-slate-600 text-sm sm:text-base">
+                    <p><strong>Cuentas Anuales:</strong> Emisión automática de los 5 Estados Financieros exigidos por las VEN-NIF PYME (Situación Financiera, Resultado Integral, Cambios en el Patrimonio, Flujos de Efectivo y Notas).</p>
+                    <p><strong>Confidencialidad:</strong> Responsabilidad legal y deontológica del operador informático sobre la información financiera confidencial.</p>
+                </div>
+
+                <div class="mt-8 bg-cyan-950 text-white rounded-3xl p-6 shadow-xl">
+                    <h3 class="text-lg font-bold text-cyan-300 mb-4"><i class="fas fa-pen-to-square"></i> Cuestionario Práctico - Unidad 3</h3>
+                    <div class="space-y-4 text-sm">
+                        <div class="bg-slate-900 p-4 rounded-xl border border-slate-800">
+                            <strong>Pregunta 3.1:</strong> Mencione los 5 Estados Financieros requeridos por la NIIF PYME y cuál es la responsabilidad legal del contador en la custodia de datos confidenciales.
+                        </div>
+
+                        <!-- Instrucciones -->
+                        <div class="bg-cyan-900/60 border border-cyan-500/30 p-4 rounded-xl text-xs text-cyan-200">
+                            <h4 class="font-bold text-amber-300 mb-1 flex items-center gap-2">
+                                <i class="fas fa-circle-info"></i> ¿Cómo enviar tus respuestas por Telegram?
+                            </h4>
+                            <ol class="list-decimal list-inside space-y-1 text-slate-300">
+                                <li>Escribe tus respuestas abajo.</li>
+                                <li>Presiona <strong>"Copiar Mis Respuestas para Telegram"</strong>.</li>
+                                <li>Abre Telegram y presiona <strong>Pegar (Ctrl + V)</strong>.</li>
+                            </ol>
+                        </div>
+
+                        <textarea id="ans-m12-u3" rows="4" placeholder="Escribe tus respuestas aquí..." class="w-full bg-slate-900 border border-slate-700 text-white rounded-xl p-4 text-xs font-mono"></textarea>
+                        <button onclick="copiarRespuestas('ans-m12-u3', 'Módulo 12 - Unidad 3')" class="bg-cyan-600 hover:bg-cyan-500 text-white font-bold px-5 py-3 rounded-xl text-xs">
+                            <i class="fas fa-copy"></i> Copiar Mis Respuestas para Telegram
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Sala de Debate U3 -->
+                <div class="mt-8 bg-slate-900 text-white rounded-3xl p-6 shadow-xl border border-slate-800">
+                    <div class="flex items-center justify-between mb-4 border-b border-slate-800 pb-3">
+                        <div>
+                            <h3 class="text-lg font-bold text-amber-400 flex items-center gap-2">
+                                <i class="fas fa-comments"></i> Sala de Debate y Consultas - Unidad 3
+                            </h3>
+                            <p class="text-xs text-slate-400">Foro de discusión sobre Cuentas Anuales NIIF y ética contable.</p>
+                        </div>
+                        <span class="bg-cyan-900/80 text-cyan-300 text-xs px-3 py-1 rounded-full font-bold">Chat de Unidad</span>
+                    </div>
+
+                    <div id="comments-list-u3" class="space-y-3 mb-4 max-h-60 overflow-y-auto pr-2"></div>
+
+                    <div class="bg-slate-950 p-4 rounded-2xl border border-slate-800 space-y-3">
+                        <div class="flex items-center justify-between bg-slate-900 border border-slate-800 p-2.5 rounded-xl text-xs">
+                            <span class="text-slate-400"><i class="fas fa-user-check text-emerald-400 mr-1"></i> Usuario Autenticado:</span>
+                            <span id="user-badge-u3" class="font-bold text-cyan-300 flex items-center gap-1">
+                                <i class="fas fa-circle-notch fa-spin text-amber-400"></i> Verificando datos de sesión...
+                            </span>
+                        </div>
+                        <textarea id="msg-u3" rows="2" placeholder="Escribe tu mensaje final de la materia..." class="w-full bg-slate-900 border border-slate-700 text-white rounded-xl p-3 text-xs focus:outline-none focus:border-amber-400"></textarea>
+                        <button onclick="publicarComentario('u3')" class="bg-amber-500 hover:bg-amber-600 text-slate-950 font-bold px-4 py-2 rounded-xl text-xs flex items-center gap-2 transition">
+                            <i class="fas fa-paper-plane"></i> Publicar en la Sala de Debate
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </main>
+
+    <footer class="bg-slate-900 text-white py-8 border-t border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 text-center">
+            <p class="text-sm font-semibold">Diplomado en Contabilidad Financiera • UCSAR</p>
+        </div>
+    </footer>
+
+    <script>
+        let currentAuthUser = { name: "Estudiante UCSAR", role: "Estudiante", isMaster: false };
+
+        async function initUserProfile() {
+            if (typeof supabaseClient !== 'undefined' && supabaseClient) {
+                try {
+                    const { data: { session } } = await supabaseClient.auth.getSession();
+                    if (session && session.user) {
+                        const email = session.user.email;
+                        const isMaster = (typeof ADMIN_EMAILS !== 'undefined' && ADMIN_EMAILS.includes(email));
+                        const name = session.user.user_metadata?.full_name || session.user.user_metadata?.name || email.split('@')[0];
+                        
+                        currentAuthUser = {
+                            name: isMaster ? (name + " (Facilitador)") : name,
+                            role: isMaster ? "Profesor" : "Estudiante",
+                            isMaster: isMaster,
+                            email: email
+                        };
+                    }
+                } catch (e) {
+                    console.log("Supabase Profile Check:", e);
+                }
+            }
+            actualizarBadgesUsuario();
+        }
+
+        function actualizarBadgesUsuario() {
+            ['u1', 'u2', 'u3'].forEach(u => {
+                const badge = document.getElementById('user-badge-' + u);
+                if (badge) {
+                    badge.innerHTML = `<i class="${currentAuthUser.isMaster ? 'fas fa-user-shield text-amber-400' : 'fas fa-user-graduate text-cyan-300'}"></i> ${currentAuthUser.name} <span class="bg-slate-800 text-slate-400 px-2 py-0.5 rounded font-normal ml-1">${currentAuthUser.role}</span>`;
+                }
+            });
+        }
+
+        function switchTab(t) {
+            document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+            document.querySelectorAll('.tab-button').forEach(b => b.classList.remove('active'));
+            document.getElementById(t).classList.add('active');
+            document.getElementById('tab-' + t).classList.add('active');
+        }
+
+        function copiarRespuestas(id, title) {
+            const txt = document.getElementById(id).value;
+            if (!txt.trim()) { alert("Escribe primero tus respuestas."); return; }
+            navigator.clipboard.writeText(`📝 RESPUESTAS (${title})\n-------------------\n` + txt).then(() => {
+                alert("¡Copiado al portapapeles! Pégalo en Telegram.");
+            });
+        }
+
+        function publicarComentario(unidad) {
+            const msgInput = document.getElementById('msg-' + unidad);
+            const msg = msgInput.value.trim();
+
+            if (!msg) { alert("Escribe un mensaje antes de publicar."); return; }
+
+            const nuevoComentario = {
+                author: currentAuthUser.name,
+                role: currentAuthUser.role,
+                msg: msg,
+                fecha: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
+            };
+
+            let comentarios = JSON.parse(localStorage.getItem('m12_chat_' + unidad) || '[]');
+            comentarios.push(nuevoComentario);
+            localStorage.setItem('m12_chat_' + unidad, JSON.stringify(comentarios));
+
+            msgInput.value = '';
+            cargarComentarios(unidad);
+        }
+
+        function cargarComentarios(unidad) {
+            const list = document.getElementById('comments-list-' + unidad);
+            if (!list) return;
+
+            let comentarios = JSON.parse(localStorage.getItem('m12_chat_' + unidad) || '[]');
+            if (comentarios.length === 0) {
+                list.innerHTML = `<p class="text-xs text-slate-500 italic p-3 text-center">Aún no hay mensajes en esta sala. ¡Sé el primero en aportar o preguntar!</p>`;
+                return;
+            }
+
+            list.innerHTML = comentarios.map(c => `
+                <div class="bg-slate-950 p-3 rounded-xl border border-slate-800/80">
+                    <div class="flex justify-between items-center mb-1">
+                        <span class="font-bold text-xs ${c.role === 'Profesor' ? 'text-amber-400' : 'text-cyan-300'}">
+                            <i class="${c.role === 'Profesor' ? 'fas fa-user-shield' : 'fas fa-user-graduate'}"></i> ${c.author} 
+                            <span class="text-[10px] bg-slate-800 text-slate-400 px-2 py-0.5 rounded ml-1 font-normal">${c.role}</span>
+                        </span>
+                        <span class="text-[10px] text-slate-500">${c.fecha}</span>
+                    </div>
+                    <p class="text-slate-300 text-xs leading-relaxed">${c.msg}</p>
+                </div>
+            `).join('');
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            initUserProfile();
+            ['u1', 'u2', 'u3'].forEach(cargarComentarios);
+        });
+    </script>
+</body>
+</html>

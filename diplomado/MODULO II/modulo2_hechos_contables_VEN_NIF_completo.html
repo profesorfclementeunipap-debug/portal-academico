@@ -1,0 +1,1688 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Módulo II: Hechos Contables y Ciclo Completo | Prof. Frank Clemente</title>
+    <!-- Fonts & Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Outfit:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <style>
+        :root {
+            --primary-dark: #0f172a;
+            --primary-blue: #2563eb;
+            --accent-gold: #d97706;
+            --emerald-green: #059669;
+            --rose-red: #dc2626;
+            --bg-slate: #f8fafc;
+            --card-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background-color: #f1f5f9;
+            color: #334155;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            padding-bottom: 50px;
+        }
+
+        /* 1. CORPORATE HEADER */
+        .header-banner {
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            color: white;
+            padding: 40px 60px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+            border-bottom: 5px solid #2563eb;
+        }
+
+        .header-banner::before {
+            content: '';
+            position: absolute;
+            top: 0; right: 0; bottom: 0; left: 0;
+            background: radial-gradient(circle at 80% 50%, rgba(37, 99, 235, 0.15) 0%, transparent 60%);
+            z-index: 1;
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 2;
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .header-text h1 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 36px;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            margin-bottom: 8px;
+            background: linear-gradient(to right, #ffffff, #93c5fd);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .header-text p {
+            color: #94a3b8;
+            font-size: 16px;
+            font-weight: 500;
+        }
+
+        .badge-academic {
+            background-color: rgba(37, 99, 235, 0.2);
+            border: 1px solid rgba(147, 197, 253, 0.3);
+            color: #93c5fd;
+            padding: 6px 14px;
+            border-radius: 50px;
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            display: inline-block;
+            margin-bottom: 12px;
+        }
+
+        /* 2. FLOATING RETURN BUTTON */
+        .btn-float-back {
+            position: fixed;
+            bottom: 30px;
+            left: 30px;
+            z-index: 1000;
+            background: rgba(15, 23, 42, 0.95);
+            color: #93c5fd;
+            padding: 12px 24px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 14px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            border: 1px solid rgba(147, 197, 253, 0.2);
+            backdrop-filter: blur(10px);
+            transition: var(--transition);
+        }
+
+        .btn-float-back:hover {
+            background: #2563eb;
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 15px 35px rgba(37, 99, 235, 0.3);
+        }
+
+        /* TOP NAVIGATION BAR */
+        .top-nav-bar {
+            background: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            position: sticky;
+            top: 0;
+            z-index: 999;
+            padding: 14px 40px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .top-nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-back-link {
+            color: #93c5fd;
+            text-decoration: none;
+            font-weight: 700;
+            font-family: 'Outfit', sans-serif;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: var(--transition);
+        }
+
+        .nav-back-link:hover {
+            color: white;
+            transform: translateX(-3px);
+        }
+
+        .nav-brand {
+            color: #64748b;
+            font-family: 'Outfit', sans-serif;
+            font-size: 13px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        /* 3. MAIN WORKSPACE LAYOUT */
+        .workspace-container {
+            max-width: 1200px;
+            width: 95%;
+            margin: 40px auto 0 auto;
+            flex-grow: 1;
+        }
+
+        /* TABS NAVIGATION */
+        .tabs-nav {
+            display: flex;
+            background: white;
+            padding: 8px;
+            border-radius: 16px;
+            box-shadow: var(--card-shadow);
+            margin-bottom: 30px;
+            gap: 10px;
+        }
+
+        .tab-btn {
+            flex: 1;
+            background: none;
+            border: none;
+            padding: 14px 20px;
+            border-radius: 12px;
+            font-family: 'Outfit', sans-serif;
+            font-size: 16px;
+            font-weight: 600;
+            color: #64748b;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            transition: var(--transition);
+        }
+
+        .tab-btn:hover {
+            color: #2563eb;
+            background: #f8fafc;
+        }
+
+        .tab-btn.active {
+            background: #2563eb;
+            color: white;
+            box-shadow: 0 4px 15px rgba(37, 99, 235, 0.25);
+        }
+
+        /* TABS CONTENT */
+        .tab-content {
+            display: none;
+            animation: fadeIn 0.4s ease;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* 4. SHINY GLASS CARDS */
+        .glass-card {
+            background: white;
+            border-radius: 24px;
+            padding: 40px;
+            box-shadow: var(--card-shadow);
+            border: 1px solid rgba(226, 232, 240, 0.8);
+            margin-bottom: 30px;
+        }
+
+        .card-title {
+            font-family: 'Outfit', sans-serif;
+            font-size: 24px;
+            font-weight: 700;
+            color: #0f172a;
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            border-left: 5px solid #2563eb;
+            padding-left: 15px;
+        }
+
+        /* 5. INTERACTIVE TRANSACTION WORKSPACE */
+        .instruction-banner {
+            background: #eff6ff;
+            border-left: 4px solid #2563eb;
+            padding: 18px 24px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+            color: #1e3a8a;
+            font-size: 15px;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .tx-card {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 16px;
+            padding: 25px;
+            margin-bottom: 20px;
+            transition: var(--transition);
+        }
+
+        .tx-card:hover {
+            border-color: #cbd5e1;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.02);
+        }
+
+        .tx-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+            border-bottom: 1px dashed #e2e8f0;
+            padding-bottom: 12px;
+        }
+
+        .tx-number {
+            background: #3b82f6;
+            color: white;
+            font-weight: bold;
+            font-size: 13px;
+            padding: 4px 10px;
+            border-radius: 6px;
+        }
+
+        .tx-desc {
+            font-size: 16px;
+            font-weight: 600;
+            color: #1e293b;
+            line-height: 1.5;
+        }
+
+        .analyzer-grid {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr 1fr;
+            gap: 20px;
+            margin-top: 15px;
+        }
+
+        .select-group {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .select-group label {
+            font-size: 12px;
+            font-weight: 700;
+            color: #64748b;
+            text-transform: uppercase;
+        }
+
+        select {
+            padding: 10px 14px;
+            border-radius: 8px;
+            border: 1px solid #cbd5e1;
+            font-family: inherit;
+            font-size: 14px;
+            color: #334155;
+            background-color: white;
+            outline: none;
+            transition: var(--transition);
+        }
+
+        select:focus {
+            border-color: #2563eb;
+            box-shadow: 0 0 0 3px rgba(37,99,235,0.1);
+        }
+
+        /* 6. DYNAMIC T-ACCOUNTS */
+        .ledger-board {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 25px;
+            margin-top: 20px;
+        }
+
+        .t-account {
+            background: white;
+            border: 2px solid #e2e8f0;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.02);
+        }
+
+        .t-account-header {
+            background: #0f172a;
+            color: white;
+            text-align: center;
+            padding: 12px;
+            font-weight: bold;
+            font-family: 'Outfit', sans-serif;
+            font-size: 15px;
+            letter-spacing: 0.5px;
+            border-bottom: 2px solid #2563eb;
+        }
+
+        .t-account-columns {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            min-height: 120px;
+            position: relative;
+        }
+
+        .t-account-columns::after {
+            content: '';
+            position: absolute;
+            top: 0; bottom: 0; left: 50%;
+            width: 2px;
+            background-color: #e2e8f0;
+        }
+
+        .t-column {
+            padding: 10px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .t-column-label {
+            font-size: 11px;
+            font-weight: bold;
+            color: #94a3b8;
+            text-transform: uppercase;
+            margin-bottom: 5px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .posting-item {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 6px;
+            padding: 8px 12px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-family: monospace;
+            font-size: 14px;
+            font-weight: bold;
+            animation: popIn 0.3s ease;
+        }
+
+        @keyframes popIn {
+            from { transform: scale(0.9); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+
+        .t-account-footer {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            border-top: 2px solid #e2e8f0;
+            background: #f8fafc;
+            font-family: monospace;
+            font-size: 13px;
+            font-weight: bold;
+        }
+
+        .t-footer-sum {
+            padding: 10px;
+            text-align: right;
+            color: #475569;
+        }
+
+        .t-footer-balance-row {
+            grid-column: span 2;
+            border-top: 1px dashed #cbd5e1;
+            padding: 8px 12px;
+            display: flex;
+            justify-content: space-between;
+            background-color: #f1f5f9;
+            font-size: 14px;
+            color: #0f172a;
+        }
+
+        /* 7. TRIAL BALANCE TABLE */
+        .trial-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
+
+        .trial-table th {
+            background: #0f172a;
+            color: white;
+            padding: 12px 15px;
+            text-align: left;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+        .trial-table td {
+            padding: 12px 15px;
+            border-bottom: 1px solid #e2e8f0;
+            font-size: 14px;
+        }
+
+        .trial-table .num {
+            text-align: right;
+            font-family: monospace;
+            font-size: 15px;
+            font-weight: bold;
+        }
+
+        .trial-table .total-row {
+            background: #f8fafc;
+            font-weight: bold;
+            border-top: 2px solid #0f172a;
+            border-bottom: 2px double #0f172a;
+        }
+
+        .trial-table .total-row td {
+            font-size: 15px;
+            color: #0f172a;
+        }
+
+        /* 8. SCORE CARD */
+        .score-card {
+            background: linear-gradient(135deg, #059669 0%, #10b981 100%);
+            color: white;
+            border-radius: 16px;
+            padding: 25px 35px;
+            margin-top: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: 0 10px 25px rgba(5, 150, 105, 0.2);
+            animation: slideUp 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .score-card.incorrect {
+            background: linear-gradient(135deg, #dc2626 0%, #ef4444 100%);
+            box-shadow: 0 10px 25px rgba(220, 38, 38, 0.2);
+        }
+
+        .score-left h3 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 22px;
+            margin-bottom: 6px;
+        }
+
+        .score-left p {
+            color: rgba(255,255,255,0.9);
+            font-size: 14px;
+        }
+
+        .score-right {
+            text-align: center;
+        }
+
+        .score-circle {
+            background: rgba(255,255,255,0.2);
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            font-weight: bold;
+            border: 2px solid white;
+        }
+
+        /* BUTTONS & FOOTERS */
+        .btn-primary {
+            background-color: #2563eb;
+            color: white;
+            font-family: 'Outfit', sans-serif;
+            font-size: 16px;
+            font-weight: 600;
+            padding: 14px 30px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 4px 12px rgba(37,99,235,0.2);
+            transition: var(--transition);
+        }
+
+        .btn-primary:hover {
+            background-color: #1d4ed8;
+            transform: translateY(-2px);
+        }
+
+        .btn-check {
+            background-color: #059669;
+            box-shadow: 0 4px 12px rgba(5,150,105,0.2);
+        }
+
+        .btn-check:hover {
+            background-color: #047857;
+        }
+
+        /* 9. ACCORDION SOLUCIONARIO */
+        .accordion-wrapper {
+            margin-top: 30px;
+        }
+
+        .accordion-btn {
+            width: 100%;
+            background: #fffbeb;
+            border: 1px solid #fef3c7;
+            padding: 18px 25px;
+            text-align: left;
+            font-family: 'Outfit', sans-serif;
+            font-size: 16px;
+            font-weight: 700;
+            color: #b45309;
+            cursor: pointer;
+            border-radius: 12px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: var(--card-shadow);
+            transition: var(--transition);
+        }
+
+        .accordion-btn:hover {
+            background: #fef3c7;
+        }
+
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease-out;
+            background: white;
+            border-radius: 0 0 12px 12px;
+        }
+
+        .accordion-content-inner {
+            padding: 25px;
+            border: 1px solid #f1f5f9;
+            border-top: none;
+        }
+
+        /* 10. EVALUATION CARDS */
+        .quiz-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 25px;
+            margin-top: 15px;
+        }
+
+        .quiz-card {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 16px;
+            padding: 25px;
+            transition: var(--transition);
+        }
+
+        .quiz-card:hover {
+            border-color: #cbd5e1;
+        }
+
+        .quiz-question {
+            font-size: 16px;
+            font-weight: 700;
+            color: #0f172a;
+            margin-bottom: 20px;
+            line-height: 1.5;
+        }
+
+        .options-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .option-item {
+            background: white;
+            border: 1px solid #cbd5e1;
+            padding: 14px 18px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 600;
+            color: #334155;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            transition: var(--transition);
+        }
+
+        .option-item:hover {
+            border-color: #2563eb;
+            background-color: #eff6ff;
+            color: #2563eb;
+        }
+
+        .option-item.correct {
+            background-color: #ecfdf5;
+            border-color: #10b981;
+            color: #065f46;
+        }
+
+        .option-item.incorrect {
+            background-color: #fef2f2;
+            border-color: #f87171;
+            color: #991b1b;
+        }
+
+        .option-badge {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            border: 2px solid currentColor;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 11px;
+            font-weight: bold;
+        }
+
+        .feedback-box {
+            margin-top: 15px;
+            background: #f1f5f9;
+            border-left: 4px solid #64748b;
+            padding: 12px 18px;
+            border-radius: 6px;
+            font-size: 13px;
+            font-weight: 500;
+            line-height: 1.5;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .feedback-box.correct {
+            background-color: #ecfdf5;
+            border-color: #10b981;
+            color: #065f46;
+        }
+
+        .feedback-box.incorrect {
+            background-color: #fef2f2;
+            border-color: #f87171;
+            color: #991b1b;
+        }
+
+        /* 11. ACADEMIC FOOTER */
+        .footer-academic {
+            background: #0f172a;
+            color: #64748b;
+            text-align: center;
+            padding: 30px;
+            font-size: 14px;
+            margin-top: 60px;
+            border-top: 1px solid #1e293b;
+        }
+
+        .footer-academic p {
+            color: #94a3b8;
+            font-weight: 500;
+            margin-bottom: 5px;
+        }
+
+        .footer-academic span {
+            font-size: 12px;
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- Top Modern Navigation Bar -->
+    <nav class="top-nav-bar">
+        <div class="top-nav-container">
+            <a href="index.html" class="nav-back-link">
+                <i class="fa-solid fa-chevron-left"></i> Regresar al Portal Principal
+            </a>
+            <div class="nav-brand">
+                <i class="fa-solid fa-graduation-cap"></i> Diplomado UCSAR
+            </div>
+        </div>
+    </nav>
+
+    <!-- Floating Return Button -->
+    <a href="index.html" class="btn-float-back">
+        <i class="fa-solid fa-arrow-left"></i> Regresar al Portal
+    </a>
+
+    <!-- Header Banner -->
+    <header class="header-banner">
+        <div class="header-content">
+            <div class="header-text">
+                <span class="badge-academic">MÓDULO II: EL CICLO CONTABLE COMPLETO</span>
+                <h1>Hechos Contables bajo VEN-NIF</h1>
+                <p>Análisis Transaccional, Registro en Cuentas T y Validación del Balance de Comprobación</p>
+            </div>
+            <div style="font-size: 48px; color: rgba(255,255,255,0.15);">
+                <i class="fa-solid fa-book-bookmark"></i>
+            </div>
+        </div>
+    </header>
+
+    <div class="workspace-container">
+        
+        <!-- Tabs Navigation -->
+        <nav class="tabs-nav">
+            <button class="tab-btn active" onclick="switchTab('analisis')">
+                <i class="fa-solid fa-list-check"></i> 1. Análisis de Hechos
+            </button>
+            <button class="tab-btn" onclick="switchTab('cuentas-t')">
+                <i class="fa-solid fa-network-wired"></i> 2. Cuentas T
+            </button>
+            <button class="tab-btn" onclick="switchTab('balance')">
+                <i class="fa-solid fa-scale-balanced"></i> 3. Balance de Comprobación
+            </button>
+            <button class="tab-btn" onclick="switchTab('evaluacion')">
+                <i class="fa-solid fa-circle-question"></i> 4. Quiz del Módulo
+            </button>
+        </nav>
+
+        <!-- ============================================== -->
+        <!-- TAB 1: ANALIZADOR DE HECHOS CONTABLES -->
+        <!-- ============================================== -->
+        <div id="tab-analisis" class="tab-content active">
+            <div class="glass-card">
+                <h2 class="card-title">
+                    <i class="fa-solid fa-magnifying-glass-chart" style="color: #2563eb;"></i> 
+                    Laboratorio I: Clasificación y Ecuación Patrimonial
+                </h2>
+                
+                <div class="instruction-banner">
+                    <i class="fa-solid fa-info-circle"></i>
+                    <div>
+                        <strong>Instrucciones:</strong> Analice las transacciones mercantiles del ejercicio. Determine qué tipo de hecho contable corresponde (Permutativo, Modificativo o Mixto) e identifique el impacto patrimonial en la ecuación contable.
+                    </div>
+                </div>
+
+                <!-- Transaction 1 -->
+                <div class="tx-card">
+                    <div class="tx-header">
+                        <span class="tx-number">Transacción 1</span>
+                        <span style="font-size: 13px; font-weight: bold; color: #64748b;"><i class="fa-solid fa-calendar-day"></i> Día 01</span>
+                    </div>
+                    <div class="tx-desc">Los accionistas aportan Bs. 500.000,00 en efectivo para dar inicio legal a las operaciones de la firma.</div>
+                    
+                    <div class="analyzer-grid">
+                        <div class="select-group">
+                            <label>Clasificación del Hecho</label>
+                            <select id="t1-type">
+                                <option value="">-- Seleccione --</option>
+                                <option value="permutativo">Hecho Permutativo</option>
+                                <option value="modificativo-aum">Hecho Modificativo Aumentativo</option>
+                                <option value="modificativo-dim">Hecho Modificativo Diminutivo</option>
+                                <option value="mixto">Hecho Mixto</option>
+                            </select>
+                        </div>
+                        <div class="select-group">
+                            <label>Efecto en el Activo</label>
+                            <select id="t1-activo">
+                                <option value="">-- Seleccione --</option>
+                                <option value="aumenta">Aumenta (+)</option>
+                                <option value="disminuye">Disminuye (-)</option>
+                                <option value="neutro">Sin Efecto (0)</option>
+                            </select>
+                        </div>
+                        <div class="select-group">
+                            <label>Efecto en Patrimonio</label>
+                            <select id="t1-patrimonio">
+                                <option value="">-- Seleccione --</option>
+                                <option value="aumenta">Aumenta (+)</option>
+                                <option value="disminuye">Disminuye (-)</option>
+                                <option value="neutro">Sin Efecto (0)</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Transaction 2 -->
+                <div class="tx-card">
+                    <div class="tx-header">
+                        <span class="tx-number">Transacción 2</span>
+                        <span style="font-size: 13px; font-weight: bold; color: #64748b;"><i class="fa-solid fa-calendar-day"></i> Día 03</span>
+                    </div>
+                    <div class="tx-desc">Se adquiere mobiliario de oficina por valor de Bs. 80.000,00, cancelando la totalidad de la factura en efectivo.</div>
+                    
+                    <div class="analyzer-grid">
+                        <div class="select-group">
+                            <label>Clasificación del Hecho</label>
+                            <select id="t2-type">
+                                <option value="">-- Seleccione --</option>
+                                <option value="permutativo">Hecho Permutativo</option>
+                                <option value="modificativo-aum">Hecho Modificativo Aumentativo</option>
+                                <option value="modificativo-dim">Hecho Modificativo Diminutivo</option>
+                                <option value="mixto">Hecho Mixto</option>
+                            </select>
+                        </div>
+                        <div class="select-group">
+                            <label>Efecto en el Activo</label>
+                            <select id="t2-activo">
+                                <option value="">-- Seleccione --</option>
+                                <option value="aumenta">Aumenta (+)</option>
+                                <option value="disminuye">Disminuye (-)</option>
+                                <option value="neutro">Sin Efecto (0)</option>
+                                <option value="aum-dis">Aumenta y Disminuye</option>
+                            </select>
+                        </div>
+                        <div class="select-group">
+                            <label>Efecto en el Pasivo</label>
+                            <select id="t2-pasivo">
+                                <option value="">-- Seleccione --</option>
+                                <option value="aumenta">Aumenta (+)</option>
+                                <option value="disminuye">Disminuye (-)</option>
+                                <option value="neutro">Sin Efecto (0)</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Transaction 3 -->
+                <div class="tx-card">
+                    <div class="tx-header">
+                        <span class="tx-number">Transacción 3</span>
+                        <span style="font-size: 13px; font-weight: bold; color: #64748b;"><i class="fa-solid fa-calendar-day"></i> Día 08</span>
+                    </div>
+                    <div class="tx-desc">Se recibe un préstamo bancario por Bs. 150.000,00, el cual es abonado íntegramente en la cuenta corriente de la empresa.</div>
+                    
+                    <div class="analyzer-grid">
+                        <div class="select-group">
+                            <label>Clasificación del Hecho</label>
+                            <select id="t3-type">
+                                <option value="">-- Seleccione --</option>
+                                <option value="permutativo">Hecho Permutativo</option>
+                                <option value="modificativo-aum">Hecho Modificativo Aumentativo</option>
+                                <option value="modificativo-dim">Hecho Modificativo Diminutivo</option>
+                                <option value="mixto">Hecho Mixto</option>
+                            </select>
+                        </div>
+                        <div class="select-group">
+                            <label>Efecto en el Activo</label>
+                            <select id="t3-activo">
+                                <option value="">-- Seleccione --</option>
+                                <option value="aumenta">Aumenta (+)</option>
+                                <option value="disminuye">Disminuye (-)</option>
+                                <option value="neutro">Sin Efecto (0)</option>
+                            </select>
+                        </div>
+                        <div class="select-group">
+                            <label>Efecto en el Pasivo</label>
+                            <select id="t3-pasivo">
+                                <option value="">-- Seleccione --</option>
+                                <option value="aumenta">Aumenta (+)</option>
+                                <option value="disminuye">Disminuye (-)</option>
+                                <option value="neutro">Sin Efecto (0)</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Transaction 4 -->
+                <div class="tx-card">
+                    <div class="tx-header">
+                        <span class="tx-number">Transacción 4</span>
+                        <span style="font-size: 13px; font-weight: bold; color: #64748b;"><i class="fa-solid fa-calendar-day"></i> Día 15</span>
+                    </div>
+                    <div class="tx-desc">Se transfiere por banco la suma de Bs. 30.000,00 por concepto de pago del canon de arrendamiento del local correspondiente al primer mes.</div>
+                    
+                    <div class="analyzer-grid">
+                        <div class="select-group">
+                            <label>Clasificación del Hecho</label>
+                            <select id="t4-type">
+                                <option value="">-- Seleccione --</option>
+                                <option value="permutativo">Hecho Permutativo</option>
+                                <option value="modificativo-aum">Hecho Modificativo Aumentativo</option>
+                                <option value="modificativo-dim">Hecho Modificativo Diminutivo</option>
+                                <option value="mixto">Hecho Mixto</option>
+                            </select>
+                        </div>
+                        <div class="select-group">
+                            <label>Efecto en el Activo</label>
+                            <select id="t4-activo">
+                                <option value="">-- Seleccione --</option>
+                                <option value="aumenta">Aumenta (+)</option>
+                                <option value="disminuye">Disminuye (-)</option>
+                                <option value="neutro">Sin Efecto (0)</option>
+                            </select>
+                        </div>
+                        <div class="select-group">
+                            <label>Efecto en el Patrimonio (Gasto)</label>
+                            <select id="t4-patrimonio">
+                                <option value="">-- Seleccione --</option>
+                                <option value="aumenta">Aumenta (+)</option>
+                                <option value="disminuye">Disminuye (-)</option>
+                                <option value="neutro">Sin Efecto (0)</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div style="text-align: right; margin-top: 30px;">
+                    <button class="btn-primary btn-check" onclick="validateAnalisis()">
+                        <i class="fa-solid fa-square-check"></i> Validar Ecuación Patrimonial
+                    </button>
+                </div>
+
+                <!-- Result Message Tab 1 -->
+                <div id="analisis-result" style="display: none;"></div>
+            </div>
+        </div>
+
+        <!-- ============================================== -->
+        <!-- TAB 2: CUENTAS T INTERACTIVAS -->
+        <!-- ============================================== -->
+        <div id="tab-cuentas-t" class="tab-content">
+            <div class="glass-card">
+                <h2 class="card-title">
+                    <i class="fa-solid fa-network-wired" style="color: #2563eb;"></i> 
+                    Laboratorio II: Libro Mayor en Cuentas T
+                </h2>
+
+                <div class="instruction-banner">
+                    <i class="fa-solid fa-info-circle"></i>
+                    <div>
+                        <strong>Instrucciones:</strong> Registre los débitos y créditos en cada Cuenta T según el principio de doble partida para las 4 transacciones analizadas. Al ingresar los valores, el sistema calcula de manera dinámica los saldos deudores y acreedores.
+                    </div>
+                </div>
+
+                <div class="ledger-board">
+                    <!-- Caja / Banco -->
+                    <div class="t-account">
+                        <div class="t-account-header">CAJA Y BANCO (ACTIVO)</div>
+                        <div class="t-account-columns">
+                            <!-- DEBE -->
+                            <div class="t-column">
+                                <div class="t-column-label">Debe <span>(+)</span></div>
+                                <div style="display: flex; gap: 4px; margin-bottom: 5px;">
+                                    <input type="number" id="caja-debe-val" placeholder="0.00" style="width: 70%; padding: 6px; border: 1px solid #cbd5e1; border-radius: 4px; font-family: monospace;">
+                                    <button onclick="addPosting('caja', 'debe')" class="btn-primary" style="padding: 6px 10px; font-size: 12px; border-radius: 4px; box-shadow: none;">+</button>
+                                </div>
+                                <div id="caja-debe-list"></div>
+                            </div>
+                            <!-- HABER -->
+                            <div class="t-column">
+                                <div class="t-column-label">Haber <span>(-)</span></div>
+                                <div style="display: flex; gap: 4px; margin-bottom: 5px;">
+                                    <input type="number" id="caja-haber-val" placeholder="0.00" style="width: 70%; padding: 6px; border: 1px solid #cbd5e1; border-radius: 4px; font-family: monospace;">
+                                    <button onclick="addPosting('caja', 'haber')" class="btn-primary" style="padding: 6px 10px; font-size: 12px; border-radius: 4px; box-shadow: none; background-color: #475569;">+</button>
+                                </div>
+                                <div id="caja-haber-list"></div>
+                            </div>
+                        </div>
+                        <div class="t-account-footer">
+                            <div class="t-footer-sum" id="caja-debe-sum">Suma: 0,00</div>
+                            <div class="t-footer-sum" id="caja-haber-sum">Suma: 0,00</div>
+                            <div class="t-footer-balance-row">
+                                <span>Saldo Deudor:</span>
+                                <span id="caja-balance" style="font-weight: bold; color: #2563eb;">0,00 Bs.</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Capital Social -->
+                    <div class="t-account">
+                        <div class="t-account-header">CAPITAL SOCIAL (PATRIMONIO)</div>
+                        <div class="t-account-columns">
+                            <!-- DEBE -->
+                            <div class="t-column">
+                                <div class="t-column-label">Debe <span>(-)</span></div>
+                                <div style="display: flex; gap: 4px; margin-bottom: 5px;">
+                                    <input type="number" id="capital-debe-val" placeholder="0.00" style="width: 70%; padding: 6px; border: 1px solid #cbd5e1; border-radius: 4px; font-family: monospace;">
+                                    <button onclick="addPosting('capital', 'debe')" class="btn-primary" style="padding: 6px 10px; font-size: 12px; border-radius: 4px; box-shadow: none;">+</button>
+                                </div>
+                                <div id="capital-debe-list"></div>
+                            </div>
+                            <!-- HABER -->
+                            <div class="t-column">
+                                <div class="t-column-label">Haber <span>(+)</span></div>
+                                <div style="display: flex; gap: 4px; margin-bottom: 5px;">
+                                    <input type="number" id="capital-haber-val" placeholder="0.00" style="width: 70%; padding: 6px; border: 1px solid #cbd5e1; border-radius: 4px; font-family: monospace;">
+                                    <button onclick="addPosting('capital', 'haber')" class="btn-primary" style="padding: 6px 10px; font-size: 12px; border-radius: 4px; box-shadow: none; background-color: #475569;">+</button>
+                                </div>
+                                <div id="capital-haber-list"></div>
+                            </div>
+                        </div>
+                        <div class="t-account-footer">
+                            <div class="t-footer-sum" id="capital-debe-sum">Suma: 0,00</div>
+                            <div class="t-footer-sum" id="capital-haber-sum">Suma: 0,00</div>
+                            <div class="t-footer-balance-row">
+                                <span>Saldo Acreedor:</span>
+                                <span id="capital-balance" style="font-weight: bold; color: #d97706;">0,00 Bs.</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Mobiliario -->
+                    <div class="t-account">
+                        <div class="t-account-header">MOBILIARIO (ACTIVO)</div>
+                        <div class="t-account-columns">
+                            <!-- DEBE -->
+                            <div class="t-column">
+                                <div class="t-column-label">Debe <span>(+)</span></div>
+                                <div style="display: flex; gap: 4px; margin-bottom: 5px;">
+                                    <input type="number" id="mobiliario-debe-val" placeholder="0.00" style="width: 70%; padding: 6px; border: 1px solid #cbd5e1; border-radius: 4px; font-family: monospace;">
+                                    <button onclick="addPosting('mobiliario', 'debe')" class="btn-primary" style="padding: 6px 10px; font-size: 12px; border-radius: 4px; box-shadow: none;">+</button>
+                                </div>
+                                <div id="mobiliario-debe-list"></div>
+                            </div>
+                            <!-- HABER -->
+                            <div class="t-column">
+                                <div class="t-column-label">Haber <span>(-)</span></div>
+                                <div style="display: flex; gap: 4px; margin-bottom: 5px;">
+                                    <input type="number" id="mobiliario-haber-val" placeholder="0.00" style="width: 70%; padding: 6px; border: 1px solid #cbd5e1; border-radius: 4px; font-family: monospace;">
+                                    <button onclick="addPosting('mobiliario', 'haber')" class="btn-primary" style="padding: 6px 10px; font-size: 12px; border-radius: 4px; box-shadow: none; background-color: #475569;">+</button>
+                                </div>
+                                <div id="mobiliario-haber-list"></div>
+                            </div>
+                        </div>
+                        <div class="t-account-footer">
+                            <div class="t-footer-sum" id="mobiliario-debe-sum">Suma: 0,00</div>
+                            <div class="t-footer-sum" id="mobiliario-haber-sum">Suma: 0,00</div>
+                            <div class="t-footer-balance-row">
+                                <span>Saldo Deudor:</span>
+                                <span id="mobiliario-balance" style="font-weight: bold; color: #2563eb;">0,00 Bs.</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Préstamo Bancario -->
+                    <div class="t-account">
+                        <div class="t-account-header">PRÉSTAMOS BANCARIOS (PASIVO)</div>
+                        <div class="t-account-columns">
+                            <!-- DEBE -->
+                            <div class="t-column">
+                                <div class="t-column-label">Debe <span>(-)</span></div>
+                                <div style="display: flex; gap: 4px; margin-bottom: 5px;">
+                                    <input type="number" id="prestamo-debe-val" placeholder="0.00" style="width: 70%; padding: 6px; border: 1px solid #cbd5e1; border-radius: 4px; font-family: monospace;">
+                                    <button onclick="addPosting('prestamo', 'debe')" class="btn-primary" style="padding: 6px 10px; font-size: 12px; border-radius: 4px; box-shadow: none;">+</button>
+                                </div>
+                                <div id="prestamo-debe-list"></div>
+                            </div>
+                            <!-- HABER -->
+                            <div class="t-column">
+                                <div class="t-column-label">Haber <span>(+)</span></div>
+                                <div style="display: flex; gap: 4px; margin-bottom: 5px;">
+                                    <input type="number" id="prestamo-haber-val" placeholder="0.00" style="width: 70%; padding: 6px; border: 1px solid #cbd5e1; border-radius: 4px; font-family: monospace;">
+                                    <button onclick="addPosting('prestamo', 'haber')" class="btn-primary" style="padding: 6px 10px; font-size: 12px; border-radius: 4px; box-shadow: none; background-color: #475569;">+</button>
+                                </div>
+                                <div id="prestamo-haber-list"></div>
+                            </div>
+                        </div>
+                        <div class="t-account-footer">
+                            <div class="t-footer-sum" id="prestamo-debe-sum">Suma: 0,00</div>
+                            <div class="t-footer-sum" id="prestamo-haber-sum">Suma: 0,00</div>
+                            <div class="t-footer-balance-row">
+                                <span>Saldo Acreedor:</span>
+                                <span id="prestamo-balance" style="font-weight: bold; color: #d97706;">0,00 Bs.</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Gastos de Alquiler -->
+                    <div class="t-account">
+                        <div class="t-account-header">GASTOS DE ALQUILER (GASTO)</div>
+                        <div class="t-account-columns">
+                            <!-- DEBE -->
+                            <div class="t-column">
+                                <div class="t-column-label">Debe <span>(+)</span></div>
+                                <div style="display: flex; gap: 4px; margin-bottom: 5px;">
+                                    <input type="number" id="alquiler-debe-val" placeholder="0.00" style="width: 70%; padding: 6px; border: 1px solid #cbd5e1; border-radius: 4px; font-family: monospace;">
+                                    <button onclick="addPosting('alquiler', 'debe')" class="btn-primary" style="padding: 6px 10px; font-size: 12px; border-radius: 4px; box-shadow: none;">+</button>
+                                </div>
+                                <div id="alquiler-debe-list"></div>
+                            </div>
+                            <!-- HABER -->
+                            <div class="t-column">
+                                <div class="t-column-label">Haber <span>(-)</span></div>
+                                <div style="display: flex; gap: 4px; margin-bottom: 5px;">
+                                    <input type="number" id="alquiler-haber-val" placeholder="0.00" style="width: 70%; padding: 6px; border: 1px solid #cbd5e1; border-radius: 4px; font-family: monospace;">
+                                    <button onclick="addPosting('alquiler', 'haber')" class="btn-primary" style="padding: 6px 10px; font-size: 12px; border-radius: 4px; box-shadow: none; background-color: #475569;">+</button>
+                                </div>
+                                <div id="alquiler-haber-list"></div>
+                            </div>
+                        </div>
+                        <div class="t-account-footer">
+                            <div class="t-footer-sum" id="alquiler-debe-sum">Suma: 0,00</div>
+                            <div class="t-footer-sum" id="alquiler-haber-sum">Suma: 0,00</div>
+                            <div class="t-footer-balance-row">
+                                <span>Saldo Deudor:</span>
+                                <span id="alquiler-balance" style="font-weight: bold; color: #2563eb;">0,00 Bs.</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div style="display: flex; justify-content: space-between; margin-top: 40px;">
+                    <button class="btn-primary" style="background-color: #64748b; box-shadow: none;" onclick="resetLedger()">
+                        <i class="fa-solid fa-arrow-rotate-left"></i> Limpiar Libro Mayor
+                    </button>
+                    <button class="btn-primary btn-check" onclick="validateLedger()">
+                        <i class="fa-solid fa-square-check"></i> Validar Asientos Contables
+                    </button>
+                </div>
+
+                <!-- Result Message Tab 2 -->
+                <div id="ledger-result" style="display: none;"></div>
+            </div>
+        </div>
+
+        <!-- ============================================== -->
+        <!-- TAB 3: BALANCE DE COMPROBACIÓN -->
+        <!-- ============================================== -->
+        <div id="tab-balance" class="tab-content">
+            <div class="glass-card">
+                <h2 class="card-title">
+                    <i class="fa-solid fa-scale-balanced" style="color: #2563eb;"></i> 
+                    Laboratorio III: Balance de Comprobación Integrado
+                </h2>
+
+                <div class="instruction-banner">
+                    <i class="fa-solid fa-info-circle"></i>
+                    <div>
+                        <strong>Instrucciones:</strong> Este balance se genera automáticamente a partir de los saldos acumulados de tus Cuentas T. Verifique que los totales del Debe y del Haber balanceen perfectamente, cumpliendo con la Ley de Partida Doble.
+                    </div>
+                </div>
+
+                <table class="trial-table">
+                    <thead>
+                        <tr>
+                            <th>Código</th>
+                            <th>Cuenta Contable</th>
+                            <th class="num">Saldo Deudor (Bs.)</th>
+                            <th class="num">Saldo Acreedor (Bs.)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1.1.01</td>
+                            <td>Caja y Banco</td>
+                            <td class="num" id="tb-caja-deudor">0,00</td>
+                            <td class="num" id="tb-caja-acreedor">0,00</td>
+                        </tr>
+                        <tr>
+                            <td>1.2.01</td>
+                            <td>Mobiliario</td>
+                            <td class="num" id="tb-mobiliario-deudor">0,00</td>
+                            <td class="num" id="tb-mobiliario-acreedor">0,00</td>
+                        </tr>
+                        <tr>
+                            <td>2.1.01</td>
+                            <td>Préstamos Bancarios</td>
+                            <td class="num" id="tb-prestamo-deudor">0,00</td>
+                            <td class="num" id="tb-prestamo-acreedor">0,00</td>
+                        </tr>
+                        <tr>
+                            <td>3.1.01</td>
+                            <td>Capital Social</td>
+                            <td class="num" id="tb-capital-deudor">0,00</td>
+                            <td class="num" id="tb-capital-acreedor">0,00</td>
+                        </tr>
+                        <tr>
+                            <td>4.1.01</td>
+                            <td>Gastos de Alquiler</td>
+                            <td class="num" id="tb-alquiler-deudor">0,00</td>
+                            <td class="num" id="tb-alquiler-acreedor">0,00</td>
+                        </tr>
+                        <tr class="total-row">
+                            <td colspan="2">TOTALES DEL BALANCE DE COMPROBACIÓN</td>
+                            <td class="num" id="tb-total-deudor">0,00</td>
+                            <td class="num" id="tb-total-acreedor">0,00</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div id="balance-badge-container" style="margin-top: 30px; display: none;"></div>
+
+                <!-- Accordion Solucionario -->
+                <div class="accordion-wrapper">
+                    <button class="accordion-btn" onclick="toggleAccordion()">
+                        <span><i class="fa-solid fa-graduation-cap"></i> Ver Memoria de Cálculo Contable (Docente)</span>
+                        <i class="fa-solid fa-chevron-down" id="accordion-arrow"></i>
+                    </button>
+                    <div class="accordion-content" id="accordion-content">
+                        <div class="accordion-content-inner">
+                            <h3 style="color: #0f172a; font-family: 'Outfit', sans-serif; font-size: 18px; margin-bottom: 15px;">Guía y Asientos en Libro Diario</h3>
+                            <p style="font-size: 15px; line-height: 1.6; margin-bottom: 20px;">
+                                A continuación se exponen de forma estructurada los asientos de diario correctos para las transacciones del período, sirviendo como material pedagógico de soporte:
+                            </p>
+                            
+                            <table style="width: 100%; border-collapse: collapse; font-size: 14px; margin-bottom: 25px;">
+                                <thead>
+                                    <tr style="background-color: #0f172a; color: white;">
+                                        <th style="padding: 10px;">Cuenta y Detalle</th>
+                                        <th class="num" style="padding: 10px; text-align: right;">Debe (Bs.)</th>
+                                        <th class="num" style="padding: 10px; text-align: right;">Haber (Bs.)</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><strong>- Asiento 1 -</strong><br>Caja y Banco (Activo↑)<br>&nbsp;&nbsp;&nbsp;Capital Social (Patrimonio↑)</td>
+                                        <td class="num" style="vertical-align: bottom;">500.000,00</td>
+                                        <td class="num" style="vertical-align: bottom;">500.000,00</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>- Asiento 2 -</strong><br>Mobiliario (Activo↑)<br>&nbsp;&nbsp;&nbsp;Caja y Banco (Activo↓)</td>
+                                        <td class="num" style="vertical-align: bottom;">80.000,00</td>
+                                        <td class="num" style="vertical-align: bottom;">80.000,00</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>- Asiento 3 -</strong><br>Caja y Banco (Activo↑)<br>&nbsp;&nbsp;&nbsp;Préstamos Bancarios (Pasivo↑)</td>
+                                        <td class="num" style="vertical-align: bottom;">150.000,00</td>
+                                        <td class="num" style="vertical-align: bottom;">150.000,00</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>- Asiento 4 -</strong><br>Gastos de Alquiler (Patrimonio↓)<br>&nbsp;&nbsp;&nbsp;Caja y Banco (Activo↓)</td>
+                                        <td class="num" style="vertical-align: bottom;">30.000,00</td>
+                                        <td class="num" style="vertical-align: bottom;">30.000,00</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                            <h4 style="color: #2563eb; font-family: 'Outfit', sans-serif; font-size: 15px; margin-bottom: 8px;">Memoria de Saldo en Caja y Banco:</h4>
+                            <p style="font-size: 14px; font-family: monospace; background: #f8fafc; padding: 15px; border-radius: 8px; line-height: 1.5;">
+                                Debe (Entradas): 500.000,00 + 150.000,00 = 650.000,00 Bs.<br>
+                                Haber (Salidas): 80.000,00 + 30.000,00 = 110.000,00 Bs.<br>
+                                Saldo Deudor: 650.000,00 - 110.000,00 = <strong>540.000,00 Bs.</strong>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ============================================== -->
+        <!-- TAB 4: EVALUACIÓN / QUIZ INTERACTIVO -->
+        <!-- ============================================== -->
+        <div id="tab-evaluacion" class="tab-content">
+            <div class="glass-card">
+                <h2 class="card-title">
+                    <i class="fa-solid fa-circle-question" style="color: #2563eb;"></i> 
+                    Laboratorio IV: Reactivos Contables y Sustentación VEN-NIF
+                </h2>
+
+                <div class="instruction-banner">
+                    <i class="fa-solid fa-info-circle"></i>
+                    <div>
+                        <strong>Instrucciones:</strong> Conteste cada reactivo haciendo clic sobre la opción de su preferencia. El sistema evaluará su respuesta en tiempo real y desplegará la base técnica y normativa que sustenta el hecho.
+                    </div>
+                </div>
+
+                <div class="quiz-grid">
+                    <!-- Pregunta 1 -->
+                    <div class="quiz-card" id="q1-card">
+                        <div class="quiz-question">1. ¿Qué tipo de hecho contable ocurre cuando compramos inventario en efectivo sin generar variaciones en el patrimonio neto?</div>
+                        <div class="options-list">
+                            <div class="option-item" onclick="checkQuizQuestion(1, 'A', 'incorrect')">
+                                <div class="option-badge">A</div>
+                                <span>Hecho Modificativo</span>
+                            </div>
+                            <div class="option-item" onclick="checkQuizQuestion(1, 'B', 'correct')">
+                                <div class="option-badge">B</div>
+                                <span>Hecho Permutativo</span>
+                            </div>
+                        </div>
+                        <div id="q1-feedback" style="display: none;"></div>
+                    </div>
+
+                    <!-- Pregunta 2 -->
+                    <div class="quiz-card" id="q2-card">
+                        <div class="quiz-question">2. ¿Bajo la doctrina de las VEN-NIF, cómo se clasifica un evento que altera tanto los activos como el patrimonio mediante un gasto por servicios públicos?</div>
+                        <div class="options-list">
+                            <div class="option-item" onclick="checkQuizQuestion(2, 'A', 'correct')">
+                                <div class="option-badge">A</div>
+                                <span>Hecho Modificativo Diminutivo</span>
+                            </div>
+                            <div class="option-item" onclick="checkQuizQuestion(2, 'B', 'incorrect')">
+                                <div class="option-badge">B</div>
+                                <span>Hecho Mixto</span>
+                            </div>
+                        </div>
+                        <div id="q2-feedback" style="display: none;"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Academic Footer -->
+    <footer class="footer-academic">
+        <p>© 2026 UCSAR - Diplomado en Contabilidad Financiera | Prof. Frank Clemente</p>
+        <span>"La contabilidad es la arquitectura del control empresarial y la transparencia gerencial."</span>
+    </footer>
+
+    <!-- Interactive JS Engine -->
+    <script>
+        // State variables
+        let postings = {
+            caja: { debe: [], haber: [] },
+            capital: { debe: [], haber: [] },
+            mobiliario: { debe: [], haber: [] },
+            prestamo: { debe: [], haber: [] },
+            alquiler: { debe: [], haber: [] }
+        };
+
+        // Navigation Tabs Control
+        function switchTab(tabId) {
+            document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+            document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
+
+            const activeBtn = Array.from(document.querySelectorAll('.tab-btn')).find(btn => btn.getAttribute('onclick').includes(tabId));
+            if (activeBtn) activeBtn.classList.add('active');
+
+            const activeContent = document.getElementById('tab-' + tabId);
+            if (activeContent) activeContent.classList.add('active');
+        }
+
+        // --- TAB 1: VALIDATE TRANSACCIÓN ANALYSIS ---
+        function validateAnalisis() {
+            const t1Type = document.getElementById('t1-type').value;
+            const t1Activo = document.getElementById('t1-activo').value;
+            const t1Pat = document.getElementById('t1-patrimonio').value;
+
+            const t2Type = document.getElementById('t2-type').value;
+            const t2Activo = document.getElementById('t2-activo').value;
+            const t2Pas = document.getElementById('t2-pasivo').value;
+
+            const t3Type = document.getElementById('t3-type').value;
+            const t3Activo = document.getElementById('t3-activo').value;
+            const t3Pas = document.getElementById('t3-pasivo').value;
+
+            const t4Type = document.getElementById('t4-type').value;
+            const t4Activo = document.getElementById('t4-activo').value;
+            const t4Pat = document.getElementById('t4-patrimonio').value;
+
+            let score = 0;
+            let feedback = '';
+
+            // T1 Correct Answers
+            if (t1Type === 'modificativo-aum' && t1Activo === 'aumenta' && t1Pat === 'aumenta') {
+                score++;
+            }
+            // T2 Correct Answers
+            if (t2Type === 'permutativo' && t2Activo === 'aum-dis' && t2Pas === 'neutro') {
+                score++;
+            }
+            // T3 Correct Answers
+            if (t3Type === 'permutativo' && t3Activo === 'aumenta' && t3Pas === 'aumenta') {
+                score++;
+            }
+            // T4 Correct Answers
+            if (t4Type === 'modificativo-dim' && t4Activo === 'disminuye' && t4Pat === 'disminuye') {
+                score++;
+            }
+
+            const resultDiv = document.getElementById('analisis-result');
+            resultDiv.style.display = 'block';
+
+            if (score === 4) {
+                resultDiv.innerHTML = `
+                    <div class="score-card">
+                        <div class="score-left">
+                            <h3>¡Perfecto! Ecuación Patrimonial Balanceada</h3>
+                            <p>Has clasificado cada hecho contable y su impacto en la ecuación contable ($A = P + Pat$) de forma correcta.</p>
+                        </div>
+                        <div class="score-right">
+                            <div class="score-circle">20/20</div>
+                        </div>
+                    </div>`;
+            } else {
+                resultDiv.innerHTML = `
+                    <div class="score-card incorrect">
+                        <div class="score-left">
+                            <h3>Hay algunas inconsistencias</h3>
+                            <p>Recuerde: las compras en efectivo permutan el activo sin variar pasivos. Revise detalladamente y vuelva a validar.</p>
+                        </div>
+                        <div class="score-right">
+                            <div class="score-circle">${score * 5}/20</div>
+                        </div>
+                    </div>`;
+            }
+            resultDiv.scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // --- TAB 2: INTERACTIVE T-ACCOUNTS ---
+        function addPosting(account, side) {
+            const inputField = document.getElementById(`${account}-${side}-val`);
+            const val = parseFloat(inputField.value);
+            
+            if (isNaN(val) || val <= 0) {
+                alert("Por favor ingrese un monto válido mayor a cero.");
+                return;
+            }
+
+            postings[account][side].push(val);
+            inputField.value = '';
+            
+            updateLedgerUI();
+        }
+
+        function updateLedgerUI() {
+            let tbSaldos = {
+                caja: { deudor: 0, acreedor: 0 },
+                mobiliario: { deudor: 0, acreedor: 0 },
+                prestamo: { deudor: 0, acreedor: 0 },
+                capital: { deudor: 0, acreedor: 0 },
+                alquiler: { deudor: 0, acreedor: 0 }
+            };
+
+            for (let acc in postings) {
+                const debeSum = postings[acc].debe.reduce((a, b) => a + b, 0);
+                const haberSum = postings[acc].haber.reduce((a, b) => a + b, 0);
+
+                document.getElementById(`${acc}-debe-sum`).innerText = "Suma: " + debeSum.toLocaleString('es-VE', { minimumFractionDigits: 2 });
+                document.getElementById(`${acc}-haber-sum`).innerText = "Suma: " + haberSum.toLocaleString('es-VE', { minimumFractionDigits: 2 });
+
+                const debeList = document.getElementById(`${acc}-debe-list`);
+                const haberList = document.getElementById(`${acc}-haber-list`);
+                debeList.innerHTML = '';
+                haberList.innerHTML = '';
+
+                postings[acc].debe.forEach(v => {
+                    debeList.innerHTML += `<div class="posting-item"><span>Bs.</span><span>${v.toLocaleString('es-VE', { minimumFractionDigits: 2 })}</span></div>`;
+                });
+                postings[acc].haber.forEach(v => {
+                    haberList.innerHTML += `<div class="posting-item"><span>Bs.</span><span>${v.toLocaleString('es-VE', { minimumFractionDigits: 2 })}</span></div>`;
+                });
+
+                // Calculate Balances
+                const balEl = document.getElementById(`${acc}-balance`);
+                if (acc === 'caja' || acc === 'mobiliario' || acc === 'alquiler') {
+                    // Deudor accounts
+                    const bal = debeSum - haberSum;
+                    if (bal >= 0) {
+                        balEl.innerText = bal.toLocaleString('es-VE', { minimumFractionDigits: 2 }) + " Bs.";
+                        balEl.style.color = "#2563eb";
+                        tbSaldos[acc].deudor = bal;
+                    } else {
+                        balEl.innerText = Math.abs(bal).toLocaleString('es-VE', { minimumFractionDigits: 2 }) + " Bs. (Acr)";
+                        balEl.style.color = "#dc2626";
+                        tbSaldos[acc].acreedor = Math.abs(bal);
+                    }
+                } else {
+                    // Acreedor accounts
+                    const bal = haberSum - debeSum;
+                    if (bal >= 0) {
+                        balEl.innerText = bal.toLocaleString('es-VE', { minimumFractionDigits: 2 }) + " Bs.";
+                        balEl.style.color = "#d97706";
+                        tbSaldos[acc].acreedor = bal;
+                    } else {
+                        balEl.innerText = Math.abs(bal).toLocaleString('es-VE', { minimumFractionDigits: 2 }) + " Bs. (Deu)";
+                        balEl.style.color = "#dc2626";
+                        tbSaldos[acc].deudor = Math.abs(bal);
+                    }
+                }
+            }
+
+            // Sync with Trial Balance Table
+            updateTrialBalance(tbSaldos);
+        }
+
+        function updateTrialBalance(saldos) {
+            let totalDeudor = 0;
+            let totalAcreedor = 0;
+
+            for (let acc in saldos) {
+                document.getElementById(`tb-${acc}-deudor`).innerText = saldos[acc].deudor > 0 ? saldos[acc].deudor.toLocaleString('es-VE', { minimumFractionDigits: 2 }) : '0,00';
+                document.getElementById(`tb-${acc}-acreedor`).innerText = saldos[acc].acreedor > 0 ? saldos[acc].acreedor.toLocaleString('es-VE', { minimumFractionDigits: 2 }) : '0,00';
+                
+                totalDeudor += saldos[acc].deudor;
+                totalAcreedor += saldos[acc].acreedor;
+            }
+
+            document.getElementById('tb-total-deudor').innerText = totalDeudor.toLocaleString('es-VE', { minimumFractionDigits: 2 });
+            document.getElementById('tb-total-acreedor').innerText = totalAcreedor.toLocaleString('es-VE', { minimumFractionDigits: 2 });
+
+            const badgeContainer = document.getElementById('balance-badge-container');
+            if (totalDeudor > 0 && totalDeudor === totalAcreedor) {
+                badgeContainer.style.display = 'block';
+                badgeContainer.innerHTML = `
+                    <div style="background-color: #ecfdf5; border: 2px solid #10b981; color: #065f46; padding: 15px 25px; border-radius: 8px; display: inline-flex; align-items: center; gap: 10px; font-weight: bold;">
+                        <i class="fa-solid fa-circle-check" style="font-size: 20px;"></i>
+                        ¡Partida Doble Verificada! El balance cuadra perfectamente con Bs. ${totalDeudor.toLocaleString('es-VE', { minimumFractionDigits: 2 })}
+                    </div>`;
+            } else if (totalDeudor > 0) {
+                badgeContainer.style.display = 'block';
+                badgeContainer.innerHTML = `
+                    <div style="background-color: #fef2f2; border: 2px solid #f87171; color: #991b1b; padding: 15px 25px; border-radius: 8px; display: inline-flex; align-items: center; gap: 10px; font-weight: bold;">
+                        <i class="fa-solid fa-triangle-exclamation" style="font-size: 20px;"></i>
+                        ¡Alerta de Desbalance! Los saldos deudores y acreedores no coinciden. Revise sus cuentas T.
+                    </div>`;
+            } else {
+                badgeContainer.style.display = 'none';
+            }
+        }
+
+        function validateLedger() {
+            // Check if correct postings are present
+            // T1: Debe Caja 500k, Haber Capital 500k
+            // T2: Debe Mobiliario 80k, Haber Caja 80k
+            // T3: Debe Caja 150k, Haber Prestamo 150k
+            // T4: Debe Alquiler 30k, Haber Caja 30k
+            
+            const cajaDebe = postings.caja.debe;
+            const cajaHaber = postings.caja.haber;
+            const capitalHaber = postings.capital.haber;
+            const mobDebe = postings.mobiliario.debe;
+            const prestamoHaber = postings.prestamo.haber;
+            const alqDebe = postings.alquiler.debe;
+
+            let score = 0;
+
+            if (cajaDebe.includes(500000) && capitalHaber.includes(500000)) score++;
+            if (mobDebe.includes(80000) && cajaHaber.includes(80000)) score++;
+            if (cajaDebe.includes(150000) && prestamoHaber.includes(150000)) score++;
+            if (alqDebe.includes(30000) && cajaHaber.includes(30000)) score++;
+
+            const resultDiv = document.getElementById('ledger-result');
+            resultDiv.style.display = 'block';
+
+            if (score === 4) {
+                resultDiv.innerHTML = `
+                    <div class="score-card">
+                        <div class="score-left">
+                            <h3>¡Perfecto! Libro Mayor Validado</h3>
+                            <p>Has registrado de forma exacta los movimientos de débitos y créditos en sus respectivas partidas.</p>
+                        </div>
+                        <div class="score-right">
+                            <div class="score-circle">20/20</div>
+                        </div>
+                    </div>`;
+                switchTab('balance');
+            } else {
+                resultDiv.innerHTML = `
+                    <div class="score-card incorrect">
+                        <div class="score-left">
+                            <h3>Registros Incompletos o Erróneos</h3>
+                            <p>Asegúrese de haber ingresado todos los asientos correspondientes a los hechos contables del mes.</p>
+                        </div>
+                        <div class="score-right">
+                            <div class="score-circle">${score * 5}/20</div>
+                        </div>
+                    </div>`;
+            }
+            resultDiv.scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function resetLedger() {
+            postings = {
+                caja: { debe: [], haber: [] },
+                capital: { debe: [], haber: [] },
+                mobiliario: { debe: [], haber: [] },
+                prestamo: { debe: [], haber: [] },
+                alquiler: { debe: [], haber: [] }
+            };
+            updateLedgerUI();
+            document.getElementById('ledger-result').style.display = 'none';
+        }
+
+        // --- TAB 3: ACCORDION CONTROLS ---
+        function toggleAccordion() {
+            const content = document.getElementById('accordion-content');
+            const arrow = document.getElementById('accordion-arrow');
+            
+            if (content.style.maxHeight && content.style.maxHeight !== '0px') {
+                content.style.maxHeight = '0px';
+                arrow.style.transform = 'rotate(0deg)';
+            } else {
+                content.style.maxHeight = content.scrollHeight + "px";
+                arrow.style.transform = 'rotate(180deg)';
+            }
+        }
+
+        // --- TAB 4: QUIZ CONTROLS ---
+        function checkQuizQuestion(qNum, option, validity) {
+            const card = document.getElementById(`q${qNum}-card`);
+            const feedback = document.getElementById(`q${qNum}-feedback`);
+            
+            // Clear previous selected states
+            card.querySelectorAll('.option-item').forEach(opt => {
+                opt.classList.remove('correct', 'incorrect');
+            });
+
+            const selectedOpt = Array.from(card.querySelectorAll('.option-item')).find(opt => opt.innerText.startsWith(option));
+            
+            if (validity === 'correct') {
+                selectedOpt.classList.add('correct');
+                feedback.style.display = 'block';
+                feedback.className = 'feedback-box correct';
+                if (qNum === 1) {
+                    feedback.innerHTML = `<i class="fa-solid fa-circle-check"></i> <strong>¡Correcto!</strong> La compra de un activo (inventario) mediante la erogación de otro activo (efectivo) permuta el patrimonio sin alterarlo, manteniéndolo intacto.`;
+                } else {
+                    feedback.innerHTML = `<i class="fa-solid fa-circle-check"></i> <strong>¡Correcto!</strong> El devengo de un gasto operacional (alquiler, servicios públicos, etc.) reduce de forma directa la utilidad del ejercicio, contrayendo la cuenta patrimonial.`;
+                }
+            } else {
+                selectedOpt.classList.add('incorrect');
+                feedback.style.display = 'block';
+                feedback.className = 'feedback-box incorrect';
+                if (qNum === 1) {
+                    feedback.innerHTML = `<i class="fa-solid fa-triangle-exclamation"></i> <strong>Incorrecto.</strong> Un hecho modificativo alteraría el total del patrimonio neto. En este caso no hay variación patrimonial.`;
+                } else {
+                    feedback.innerHTML = `<i class="fa-solid fa-triangle-exclamation"></i> <strong>Incorrecto.</strong> Un hecho mixto requeriría una parte permutativa y una parte modificativa en la misma transacción (como una venta de inventario con margen).`;
+                }
+            }
+        }
+    </script>
+</body>
+</html>

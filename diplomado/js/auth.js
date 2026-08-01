@@ -35,6 +35,71 @@ function initSupabaseAuth() {
     protegerRuta();
 }
 
+function esRutaRestringida(path) {
+    const p = decodeURIComponent(path).toUpperCase();
+    if (p.includes("MODULO_VII") || p.includes("MODULO VII")) return true;
+    if (p.includes("MODULO_VIII") || p.includes("MODULO VIII")) return true;
+    if (p.includes("MODULO_XI") || p.includes("MODULO XI")) return true;
+    if (p.includes("MODULO_XII") || p.includes("MODULO XII")) return true;
+    if (p.includes("MODULO_X.HTML") || p.includes("MODULO X/") || p.includes("MODULO_X/")) return true;
+    return false;
+}
+
+function actualizarVistaModulosIndex(isAdmin) {
+    const path = window.location.pathname;
+    if (!path.includes("index.html") && !path.endsWith("/") && !path.endsWith("index.html")) return;
+
+    const modulos = [
+        { id: "modulo7", num: "VII", url: "MODULO VII/MODULO_VII.html" },
+        { id: "modulo8", num: "VIII", url: "MODULO VIII/MODULO_VIII.html" },
+        { id: "modulo10", num: "X", url: "MODULO X/MODULO_X.html" },
+        { id: "modulo11", num: "XI", url: "MODULO XI/MODULO_XI.html" },
+        { id: "modulo12", num: "XII", url: "MODULO XII/MODULO_XII.html" }
+    ];
+
+    modulos.forEach(mod => {
+        const container = document.getElementById(mod.id);
+        if (!container) return;
+
+        const badgeContainer = container.querySelector(".flex.justify-between.items-start.mb-4");
+        const btnContainer = container.querySelector(".flex.flex-col.mt-auto");
+
+        if (isAdmin) {
+            if (badgeContainer) {
+                badgeContainer.innerHTML = `
+                    <div>
+                        <span class="bg-indigo-600 text-white text-xs font-bold px-2.5 py-0.5 rounded uppercase tracking-wider"><i class="fas fa-user-shield mr-1"></i> MODO ADMIN</span>
+                        <span class="text-slate-400 text-xs font-semibold ml-2">MÓDULO ${mod.num}</span>
+                    </div>
+                `;
+            }
+            if (btnContainer) {
+                btnContainer.innerHTML = `
+                    <a href="${mod.url}" class="bg-indigo-600 hover:bg-indigo-700 text-white text-center py-3 rounded-lg font-semibold transition flex items-center justify-center shadow-md">
+                        <i class="fas fa-unlock mr-2"></i> Ingresar (Admin) <i class="fas fa-arrow-right ml-2 text-sm"></i>
+                    </a>
+                `;
+            }
+        } else {
+            if (badgeContainer) {
+                badgeContainer.innerHTML = `
+                    <div>
+                        <span class="bg-amber-100 text-amber-800 border border-amber-300 text-xs font-bold px-2.5 py-0.5 rounded uppercase tracking-wider"><i class="fas fa-lock mr-1 text-amber-600"></i> DESHABILITADO</span>
+                        <span class="text-slate-400 text-xs font-semibold ml-2">MÓDULO ${mod.num}</span>
+                    </div>
+                `;
+            }
+            if (btnContainer) {
+                btnContainer.innerHTML = `
+                    <button onclick="alert('🔒 El Módulo ${mod.num} se encuentra deshabilitado para estudiantes y reservado exclusivamente para el Administrador.');" class="w-full bg-slate-100 border border-slate-300 text-slate-400 py-3 rounded-lg font-bold cursor-not-allowed flex items-center justify-center transition-all">
+                        <i class="fas fa-lock mr-2 text-amber-500"></i> Reservado Administrador
+                    </button>
+                `;
+            }
+        }
+    });
+}
+
 async function protegerRuta() {
     if (window.location.pathname.includes("admin.html")) return;
 
@@ -50,16 +115,26 @@ async function protegerRuta() {
     }
 
     const userEmail = session.user.email;
+    const esAdmin = ADMIN_EMAILS.includes(userEmail);
 
     // B) Si es Admin
-    if (ADMIN_EMAILS.includes(userEmail)) {
+    if (esAdmin) {
         if (pathActual.includes("login.html")) {
             window.location.href = "admin.html";
+            return;
         }
+        actualizarVistaModulosIndex(true);
         return;
     }
 
-    // C) Estudiante regular
+    // C) Si es estudiante y la ruta actual es un módulo restringido (VII, VIII, X, XI, XII)
+    if (esRutaRestringida(pathActual)) {
+        alert("🔒 Acceso Restringido: Este módulo está deshabilitado para estudiantes y reservado exclusivamente para el Administrador.");
+        window.location.href = "index.html?blocked=true";
+        return;
+    }
+
+    // D) Estudiante regular
     const { data: profile, error } = await supabaseClient
         .from('profiles')
         .select('is_authorized, email, phone')
@@ -86,6 +161,8 @@ async function protegerRuta() {
             return;
         }
         
+        actualizarVistaModulosIndex(false);
+
         // Si el usuario está autorizado y ya en una página protegida, verificamos el teléfono
         if (!profile.phone) {
             mostrarModalTelefono(session.user.id);

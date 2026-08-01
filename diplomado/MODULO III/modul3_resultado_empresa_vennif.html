@@ -1,0 +1,824 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diplomado: Resultado de la Empresa - VEN-NIF</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; color: #333; background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%); padding: 20px; }
+        .container { max-width: 1250px; margin: 0 auto; background: white; border-radius: 15px; box-shadow: 0 10px 40px rgba(0,0,0,0.25); overflow: hidden; }
+        .header { background: linear-gradient(135deg, #0f2027 0%, #203a43 50%, #2c5364 100%); color: white; padding: 45px; text-align: center; }
+        .header h1 { font-size: 2.8em; margin-bottom: 15px; font-weight: 700; text-shadow: 2px 2px 4px rgba(0,0,0,0.3); }
+        .header h2 { font-size: 1.4em; margin-bottom: 10px; opacity: 0.95; font-weight: 500; }
+        .header .subtitle { font-size: 1.1em; opacity: 0.9; margin-top: 10px; }
+        .info-bar { background: linear-gradient(to right, #f8f9fa, #e9ecef); padding: 25px 45px; border-bottom: 4px solid #2a5298; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 15px; }
+        .info-item { background: white; padding: 12px 22px; border-radius: 10px; box-shadow: 0 3px 8px rgba(0,0,0,0.12); border-left: 4px solid #2a5298; }
+        .info-item strong { color: #0f2027; font-size: 0.95em; }
+        .content { padding: 50px 45px; }
+        .schedule-timeline { margin: 30px 0; background: #f8f9fa; padding: 25px; border-radius: 12px; border-left: 5px solid #2a5298; }
+        .schedule-item { display: flex; margin-bottom: 15px; padding-bottom: 15px; border-bottom: 1px dashed #ccc; }
+        .schedule-item:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+        .schedule-time { min-width: 180px; font-weight: 700; color: #2a5298; font-size: 0.95em; }
+        .schedule-content { flex: 1; }
+        .schedule-title { font-weight: 600; color: #0f2027; font-size: 1.1em; margin-bottom: 5px; }
+        section { margin-bottom: 55px; }
+        .unit-header { background: linear-gradient(135deg, #2a5298 0%, #1e3c72 100%); color: white; padding: 20px 25px; border-radius: 10px 10px 0 0; margin-bottom: 0; }
+        .unit-header h2 { font-size: 1.8em; margin: 0; }
+        .unit-content { background: white; padding: 35px; border: 2px solid #2a5298; border-top: none; border-radius: 0 0 10px 10px; }
+        h3 { color: #2a5298; margin: 25px 0 15px 0; font-size: 1.4em; border-left: 4px solid #2a5298; padding-left: 12px; }
+        p { margin-bottom: 18px; text-align: justify; font-size: 1.02em; }
+        table { width: 100%; border-collapse: collapse; margin: 25px 0; box-shadow: 0 3px 12px rgba(0,0,0,0.12); }
+        th { background: #2a5298; color: white; padding: 16px; text-align: left; font-weight: 600; font-size: 1em; }
+        td { padding: 14px; border-bottom: 1px solid #ddd; }
+        tr:nth-child(even) { background: #f8f9fa; }
+        tr:hover { background: #e3f2fd; }
+        .highlight { background: #fff3cd; border-left: 5px solid #ffc107; padding: 20px; margin: 25px 0; border-radius: 6px; }
+        .warning { background: #f8d7da; border-left: 5px solid #dc3545; padding: 20px; margin: 25px 0; border-radius: 6px; }
+        .note { background: #d1ecf1; border-left: 5px solid #17a2b8; padding: 20px; margin: 25px 0; border-radius: 6px; }
+        .exercise-box { background: #e8f4f8; border: 3px solid #2a5298; border-radius: 12px; padding: 30px; margin: 30px 0; }
+        .exercise-box h4 { color: #0f2027; margin-bottom: 20px; font-size: 1.4em; border-bottom: 2px solid #2a5298; padding-bottom: 10px; }
+        .exercise-box h5 { color: #2a5298; margin: 18px 0 12px 0; font-size: 1.15em; font-weight: 600; }
+        .formula { background: #f8f9fa; padding: 18px; border-left: 5px solid #28a745; margin: 20px 0; font-family: 'Courier New', monospace; font-size: 1.08em; border-radius: 5px; }
+        .journal-entry { background: white; border: 2px solid #6c757d; border-radius: 8px; padding: 20px; margin: 20px 0; }
+        .journal-header { font-weight: 700; color: #495057; margin-bottom: 12px; text-align: center; }
+        .answer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 18px; margin: 25px 0; }
+        .answer-field { background: white; padding: 18px; border: 2px solid #ced4da; border-radius: 8px; transition: border-color 0.3s; }
+        .answer-field:hover { border-color: #2a5298; }
+        .answer-field label { display: block; font-weight: 600; margin-bottom: 10px; color: #0f2027; font-size: 0.95em; }
+        .answer-field input { width: 100%; padding: 11px; border: 1px solid #adb5bd; border-radius: 5px; font-size: 1em; }
+        .quiz-question { background: #d4edda; border: 2px solid #28a745; border-radius: 10px; padding: 25px; margin: 20px 0; }
+        .quiz-question h4 { color: #155724; margin-bottom: 15px; font-size: 1.2em; }
+        .quiz-option { margin: 10px 0; padding: 10px; background: white; border-radius: 5px; }
+        .footer { background: #0f2027; color: white; padding: 35px 45px; text-align: center; }
+        .bibliography { background: #f8f9fa; padding: 25px; border-radius: 10px; margin-top: 25px; border: 1px solid #dee2e6; }
+        .bibliography ul { list-style: none; padding-left: 0; }
+        .bibliography li { padding: 10px 0; border-bottom: 1px solid #dee2e6; }
+        .bibliography li:last-child { border-bottom: none; }
+        .tag { display: inline-block; background: #2a5298; color: white; padding: 4px 12px; border-radius: 18px; font-size: 0.82em; margin-right: 8px; font-weight: 500; }
+        .method-badge { display: inline-block; padding: 5px 15px; border-radius: 20px; font-size: 0.9em; font-weight: 600; margin: 5px; }
+        .method-nature { background: #e3f2fd; color: #1976d2; border: 2px solid #1976d2; }
+        .method-function { background: #d4edda; color: #155724; border: 2px solid #155724; }
+        
+        /* ESTILOS DEL SIMULADOR PREMIUM */
+        .sim-tabs-nav { display: flex; gap: 8px; margin-bottom: 25px; border-bottom: 2px solid #e2e8f0; padding-bottom: 10px; flex-wrap: wrap; }
+        .sim-tab-btn { padding: 12px 20px; border: none; background: #f1f5f9; color: #475569; border-radius: 8px; font-weight: 600; cursor: pointer; transition: all 0.25s ease; font-size: 0.95em; }
+        .sim-tab-btn:hover { background: #e2e8f0; color: #0f2027; }
+        .sim-tab-btn.active { background: #2a5298; color: white; box-shadow: 0 4px 12px rgba(42,82,152,0.3); }
+        .sim-tab-content { display: none; animation: fadeIn 0.4s ease; }
+        .sim-tab-content.active { display: block; }
+        
+        .feedback-span { font-size: 0.85em; font-weight: bold; margin-top: 6px; display: block; transition: all 0.2s; }
+        .input-correct { border-color: #28a745 !important; background-color: #f4fbf7 !important; }
+        .input-incorrect { border-color: #dc3545 !important; background-color: #fdf5f6 !important; }
+        
+        .sim-actions { display: flex; gap: 15px; flex-wrap: wrap; margin-top: 30px; border-top: 1px solid #e2e8f0; padding-top: 25px; }
+        .btn-sim { padding: 14px 24px; border: none; border-radius: 8px; font-weight: bold; cursor: pointer; display: inline-flex; align-items: center; gap: 10px; font-size: 1em; transition: all 0.25s ease; box-shadow: 0 4px 6px rgba(0,0,0,0.08); }
+        .btn-sim-primary { background: #28a745; color: white; }
+        .btn-sim-primary:hover { background: #218838; transform: translateY(-2px); box-shadow: 0 6px 12px rgba(40,167,69,0.25); }
+        .btn-sim-secondary { background: #17a2b8; color: white; }
+        .btn-sim-secondary:hover { background: #138496; transform: translateY(-2px); box-shadow: 0 6px 12px rgba(23,162,184,0.25); }
+        .btn-sim-clear { background: #6c757d; color: white; }
+        .btn-sim-clear:hover { background: #5a6268; transform: translateY(-2px); }
+        
+        .sim-score-card { background: linear-gradient(135deg, #11caa0 0%, #002d4d 100%); color: white; padding: 20px; border-radius: 10px; text-align: center; margin-top: 25px; display: none; animation: slideUp 0.4s ease; }
+        
+        /* SOLUCIÓN DETALLADA ACCORDION */
+        .solution-accordion { border: 1px solid #e2e8f0; border-radius: 8px; overflow: hidden; margin-top: 25px; display: none; }
+        .solution-header { background: #f8fafc; padding: 15px 20px; font-weight: bold; color: #002d4d; cursor: pointer; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #e2e8f0; }
+        .solution-body { background: white; padding: 25px; display: none; }
+        
+        /* QUIZ DINÁMICO */
+        .quiz-card { background: white; border: 1px solid #e2e8f0; border-radius: 8px; padding: 20px; margin-bottom: 20px; transition: all 0.3s ease; box-shadow: 0 3px 8px rgba(0,0,0,0.05); }
+        .quiz-card.correct-card { border-left: 5px solid #28a745; background-color: #f4fbf7; }
+        .quiz-card.incorrect-card { border-left: 5px solid #dc3545; background-color: #fdf5f6; }
+        .quiz-option-interactive { cursor: pointer; border: 1px solid #cbd5e1; border-radius: 6px; padding: 12px 16px; margin: 8px 0; transition: all 0.2s ease; display: flex; align-items: center; gap: 12px; font-weight: 500; }
+        .quiz-option-interactive:hover { background: #f1f5f9; border-color: #94a3b8; }
+        .quiz-option-interactive.selected-opt { background: #e2e8f0; border-color: #2a5298; }
+        .quiz-option-interactive.correct-opt { background: #d4edda; border-color: #28a745; color: #155724; }
+        .quiz-option-interactive.incorrect-opt { background: #f8d7da; border-color: #dc3545; color: #721c24; }
+        
+        .quiz-feedback-box { margin-top: 12px; padding: 12px 18px; border-radius: 6px; font-size: 0.95em; font-weight: bold; display: none; }
+        
+        /* FLOATING BACK BUTTON */
+        .floating-back-btn { position: fixed; bottom: 30px; right: 30px; background: linear-gradient(135deg, #2a5298 0%, #1e3c72 100%); color: white !important; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; text-decoration: none; box-shadow: 0 8px 24px rgba(30,60,114,0.4); z-index: 999; transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+        .floating-back-btn:hover { transform: scale(1.1) rotate(-10deg); box-shadow: 0 12px 30px rgba(30,60,114,0.6); }
+        .floating-back-btn i { font-size: 24px; }
+        
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes slideUp { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: translateY(0); } }
+        
+        @media (max-width: 900px) { .header h1 { font-size: 2em; } .header h2 { font-size: 1.1em; } .content { padding: 30px 20px; } .info-bar { flex-direction: column; } .schedule-item { flex-direction: column; } .schedule-time { margin-bottom: 8px; } table { font-size: 0.9em; } th, td { padding: 10px; } .sim-tabs-nav { flex-direction: column; } }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>📊 DIPLOMADO EN CONTABILIDAD FINANCIERA</h1>
+            <h2>Módulo 3: Resultado de la Empresa</h2>
+            <div class="subtitle">
+                <p><strong>Análisis de Ganancias, Pérdidas y Presentación de Estados Financieros bajo VEN-NIF</strong></p>
+                <p style="margin-top: 10px;">Universidad Católica Santa Rosa (UCSAR) | Facilitador: <strong>Prof. Frank Clemente</strong></p>
+                <p style="margin-top: 5px; font-size: 1.05em;">🎓 Jornada Completa</p>
+            </div>
+        </div>
+        
+        <div class="info-bar">
+            <div class="info-item"><strong>📅 Fecha:</strong> 29 de mayo de 2026</div>
+            <div class="info-item"><strong>⏰ Duración:</strong> 08:30 AM – 04:00 PM</div>
+            <div class="info-item"><strong>🏛️ Institución:</strong> UCSAR</div>
+            <div class="info-item"><strong>👨‍🏫 Facilitador:</strong> Prof. Frank Clemente</div>
+        </div>
+
+        <div class="content">
+            <section id="cronograma">
+                <h2 style="color: #2a5298; border-left: 5px solid #2a5298; padding-left: 15px; margin-bottom: 25px; font-size: 2em;">📅 Cronograma y Bloques Horarios</h2>
+                <div class="schedule-timeline">
+                    <div class="schedule-item">
+                        <div class="schedule-time">08:30 AM - 10:15 AM</div>
+                        <div class="schedule-content">
+                            <div class="schedule-title">Unidad 1: Estructura de Ingresos y Gastos</div>
+                            <p>Reconocimiento técnico de ingresos operacionales y no operacionales. Clasificación de gastos operacionales (administración y ventas) y no operacionales (financieros).</p>
+                        </div>
+                    </div>
+                    <div class="schedule-item">
+                        <div class="schedule-time">10:15 AM - 12:00 PM</div>
+                        <div class="schedule-content">
+                            <div class="schedule-title">Unidad 2 (Parte I): Consumo de Materiales y Costo de Ventas</div>
+                            <p>Determinación del Costo de Ventas según Sección 13 NIIF PYMES. Fórmulas de compras netas y mercancía disponible.</p>
+                        </div>
+                    </div>
+                    <div class="schedule-item">
+                        <div class="schedule-time">12:00 PM - 01:00 PM</div>
+                        <div class="schedule-content">
+                            <div class="schedule-title">☕ Receso de Almuerzo</div>
+                            <p>Descanso para alimentación y recarga de energía.</p>
+                        </div>
+                    </div>
+                    <div class="schedule-item">
+                        <div class="schedule-time">01:00 PM - 02:30 PM</div>
+                        <div class="schedule-content">
+                            <div class="schedule-title">Unidad 2 (Parte II): Depreciación y Amortización Acumulada</div>
+                            <p>Secciones 17 y 18 NIIF PYMES. Métodos de cálculo, asiento contable y diferencias entre depreciación (tangibles) y amortización (intangibles).</p>
+                        </div>
+                    </div>
+                    <div class="schedule-item">
+                        <div class="schedule-time">02:30 PM - 04:00 PM</div>
+                        <div class="schedule-content">
+                            <div class="schedule-title">Unidad 3: Estado de Resultados e Intervención Práctica</div>
+                            <p>Presentación bajo VEN-NIF. Método por función (recomendado). Taller dirigido con cálculo de utilidad neta y evaluación rápida.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="unidad1">
+                <div class="unit-header">
+                    <h2>📘 Unidad 1: Estructura de Ingresos y Gastos</h2>
+                </div>
+                <div class="unit-content">
+                    <h3>Clasificación de Ingresos</h3>
+                    <p>El rendimiento financiero exige separar los flujos según su procedencia para no distorsionar el análisis operativo:</p>
+                    
+                    <table>
+                        <tr><th>Tipo de Ingreso</th><th>Definición</th><th>Ejemplos</th></tr>
+                        <tr><td><strong>Operacionales</strong></td><td>Derivados de la actividad principal del negocio</td><td>• Venta de inventario<br>• Prestación de servicios</td></tr>
+                        <tr><td><strong>No Operacionales</strong></td><td>Ingresos de actividades accesorias o incidentales</td><td>• Intereses ganados<br>• Ganancia en venta de activos</td></tr>
+                    </table>
+
+                    <div class="warning">
+                        <strong>⚠️ PROHIBIÓN NIIF:</strong> Partidas Extraordinarias quedan <strong>terminantemente prohibidas</strong>. No clasificar ingresos como extraordinarios.
+                    </div>
+
+                    <h3>Clasificación de Gastos</h3>
+                    <table>
+                        <tr><th>Tipo de Gasto</th><th>Definición</th><th>Ejemplos</th></tr>
+                        <tr><td><strong>Gastos Operacionales</strong></td><td>Erogaciones vinculadas directamente al esfuerzo del período</td><td><strong>De Administración:</strong> Nómina de oficina, alquileres, honorarios, servicios públicos<br><strong>De Ventas:</strong> Comisiones, publicidad, fletes sobre ventas, empaques</td></tr>
+                        <tr><td><strong>Gastos No Operacionales</strong></td><td>Costos de financiamiento o eventos fortuitos (no miden eficiencia gerencial)</td><td>• Gastos Financieros (intereses bancarios)<br>• Pérdidas por diferencia de cambio monetario<br>• Pérdidas netas por retiros de activos inservibles</td></tr>
+                    </table>
+                </div>
+            </section>
+
+            <section id="unidad2-parte1">
+                <div class="unit-header">
+                    <h2>📗 Unidad 2 (Parte I): Consumo de Materiales y Costo de Ventas</h2>
+                </div>
+                <div class="unit-content">
+                    <p>Para empresas comerciales, el <strong>Costo de Ventas</strong> representa el costo de adquisición de las mercancías vendidas durante el período económico (Sección 13 NIIF PYMES).</p>
+
+                    <div class="formula">
+                        <strong>Fórmula del Costo de Ventas:</strong><br>
+                        Costo de Ventas (CV) = Inventario Inicial + Compras Netas - Inventario Final
+                    </div>
+
+                    <div class="note">
+                        <strong>📌 Nota Técnica:</strong> Las <em>Compras Netas</em> corresponden a:<br>
+                        Compras Netas = Compras Brutas + Fletes sobre Compras - (Devoluciones + Descuentos sobre Compras)
+                    </div>
+
+                    <div class="exercise-box">
+                        <h4>🧮 Ejercicio Práctico: Cálculo del Costo de Ventas</h4>
+                        <p><strong>Enunciado:</strong> Al cierre del ejercicio, la empresa presenta los siguientes saldos en libros:</p>
+                        
+                        <table>
+                            <tr><th>Cuenta Contable</th><th>Monto (Bs.)</th></tr>
+                            <tr><td>Inventario Inicial (01/01)</td><td>85.000,00</td></tr>
+                            <tr><td>Compras Brutas</td><td>240.000,00</td></tr>
+                            <tr><td>Fletes sobre Compras</td><td>15.000,00</td></tr>
+                            <tr><td>Descuentos sobre Compras</td><td>10.000,00</td></tr>
+                            <tr><td>Inventario Final (Conteo Físico)</td><td>65.000,00</td></tr>
+                        </table>
+
+                        <h5>Desarrollo Matemático:</h5>
+                        <div class="formula">
+                            <strong>1. Compras Netas:</strong><br>
+                            240.000 + 15.000 - 10.000 = <strong>245.000,00 Bs.</strong>
+                        </div>
+                        <div class="formula">
+                            <strong>2. Mercancía Disponible:</strong><br>
+                            85.000 + 245.000 = <strong>330.000,00 Bs.</strong>
+                        </div>
+                        <div class="formula">
+                            <strong>3. Costo de Ventas Final:</strong><br>
+                            330.000 - 65.000 = <strong>265.000,00 Bs.</strong>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="unidad2-parte2">
+                <div class="unit-header">
+                    <h2>📙 Unidad 2 (Parte II): Depreciación y Amortización Acumulada</h2>
+                </div>
+                <div class="unit-content">
+                    <p><strong>Secciones 17 y 18 (NIIF para PYMES):</strong> Representan la distribución sistemática del costo de un activo de largo plazo debido al desgaste, obsolescencia o restricciones contractuales.</p>
+
+                    <table>
+                        <tr><th>Concepto</th><th>Aplicación</th><th>Ejemplos</th></tr>
+                        <tr><td><strong>Depreciación</strong></td><td>Propiedades, Planta y Equipo (Activos tangibles con sustancia física)</td><td>Edificaciones, maquinarias, vehículos, equipos de computación</td></tr>
+                        <tr><td><strong>Amortización</strong></td><td>Activos Intangibles identificables, no monetarios, sin apariencia física</td><td>Sistemas de software (ERP), licencias comerciales, patentes de producción</td></tr>
+                    </table>
+
+                    <div class="note">
+                        <strong>⚡ Impacto Contable:</strong> Ambos conceptos impactan el Estado de Resultados directamente como <strong>Gasto Operativo</strong>, sin generar una salida real de efectivo en el período (gasto no monetario).
+                    </div>
+
+                    <div class="exercise-box">
+                        <h4>🧮 Ejercicio Práctico: Cálculo y Registro de Depreciación</h4>
+                        <p><strong>Caso:</strong> La empresa adquiere un camión de reparto por <strong>120.000,00 Bs.</strong> Vida útil estimada: <strong>5 años</strong>. Valor de salvamento (rescate): <strong>20.000,00 Bs.</strong> Método: <strong>Línea Recta</strong>.</p>
+
+                        <div class="formula">
+                            <strong>Gasto Depreciación Anual:</strong><br>
+                            (Costo del Activo - Valor de Salvamento) / Vida Útil<br>
+                            (120.000 - 20.000) / 5 = <strong>20.000,00 Bs.</strong>
+                        </div>
+
+                        <h5>Asiento de Ajuste en Libro Diario:</h5>
+                        <div class="journal-entry">
+                            <div class="journal-header">LIBRO DIARIO - ASIENTO DE AJUSTE</div>
+                            <table style="margin: 0; border: none;">
+                                <tr style="background: transparent;">
+                                    <td style="padding: 8px 0; border: none;"><strong>Cuentas y Detalle</strong></td>
+                                    <td style="padding: 8px 0; border: none; text-align: right;"><strong>Debe (Bs.)</strong></td>
+                                    <td style="padding: 8px 0; border: none; text-align: right;"><strong>Haber (Bs.)</strong></td>
+                                </tr>
+                                <tr style="background: transparent;">
+                                    <td style="padding: 8px 0; border: none;">Gastos de Depreciación: Vehículos (Gasto Operacional)</td>
+                                    <td style="padding: 8px 0; border: none; text-align: right;">20.000,00</td>
+                                    <td style="padding: 8px 0; border: none; text-align: right;"></td>
+                                </tr>
+                                <tr style="background: transparent;">
+                                    <td style="padding: 8px 0; border: none; padding-left: 20px;">Depreciación Acumulada: Vehículos (Contracuenta de Activo)</td>
+                                    <td style="padding: 8px 0; border: none; text-align: right;"></td>
+                                    <td style="padding: 8px 0; border: none; text-align: right;">20.000,00</td>
+                                </tr>
+                                <tr style="background: transparent;">
+                                    <td colspan="3" style="padding: 12px 0; border: none; font-style: italic; font-size: 0.9em;">P/R Registro del desgaste correspondiente al primer año del equipo de reparto bajo método de línea recta.</td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="unidad3">
+                <div class="unit-header">
+                    <h2>📕 Unidad 3: Presentación del Estado de Resultados</h2>
+                </div>
+                <div class="unit-content">
+                    <p>La <strong>Sección 5 de la NIIF para PYMES</strong> permite dos estructuras metodológicas para la ordenación de los costos y gastos:</p>
+
+                    <table>
+                        <tr><th>Método</th><th>Características</th><th>Ventajas</th></tr>
+                        <tr><td><span class="method-badge method-nature">Por Naturaleza</span></td><td>Gastos agrupados según origen material o contractual, sin redistribución interna</td><td>• Gastos de personal (sueldos totales)<br>• Depreciación del período global<br>• Consumo de materias primas<br>❌ No expone sub-márgenes operativos</td></tr>
+                        <tr><td><span class="method-badge method-function">Por Función (Recomendado)</span></td><td>Gastos clasificados según aporte en departamentos/áreas clave</td><td>• Costo de Ventas comercial<br>• Gastos de Administración corporativa<br>• Gastos de Comercialización y Ventas<br>✅ Revela obligatoriamente la Ganancia Bruta</td></tr>
+                    </table>
+
+                    <h3>Estructura Financiera (Método por Función) - VEN-NIF</h3>
+                    <table>
+                        <tr><th>Concepto</th><th>Parcial (Bs.)</th><th>Total (Bs.)</th></tr>
+                        <tr><td>Ingresos por Actividades Ordinarias (Ventas)</td><td>650.000,00</td><td rowspan="2" style="vertical-align: middle; text-align: center;"><strong>650.000,00</strong></td></tr>
+                        <tr><td>(-) Costo de Ventas (Calculado analíticamente)</td><td>(280.000,00)</td></tr>
+                        <tr style="background: #d4edda; font-weight: 600;">
+                            <td>GANANCIA (MARGINAL) BRUTA</td><td>370.000,00</td><td style="background: #d4edda;"><strong>370.000,00</strong></td>
+                        </tr>
+                        <tr><td>(-) Gastos Operacionales:</td><td></td><td></td></tr>
+                        <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;Gastos de Administración</td><td>(95.000,00)</td><td></td></tr>
+                        <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;Gastos de Ventas</td><td>(45.000,00)</td><td>(140.000,00)</td></tr>
+                        <tr style="background: #fff3cd; font-weight: 600;">
+                            <td>RESULTADO EN OPERACIONES</td><td>230.000,00</td><td style="background: #fff3cd;"><strong>230.000,00</strong></td>
+                        </tr>
+                        <tr><td>(-) Gastos Financieros (Intereses de préstamos)</td><td>(6.100,00)</td><td rowspan="2" style="vertical-align: middle; text-align: center;"></td></tr>
+                        <tr style="background: #e8f4f8; font-weight: 600;">
+                            <td>UTILIDAD ANTES DEL IMPUESTO (ISLR)</td><td>223.900,00</td><td style="background: #e8f4f8;"><strong>223.900,00</strong></td>
+                        </tr>
+                        <tr><td>(-) Impuesto sobre la Renta Estimado (34%)</td><td>(76.126,00)</td><td></td></tr>
+                        <tr style="background: #d4edda; font-weight: 700; font-size: 1.05em;">
+                            <td>UTILIDAD NETA DEL EJERCICIO</td><td>147.774,00</td><td style="background: #d4edda;"><strong>147.774,00</strong></td>
+                        </tr>
+                    </table>
+                </div>
+            </section>
+
+            <section id="taller">
+                <h2 style="color: #2a5298; border-left: 5px solid #2a5298; padding-left: 15px; margin-bottom: 25px; font-size: 2em;"><i class="fas fa-graduation-cap mr-2"></i>Taller Dirigido: Intervención Estudiantil</h2>
+                
+                <div class="exercise-box" id="workspace-taller">
+                    <h4>📊 Caso Práctico: Determinación del Rendimiento Económico (Caso: "Inversiones El Faro, C.A.")</h4>
+                    <p><strong>Instrucciones para el Taller:</strong> Reúnanse en sus equipos de trabajo contable. Utilizando los saldos del balance de comprobación al cierre, resuelvan secuencialmente el taller y validen sus resultados en el simulador a continuación.</p>
+
+                    <div style="background: white; border-radius: 8px; border: 1px solid #e2e8f0; padding: 20px; margin-bottom: 25px; box-shadow: 0 4px 6px rgba(0,0,0,0.05);">
+                        <h5 style="margin-top: 0; margin-bottom: 12px; font-size: 1.1em; color: #002d4d;"><i class="fas fa-file-invoice mr-2 text-blue-500"></i>Saldos Ajustados en Libros:</h5>
+                        <table style="margin: 0; box-shadow: none; font-size: 0.95em;">
+                            <thead>
+                                <tr><th>Cuenta Contable</th><th style="text-align: right;">Monto (Bs.)</th></tr>
+                            </thead>
+                            <tbody>
+                                <tr><td>Ingresos de Actividades Ordinarias (Ventas Brutas)</td><td style="text-align: right; font-weight: 600; font-family: monospace;">980.000,00</td></tr>
+                                <tr><td>Inventario Inicial de Mercancías (01/01)</td><td style="text-align: right; font-family: monospace;">120.000,00</td></tr>
+                                <tr><td>Compras Brutas del Ejercicio</td><td style="text-align: right; font-family: monospace;">450.000,00</td></tr>
+                                <tr><td>Inventario Final de Mercancías (Conteo Físico)</td><td style="text-align: right; font-weight: 600; font-family: monospace;">90.000,00</td></tr>
+                                <tr><td>Gastos por Sueldos de Administración</td><td style="text-align: right; font-family: monospace;">110.000,00</td></tr>
+                                <tr><td>Gastos por Comisiones de Vendedores</td><td style="text-align: right; font-family: monospace;">55.000,00</td></tr>
+                                <tr><td>Gasto por Depreciación de Edificio (Administrativo)</td><td style="text-align: right; font-family: monospace;">25.000,00</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="note">
+                        <strong>📌 Parámetros Tributarios y Plazos:</strong> Tasa del Impuesto sobre la Renta (ISLR) estimada: <strong>34%</strong> (plana). No existen otros ingresos ni gastos financieros accesorios. Tiempo sugerido de resolución: <strong>45 minutos</strong>.
+                    </div>
+
+                    <!-- NAVEGACIÓN POR PESTAÑAS WIZARD -->
+                    <div class="sim-tabs-nav">
+                        <button class="sim-tab-btn active" onclick="switchTab('fase1')"><i class="fas fa-box mr-2"></i>Fase 1: Costo de Ventas</button>
+                        <button class="sim-tab-btn" onclick="switchTab('fase2')"><i class="fas fa-chart-bar mr-2"></i>Fase 2: Margen & Operaciones</button>
+                        <button class="sim-tab-btn" onclick="switchTab('fase3')"><i class="fas fa-dollar-sign mr-2"></i>Fase 3: Resultado Neto</button>
+                    </div>
+
+                    <!-- FASE 1 CONTENT -->
+                    <div id="fase1" class="sim-tab-content active">
+                        <h5 style="color: #2a5298; border-bottom: 2px solid #e2e8f0; padding-bottom: 8px; margin-bottom: 15px;"><i class="fas fa-truck-loading mr-2"></i>Fase 1: Determinación de la Mercancía y Costo de Ventas</h5>
+                        <div class="answer-grid">
+                            <div class="answer-field" id="field-purchases">
+                                <label for="sim-purchases">1. Compras Netas (Bs.)</label>
+                                <input type="text" id="sim-purchases" placeholder="Fórmula: Compras + Fletes - Devoluciones">
+                                <span class="feedback-span" id="feedback-purchases"></span>
+                            </div>
+                            <div class="answer-field" id="field-available">
+                                <label for="sim-available">2. Mercancía Disponible (Bs.)</label>
+                                <input type="text" id="sim-available" placeholder="Fórmula: Inv. Inicial + Compras Netas">
+                                <span class="feedback-span" id="feedback-available"></span>
+                            </div>
+                            <div class="answer-field" id="field-cov">
+                                <label for="sim-cov">3. Costo de Ventas (Bs.)</label>
+                                <input type="text" id="sim-cov" placeholder="Fórmula: Disponible - Inv. Final">
+                                <span class="feedback-span" id="feedback-cov"></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- FASE 2 CONTENT -->
+                    <div id="fase2" class="sim-tab-content">
+                        <h5 style="color: #2a5298; border-bottom: 2px solid #e2e8f0; padding-bottom: 8px; margin-bottom: 15px;"><i class="fas fa-cash-register mr-2"></i>Fase 2: Utilidad Bruta y Estructura Operativa</h5>
+                        <div class="answer-grid">
+                            <div class="answer-field" id="field-gross">
+                                <label for="sim-gross">4. Ganancia Bruta (Bs.)</label>
+                                <input type="text" id="sim-gross" placeholder="Fórmula: Ventas - Costo de Ventas">
+                                <span class="feedback-span" id="feedback-gross"></span>
+                            </div>
+                            <div class="answer-field" id="field-expenses">
+                                <label for="sim-expenses">5. Gastos Operacionales Totales (Bs.)</label>
+                                <input type="text" id="sim-expenses" placeholder="Suma: Adm + Ventas + Depreciaciones">
+                                <span class="feedback-span" id="feedback-expenses"></span>
+                            </div>
+                            <div class="answer-field" id="field-operating">
+                                <label for="sim-operating">6. Resultado en Operaciones (Bs.)</label>
+                                <input type="text" id="sim-operating" placeholder="Fórmula: Ganancia Bruta - Gastos Operacionales">
+                                <span class="feedback-span" id="feedback-operating"></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- FASE 3 CONTENT -->
+                    <div id="fase3" class="sim-tab-content">
+                        <h5 style="color: #2a5298; border-bottom: 2px solid #e2e8f0; padding-bottom: 8px; margin-bottom: 15px;"><i class="fas fa-coins mr-2"></i>Fase 3: Resultado de Impuesto e Impacto Neto (ISLR)</h5>
+                        <div class="answer-grid">
+                            <div class="answer-field" id="field-pretax">
+                                <label for="sim-pretax">7. Utilidad antes de Impuesto (Bs.)</label>
+                                <input type="text" id="sim-pretax" placeholder="Resultado Operaciones - Financieros (0)">
+                                <span class="feedback-span" id="feedback-pretax"></span>
+                            </div>
+                            <div class="answer-field" id="field-tax">
+                                <label for="sim-tax">8. Impuesto sobre la Renta (Bs. | 34%)</label>
+                                <input type="text" id="sim-tax" placeholder="Fórmula: Utilidad antes de ISLR * 0,34">
+                                <span class="feedback-span" id="feedback-tax"></span>
+                            </div>
+                            <div class="answer-field" id="field-net">
+                                <label for="sim-net"><strong>9. UTILIDAD NETA DEL EJERCICIO (Bs.)</strong></label>
+                                <input type="text" id="sim-net" style="font-weight: 700; border-width: 2px;" placeholder="Fórmula: Utilidad antes ISLR - ISLR">
+                                <span class="feedback-span" id="feedback-net"></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- SIMULATOR ACCIONES CONTROLES -->
+                    <div class="sim-actions">
+                        <button onclick="validateSimulator()" class="btn-sim btn-sim-primary"><i class="fas fa-check-double"></i> Validar Ejercicio</button>
+                        <button onclick="resetSimulator()" class="btn-sim btn-sim-clear"><i class="fas fa-undo"></i> Restablecer Valores</button>
+                        <button id="btn-toggle-sol" onclick="toggleSolution()" class="btn-sim btn-sim-secondary" style="display: none;"><i class="fas fa-eye"></i> Revelar Solución Desarrollada</button>
+                    </div>
+
+                    <!-- PANEL DE CALIFICACIÓN -->
+                    <div class="sim-score-card" id="score-card">
+                        <h4 style="color: white; border: none; font-size: 1.6em; margin-bottom: 10px;" id="score-title">🏆 Puntuación Obtenida</h4>
+                        <div style="font-size: 3em; font-weight: 800; font-family: monospace;" id="score-points">0 / 20</div>
+                        <p style="margin-top: 10px; font-size: 1.1em; color: white;" id="score-desc">Ingresa las respuestas de todas las fases y haz clic en Validar.</p>
+                    </div>
+
+                    <!-- ACORDION DE SOLUCIÓN COMPLETA -->
+                    <div class="solution-accordion" id="sol-accordion">
+                        <div class="solution-header" onclick="toggleAccordion()">
+                            <span><i class="fas fa-chalkboard mr-2 text-blue-500"></i>Guía Académica de Solución y Estructura en Diario</span>
+                            <i class="fas fa-chevron-down" id="acc-chevron"></i>
+                        </div>
+                        <div class="solution-body" id="sol-body">
+                            <h5 style="margin-top: 0; color: #2a5298;">1. Memoria de Cálculos Analíticos</h5>
+                            <div class="formula">
+                                <strong>Paso 1: Compras Netas</strong><br>
+                                Compras Brutas (450.000,00 Bs.) + Fletes (0) - Descuentos/Dev. (0) = <strong>450.000,00 Bs.</strong>
+                            </div>
+                            <div class="formula">
+                                <strong>Paso 2: Mercancía Disponible</strong><br>
+                                Inventario Inicial (120.000,00 Bs.) + Compras Netas (450.000,00 Bs.) = <strong>570.000,00 Bs.</strong>
+                            </div>
+                            <div class="formula">
+                                <strong>Paso 3: Costo de Ventas</strong><br>
+                                Mercancía Disponible (570.000,00 Bs.) - Inventario Final Físico (90.000,00 Bs.) = <strong>480.000,00 Bs.</strong>
+                            </div>
+                            <div class="formula">
+                                <strong>Paso 4: Ganancia (Margen) Bruta</strong><br>
+                                Actividades Ordinarias (980.000,00 Bs.) - Costo de Ventas (480.000,00 Bs.) = <strong>500.000,00 Bs.</strong>
+                            </div>
+                            <div class="formula">
+                                <strong>Paso 5: Gastos de Operación Totales</strong><br>
+                                Sueldos de Administración (110.000,00 Bs.) + Comisiones (55.000,00 Bs.) + Depreciación Edificio (25.000,00 Bs.) = <strong>190.000,00 Bs.</strong>
+                            </div>
+                            <div class="formula">
+                                <strong>Paso 6: Resultado de Operaciones (EBIT)</strong><br>
+                                Ganancia Bruta (500.000,00 Bs.) - Gastos Operacionales (190.000,00 Bs.) = <strong>310.000,00 Bs.</strong>
+                            </div>
+                            <div class="formula">
+                                <strong>Paso 7 & 8: Impuesto ISLR Estimado (34%)</strong><br>
+                                Base Imponible (310.000,00 Bs.) * 34% = <strong>105.400,00 Bs.</strong>
+                            </div>
+                            <div class="formula text-emerald-800" style="background-color: #e6f7ec; border-left-color: #28a745;">
+                                <strong>Paso 9: Utilidad Neta Definitiva del Ejercicio</strong><br>
+                                Utilidad antes de Impuesto (310.000,00 Bs.) - ISLR Estimado (105.400,00 Bs.) = <strong>204.600,00 Bs.</strong>
+                            </div>
+
+                            <h5 style="color: #2a5298; margin-top: 25px;"><i class="fas fa-balance-scale mr-2"></i>Asientos de Cierre en Libro Diario (Cuentas de Resultado)</h5>
+                            <div class="journal-entry">
+                                <div class="journal-header">ASIENTOS DE REGISTRO - IMPUESTO Y RESULTADOS</div>
+                                <table style="margin: 0; box-shadow: none; font-size: 0.9em;">
+                                    <thead>
+                                        <tr><th>Cuentas y Explicación</th><th style="text-align: right;">Debe (Bs.)</th><th style="text-align: right;">Haber (Bs.)</th></tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td><strong>Asiento 1: Gasto Impuesto ISLR</strong><br>Gastos por Impuesto sobre la Renta (Gasto de Resultados)<br>&nbsp;&nbsp;&nbsp;&nbsp;@ Impuesto sobre la Renta por Pagar (Pasivo Corriente)</td>
+                                            <td style="text-align: right; font-family: monospace; vertical-align: bottom;">105.400,00</td>
+                                            <td style="text-align: right; font-family: monospace; vertical-align: bottom;"><br>105.400,00</td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Asiento 2: Cierre de Cuentas de Ingresos</strong><br>Ingresos de Actividades Ordinarias (Cierre)<br>&nbsp;&nbsp;&nbsp;&nbsp;@ Pérdidas y Ganancias (Cuenta Liquidadora)</td>
+                                            <td style="text-align: right; font-family: monospace; vertical-align: bottom;">980.000,00</td>
+                                            <td style="text-align: right; font-family: monospace; vertical-align: bottom;"><br>980.000,00</td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Asiento 3: Cierre de Costos y Gastos</strong><br>Pérdidas y Ganancias (Suma de erogaciones)<br>&nbsp;&nbsp;&nbsp;&nbsp;@ Inventario de Mercancía (Inicial)<br>&nbsp;&nbsp;&nbsp;&nbsp;@ Compras del Ejercicio<br>&nbsp;&nbsp;&nbsp;&nbsp;@ Gastos por Sueldos de Administración<br>&nbsp;&nbsp;&nbsp;&nbsp;@ Gastos por Comisiones de Vendedores<br>&nbsp;&nbsp;&nbsp;&nbsp;@ Gasto por Depreciación de Edificio<br>&nbsp;&nbsp;&nbsp;&nbsp;@ Gastos por Impuesto sobre la Renta</td>
+                                            <td style="text-align: right; font-family: monospace; vertical-align: bottom;">905.400,00</td>
+                                            <td style="text-align: right; font-family: monospace; vertical-align: bottom;"><br>120.000,00<br>450.000,00<br>110.000,00<br>55.000,00<br>25.000,00<br>105.400,00</td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Asiento 4: Apertura de Inventario Final</strong><br>Inventario de Mercancía (Final en Balance)<br>&nbsp;&nbsp;&nbsp;&nbsp;@ Pérdidas y Ganancias (Reconocimiento en resultados)</td>
+                                            <td style="text-align: right; font-family: monospace; vertical-align: bottom;">90.000,00</td>
+                                            <td style="text-align: right; font-family: monospace; vertical-align: bottom;"><br>90.000,00</td>
+                                        </tr>
+                                        <tr style="background-color: #f4fbf7;">
+                                            <td><strong>Asiento 5: Traspaso a Utilidades Retenidas</strong><br>Pérdidas y Ganancias (Remanente neto de liquidación: 980k + 90k - 905.4k)<br>&nbsp;&nbsp;&nbsp;&nbsp;@ Utilidad Neta del Ejercicio (Cuenta de Patrimonio)</td>
+                                            <td style="text-align: right; font-family: monospace; font-weight: bold; vertical-align: bottom;">164.600,00</td>
+                                            <td style="text-align: right; font-family: monospace; font-weight: bold; vertical-align: bottom;"><br>164.600,00</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <div class="highlight" style="margin-top: 15px; font-size: 0.9em; padding: 12px 18px;">
+                                    <strong>💡 NOTA IMPORTANTE DEL FACILITADOR:</strong> Recuerde que la cuenta liquidadora <em>Pérdidas y Ganancias</em> recibe las compras e inventario inicial como cargos (disminución del haber), mientras que las ventas y el conteo de inventario final ingresan como abonos (aumento del deber). El saldo acreedor residual de 164.600,00 Bs. representa la Utilidad Neta que finalmente se consolida en la cuenta de Utilidades Retenidas del Patrimonio tras pagar el ISLR.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="evaluacion">
+                <h2 style="color: #2a5298; border-left: 5px solid #2a5298; padding-left: 15px; margin-bottom: 25px; font-size: 2em;"><i class="fas fa-clipboard-check mr-2"></i>Cierre de Módulo: Evaluación Rápida</h2>
+                
+                <div id="workspace-quiz">
+                    <!-- PREGUNTA 1 -->
+                    <div class="quiz-card" id="card-q1">
+                        <h4 style="color: #0f2027; margin-bottom: 12px; font-size: 1.1em; border-bottom: 1px solid #e2e8f0; padding-bottom: 8px;"><i class="fas fa-question-circle mr-2 text-blue-500"></i>Pregunta 1: Margen Bruto</h4>
+                        <p style="font-weight: 600; margin-bottom: 15px;">¿En qué sección y formato del Estado de Resultados se revela de manera explícita y obligatoria el Margen o Ganancia Bruta?</p>
+                        
+                        <div class="quiz-option-interactive" onclick="selectQuizOption('q1', 'a', false)">
+                            <i class="far fa-circle" id="icon-q1a"></i>
+                            <span>A) En el Método por Naturaleza, dado que se restan los consumos globales del ejercicio.</span>
+                        </div>
+                        <div class="quiz-option-interactive" onclick="selectQuizOption('q1', 'b', true)">
+                            <i class="far fa-circle" id="icon-q1b"></i>
+                            <span>B) Únicamente en el Método por Función, al restar formalmente el Costo de Ventas de los Ingresos Operativos.</span>
+                        </div>
+                        
+                        <div class="quiz-feedback-box" id="feedback-box-q1"></div>
+                    </div>
+
+                    <!-- PREGUNTA 2 -->
+                    <div class="quiz-card" id="card-q2">
+                        <h4 style="color: #0f2027; margin-bottom: 12px; font-size: 1.1em; border-bottom: 1px solid #e2e8f0; padding-bottom: 8px;"><i class="fas fa-question-circle mr-2 text-blue-500"></i>Pregunta 2: Efecto de las Depreciaciones</h4>
+                        <p style="font-weight: 600; margin-bottom: 15px;">¿Cómo impacta contable y financieramente el registro del ajuste anual de la depreciación acumulada a la tesorería (caja y banco) de la empresa?</p>
+                        
+                        <div class="quiz-option-interactive" onclick="selectQuizOption('q2', 'a', false)">
+                            <i class="far fa-circle" id="icon-q2a"></i>
+                            <span>A) Disminuye proporcionalmente el flujo de efectivo del período ya que representa una erogación de gastos operativos.</span>
+                        </div>
+                        <div class="quiz-option-interactive" onclick="selectQuizOption('q2', 'b', true)">
+                            <i class="far fa-circle" id="icon-q2b"></i>
+                            <span>B) No afecta en absoluto la liquidez de caja, por cuanto es una partida virtual (gasto no monetario).</span>
+                        </div>
+                        
+                        <div class="quiz-feedback-box" id="feedback-box-q2"></div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="bibliografia">
+                <h2 style="color: #2a5298; border-left: 5px solid #2a5298; padding-left: 15px; margin-bottom: 25px; font-size: 2em;"><i class="fas fa-book mr-2"></i>BIBLIOGRAFÍA Y NORMATIVIDAD</h2>
+                <div class="bibliography">
+                    <ul>
+                        <li><span class="tag">VEN-NIF</span> Normas de Información Financiera para Venezuela - Sección 5 (Estado de Resultados)</li>
+                        <li><span class="tag">NIIF PYMES</span> Norma Internacional de Información Financiera para PYMES - Sección 13 (Inventarios)</li>
+                        <li><span class="tag">NIIF PYMES</span> Sección 17 (Propiedades, Planta y Equipo) y Sección 18 (Activos Intangibles)</li>
+                        <li><span class="tag">UCSAR</span> Material del Diplomado en Contabilidad Financiera - Módulo 3</li>
+                        <li><span class="tag">BVAP</span> normativas locales sobre ISLR y presentación de estados financieros en Venezuela</li>
+                    </ul>
+                </div>
+            </section>
+        </div>
+
+        <div class="footer">
+            <p><strong>✅ Módulo 3 Completo - Listo para Impartirse</strong></p>
+            <p style="margin-top: 12px; opacity: 0.95;">Diplomado en Contabilidad Financiera | Universidad Católica Santa Rosa (UCSAR)</p>
+            <p style="margin-top: 8px; opacity: 0.9;">Facilitador: Prof. Frank Clemente | Mayo 2026</p>
+        </div>
+    </div>
+
+    <!-- BOTÓN FLOTANTE DE RETORNO -->
+    <a href="Planificacion_Modulo_3.html" class="floating-back-btn" title="Volver a la Planificación del Módulo III">
+        <i class="fas fa-arrow-left"></i>
+    </a>
+
+    <!-- INYECCIÓN SCRIPT CONTROLADOR INTERACTIVO -->
+    <script>
+        // Respuestas numéricas correctas para validación
+        const correctAnswers = {
+            'sim-purchases': 450000,
+            'sim-available': 570000,
+            'sim-cov': 480000,
+            'sim-gross': 500000,
+            'sim-expenses': 190000,
+            'sim-operating': 310000,
+            'sim-pretax': 310000,
+            'sim-tax': 105400,
+            'sim-net': 204600
+        };
+
+        // Cambiar pestañas del simulador
+        function switchTab(tabId) {
+            document.querySelectorAll('.sim-tab-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            document.querySelectorAll('.sim-tab-content').forEach(content => {
+                content.classList.remove('active');
+            });
+
+            // Encontrar botón correspondiente
+            const activeBtn = Array.from(document.querySelectorAll('.sim-tab-btn')).find(btn => 
+                btn.getAttribute('onclick').includes(tabId)
+            );
+            if (activeBtn) activeBtn.classList.add('active');
+
+            const activeContent = document.getElementById(tabId);
+            if (activeContent) activeContent.classList.add('active');
+        }
+
+        // Analizar y limpiar caracteres no numéricos del estudiante (mantiene formato decimal español e inglés)
+        function parseStudentValue(str) {
+            if (!str) return NaN;
+            let clean = str.replace(/[\s$Bs.g]/gi, '');
+            if (clean.includes(',') && clean.includes('.')) {
+                clean = clean.replace(/\./g, '').replace(/,/g, '.');
+            } else if (clean.includes(',')) {
+                let parts = clean.split(',');
+                if (parts[1].length === 3) {
+                    clean = clean.replace(/,/g, '');
+                } else {
+                    clean = clean.replace(/,/g, '.');
+                }
+            }
+            return parseFloat(clean);
+        }
+
+        // Restablecer el simulador completo
+        function resetSimulator() {
+            Object.keys(correctAnswers).forEach(id => {
+                const input = document.getElementById(id);
+                if (input) {
+                    input.value = '';
+                    input.classList.remove('input-correct', 'input-incorrect');
+                }
+                const feedback = document.getElementById(id.replace('sim', 'feedback'));
+                if (feedback) {
+                    feedback.innerHTML = '';
+                }
+            });
+            document.getElementById('score-card').style.display = 'none';
+            document.getElementById('sol-accordion').style.display = 'none';
+            document.getElementById('sol-body').style.display = 'none';
+            document.getElementById('btn-toggle-sol').style.display = 'none';
+            document.getElementById('acc-chevron').className = 'fas fa-chevron-down';
+            switchTab('fase1');
+        }
+
+        // Validar el simulador y otorgar calificación interactiva
+        function validateSimulator() {
+            let correctCount = 0;
+            let totalFields = Object.keys(correctAnswers).length;
+
+            Object.entries(correctAnswers).forEach(([id, correctVal]) => {
+                const input = document.getElementById(id);
+                const feedback = document.getElementById(id.replace('sim', 'feedback'));
+                
+                if (!input) return;
+
+                const rawVal = input.value.trim();
+                const studentVal = parseStudentValue(rawVal);
+
+                if (rawVal === '') {
+                    input.classList.remove('input-correct', 'input-incorrect');
+                    input.classList.add('input-incorrect');
+                    if (feedback) {
+                        feedback.innerHTML = '<span style="color:#dc3545;"><i class="fas fa-exclamation-circle mr-1"></i>Requerido</span>';
+                    }
+                } else if (Math.abs(studentVal - correctVal) < 0.05) {
+                    correctCount++;
+                    input.classList.remove('input-incorrect');
+                    input.classList.add('input-correct');
+                    if (feedback) {
+                        feedback.innerHTML = '<span style="color:#28a745;"><i class="fas fa-check-circle mr-1"></i>Correcto</span>';
+                    }
+                } else {
+                    input.classList.remove('input-correct');
+                    input.classList.add('input-incorrect');
+                    if (feedback) {
+                        feedback.innerHTML = `<span style="color:#dc3545;"><i class="fas fa-times-circle mr-1"></i>Incorrecto (Especula Bs. ${correctVal.toLocaleString('es-VE')})</span>`;
+                    }
+                }
+            });
+
+            // Calificación sobre 20
+            const scorePoints = Math.round((correctCount / totalFields) * 20);
+            const scoreCard = document.getElementById('score-card');
+            const scorePtsLabel = document.getElementById('score-points');
+            const scoreDesc = document.getElementById('score-desc');
+            const scoreTitle = document.getElementById('score-title');
+            
+            scorePtsLabel.innerHTML = `${scorePoints} / 20 pts`;
+            scoreCard.style.display = 'block';
+
+            if (scorePoints >= 18) {
+                scoreTitle.innerHTML = '🏆 ¡Excelente Trabajo, Excelencia Financiera!';
+                scoreDesc.innerHTML = `Resolviste exitosamente ${correctCount} de ${totalFields} variables del ejercicio. Tienes dominio avanzado en la determinación y cierre de resultados corporativos VEN-NIF.`;
+                scoreCard.style.background = 'linear-gradient(135deg, #28a745 0%, #155724 100%)';
+            } else if (scorePoints >= 12) {
+                scoreTitle.innerHTML = '⚡ ¡Buen Intento Contable!';
+                scoreDesc.innerHTML = `Identificaste correctamente ${correctCount} de ${totalFields} respuestas. Revisa los pasos incorrectos analizando el origen de las cuentas en el acordeón de abajo.`;
+                scoreCard.style.background = 'linear-gradient(135deg, #ffc107 0%, #d39e00 100%)';
+                scoreCard.style.color = '#212529';
+                scorePtsLabel.style.color = '#212529';
+            } else {
+                scoreTitle.innerHTML = '⚠️ Requiere Revisión Teórica';
+                scoreDesc.innerHTML = `Solo acertaste ${correctCount} variables de ${totalFields}. Utiliza el botón de abajo para revelar la guía de solución paso a paso y volver a practicar.`;
+                scoreCard.style.background = 'linear-gradient(135deg, #dc3545 0%, #721c24 100%)';
+                scoreCard.style.color = 'white';
+                scorePtsLabel.style.color = 'white';
+            }
+
+            // Habilitar botón para ver solución
+            document.getElementById('btn-toggle-sol').style.display = 'inline-flex';
+            document.getElementById('sol-accordion').style.display = 'block';
+            scoreCard.scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // Control del Accordion de solución del profesor
+        function toggleSolution() {
+            const body = document.getElementById('sol-body');
+            const chevron = document.getElementById('acc-chevron');
+            
+            if (body.style.display === 'block') {
+                body.style.display = 'none';
+                chevron.className = 'fas fa-chevron-down';
+            } else {
+                body.style.display = 'block';
+                chevron.className = 'fas fa-chevron-up';
+                body.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+
+        function toggleAccordion() {
+            toggleSolution();
+        }
+
+        // Control del Quiz Interactivo Dinámico
+        function selectQuizOption(questionId, optionId, isCorrect) {
+            const card = document.getElementById(`card-${questionId}`);
+            const feedbackBox = document.getElementById(`feedback-box-${questionId}`);
+            
+            // Remover selecciones de otras opciones en la misma pregunta
+            card.querySelectorAll('.quiz-option-interactive').forEach(opt => {
+                opt.classList.remove('selected-opt', 'correct-opt', 'incorrect-opt');
+                const icon = opt.querySelector('i');
+                if (icon) icon.className = 'far fa-circle';
+            });
+
+            // Encontrar elemento seleccionado
+            const selectedOpt = card.querySelector(`div[onclick*="'${optionId}'"]`);
+            if (!selectedOpt) return;
+
+            // Feedback visual e informativos teóricos
+            feedbackBox.style.display = 'block';
+            if (isCorrect) {
+                selectedOpt.classList.add('correct-opt');
+                selectedOpt.querySelector('i').className = 'fas fa-check-circle';
+                card.classList.remove('incorrect-card');
+                card.classList.add('correct-card');
+                
+                if (questionId === 'q1') {
+                    feedbackBox.innerHTML = '<span style="color:#155724;"><i class="fas fa-check-circle mr-1"></i>¡RESPUESTA CORRECTA! El método de presentación de gastos por función es el único que calcula de forma explícita y visible el Margen Bruto (Ventas - Costo de Ventas) en los informes para directivos. El de naturaleza solo agrupa importes agregados.</span>';
+                    feedbackBox.style.backgroundColor = '#d4edda';
+                    feedbackBox.style.borderLeft = '4px solid #28a745';
+                } else if (questionId === 'q2') {
+                    feedbackBox.innerHTML = '<span style="color:#155724;"><i class="fas fa-check-circle mr-1"></i>¡RESPUESTA CORRECTA! La depreciación acumulada y las amortizaciones de intangibles son cargos de resultados que NO conllevan una salida de fondos financieros reales. Son meras distribuciones contables del desgaste, denominándose "partidas virtuales" o no monetarias.</span>';
+                    feedbackBox.style.backgroundColor = '#d4edda';
+                    feedbackBox.style.borderLeft = '4px solid #28a745';
+                }
+            } else {
+                selectedOpt.classList.add('incorrect-opt');
+                selectedOpt.querySelector('i').className = 'fas fa-times-circle';
+                card.classList.remove('correct-card');
+                card.classList.add('incorrect-card');
+
+                if (questionId === 'q1') {
+                    feedbackBox.innerHTML = '<span style="color:#721c24;"><i class="fas fa-times-circle mr-1"></i>RESPUESTA INCORRECTA. El método por naturaleza suma todos los gastos del período según su contrato (compras, sueldos globales, depreciaciones globales) sin segregar cuál porción se consumió directamente en comercializar la mercancía vendida, por lo que NO revela el Margen o Utilidad Bruta. Relee la Unidad 3.</span>';
+                    feedbackBox.style.backgroundColor = '#f8d7da';
+                    feedbackBox.style.borderLeft = '4px solid #dc3545';
+                } else if (questionId === 'q2') {
+                    feedbackBox.innerHTML = '<span style="color:#721c24;"><i class="fas fa-times-circle mr-1"></i>RESPUESTA INCORRECTA. El ajuste de depreciación es una operación contable interna de valoración de activos fijos contra gastos ordinarios. No interviene ninguna cuenta de activo líquido (como caja chica o cuentas bancarias), por lo que el efectivo permanece intacto. Analiza el Asiento de Ajuste de la Unidad 2.</span>';
+                    feedbackBox.style.backgroundColor = '#f8d7da';
+                    feedbackBox.style.borderLeft = '4px solid #dc3545';
+                }
+            }
+        }
+    </script>
+</body>
+</html>
