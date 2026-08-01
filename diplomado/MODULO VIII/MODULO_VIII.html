@@ -7,12 +7,12 @@
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- FontAwesome -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;600;700;800&display=swap" rel="stylesheet">
     <!-- Supabase JS Library CDN & Auth Core -->
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-    <script src="../js/auth.js?v=4"></script>
+    <script src="../js/auth.js?v=5"></script>
     
     <style>
         body { font-family: 'Inter', sans-serif; background: #f8fafc; color: #334155; }
@@ -51,44 +51,114 @@
             <div class="inline-flex items-center gap-2 bg-indigo-500/20 border border-indigo-400/30 px-3.5 py-1 rounded-full text-indigo-300 text-xs font-bold uppercase mb-4">
                 <i class="fas fa-graduation-cap text-amber-400"></i> Guía Didáctica Asíncrona • Módulo VIII
             </div>
-            <h1 class="text-3xl sm:text-5xl font-extrabold text-white mb-4">Contabilidad del IVA en Libros Auxiliares</h1>
+            <h1 class="text-3xl sm:text-5xl font-extrabold text-white mb-4">Ley de Impuesto al Valor Agregado (IVA) en Venezuela 2026</h1>
             <p class="text-slate-300 text-base sm:text-lg max-w-3xl">
-                Análisis normativo y práctico de la tributación del IVA en Venezuela (SENIAT, Providencia 0049, Retenciones) en contraste con la legislación tributaria internacional.
+                Análisis normativo y práctico de la tributación del IVA ante el SENIAT: Decreto Constituyente 2020 (G.O.Ext. 6.507), Providencia 0049 (Agentes de Retención), alícuotas vigentes y registro en Libros Auxiliares.
             </p>
         </div>
     </header>
 
     <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 flex-grow">
 
+        <!-- Navegación por Tablas de Unidades -->
         <div class="bg-white p-2 rounded-2xl shadow-sm border border-slate-200 mb-8 overflow-x-auto">
             <div class="flex space-x-2 min-w-max">
-                <button onclick="switchTab('u1')" id="tab-u1" class="tab-button active px-5 py-3 rounded-xl font-bold text-sm">U1. Operaciones Sujetas & Exentas</button>
-                <button onclick="switchTab('u2')" id="tab-u2" class="tab-button px-5 py-3 rounded-xl font-semibold text-slate-600 text-sm">U2. Alícuotas & Ley del IVA</button>
-                <button onclick="switchTab('u3')" id="tab-u3" class="tab-button px-5 py-3 rounded-xl font-semibold text-slate-600 text-sm">U3. Contabilización del IVA</button>
-                <button onclick="switchTab('u4')" id="tab-u4" class="tab-button px-5 py-3 rounded-xl font-semibold text-slate-600 text-sm">U4. IVA e Importaciones</button>
-                <button onclick="switchTab('u5')" id="tab-u5" class="tab-button px-5 py-3 rounded-xl font-semibold text-slate-600 text-sm">U5. Liquidación & SENIAT</button>
+                <button onclick="switchTab('u1')" id="tab-u1" class="tab-button active px-5 py-3 rounded-xl font-bold text-sm">U1. Historia, Sujeción & Exenciones</button>
+                <button onclick="switchTab('u2')" id="tab-u2" class="tab-button px-5 py-3 rounded-xl font-semibold text-slate-600 text-sm">U2. Alícuotas & Sujetos Pasivos</button>
+                <button onclick="switchTab('u3')" id="tab-u3" class="tab-button px-5 py-3 rounded-xl font-semibold text-slate-600 text-sm">U3. Débito, Crédito & Libros Auxiliares</button>
+                <button onclick="switchTab('u4')" id="tab-u4" class="tab-button px-5 py-3 rounded-xl font-semibold text-slate-600 text-sm">U4. IVA en Aduanas e Importaciones</button>
+                <button onclick="switchTab('u5')" id="tab-u5" class="tab-button px-5 py-3 rounded-xl font-semibold text-slate-600 text-sm">U5. Liquidación & Retenciones SENIAT</button>
             </div>
         </div>
 
-        <!-- U1 -->
+        <!-- UNIDAD 1 -->
         <div id="u1" class="tab-content active space-y-6">
             <div class="bg-white rounded-3xl p-8 shadow-sm border border-slate-200">
-                <h2 class="text-2xl font-bold mb-4">Unidad 1: Importancia y Objetivos de la Contabilidad del IVA</h2>
-                <div class="space-y-4 text-slate-600 text-sm sm:text-base">
-                    <p><strong>1.1 Operaciones Sujetas vs. No Sujetas:</strong> La Ley del IVA grava la venta de bienes muebles, prestación de servicios e importaciones. Las operaciones no sujetas no realizan el hecho imponible (ej. indemnizaciones de seguros o donaciones).</p>
-                    <p><strong>1.2 Operaciones Exentas (Art. 18):</strong> Realizan el hecho imponible pero la ley exime su pago por política social (ej. alimentos de la cesta básica, medicinas esencial, transporte terrestre de pasajeros).</p>
-                    <p><strong>1.3 Inversión del Sujeto Pasivo (Retenciones SENIAT):</strong> Los Contribuyentes Especiales actúan como Agentes de Retención del 75% o 100% del IVA facturado por sus proveedores (Providencia SNAT/2013/0030).</p>
+                <div class="flex items-center gap-3 mb-6">
+                    <span class="bg-indigo-100 text-indigo-800 text-xs font-bold px-3 py-1 rounded-full uppercase">Unidad 1</span>
+                    <h2 class="text-2xl font-bold text-slate-900">Evolución Histórica, Hechos Imponibles, Operaciones Sujetas, No Sujetas y Exentas</h2>
                 </div>
 
-                <!-- Cuestionario -->
+                <!-- Marco Legal e Historia -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                    <div class="bg-slate-50 p-6 rounded-2xl border border-slate-200">
+                        <h3 class="font-bold text-indigo-900 text-lg mb-3 flex items-center gap-2">
+                            <i class="fas fa-clock-rotate-left text-indigo-600"></i> Evolución Histórica del IVA en Venezuela
+                        </h3>
+                        <ul class="space-y-2 text-xs sm:text-sm text-slate-700">
+                            <li><strong class="text-slate-900">1993 (Creación):</strong> Implantado mediante Gaceta Oficial N° 35.304 del 24/09/1993 (Entrada en vigencia: 01/10/1993) con alícuota inicial del 10%.</li>
+                            <li><strong class="text-slate-900">1994 - 1999 (ICSVM):</strong> Cambia su denominación a <em>Impuesto al Consumo Suntuario y a las Ventas al Mayor</em>.</li>
+                            <li><strong class="text-slate-900">1999 (Retorno al IVA):</strong> Recupera formalmente el nombre de Impuesto al Valor Agregado (IVA).</li>
+                            <li><strong class="text-slate-900">2009 - 2018 (Alícuota 12%):</strong> Rige al 12% con breves rebajas electrónicas temporales en 2017.</li>
+                            <li><strong class="text-slate-900">2018 en adelante (Alícuota 16%):</strong> A partir del 01/09/2018 la alícuota general se fija en el 16%.</li>
+                            <li><strong class="text-slate-900">Reforma Vigente (2020):</strong> Decreto Constituyente publicado en Gaceta Oficial Extraordinaria N° 6.507 del 29/01/2020.</li>
+                        </ul>
+                    </div>
+
+                    <div class="bg-indigo-50/50 p-6 rounded-2xl border border-indigo-100">
+                        <h3 class="font-bold text-indigo-950 text-lg mb-3 flex items-center gap-2">
+                            <i class="fas fa-gavel text-indigo-600"></i> Hechos Imponibles (Artículos 1, 3 y 4 LIVA)
+                        </h3>
+                        <p class="text-xs sm:text-sm text-slate-700 mb-3">El hechos imponible es la actividad comercial que origina la obligación tributaria:</p>
+                        <ul class="space-y-2 text-xs sm:text-sm text-slate-700">
+                            <li class="flex items-start gap-2">
+                                <i class="fas fa-check text-emerald-600 mt-1"></i>
+                                <span><strong>Venta de Bienes Muebles Corporales:</strong> Enajenación a título oneroso dentro del territorio nacional.</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <i class="fas fa-check text-emerald-600 mt-1"></i>
+                                <span><strong>Prestación de Servicios Independientes:</strong> Servicios ejecutados o aprovechados en el país bajo contraprestación.</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <i class="fas fa-check text-emerald-600 mt-1"></i>
+                                <span><strong>Importación Definitiva:</strong> Introducción legal de bienes muebles corporales al territorio nacional.</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Clasificación de Operaciones -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                    <div class="bg-amber-50/60 p-6 rounded-2xl border border-amber-200">
+                        <h3 class="font-bold text-amber-900 text-lg mb-3 flex items-center gap-2">
+                            <i class="fas fa-ban text-amber-600"></i> Operaciones NO Sujetas (Artículo 16 LIVA)
+                        </h3>
+                        <p class="text-xs sm:text-sm text-slate-700 mb-2">No constituyen hecho imponible por la naturaleza de la operación:</p>
+                        <ul class="space-y-1.5 text-xs sm:text-sm text-slate-700 list-disc list-inside">
+                            <li>Préstamos en dinero y mutuos monetarios.</li>
+                            <li>Servicios prestados bajo relación de dependencia laboral (sueldos y salarios).</li>
+                            <li>Venta de títulos valores, acciones, bonos y cédulas hipotecarias.</li>
+                            <li>Operaciones bancarias y de institutos de crédito.</li>
+                            <li>Contratos de seguro y reaseguro.</li>
+                            <li>Importaciones temporales o no definitivas.</li>
+                        </ul>
+                    </div>
+
+                    <div class="bg-emerald-50/60 p-6 rounded-2xl border border-emerald-200">
+                        <h3 class="font-bold text-emerald-900 text-lg mb-3 flex items-center gap-2">
+                            <i class="fas fa-shield-halved text-emerald-600"></i> Operaciones Exentas (Artículo 18 LIVA)
+                        </h3>
+                        <p class="text-xs sm:text-sm text-slate-700 mb-2">Ocurre el hecho imponible pero la ley exime de pago por política social:</p>
+                        <ul class="space-y-1.5 text-xs sm:text-sm text-slate-700 list-disc list-inside">
+                            <li><strong>Alimentos Cesta Básica:</strong> Arroz, harina vegetal, pan, pastas, leche cruda/polvo, queso blanco, huevos, carne de res/pollo en estado natural.</li>
+                            <li><strong>Salud:</strong> Medicamentos, principios activos, vacunas, sueros y prótesis/sillas de ruedas.</li>
+                            <li><strong>Educación y Cultura:</strong> Libros, periódicos, diarios, revistas y papel para sus ediciones.</li>
+                            <li><strong>Agro:</strong> Fertilizantes y semillas certificadas.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Cuestionario U1 -->
                 <div class="mt-8 bg-indigo-950 text-white rounded-3xl p-6 shadow-xl">
-                    <h3 class="text-lg font-bold text-indigo-300 mb-4"><i class="fas fa-pen-to-square"></i> Cuestionario Práctico - Unidad 1</h3>
+                    <h3 class="text-lg font-bold text-indigo-300 mb-4 flex items-center gap-2">
+                        <i class="fas fa-pen-to-square"></i> Cuestionario Práctico - Unidad 1
+                    </h3>
                     <div class="space-y-4 text-sm">
                         <div class="bg-slate-900 p-4 rounded-xl border border-slate-800">
-                            <strong>Pregunta 1.1:</strong> Explique la diferencia entre una operación no sujeta y una exenta de IVA según la Ley del IVA. Dé un ejemplo de cada una.
+                            <strong>Pregunta 1.1:</strong> Redacte un cuadro indicando si las siguientes operaciones pagan IVA en Venezuela (Sujeta, No Sujeta o Exenta): a) Pago de salario a empleado, b) Venta de harina de maíz precocida, c) Venta de un computador comercial, d) Emisión de una póliza de seguro.
                         </div>
                         <div class="bg-slate-900 p-4 rounded-xl border border-slate-800">
-                            <strong>Pregunta 1.2:</strong> Un Contribuyente Especial realiza una compra por 100.000 BS + IVA (16% = 16.000 BS). Redacte el asiento contable registrando la retención del 75% de IVA.
+                            <strong>Pregunta 1.2:</strong> ¿En qué fecha y bajo cuál Gaceta Oficial se publicó la Reforma Parcial vigente del IVA en Venezuela y cuál es la alícuota general establecida?
                         </div>
 
                         <!-- Instrucciones de envío -->
@@ -103,21 +173,21 @@
                             </ol>
                         </div>
 
-                        <textarea id="ans-m8-u1" rows="4" placeholder="Escribe tus respuestas aquí..." class="w-full bg-slate-900 border border-slate-700 text-white rounded-xl p-4 text-xs font-mono"></textarea>
-                        <button onclick="copiarRespuestas('ans-m8-u1', 'Módulo 8 - Unidad 1')" class="bg-indigo-600 hover:bg-indigo-500 text-white font-bold px-5 py-3 rounded-xl text-xs transition flex items-center gap-2">
+                        <textarea id="ans-m8-u1" rows="4" placeholder="Escribe tus respuestas aquí..." class="w-full bg-slate-900 border border-slate-700 text-white rounded-xl p-4 text-xs font-mono focus:outline-none focus:border-amber-400"></textarea>
+                        <button onclick="copiarRespuestas('ans-m8-u1', 'Módulo 8 - Unidad 1')" class="bg-indigo-600 hover:bg-indigo-500 text-white font-bold px-5 py-3 rounded-xl text-xs transition flex items-center gap-2 shadow-lg shadow-indigo-900/50">
                             <i class="fas fa-copy"></i> Copiar Mis Respuestas para Telegram
                         </button>
                     </div>
                 </div>
 
-                <!-- Sala de Debate / Chat con Usuario Autenticado en Supabase -->
+                <!-- Chat de Unidad U1 -->
                 <div class="mt-8 bg-slate-900 text-white rounded-3xl p-6 shadow-xl border border-slate-800">
                     <div class="flex items-center justify-between mb-4 border-b border-slate-800 pb-3">
                         <div>
                             <h3 class="text-lg font-bold text-amber-400 flex items-center gap-2">
                                 <i class="fas fa-comments"></i> Sala de Debate y Consultas - Unidad 1
                             </h3>
-                            <p class="text-xs text-slate-400">Intercambia opiniones, dudas o comentarios de esta unidad con tus compañeros y el profesor.</p>
+                            <p class="text-xs text-slate-400">Intercambia opiniones sobre la historia, hechos imponibles y exenciones con el facilitador y tus compañeros.</p>
                         </div>
                         <span class="bg-indigo-900/80 text-indigo-300 text-xs px-3 py-1 rounded-full font-bold">Chat de Unidad</span>
                     </div>
@@ -125,15 +195,13 @@
                     <div id="comments-list-u1" class="space-y-3 mb-4 max-h-60 overflow-y-auto pr-2"></div>
 
                     <div class="bg-slate-950 p-4 rounded-2xl border border-slate-800 space-y-3">
-                        <!-- Perfil detectado de Supabase -->
                         <div class="flex items-center justify-between bg-slate-900 border border-slate-800 p-2.5 rounded-xl text-xs">
                             <span class="text-slate-400"><i class="fas fa-user-check text-emerald-400 mr-1"></i> Usuario Autenticado:</span>
                             <span id="user-badge-u1" class="font-bold text-indigo-300 flex items-center gap-1">
                                 <i class="fas fa-circle-notch fa-spin text-amber-400"></i> Verificando datos de sesión...
                             </span>
                         </div>
-
-                        <textarea id="msg-u1" rows="2" placeholder="Escribe tu duda o aporte para discutir en clase..." class="w-full bg-slate-900 border border-slate-700 text-white rounded-xl p-3 text-xs focus:outline-none focus:border-amber-400"></textarea>
+                        <textarea id="msg-u1" rows="2" placeholder="Escribe tu aporte o duda de la Unidad 1..." class="w-full bg-slate-900 border border-slate-700 text-white rounded-xl p-3 text-xs focus:outline-none focus:border-amber-400"></textarea>
                         <button onclick="publicarComentario('u1')" class="bg-amber-500 hover:bg-amber-600 text-slate-950 font-bold px-4 py-2 rounded-xl text-xs flex items-center gap-2 transition">
                             <i class="fas fa-paper-plane"></i> Publicar en la Sala de Debate
                         </button>
@@ -143,21 +211,95 @@
             </div>
         </div>
 
-        <!-- U2 -->
+        <!-- UNIDAD 2 -->
         <div id="u2" class="tab-content space-y-6">
             <div class="bg-white rounded-3xl p-8 shadow-sm border border-slate-200">
-                <h2 class="text-2xl font-bold mb-4">Unidad 2: Alícuotas Impositivas de IVA</h2>
-                <div class="space-y-4 text-slate-600 text-sm sm:text-base">
-                    <p><strong>2.1 Alícuota General (16%):</strong> Aplicable a la mayoría de bienes muebles y servicios en Venezuela.</p>
-                    <p><strong>2.2 Alícuota Reducida (8%):</strong> Aplicable a importaciones y ventas de determinados bienes agrícolas y servicios de transporte aéreo.</p>
-                    <p><strong>2.3 Alícuota Adicional de Suntuosidad (+15%):</strong> Aplicable a consumos de bienes y servicios de lujo.</p>
+                <div class="flex items-center gap-3 mb-6">
+                    <span class="bg-indigo-100 text-indigo-800 text-xs font-bold px-3 py-1 rounded-full uppercase">Unidad 2</span>
+                    <h2 class="text-2xl font-bold text-slate-900">Alícuotas Impositivas del IVA y Clasificación de Sujetos Pasivos</h2>
                 </div>
 
+                <!-- Cuadro de Alícuotas -->
+                <div class="bg-slate-900 text-white rounded-3xl p-6 mb-8 shadow-xl border border-slate-800">
+                    <h3 class="text-lg font-bold text-amber-400 mb-4 flex items-center gap-2">
+                        <i class="fas fa-calculator"></i> Estructura de Alícuotas del IVA en Venezuela
+                    </h3>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                        <div class="bg-slate-800/80 p-4 rounded-2xl border border-slate-700">
+                            <span class="text-xs text-slate-400 font-bold uppercase block mb-1">Alícuota General</span>
+                            <span class="text-3xl font-extrabold text-emerald-400">16%</span>
+                            <p class="text-xs text-slate-300 mt-2">Aplicable a la mayoría de las operaciones comerciales de venta de bienes y prestación de servicios.</p>
+                        </div>
+                        <div class="bg-slate-800/80 p-4 rounded-2xl border border-slate-700">
+                            <span class="text-xs text-slate-400 font-bold uppercase block mb-1">Alícuota Reducida</span>
+                            <span class="text-3xl font-extrabold text-blue-400">8%</span>
+                            <p class="text-xs text-slate-300 mt-2">Destinada a sectores específicos (bienes del sector agropecuario y transporte aéreo de pasajeros).</p>
+                        </div>
+                        <div class="bg-slate-800/80 p-4 rounded-2xl border border-slate-700">
+                            <span class="text-xs text-slate-400 font-bold uppercase block mb-1">Alícuota Suntuaria</span>
+                            <span class="text-3xl font-extrabold text-purple-400">31%</span>
+                            <p class="text-xs text-slate-300 mt-2">Resultado de la Alícuota General (16%) + Recargo adicional para bienes de consumo suntuario (+15%).</p>
+                        </div>
+                        <div class="bg-slate-800/80 p-4 rounded-2xl border border-slate-700">
+                            <span class="text-xs text-slate-400 font-bold uppercase block mb-1">Sobrealícuota Divisas</span>
+                            <span class="text-3xl font-extrabold text-amber-400">5% - 25%</span>
+                            <p class="text-xs text-slate-300 mt-2">Rango legal autorizable para pagos efectuados en moneda extranjera o criptoactivos no oficiales.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Clasificación de Sujetos Pasivos -->
+                <div class="bg-slate-50 p-6 rounded-2xl border border-slate-200 mb-8">
+                    <h3 class="font-bold text-slate-900 text-lg mb-4 flex items-center gap-2">
+                        <i class="fas fa-users-gear text-indigo-600"></i> Clasificación Legal de Sujetos Pasivos (Arts. 5, 6, 8 LIVA y COT)
+                    </h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div class="bg-white p-5 rounded-xl border border-slate-200">
+                            <h4 class="font-bold text-indigo-900 text-sm mb-2 flex items-center gap-2">
+                                <i class="fas fa-briefcase text-indigo-500"></i> 1. Contribuyentes Ordinarios (Art. 5 LIVA)
+                            </h4>
+                            <p class="text-xs text-slate-600 leading-relaxed">
+                                Industriales, comerciantes, prestadores habituales de servicios e importadores habituales. Deben cobrar, declarar y pagar el IVA mensualmente, emitiendo facturas según la Providencia SENIAT 00071.
+                            </p>
+                        </div>
+                        <div class="bg-white p-5 rounded-xl border border-slate-200">
+                            <h4 class="font-bold text-indigo-900 text-sm mb-2 flex items-center gap-2">
+                                <i class="fas fa-plane-arrival text-indigo-500"></i> 2. Contribuyentes Ocasionales (Art. 6 LIVA)
+                            </h4>
+                            <p class="text-xs text-slate-600 leading-relaxed">
+                                Importadores no habituales de bienes muebles corporales. Pagan el impuesto directamente en la aduana al momento de la nacionalización sin generar derecho a crédito fiscal.
+                            </p>
+                        </div>
+                        <div class="bg-white p-5 rounded-xl border border-slate-200">
+                            <h4 class="font-bold text-indigo-900 text-sm mb-2 flex items-center gap-2">
+                                <i class="fas fa-file-invoice text-indigo-500"></i> 3. Contribuyentes Formales (Art. 8 LIVA)
+                            </h4>
+                            <p class="text-xs text-slate-600 leading-relaxed">
+                                Sujetos que realizan exclusivamente operaciones exentas o exoneradas. No trasladan ni cobran el impuesto, pero deben cumplir deberes formales (Libros de Compras/Ventas y RIF).
+                            </p>
+                        </div>
+                        <div class="bg-white p-5 rounded-xl border border-slate-200 border-l-4 border-l-amber-500">
+                            <h4 class="font-bold text-amber-900 text-sm mb-2 flex items-center gap-2">
+                                <i class="fas fa-user-shield text-amber-600"></i> 4. Sujetos Pasivos Especiales (SPE)
+                            </h4>
+                            <p class="text-xs text-slate-600 leading-relaxed">
+                                Calificados expresamente por el SENIAT. Actúan como <strong>Agentes de Retención del IVA</strong> y cumplen calendarios especiales de declaración quincenal.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Cuestionario U2 -->
                 <div class="mt-8 bg-indigo-950 text-white rounded-3xl p-6 shadow-xl">
-                    <h3 class="text-lg font-bold text-indigo-300 mb-4"><i class="fas fa-pen-to-square"></i> Cuestionario Práctico - Unidad 2</h3>
+                    <h3 class="text-lg font-bold text-indigo-300 mb-4 flex items-center gap-2">
+                        <i class="fas fa-pen-to-square"></i> Cuestionario Práctico - Unidad 2
+                    </h3>
                     <div class="space-y-4 text-sm">
                         <div class="bg-slate-900 p-4 rounded-xl border border-slate-800">
-                            <strong>Pregunta 2.1:</strong> Mencione 2 actividades sujetas a alícuota reducida del 8% y explique el impacto de la tasa suntuaria del 15%.
+                            <strong>Pregunta 2.1:</strong> Un comerciante compra un vehículo de lujo gravado con alícuota suntuaria. Calcule el monto total a pagar por un bien con base imponible de 500.000 BS aplicando la alícuota correspondiente (31%).
+                        </div>
+                        <div class="bg-slate-900 p-4 rounded-xl border border-slate-800">
+                            <strong>Pregunta 2.2:</strong> Explique la diferencia fundamental entre un Contribuyente Ordinario y un Contribuyente Formal respecto al cobro del IVA y el derecho al crédito fiscal.
                         </div>
 
                         <div class="bg-indigo-900/60 border border-indigo-500/30 p-4 rounded-xl text-xs text-indigo-200">
@@ -171,21 +313,21 @@
                             </ol>
                         </div>
 
-                        <textarea id="ans-m8-u2" rows="4" placeholder="Escribe tus respuestas aquí..." class="w-full bg-slate-900 border border-slate-700 text-white rounded-xl p-4 text-xs font-mono"></textarea>
+                        <textarea id="ans-m8-u2" rows="4" placeholder="Escribe tus respuestas aquí..." class="w-full bg-slate-900 border border-slate-700 text-white rounded-xl p-4 text-xs font-mono focus:outline-none focus:border-amber-400"></textarea>
                         <button onclick="copiarRespuestas('ans-m8-u2', 'Módulo 8 - Unidad 2')" class="bg-indigo-600 hover:bg-indigo-500 text-white font-bold px-5 py-3 rounded-xl text-xs">
                             <i class="fas fa-copy"></i> Copiar Mis Respuestas para Telegram
                         </button>
                     </div>
                 </div>
 
-                <!-- Sala de Debate U2 -->
+                <!-- Chat U2 -->
                 <div class="mt-8 bg-slate-900 text-white rounded-3xl p-6 shadow-xl border border-slate-800">
                     <div class="flex items-center justify-between mb-4 border-b border-slate-800 pb-3">
                         <div>
                             <h3 class="text-lg font-bold text-amber-400 flex items-center gap-2">
                                 <i class="fas fa-comments"></i> Sala de Debate y Consultas - Unidad 2
                             </h3>
-                            <p class="text-xs text-slate-400">Debate con tus compañeros sobre las alícuotas del IVA.</p>
+                            <p class="text-xs text-slate-400">Debate con tus compañeros sobre alícuotas y calificación de sujetos pasivos.</p>
                         </div>
                         <span class="bg-indigo-900/80 text-indigo-300 text-xs px-3 py-1 rounded-full font-bold">Chat de Unidad</span>
                     </div>
@@ -199,7 +341,7 @@
                                 <i class="fas fa-circle-notch fa-spin text-amber-400"></i> Verificando datos de sesión...
                             </span>
                         </div>
-                        <textarea id="msg-u2" rows="2" placeholder="Escribe tu opinión o pregunta de la Unidad 2..." class="w-full bg-slate-900 border border-slate-700 text-white rounded-xl p-3 text-xs focus:outline-none focus:border-amber-400"></textarea>
+                        <textarea id="msg-u2" rows="2" placeholder="Escribe tu aporte sobre alícuotas..." class="w-full bg-slate-900 border border-slate-700 text-white rounded-xl p-3 text-xs focus:outline-none focus:border-amber-400"></textarea>
                         <button onclick="publicarComentario('u2')" class="bg-amber-500 hover:bg-amber-600 text-slate-950 font-bold px-4 py-2 rounded-xl text-xs flex items-center gap-2 transition">
                             <i class="fas fa-paper-plane"></i> Publicar en la Sala de Debate
                         </button>
@@ -209,21 +351,106 @@
             </div>
         </div>
 
-        <!-- U3 -->
+        <!-- UNIDAD 3 -->
         <div id="u3" class="tab-content space-y-6">
             <div class="bg-white rounded-3xl p-8 shadow-sm border border-slate-200">
-                <h2 class="text-2xl font-bold mb-4">Unidad 3: Contabilización del IVA</h2>
-                <div class="space-y-4 text-slate-600 text-sm sm:text-base">
-                    <p><strong>3.1 IVA Débito Fiscal:</strong> Cuenta de pasivo que registra el impuesto cobrado a los clientes en ventas.</p>
-                    <p><strong>3.2 IVA Crédito Fiscal:</strong> Cuenta de activo que registra el impuesto pagado a proveedores en compras.</p>
-                    <p><strong>3.3 Libros Auxiliares de Compras y Ventas:</strong> Registros cronológicos exigidos por el SENIAT.</p>
+                <div class="flex items-center gap-3 mb-6">
+                    <span class="bg-indigo-100 text-indigo-800 text-xs font-bold px-3 py-1 rounded-full uppercase">Unidad 3</span>
+                    <h2 class="text-2xl font-bold text-slate-900">Contabilización del IVA, Débito Fiscal, Crédito Fiscal y Libros Auxiliares</h2>
                 </div>
 
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                    <div class="bg-slate-50 p-6 rounded-2xl border border-slate-200">
+                        <h3 class="font-bold text-slate-900 text-lg mb-3 flex items-center gap-2">
+                            <i class="fas fa-book text-indigo-600"></i> Cuentas Principales de Registro del IVA
+                        </h3>
+                        <div class="space-y-3 text-xs sm:text-sm text-slate-700">
+                            <div class="bg-white p-4 rounded-xl border border-slate-200">
+                                <span class="font-bold text-red-600 block mb-1">1. IVA Débito Fiscal (Pasivo Corriente)</span>
+                                Registra el impuesto cobrado a los clientes en ventas o servicios prestados. Se acredita en cada venta y representa una deuda con el SENIAT.
+                            </div>
+                            <div class="bg-white p-4 rounded-xl border border-slate-200">
+                                <span class="font-bold text-emerald-600 block mb-1">2. IVA Crédito Fiscal (Activo Corriente)</span>
+                                Registra el impuesto pagado a proveedores en compras de inventario, activos o servicios recibidos. Se debita y representa un derecho compensable.
+                            </div>
+                            <div class="bg-white p-4 rounded-xl border border-slate-200">
+                                <span class="font-bold text-amber-600 block mb-1">3. IVA Retenido por Enterar (Pasivo Corriente)</span>
+                                Cuenta utilizada por los Sujetos Pasivos Especiales para registrar la retención practicada a proveedores que debe enterarse al SENIAT.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-slate-900 text-white p-6 rounded-2xl border border-slate-800 flex flex-col justify-between">
+                        <div>
+                            <h3 class="font-bold text-amber-400 text-lg mb-3 flex items-center gap-2">
+                                <i class="fas fa-table-list"></i> Libros Auxiliares Exigidos por el SENIAT
+                            </h3>
+                            <p class="text-xs text-slate-300 mb-4 leading-relaxed">
+                                Los Libros de Compras y Ventas deben mantenerse al día en el establecimiento y contener la totalidad de las facturas emitidas y recibidas en orden cronológico:
+                            </p>
+                            <ul class="space-y-2 text-xs text-slate-300 list-disc list-inside">
+                                <li>Fecha de la operación y RIF del proveedor/cliente.</li>
+                                <li>Número de Factura y Número de Control del formato fiscal.</li>
+                                <li>Monto Total, Base Imponible, Alícuota Aplicada e IVA.</li>
+                                <li>Retenciones de IVA practicadas o soportadas.</li>
+                            </ul>
+                        </div>
+                        <div class="mt-4 bg-slate-800 p-3 rounded-xl border border-slate-700 text-xs text-amber-300">
+                            <i class="fas fa-triangle-exclamation mr-1"></i> <strong>Sanción COT:</strong> El atraso de los Libros de Compras/Ventas genera multas y clausura temporal del establecimiento por el SENIAT.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Ejemplo de Asiento Contable -->
+                <div class="bg-indigo-950 text-white p-6 rounded-3xl mb-8 shadow-xl">
+                    <h3 class="text-lg font-bold text-indigo-300 mb-4 flex items-center gap-2">
+                        <i class="fas fa-file-code"></i> Modelo de Asiento Contable: Venta Gravada e IVA Débito Fiscal
+                    </h3>
+                    <div class="bg-slate-900 p-4 rounded-xl border border-slate-800 overflow-x-auto">
+                        <table class="w-full text-xs font-mono text-left">
+                            <thead>
+                                <tr class="border-b border-slate-800 text-slate-400">
+                                    <th class="pb-2">Fecha</th>
+                                    <th class="pb-2">Cuentas y Descripción</th>
+                                    <th class="pb-2 text-right">Debe (BS)</th>
+                                    <th class="pb-2 text-right">Haber (BS)</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-slate-800 text-slate-300">
+                                <tr>
+                                    <td class="py-2">01/03/2026</td>
+                                    <td>Banco / Cuentas por Cobrar</td>
+                                    <td class="text-right text-emerald-400">116.000,00</td>
+                                    <td class="text-right">--</td>
+                                </tr>
+                                <tr>
+                                    <td class="py-2"></td>
+                                    <td>@ Ventas de Mercancías (Base Imponible)</td>
+                                    <td class="text-right">--</td>
+                                    <td class="text-right">100.000,00</td>
+                                </tr>
+                                <tr>
+                                    <td class="py-2"></td>
+                                    <td>@ IVA Débito Fiscal (16%)</td>
+                                    <td class="text-right">--</td>
+                                    <td class="text-right text-amber-400">16.000,00</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Cuestionario U3 -->
                 <div class="mt-8 bg-indigo-950 text-white rounded-3xl p-6 shadow-xl">
-                    <h3 class="text-lg font-bold text-indigo-300 mb-4"><i class="fas fa-pen-to-square"></i> Cuestionario Práctico - Unidad 3</h3>
+                    <h3 class="text-lg font-bold text-indigo-300 mb-4 flex items-center gap-2">
+                        <i class="fas fa-pen-to-square"></i> Cuestionario Práctico - Unidad 3
+                    </h3>
                     <div class="space-y-4 text-sm">
                         <div class="bg-slate-900 p-4 rounded-xl border border-slate-800">
-                            <strong>Pregunta 3.1:</strong> ¿En qué cuentas del activo y pasivo se registran el Crédito y Débito Fiscal? Redacte los asientos tipo.
+                            <strong>Pregunta 3.1:</strong> Una empresa compra inventario por 200.000 BS + IVA (16%). Realice el asiento contable registrando el IVA Crédito Fiscal.
+                        </div>
+                        <div class="bg-slate-900 p-4 rounded-xl border border-slate-800">
+                            <strong>Pregunta 3.2:</strong> Mencione 4 datos obligatorios que exige la Providencia SENIAT 00071 para el llenado del Libro Auxiliar de Ventas.
                         </div>
 
                         <div class="bg-indigo-900/60 border border-indigo-500/30 p-4 rounded-xl text-xs text-indigo-200">
@@ -237,21 +464,21 @@
                             </ol>
                         </div>
 
-                        <textarea id="ans-m8-u3" rows="4" placeholder="Escribe tus respuestas aquí..." class="w-full bg-slate-900 border border-slate-700 text-white rounded-xl p-4 text-xs font-mono"></textarea>
+                        <textarea id="ans-m8-u3" rows="4" placeholder="Escribe tus respuestas aquí..." class="w-full bg-slate-900 border border-slate-700 text-white rounded-xl p-4 text-xs font-mono focus:outline-none focus:border-amber-400"></textarea>
                         <button onclick="copiarRespuestas('ans-m8-u3', 'Módulo 8 - Unidad 3')" class="bg-indigo-600 hover:bg-indigo-500 text-white font-bold px-5 py-3 rounded-xl text-xs">
                             <i class="fas fa-copy"></i> Copiar Mis Respuestas para Telegram
                         </button>
                     </div>
                 </div>
 
-                <!-- Sala de Debate U3 -->
+                <!-- Chat U3 -->
                 <div class="mt-8 bg-slate-900 text-white rounded-3xl p-6 shadow-xl border border-slate-800">
                     <div class="flex items-center justify-between mb-4 border-b border-slate-800 pb-3">
                         <div>
                             <h3 class="text-lg font-bold text-amber-400 flex items-center gap-2">
                                 <i class="fas fa-comments"></i> Sala de Debate y Consultas - Unidad 3
                             </h3>
-                            <p class="text-xs text-slate-400">Consulta y debate sobre el registro contable de Débito y Crédito Fiscal.</p>
+                            <p class="text-xs text-slate-400">Consulta y debate sobre asientos contables de Crédito y Débito Fiscal.</p>
                         </div>
                         <span class="bg-indigo-900/80 text-indigo-300 text-xs px-3 py-1 rounded-full font-bold">Chat de Unidad</span>
                     </div>
@@ -265,7 +492,7 @@
                                 <i class="fas fa-circle-notch fa-spin text-amber-400"></i> Verificando datos de sesión...
                             </span>
                         </div>
-                        <textarea id="msg-u3" rows="2" placeholder="Escribe tu mensaje para la clase..." class="w-full bg-slate-900 border border-slate-700 text-white rounded-xl p-3 text-xs focus:outline-none focus:border-amber-400"></textarea>
+                        <textarea id="msg-u3" rows="2" placeholder="Escribe tu duda sobre contabilización..." class="w-full bg-slate-900 border border-slate-700 text-white rounded-xl p-3 text-xs focus:outline-none focus:border-amber-400"></textarea>
                         <button onclick="publicarComentario('u3')" class="bg-amber-500 hover:bg-amber-600 text-slate-950 font-bold px-4 py-2 rounded-xl text-xs flex items-center gap-2 transition">
                             <i class="fas fa-paper-plane"></i> Publicar en la Sala de Debate
                         </button>
@@ -275,19 +502,53 @@
             </div>
         </div>
 
-        <!-- U4 -->
+        <!-- UNIDAD 4 -->
         <div id="u4" class="tab-content space-y-6">
             <div class="bg-white rounded-3xl p-8 shadow-sm border border-slate-200">
-                <h2 class="text-2xl font-bold mb-4">Unidad 4: El IVA en las Operaciones de Importación</h2>
-                <div class="space-y-4 text-slate-600 text-sm sm:text-base">
-                    <p><strong>4.1 Base Imponible de Importación:</strong> Valor CIF + Aranceles aduaneros + Tasas administrativas SENIAT.</p>
+                <div class="flex items-center gap-3 mb-6">
+                    <span class="bg-indigo-100 text-indigo-800 text-xs font-bold px-3 py-1 rounded-full uppercase">Unidad 4</span>
+                    <h2 class="text-2xl font-bold text-slate-900">Tratamiento del IVA en las Operaciones de Comercio Exterior e Importaciones</h2>
                 </div>
 
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                    <div class="bg-slate-50 p-6 rounded-2xl border border-slate-200">
+                        <h3 class="font-bold text-indigo-900 text-lg mb-3 flex items-center gap-2">
+                            <i class="fas fa-ship text-indigo-600"></i> Base Imponible de Importación Aduanera (Art. 20 LIVA)
+                        </h3>
+                        <p class="text-xs sm:text-sm text-slate-700 mb-3">
+                            En las importaciones definitivas, la base imponible sobre la cual se aplica el 16% del IVA en la aduana de ingreso se calcula sumando:
+                        </p>
+                        <div class="bg-white p-4 rounded-xl border border-slate-200 text-xs font-mono space-y-1 text-slate-800">
+                            <div><strong>Valor CIF de la Mercancía</strong> (Costo + Flete + Seguro)</div>
+                            <div>+ <strong>Aranceles Aduaneros</strong> (Tarifa de la Ley de Arancel de Aduanas)</div>
+                            <div>+ <strong>Tasas y Recargos Aduaneros</strong></div>
+                            <div class="pt-2 border-t border-slate-300 font-bold text-indigo-600">= Base Imponible del IVA Aduanero</div>
+                        </div>
+                    </div>
+
+                    <div class="bg-slate-50 p-6 rounded-2xl border border-slate-200">
+                        <h3 class="font-bold text-indigo-900 text-lg mb-3 flex items-center gap-2">
+                            <i class="fas fa-file-contract text-indigo-600"></i> Exoneraciones y Servicios del Exterior
+                        </h3>
+                        <ul class="space-y-3 text-xs sm:text-sm text-slate-700">
+                            <li><strong class="text-slate-900">Exportaciones (Alícuota 0%):</strong> La venta de bienes y servicios hacia el exterior goza de alícuota impositiva del 0%, permitiendo la recuperación o traslado de créditos fiscales.</li>
+                            <li><strong class="text-slate-900">Servicios Importados (Art. 48 LIVA):</strong> Los servicios prestados por empresas extranjeras y aprovechados en Venezuela deben ser auto-liquidados y pagados directamente por el contribuyente adquirente en el país.</li>
+                            <li><strong class="text-slate-900">Documentos Exigidos por SENIAT:</strong> RIF, RUA, Factura Comercial Definitiva, B/L o Guía Aérea, Packing List y DUA (Declaración Única de Aduanas).</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Cuestionario U4 -->
                 <div class="mt-8 bg-indigo-950 text-white rounded-3xl p-6 shadow-xl">
-                    <h3 class="text-lg font-bold text-indigo-300 mb-4"><i class="fas fa-pen-to-square"></i> Cuestionario Práctico - Unidad 4</h3>
+                    <h3 class="text-lg font-bold text-indigo-300 mb-4 flex items-center gap-2">
+                        <i class="fas fa-pen-to-square"></i> Cuestionario Práctico - Unidad 4
+                    </h3>
                     <div class="space-y-4 text-sm">
                         <div class="bg-slate-900 p-4 rounded-xl border border-slate-800">
-                            <strong>Pregunta 4.1:</strong> ¿Cómo se calcula la base imponible del IVA en una importación aduanera?
+                            <strong>Pregunta 4.1:</strong> Una empresa importa maquinaria con Valor CIF de 10.000 USD y aranceles del 10%. Considerando la tasa oficial BCV de 36 BS/USD, calcule la Base Imponible en Bolívares y el monto de IVA a pagar en aduana.
+                        </div>
+                        <div class="bg-slate-900 p-4 rounded-xl border border-slate-800">
+                            <strong>Pregunta 4.2:</strong> Explique cómo funciona la alícuota del 0% en la exportación de bienes y cuál es el procedimiento para la recuperación del crédito fiscal acumulado.
                         </div>
 
                         <div class="bg-indigo-900/60 border border-indigo-500/30 p-4 rounded-xl text-xs text-indigo-200">
@@ -301,21 +562,21 @@
                             </ol>
                         </div>
 
-                        <textarea id="ans-m8-u4" rows="4" placeholder="Escribe tus respuestas aquí..." class="w-full bg-slate-900 border border-slate-700 text-white rounded-xl p-4 text-xs font-mono"></textarea>
+                        <textarea id="ans-m8-u4" rows="4" placeholder="Escribe tus respuestas aquí..." class="w-full bg-slate-900 border border-slate-700 text-white rounded-xl p-4 text-xs font-mono focus:outline-none focus:border-amber-400"></textarea>
                         <button onclick="copiarRespuestas('ans-m8-u4', 'Módulo 8 - Unidad 4')" class="bg-indigo-600 hover:bg-indigo-500 text-white font-bold px-5 py-3 rounded-xl text-xs">
                             <i class="fas fa-copy"></i> Copiar Mis Respuestas para Telegram
                         </button>
                     </div>
                 </div>
 
-                <!-- Sala de Debate U4 -->
+                <!-- Chat U4 -->
                 <div class="mt-8 bg-slate-900 text-white rounded-3xl p-6 shadow-xl border border-slate-800">
                     <div class="flex items-center justify-between mb-4 border-b border-slate-800 pb-3">
                         <div>
                             <h3 class="text-lg font-bold text-amber-400 flex items-center gap-2">
                                 <i class="fas fa-comments"></i> Sala de Debate y Consultas - Unidad 4
                             </h3>
-                            <p class="text-xs text-slate-400">Foro de discusión sobre el IVA en aduanas e importaciones.</p>
+                            <p class="text-xs text-slate-400">Foro de discusión sobre el IVA aduanero y servicios importados.</p>
                         </div>
                         <span class="bg-indigo-900/80 text-indigo-300 text-xs px-3 py-1 rounded-full font-bold">Chat de Unidad</span>
                     </div>
@@ -329,7 +590,7 @@
                                 <i class="fas fa-circle-notch fa-spin text-amber-400"></i> Verificando datos de sesión...
                             </span>
                         </div>
-                        <textarea id="msg-u4" rows="2" placeholder="Escribe tu aporte sobre la Unidad 4..." class="w-full bg-slate-900 border border-slate-700 text-white rounded-xl p-3 text-xs focus:outline-none focus:border-amber-400"></textarea>
+                        <textarea id="msg-u4" rows="2" placeholder="Escribe tu aporte de la Unidad 4..." class="w-full bg-slate-900 border border-slate-700 text-white rounded-xl p-3 text-xs focus:outline-none focus:border-amber-400"></textarea>
                         <button onclick="publicarComentario('u4')" class="bg-amber-500 hover:bg-amber-600 text-slate-950 font-bold px-4 py-2 rounded-xl text-xs flex items-center gap-2 transition">
                             <i class="fas fa-paper-plane"></i> Publicar en la Sala de Debate
                         </button>
@@ -339,19 +600,71 @@
             </div>
         </div>
 
-        <!-- U5 -->
+        <!-- UNIDAD 5 -->
         <div id="u5" class="tab-content space-y-6">
             <div class="bg-white rounded-3xl p-8 shadow-sm border border-slate-200">
-                <h2 class="text-2xl font-bold mb-4">Unidad 5: Liquidación del Impuesto y Declaración SENIAT</h2>
-                <div class="space-y-4 text-slate-600 text-sm sm:text-base">
-                    <p><strong>5.1 Cuota Tributaria:</strong> Débito Fiscal (-) Crédito Fiscal (-) Retenciones Sufridas = IVA a Pagar o Excedente de Crédito Fiscal.</p>
+                <div class="flex items-center gap-3 mb-6">
+                    <span class="bg-indigo-100 text-indigo-800 text-xs font-bold px-3 py-1 rounded-full uppercase">Unidad 5</span>
+                    <h2 class="text-2xl font-bold text-slate-900">Liquidación Mensual/Quincenal, Agentes de Retención SENIAT (Providencia 0049)</h2>
                 </div>
 
+                <!-- Fórmula de Liquidación -->
+                <div class="bg-slate-900 text-white p-6 rounded-3xl mb-8 shadow-xl border border-slate-800">
+                    <h3 class="text-lg font-bold text-amber-400 mb-3 flex items-center gap-2">
+                        <i class="fas fa-calculator"></i> Fórmula General de Liquidación del IVA (Forma 30 SENIAT)
+                    </h3>
+                    <div class="bg-slate-800 p-4 rounded-2xl border border-slate-700 text-center font-mono text-sm sm:text-base leading-relaxed">
+                        <span class="text-amber-400">Total Débitos Fiscales</span> 
+                        <span class="text-slate-400">(-)</span> 
+                        <span class="text-emerald-400">Total Créditos Fiscales</span> 
+                        <span class="text-slate-400">(-)</span> 
+                        <span class="text-indigo-400">Retenciones Sufridas del Período</span> 
+                        <br class="hidden sm:block">
+                        <span class="text-slate-400 font-bold">= IVA a Pagar (o Excedente de Crédito Fiscal para el mes siguiente)</span>
+                    </div>
+                </div>
+
+                <!-- Periodicidad y Retenciones SENIAT -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                    <div class="bg-slate-50 p-6 rounded-2xl border border-slate-200">
+                        <h3 class="font-bold text-indigo-900 text-lg mb-3 flex items-center gap-2">
+                            <i class="fas fa-calendar-check text-indigo-600"></i> Plazos y Periodicidad de Declaración
+                        </h3>
+                        <ul class="space-y-3 text-xs sm:text-sm text-slate-700">
+                            <li>
+                                <strong class="text-slate-900">Contribuyentes Ordinarios:</strong>
+                                Declaración y pago <strong>Mensual</strong> (cada mes calendario) dentro de los primeros 15 días continuos del mes siguiente según el último dígito del RIF.
+                            </li>
+                            <li>
+                                <strong class="text-slate-900">Sujetos Pasivos Especiales (SPE):</strong>
+                                Declaración y entero <strong>Quincenal</strong> (1ª quincena: días 1-15 / 2ª quincena: 16 al último del mes) ajustado strictly al Calendario Especial emitido por el SENIAT.
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="bg-amber-50/60 p-6 rounded-2xl border border-amber-200">
+                        <h3 class="font-bold text-amber-900 text-lg mb-3 flex items-center gap-2">
+                            <i class="fas fa-percent text-amber-600"></i> Reglas de Retención del IVA (Providencia SNAT/2015/0049)
+                        </h3>
+                        <ul class="space-y-2 text-xs sm:text-sm text-slate-700">
+                            <li><strong class="text-slate-900">75% de Retención:</strong> Porcentaje general aplicado por el Agente de Retención (SPE) al comprar bienes o servicios a un contribuyente ordinario.</li>
+                            <li><strong class="text-slate-900">100% de Retención:</strong> Aplica cuando la factura no muestra el IVA por separado, si omite requisitos formales de la Providencia 00071 o el proveedor no posee RIF actualizado.</li>
+                            <li><strong class="text-slate-900">Monto Mínimo:</strong> Se debe efectuar la retención en facturas que superen las <strong>20 Unidades Tributarias (UT)</strong>.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Cuestionario U5 -->
                 <div class="mt-8 bg-indigo-950 text-white rounded-3xl p-6 shadow-xl">
-                    <h3 class="text-lg font-bold text-indigo-300 mb-4"><i class="fas fa-pen-to-square"></i> Cuestionario Práctico - Unidad 5</h3>
+                    <h3 class="text-lg font-bold text-indigo-300 mb-4 flex items-center gap-2">
+                        <i class="fas fa-pen-to-square"></i> Cuestionario Práctico - Unidad 5
+                    </h3>
                     <div class="space-y-4 text-sm">
                         <div class="bg-slate-900 p-4 rounded-xl border border-slate-800">
-                            <strong>Pregunta 5.1:</strong> ¿Cuáles son los plazos de declaración de IVA para Contribuyentes Ordinarios y Especiales y cuál es la sanción del COT por atraso en los Libros de IVA?
+                            <strong>Pregunta 5.1:</strong> Un Contribuyente Especial (SPE) recibe una factura de proveedor por 50.000 BS + 16% IVA (8.000 BS). Calcule el monto de IVA a retener (75%), el monto neto a pagar al proveedor y el plazo para enterar la retención al SENIAT.
+                        </div>
+                        <div class="bg-slate-900 p-4 rounded-xl border border-slate-800">
+                            <strong>Pregunta 5.2:</strong> ¿Cuál es la diferencia en los lapsos de declaración y pago del IVA entre un Contribuyente Ordinario y un Sujeto Pasivo Especial (SPE) según la normativa del SENIAT?
                         </div>
 
                         <div class="bg-indigo-900/60 border border-indigo-500/30 p-4 rounded-xl text-xs text-indigo-200">
@@ -365,21 +678,21 @@
                             </ol>
                         </div>
 
-                        <textarea id="ans-m8-u5" rows="4" placeholder="Escribe tus respuestas aquí..." class="w-full bg-slate-900 border border-slate-700 text-white rounded-xl p-4 text-xs font-mono"></textarea>
+                        <textarea id="ans-m8-u5" rows="4" placeholder="Escribe tus respuestas aquí..." class="w-full bg-slate-900 border border-slate-700 text-white rounded-xl p-4 text-xs font-mono focus:outline-none focus:border-amber-400"></textarea>
                         <button onclick="copiarRespuestas('ans-m8-u5', 'Módulo 8 - Unidad 5')" class="bg-indigo-600 hover:bg-indigo-500 text-white font-bold px-5 py-3 rounded-xl text-xs">
                             <i class="fas fa-copy"></i> Copiar Mis Respuestas para Telegram
                         </button>
                     </div>
                 </div>
 
-                <!-- Sala de Debate U5 -->
+                <!-- Chat U5 -->
                 <div class="mt-8 bg-slate-900 text-white rounded-3xl p-6 shadow-xl border border-slate-800">
                     <div class="flex items-center justify-between mb-4 border-b border-slate-800 pb-3">
                         <div>
                             <h3 class="text-lg font-bold text-amber-400 flex items-center gap-2">
                                 <i class="fas fa-comments"></i> Sala de Debate y Consultas - Unidad 5
                             </h3>
-                            <p class="text-xs text-slate-400">Foro de debate sobre liquidación mensual y sanciones SENIAT.</p>
+                            <p class="text-xs text-slate-400">Foro de discusión sobre la liquidación del IVA y retenciones ante el SENIAT.</p>
                         </div>
                         <span class="bg-indigo-900/80 text-indigo-300 text-xs px-3 py-1 rounded-full font-bold">Chat de Unidad</span>
                     </div>
@@ -393,7 +706,7 @@
                                 <i class="fas fa-circle-notch fa-spin text-amber-400"></i> Verificando datos de sesión...
                             </span>
                         </div>
-                        <textarea id="msg-u5" rows="2" placeholder="Escribe tu duda final sobre la liquidación..." class="w-full bg-slate-900 border border-slate-700 text-white rounded-xl p-3 text-xs focus:outline-none focus:border-amber-400"></textarea>
+                        <textarea id="msg-u5" rows="2" placeholder="Escribe tu duda sobre liquidación y retenciones..." class="w-full bg-slate-900 border border-slate-700 text-white rounded-xl p-3 text-xs focus:outline-none focus:border-amber-400"></textarea>
                         <button onclick="publicarComentario('u5')" class="bg-amber-500 hover:bg-amber-600 text-slate-950 font-bold px-4 py-2 rounded-xl text-xs flex items-center gap-2 transition">
                             <i class="fas fa-paper-plane"></i> Publicar en la Sala de Debate
                         </button>
@@ -408,6 +721,7 @@
     <footer class="bg-slate-900 text-white py-8 border-t border-slate-800">
         <div class="max-w-7xl mx-auto px-4 text-center">
             <p class="text-sm font-semibold">Diplomado en Contabilidad Financiera • UCSAR</p>
+            <p class="text-xs text-slate-400 mt-1">Portal Académico de Administración y Contaduría Pública</p>
         </div>
     </footer>
 
