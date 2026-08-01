@@ -37,7 +37,7 @@ function initSupabaseAuth() {
 
 function esRutaRestringida(path) {
     const p = decodeURIComponent(path).toUpperCase();
-    if (p.includes("MODULO_VIII") || p.includes("MODULO VIII")) return true;
+    // Módulo VIII HABILITADO para todos — no restringido
     if (p.includes("MODULO_IX") || p.includes("MODULO IX")) return true;
     if (p.includes("MODULO_XI") || p.includes("MODULO XI")) return true;
     if (p.includes("MODULO_XII") || p.includes("MODULO XII")) return true;
@@ -50,8 +50,34 @@ function actualizarVistaModulosIndex(isAdmin) {
         const path = window.location.pathname;
         if (!path.includes("index.html") && !path.endsWith("/") && !path.endsWith("index.html")) return;
 
+        // Módulo VIII: SIEMPRE habilitado para todos los usuarios
+        const modulo8container = document.getElementById("modulo8");
+        if (modulo8container) {
+            const badge8 = modulo8container.querySelector(".flex.justify-between.items-start.mb-4");
+            const btn8 = modulo8container.querySelector(".flex.flex-col.mt-auto");
+            if (badge8) {
+                badge8.innerHTML = `
+                    <div>
+                        <span class="bg-emerald-100 text-emerald-800 border border-emerald-300 text-xs font-bold px-2.5 py-0.5 rounded uppercase tracking-wider"><i class="fas fa-check-circle mr-1 text-emerald-600"></i> DISPONIBLE</span>
+                        <span class="text-slate-600 text-xs font-semibold ml-2">MÓDULO VIII</span>
+                    </div>
+                    <span class="bg-blue-100 text-blue-700 text-xs font-bold px-2 py-0.5 rounded-full">Nuevo</span>
+                `;
+            }
+            if (btn8) {
+                btn8.innerHTML = `
+                    <a href="MODULO VIII/MODULO_VIII.html" class="w-full bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white py-3 rounded-lg font-bold flex items-center justify-center transition-all shadow-md hover:shadow-lg transform hover:-translate-y-0.5">
+                        <i class="fas fa-book-open mr-2"></i> Acceder al Módulo VIII
+                    </a>
+                    <a href="MODULO VIII/Ley_Impuesto_al_Valor_Agregado_Venezuela_Gaceta_6507.html" class="w-full bg-white border border-blue-200 text-blue-700 hover:bg-blue-50 py-2.5 rounded-lg font-semibold flex items-center justify-center transition-all text-sm mt-2">
+                        <i class="fas fa-file-alt mr-2 text-indigo-500"></i> Ley del IVA (Gaceta N° 6.507)
+                    </a>
+                `;
+            }
+        }
+
+        // Módulos restringidos (IX, X, XI, XII)
         const modulos = [
-            { id: "modulo8", num: "VIII", url: "MODULO VIII/MODULO_VIII.html" },
             { id: "modulo9", num: "IX", url: "MODULO IX/MODULO_IX.html" },
             { id: "modulo10", num: "X", url: "MODULO X/MODULO_X.html" },
             { id: "modulo11", num: "XI", url: "MODULO XI/MODULO_XI.html" },
