@@ -482,6 +482,79 @@
                     </div>
                 </div>
 
+                <!-- Reproductor de Video Interactivo: Contabilización del IVA en Venezuela -->
+                <div class="mb-8 bg-slate-950 text-white rounded-3xl p-6 sm:p-8 border border-slate-800 shadow-2xl space-y-6">
+                    <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-slate-800 pb-4">
+                        <div>
+                            <span class="bg-amber-500/20 text-amber-300 text-xs font-bold px-3 py-1 rounded-full uppercase border border-amber-500/30">
+                                <i class="fas fa-video text-amber-400 mr-1"></i> Video Tutorial Animado
+                            </span>
+                            <h3 class="text-xl font-bold text-white mt-2 flex items-center gap-2">
+                                <i class="fas fa-play-circle text-amber-400"></i> Contabilización del IVA en Venezuela
+                            </h3>
+                            <p class="text-xs text-slate-400 mt-1">Demostración interactiva animada paso a paso de los asientos de Compras, Ventas, Retención SPE y Cierre SENIAT.</p>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <button id="video-play-btn" onclick="toggleIvaVideo()" class="bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold px-4 py-2.5 rounded-xl text-xs flex items-center gap-2 transition shadow-lg">
+                                <i id="video-play-icon" class="fas fa-play"></i> <span id="video-play-text">Reproducir Video</span>
+                            </button>
+                            <button onclick="speachNarration()" class="bg-indigo-600 hover:bg-indigo-500 text-white font-bold px-4 py-2.5 rounded-xl text-xs flex items-center gap-2 transition shadow-lg">
+                                <i class="fas fa-volume-high"></i> Escuchar Narración
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Pantalla del Video / Canvas de Animación -->
+                    <div class="bg-slate-900 border border-slate-800 rounded-2xl p-6 relative min-h-[340px] flex flex-col justify-between overflow-hidden shadow-2xl">
+                        
+                        <!-- Barra de Progreso del Video -->
+                        <div class="w-full bg-slate-800 h-2 rounded-full mb-4 overflow-hidden">
+                            <div id="video-progress" class="bg-gradient-to-r from-amber-500 to-indigo-500 h-full w-1/4 transition-all duration-500"></div>
+                        </div>
+
+                        <!-- Indicador de Paso del Video -->
+                        <div class="flex items-center justify-between mb-4">
+                            <span id="video-step-badge" class="bg-indigo-500/20 text-indigo-300 text-xs font-bold px-3 py-1 rounded-full border border-indigo-500/30">
+                                Paso 1 de 4: Compra Gravada de Inventario
+                            </span>
+                            <span id="video-timer" class="text-xs font-mono text-slate-400">00:05 / 00:20</span>
+                        </div>
+
+                        <!-- Contenido Principal del Asiento Animado -->
+                        <div id="video-content-display" class="space-y-4 my-auto">
+                            <!-- Inyectado dinámicamente por JS -->
+                        </div>
+
+                        <!-- Subtítulos Explicativos del Video -->
+                        <div class="mt-4 bg-slate-950 p-4 rounded-xl border border-slate-800 text-xs text-amber-300 flex items-start gap-3">
+                            <i class="fas fa-closed-captioning text-amber-400 text-lg mt-0.5"></i>
+                            <div id="video-subtitles" class="leading-relaxed text-slate-200">
+                                Paso 1: Al comprar mercancías gravadas, cargamos a Compra/Inventario por la base imponible y a IVA Crédito Fiscal (Activo) por el 16%. Acreditamos a Banco/Cuentas por Pagar.
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Botones de Selección de Pasos del Video -->
+                    <div class="grid grid-cols-2 sm:grid-cols-4 gap-2">
+                        <button onclick="setVideoStep(0)" id="vstep-0" class="vstep-btn bg-slate-900 border border-slate-800 text-slate-300 p-3 rounded-xl text-xs font-bold hover:bg-slate-800 transition text-left">
+                            <div class="text-amber-400">1. Compra de Mercancía</div>
+                            <div class="text-[10px] text-slate-400 font-normal">IVA Crédito Fiscal (16%)</div>
+                        </button>
+                        <button onclick="setVideoStep(1)" id="vstep-1" class="vstep-btn bg-slate-900 border border-slate-800 text-slate-300 p-3 rounded-xl text-xs font-bold hover:bg-slate-800 transition text-left">
+                            <div class="text-amber-400">2. Venta Gravada</div>
+                            <div class="text-[10px] text-slate-400 font-normal">IVA Débito Fiscal (16%)</div>
+                        </button>
+                        <button onclick="setVideoStep(2)" id="vstep-2" class="vstep-btn bg-slate-900 border border-slate-800 text-slate-300 p-3 rounded-xl text-xs font-bold hover:bg-slate-800 transition text-left">
+                            <div class="text-amber-400">3. Retención SPE (75%)</div>
+                            <div class="text-[10px] text-slate-400 font-normal">Providencia 0049</div>
+                        </button>
+                        <button onclick="setVideoStep(3)" id="vstep-3" class="vstep-btn bg-slate-900 border border-slate-800 text-slate-300 p-3 rounded-xl text-xs font-bold hover:bg-slate-800 transition text-left">
+                            <div class="text-amber-400">4. Cierre y Liquidación</div>
+                            <div class="text-[10px] text-slate-400 font-normal">Forma 30 SENIAT</div>
+                        </button>
+                    </div>
+                </div>
+
                 <!-- Ejemplo de Asiento Contable -->
                 <div class="bg-indigo-950 text-white p-6 rounded-3xl mb-8 shadow-xl">
                     <h3 class="text-lg font-bold text-indigo-300 mb-4 flex items-center gap-2">
@@ -916,9 +989,184 @@
             `).join('');
         }
 
+        // 3. REPRODUCTOR DE VIDEO INTERACTIVO: CONTABILIZACIÓN DEL IVA
+        const videoData = [
+            {
+                badge: "Paso 1 de 4: Compra Gravada de Inventario",
+                timer: "00:05 / 00:20",
+                subtitles: "Paso 1: Al comprar mercancías gravadas, cargamos a Compra/Inventario por la base imponible y a IVA Crédito Fiscal (Activo) por el 16%. Acreditamos a Banco/Cuentas por Pagar.",
+                html: `
+                    <div class="space-y-2 font-mono text-xs">
+                        <div class="text-amber-400 font-bold text-sm mb-1">ASIENTO N° 1: COMPRA DE MERCANCÍA AL 16% IVA</div>
+                        <div class="grid grid-cols-12 bg-slate-950 p-3 rounded-xl border border-slate-800 text-slate-200">
+                            <div class="col-span-6 font-bold text-emerald-400">Inventario de Mercancías (Base Imponible)</div>
+                            <div class="col-span-3 text-right text-emerald-400 font-bold">DEBE: 100.000 BS</div>
+                            <div class="col-span-3 text-right text-slate-500">HABER: --</div>
+                        </div>
+                        <div class="grid grid-cols-12 bg-slate-950 p-3 rounded-xl border border-slate-800 text-slate-200">
+                            <div class="col-span-6 font-bold text-teal-400">IVA Crédito Fiscal (Activo Corriente 16%)</div>
+                            <div class="col-span-3 text-right text-teal-400 font-bold">DEBE: 16.000 BS</div>
+                            <div class="col-span-3 text-right text-slate-500">HABER: --</div>
+                        </div>
+                        <div class="grid grid-cols-12 bg-slate-950 p-3 rounded-xl border border-slate-800 text-slate-200">
+                            <div class="col-span-6 pl-4 text-slate-400">@ Banco Nivel Nacional (Total Factura Pagado)</div>
+                            <div class="col-span-3 text-right text-slate-500">DEBE: --</div>
+                            <div class="col-span-3 text-right text-amber-400 font-bold">HABER: 116.000 BS</div>
+                        </div>
+                    </div>
+                `
+            },
+            {
+                badge: "Paso 2 de 4: Venta Gravada de Mercancías",
+                timer: "00:10 / 00:20",
+                subtitles: "Paso 2: Al realizar una venta gravada, cobramos al cliente la Base + 16% de IVA. Acreditamos a Ventas (Ingreso) y a IVA Débito Fiscal (Pasivo con el SENIAT).",
+                html: `
+                    <div class="space-y-2 font-mono text-xs">
+                        <div class="text-amber-400 font-bold text-sm mb-1">ASIENTO N° 2: VENTA GRAVADA DE MERCANCÍAS AL 16%</div>
+                        <div class="grid grid-cols-12 bg-slate-950 p-3 rounded-xl border border-slate-800 text-slate-200">
+                            <div class="col-span-6 font-bold text-emerald-400">Banco / Cuentas por Cobrar (Total Cobrado)</div>
+                            <div class="col-span-3 text-right text-emerald-400 font-bold">DEBE: 232.000 BS</div>
+                            <div class="col-span-3 text-right text-slate-500">HABER: --</div>
+                        </div>
+                        <div class="grid grid-cols-12 bg-slate-950 p-3 rounded-xl border border-slate-800 text-slate-200">
+                            <div class="col-span-6 pl-4 text-slate-400">@ Ventas de Mercancías (Base Imponible)</div>
+                            <div class="col-span-3 text-right text-slate-500">DEBE: --</div>
+                            <div class="col-span-3 text-right text-slate-300 font-bold">HABER: 200.000 BS</div>
+                        </div>
+                        <div class="grid grid-cols-12 bg-slate-950 p-3 rounded-xl border border-slate-800 text-slate-200">
+                            <div class="col-span-6 pl-4 text-rose-400 font-bold">@ IVA Débito Fiscal (Pasivo SENIAT 16%)</div>
+                            <div class="col-span-3 text-right text-slate-500">DEBE: --</div>
+                            <div class="col-span-3 text-right text-rose-400 font-bold">HABER: 32.000 BS</div>
+                        </div>
+                    </div>
+                `
+            },
+            {
+                badge: "Paso 3 de 4: Retención del 75% por Sujeto Pasivo Especial (SPE)",
+                timer: "00:15 / 00:20",
+                subtitles: "Paso 3: Si somos Sujeto Pasivo Especial (SPE) y compramos a un proveedor, retenemos el 75% del IVA facturado (Providencia 0049) y lo registramos en 'IVA Retenido por Enterar'.",
+                html: `
+                    <div class="space-y-2 font-mono text-xs">
+                        <div class="text-amber-400 font-bold text-sm mb-1">ASIENTO N° 3: RETENCIÓN DE IVA DEL 75% (PROVIDENCIA 0049)</div>
+                        <div class="grid grid-cols-12 bg-slate-950 p-3 rounded-xl border border-slate-800 text-slate-200">
+                            <div class="col-span-6 font-bold text-emerald-400">Compras / Servicios (Base Imponible)</div>
+                            <div class="col-span-3 text-right text-emerald-400 font-bold">DEBE: 40.000 BS</div>
+                            <div class="col-span-3 text-right text-slate-500">HABER: --</div>
+                        </div>
+                        <div class="grid grid-cols-12 bg-slate-950 p-3 rounded-xl border border-slate-800 text-slate-200">
+                            <div class="col-span-6 font-bold text-teal-400">IVA Crédito Fiscal (16% IVA Total = 6.400 BS)</div>
+                            <div class="col-span-3 text-right text-teal-400 font-bold">DEBE: 6.400 BS</div>
+                            <div class="col-span-3 text-right text-slate-500">HABER: --</div>
+                        </div>
+                        <div class="grid grid-cols-12 bg-slate-950 p-3 rounded-xl border border-slate-800 text-slate-200">
+                            <div class="col-span-6 pl-4 text-amber-300 font-bold">@ IVA Retenido por Enterar (75% de 6.400 BS)</div>
+                            <div class="col-span-3 text-right text-slate-500">DEBE: --</div>
+                            <div class="col-span-3 text-right text-amber-300 font-bold">HABER: 4.800 BS</div>
+                        </div>
+                        <div class="grid grid-cols-12 bg-slate-950 p-3 rounded-xl border border-slate-800 text-slate-200">
+                            <div class="col-span-6 pl-4 text-slate-400">@ Banco (Pago Neto al Proveedor)</div>
+                            <div class="col-span-3 text-right text-slate-500">DEBE: --</div>
+                            <div class="col-span-3 text-right text-slate-300 font-bold">HABER: 41.600 BS</div>
+                        </div>
+                    </div>
+                `
+            },
+            {
+                badge: "Paso 4 de 4: Cierre Mensual del IVA y Pago al SENIAT",
+                timer: "00:20 / 00:20",
+                subtitles: "Paso 4: Al cierre del mes, compensamos el IVA Débito Fiscal contra el IVA Crédito Fiscal. La diferencia resultante es el IVA Neto a pagar al SENIAT a través del Banco.",
+                html: `
+                    <div class="space-y-2 font-mono text-xs">
+                        <div class="text-amber-400 font-bold text-sm mb-1">ASIENTO N° 4: LIQUIDACIÓN Y CIERRE MENSUAL (FORMA 30 SENIAT)</div>
+                        <div class="grid grid-cols-12 bg-slate-950 p-3 rounded-xl border border-slate-800 text-slate-200">
+                            <div class="col-span-6 font-bold text-rose-400">IVA Débito Fiscal (Cancelación de Pasivo)</div>
+                            <div class="col-span-3 text-right text-rose-400 font-bold">DEBE: 32.000 BS</div>
+                            <div class="col-span-3 text-right text-slate-500">HABER: --</div>
+                        </div>
+                        <div class="grid grid-cols-12 bg-slate-950 p-3 rounded-xl border border-slate-800 text-slate-200">
+                            <div class="col-span-6 pl-4 text-teal-400">@ IVA Crédito Fiscal (Cancelación de Activo)</div>
+                            <div class="col-span-3 text-right text-slate-500">DEBE: --</div>
+                            <div class="col-span-3 text-right text-teal-400 font-bold">HABER: 22.400 BS</div>
+                        </div>
+                        <div class="grid grid-cols-12 bg-slate-950 p-3 rounded-xl border border-slate-800 text-slate-200">
+                            <div class="col-span-6 pl-4 text-emerald-400 font-bold">@ Banco / Cheque SENIAT (Pago Impuesto Neto)</div>
+                            <div class="col-span-3 text-right text-slate-500">DEBE: --</div>
+                            <div class="col-span-3 text-right text-emerald-400 font-bold">HABER: 9.600 BS</div>
+                        </div>
+                    </div>
+                `
+            }
+        ];
+
+        let currentVideoStep = 0;
+        let isVideoPlaying = false;
+        let videoInterval = null;
+
+        function renderVideoStep(step) {
+            currentVideoStep = step;
+            const data = videoData[step];
+            document.getElementById('video-step-badge').innerText = data.badge;
+            document.getElementById('video-timer').innerText = data.timer;
+            document.getElementById('video-subtitles').innerText = data.subtitles;
+            document.getElementById('video-content-display').innerHTML = data.html;
+            document.getElementById('video-progress').style.width = ((step + 1) * 25) + '%';
+
+            document.querySelectorAll('.vstep-btn').forEach((btn, idx) => {
+                if (idx === step) {
+                    btn.classList.add('bg-slate-800', 'border-amber-400', 'ring-2', 'ring-amber-400/50');
+                } else {
+                    btn.classList.remove('bg-slate-800', 'border-amber-400', 'ring-2', 'ring-amber-400/50');
+                }
+            });
+        }
+
+        function setVideoStep(step) {
+            renderVideoStep(step);
+        }
+
+        function toggleIvaVideo() {
+            if (isVideoPlaying) {
+                pauseIvaVideo();
+            } else {
+                playIvaVideo();
+            }
+        }
+
+        function playIvaVideo() {
+            isVideoPlaying = true;
+            document.getElementById('video-play-text').innerText = "Pausar Video";
+            document.getElementById('video-play-icon').className = "fas fa-pause";
+
+            videoInterval = setInterval(() => {
+                currentVideoStep = (currentVideoStep + 1) % videoData.length;
+                renderVideoStep(currentVideoStep);
+            }, 6000);
+        }
+
+        function pauseIvaVideo() {
+            isVideoPlaying = false;
+            document.getElementById('video-play-text').innerText = "Reproducir Video";
+            document.getElementById('video-play-icon').className = "fas fa-play";
+            if (videoInterval) clearInterval(videoInterval);
+        }
+
+        function speachNarration() {
+            if ('speechSynthesis' in window) {
+                window.speechSynthesis.cancel();
+                const text = videoData[currentVideoStep].subtitles;
+                const utterance = new SpeechSynthesisUtterance(text);
+                utterance.lang = 'es-VE';
+                utterance.rate = 1.0;
+                window.speechSynthesis.speak(utterance);
+            } else {
+                alert("Tu navegador no soporta síntesis de voz automática.");
+            }
+        }
+
         document.addEventListener('DOMContentLoaded', () => {
             initUserProfile();
             ['u1', 'u2', 'u3', 'u4', 'u5'].forEach(cargarComentarios);
+            renderVideoStep(0);
         });
     </script>
 </body>
