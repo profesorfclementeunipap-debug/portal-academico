@@ -122,8 +122,8 @@ async function protegerRuta() {
         return;
     }
 
-    const userEmail = session.user.email;
-    const esAdmin = ADMIN_EMAILS.includes(userEmail);
+    const userEmail = (session.user.email || "").toLowerCase().trim();
+    const esAdmin = ADMIN_EMAILS.some(e => e.toLowerCase().trim() === userEmail);
 
     // B) Si es Admin
     if (esAdmin) {
