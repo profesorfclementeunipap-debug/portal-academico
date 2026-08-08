@@ -37,8 +37,7 @@ function initSupabaseAuth() {
 
 function esRutaRestringida(path) {
     const p = decodeURIComponent(path).toUpperCase();
-    // Módulo VIII HABILITADO para todos — no restringido
-    if (p.includes("MODULO_IX") || p.includes("MODULO IX")) return true;
+    // Módulos VIII e IX HABILITADOS para todos — no restringidos
     if (p.includes("MODULO_XI") || p.includes("MODULO XI")) return true;
     if (p.includes("MODULO_XII") || p.includes("MODULO XII")) return true;
     if (p.includes("MODULO_X.HTML") || p.includes("MODULO X/") || p.includes("MODULO_X/")) return true;
@@ -76,9 +75,34 @@ function actualizarVistaModulosIndex(isAdmin) {
             }
         }
 
-        // Módulos restringidos (IX, X, XI, XII)
+        // Módulo IX: SIEMPRE habilitado para todos los usuarios
+        const modulo9container = document.getElementById("modulo9");
+        if (modulo9container) {
+            const badge9 = modulo9container.querySelector(".flex.justify-between.items-start.mb-4");
+            const btn9 = modulo9container.querySelector(".flex.flex-col.mt-auto");
+            if (badge9) {
+                badge9.innerHTML = `
+                    <div>
+                        <span class="bg-emerald-100 text-emerald-800 border border-emerald-300 text-xs font-bold px-2.5 py-0.5 rounded uppercase tracking-wider"><i class="fas fa-check-circle mr-1 text-emerald-600"></i> DISPONIBLE</span>
+                        <span class="text-slate-600 text-xs font-semibold ml-2">MÓDULO IX</span>
+                    </div>
+                    <span class="bg-purple-100 text-purple-700 text-xs font-bold px-2 py-0.5 rounded-full">Nuevo</span>
+                `;
+            }
+            if (btn9) {
+                btn9.innerHTML = `
+                    <a href="MODULO IX/MODULO_IX.html" class="w-full bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-700 hover:to-indigo-700 text-white py-3 rounded-lg font-bold flex items-center justify-center transition-all shadow-md hover:shadow-lg transform hover:-translate-y-0.5">
+                        <i class="fas fa-book-open mr-2"></i> Acceder al Módulo IX
+                    </a>
+                    <a href="MODULO IX/Trabajo_Academico_Modulo_IX_Documentacion_Comercial.pdf" target="_blank" class="w-full bg-white border border-purple-200 text-purple-700 hover:bg-purple-50 py-2.5 rounded-lg font-semibold flex items-center justify-center transition-all text-sm mt-2">
+                        <i class="fas fa-file-pdf mr-2 text-red-500"></i> Tratado Académico (PDF)
+                    </a>
+                `;
+            }
+        }
+
+        // Módulos restringidos (X, XI, XII)
         const modulos = [
-            { id: "modulo9", num: "IX", url: "MODULO IX/MODULO_IX.html" },
             { id: "modulo10", num: "X", url: "MODULO X/MODULO_X.html" },
             { id: "modulo11", num: "XI", url: "MODULO XI/MODULO_XI.html" },
             { id: "modulo12", num: "XII", url: "MODULO XII/MODULO_XII.html" }
