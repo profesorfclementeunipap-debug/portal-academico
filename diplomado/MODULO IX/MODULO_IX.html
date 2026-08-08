@@ -44,15 +44,32 @@
         </div>
     </nav>
 
-    <header class="bg-gradient-to-r from-slate-900 via-purple-950 to-slate-900 text-white py-12 px-4">
+    <header class="bg-gradient-to-r from-slate-900 via-purple-950 to-slate-900 text-white py-12 px-4 shadow-xl">
         <div class="max-w-7xl mx-auto">
             <div class="inline-flex items-center gap-2 bg-purple-500/20 border border-purple-400/30 px-3.5 py-1 rounded-full text-purple-300 text-xs font-bold uppercase mb-4">
                 <i class="fas fa-graduation-cap text-amber-400"></i> Guía Didáctica Asíncrona • Módulo IX
             </div>
             <h1 class="text-3xl sm:text-5xl font-extrabold text-white mb-4">Documentación Comercial</h1>
-            <p class="text-slate-300 text-base sm:text-lg max-w-3xl">
+            <p class="text-slate-300 text-base sm:text-lg max-w-3xl mb-6">
                 Estudio sistemático de los documentos mercantiles negociables (Letras de cambio, Pagarés, Transferencias) y no negociables (Facturas SENIAT 00071, Notas de Débito y Crédito).
             </p>
+            
+            <!-- Banner de Material PDF -->
+            <div class="bg-slate-900/80 border border-purple-500/30 rounded-2xl p-4 sm:p-5 backdrop-blur-md flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+                <div class="flex items-center gap-3">
+                    <div class="bg-red-500/20 text-red-400 p-3 rounded-xl border border-red-500/30">
+                        <i class="fas fa-file-pdf text-2xl"></i>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-white text-sm sm:text-base">Tratado Académico de Lectura (PDF)</h4>
+                        <p class="text-xs text-slate-300">Documento de profundización con teorías doctorales, normativa mercantil y tributaria SENIAT.</p>
+                        <p class="text-[11px] text-amber-400 font-semibold mt-0.5">Elaborado por: MSc. Frank Clemente</p>
+                    </div>
+                </div>
+                <a href="Trabajo_Academico_Modulo_IX_Documentacion_Comercial.pdf" target="_blank" class="bg-gradient-to-r from-red-600 to-red-500 hover:from-red-500 hover:to-red-400 text-white font-bold px-5 py-2.5 rounded-xl text-xs flex items-center gap-2 shadow-lg transition w-full sm:w-auto justify-center">
+                    <i class="fas fa-download"></i> Descargar / Ver PDF
+                </a>
+            </div>
         </div>
     </header>
 
@@ -65,24 +82,66 @@
             </div>
         </div>
 
-        <!-- U1 -->
+        <!-- UNIDAD 1 -->
         <div id="u1" class="tab-content active space-y-6">
-            <div class="bg-white rounded-3xl p-8 shadow-sm border border-slate-200">
-                <h2 class="text-2xl font-bold mb-4">Unidad 1: Documentos Comerciales Negociables</h2>
-                <div class="space-y-4 text-slate-600 text-sm sm:text-base">
-                    <p><strong>1.1 Letra de Cambio:</strong> Título valor por el cual el librador ordena al librado pagar una suma incondicional a la orden del tenedor (Código de Comercio Art. 410).</p>
-                    <p><strong>1.2 Pagaré:</strong> Promesa directa unilateral de pago escrita por el emisor comprometiéndose a pagar una suma pactada (Código de Comercio Art. 486).</p>
-                    <p><strong>1.3 Endoso:</strong> Transmisión de los derechos del título valor mediante firma al dorso (En Propiedad, En Procuración/Cobro, En Garantía).</p>
+            <div class="bg-white rounded-3xl p-6 sm:p-8 shadow-sm border border-slate-200">
+                <h2 class="text-2xl font-bold mb-2">Unidad 1: Documentos Comerciales Negociables</h2>
+                <p class="text-slate-500 text-sm mb-6">Visualiza la clase en video antes de completar las preguntas del cuestionario evaluativo.</p>
+
+                <!-- VIDEO PLAYER UNIDAD 1 -->
+                <div class="mb-8 bg-slate-900 rounded-3xl p-4 sm:p-6 shadow-xl border border-slate-800">
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="bg-amber-500/20 text-amber-400 p-2.5 rounded-xl border border-amber-500/30">
+                            <i class="fas fa-video text-lg"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-bold text-white">Video Clase 1: Poder Financiero y Títulos Valores</h3>
+                            <p class="text-xs text-slate-400">Observa con atención el video (Poder Financiero) antes de responder el cuestionario práctico.</p>
+                        </div>
+                    </div>
+                    <div class="relative rounded-2xl overflow-hidden bg-black aspect-video border border-slate-800 shadow-2xl">
+                        <video controls preload="metadata" class="w-full h-full object-contain">
+                            <source src="Poder_Financiero.mp4" type="video/mp4">
+                            Tu navegador no soporta el reproductor de video HTML5.
+                        </video>
+                    </div>
                 </div>
 
-                <div class="mt-8 bg-purple-950 text-white rounded-3xl p-6 shadow-xl">
-                    <h3 class="text-lg font-bold text-purple-300 mb-4"><i class="fas fa-pen-to-square"></i> Cuestionario Práctico - Unidad 1</h3>
-                    <div class="space-y-4 text-sm">
+                <!-- SÍNTESIS TEÓRICA -->
+                <div class="bg-slate-50 p-6 rounded-2xl border border-slate-200 mb-8 space-y-4 text-slate-600 text-sm sm:text-base">
+                    <h3 class="font-bold text-slate-900 text-base flex items-center gap-2">
+                        <i class="fas fa-book-bookmark text-purple-600"></i> Resumen Teórico y Doctrinal - Unidad 1
+                    </h3>
+                    <p><strong>1.1 Transferencias Bancarias:</strong> Mecanismo de delegación o novación de pago electrónica (Messineo). Clasificadas en Intrabancarias e Interbancarias, Nacionales e Internacionales (SWIFT), e Inmediatas en Tiempo Real (Pago Móvil RTGS).</p>
+                    <p><strong>1.2 Letra de Cambio (Art. 410 Cód. Comercio):</strong> Título valor abstracto y formal (Vivante) con fuerza ejecutiva directa contra el Aceptante y de regreso contra los Endosantes. Modalidades de vencimiento: a día fijo, a la vista, a un plazo desde la fecha y a un plazo desde la vista.</p>
+                    <p><strong>1.3 Libranza:</strong> Orden de pago causalizada o autorización formal de descuento por nómina con garantía en la fuente salarial (Broseta Pont).</p>
+                    <p><strong>1.4 Pagaré (Art. 486 Cód. Comercio):</strong> Promesa unilateral directa e incondicional de pago (*"Yo pagaré"*). Modalidades: Pagaré a la orden, no a la orden, quirografario, avalado, bancario y Papel Comercial (*Commercial Paper*).</p>
+                </div>
+
+                <!-- CUESTIONARIO PRÁCTICO U1 -->
+                <div class="bg-purple-950 text-white rounded-3xl p-6 sm:p-8 shadow-xl">
+                    <div class="flex items-center gap-3 mb-6">
+                        <div class="bg-amber-500/20 text-amber-400 p-2.5 rounded-xl border border-amber-500/30">
+                            <i class="fas fa-pen-to-square text-lg"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-bold text-purple-300">Cuestionario Práctico Evaluativo - Unidad 1</h3>
+                            <p class="text-xs text-slate-300">Responde a continuación basándote en la lección explicada en el video arriba.</p>
+                        </div>
+                    </div>
+
+                    <div class="space-y-5 text-sm">
                         <div class="bg-slate-900 p-4 rounded-xl border border-slate-800">
-                            <strong>Pregunta 1.1:</strong> Explique la diferencia jurídica entre una Letra de Cambio y un Pagaré.
+                            <span class="bg-purple-600 text-white text-[11px] font-bold px-2 py-0.5 rounded mr-2">Pregunta 1.1</span>
+                            <strong class="text-slate-200">Explique la diferencia jurídica y estructural entre una Letra de Cambio y un Pagaré según la doctrina mercantil.</strong>
                         </div>
                         <div class="bg-slate-900 p-4 rounded-xl border border-slate-800">
-                            <strong>Pregunta 1.2:</strong> ¿Cuáles son los 3 tipos de endoso de títulos valores y cuál es el efecto de cada uno?
+                            <span class="bg-purple-600 text-white text-[11px] font-bold px-2 py-0.5 rounded mr-2">Pregunta 1.2</span>
+                            <strong class="text-slate-200">Mencione y explique los 3 tipos de endoso de títulos valores (En propiedad, en procuración y en garantía) y su efecto legal.</strong>
+                        </div>
+                        <div class="bg-slate-900 p-4 rounded-xl border border-slate-800">
+                            <span class="bg-purple-600 text-white text-[11px] font-bold px-2 py-0.5 rounded mr-2">Pregunta 1.3</span>
+                            <strong class="text-slate-200">¿Qué es una transferencia bancaria y cuáles son sus modalidades según el tiempo de liquidación (RTGS / Pago Móvil) y su ámbito?</strong>
                         </div>
 
                         <!-- Instrucciones de envío -->
@@ -93,12 +152,12 @@
                             <ol class="list-decimal list-inside space-y-1 text-slate-300">
                                 <li>Escribe tus respuestas en el cuadro inferior.</li>
                                 <li>Presiona el botón <strong>"Copiar Mis Respuestas para Telegram"</strong>.</li>
-                                <li>Abre Telegram y presiona <strong>Pegar (Ctrl + V)</strong> para publicar en el grupo.</li>
+                                <li>Abre Telegram y presiona <strong>Pegar (Ctrl + V)</strong> para publicar en el grupo evaluativo.</li>
                             </ol>
                         </div>
 
-                        <textarea id="ans-m9-u1" rows="4" placeholder="Escribe tus respuestas aquí..." class="w-full bg-slate-900 border border-slate-700 text-white rounded-xl p-4 text-xs font-mono"></textarea>
-                        <button onclick="copiarRespuestas('ans-m9-u1', 'Módulo 9 - Unidad 1')" class="bg-purple-600 hover:bg-purple-500 text-white font-bold px-5 py-3 rounded-xl text-xs">
+                        <textarea id="ans-m9-u1" rows="5" placeholder="Escribe tus respuestas detalladas aquí..." class="w-full bg-slate-900 border border-slate-700 text-white rounded-xl p-4 text-xs font-mono focus:border-amber-400 focus:outline-none"></textarea>
+                        <button onclick="copiarRespuestas('ans-m9-u1', 'Módulo 9 - Unidad 1')" class="bg-purple-600 hover:bg-purple-500 text-white font-bold px-5 py-3 rounded-xl text-xs transition flex items-center gap-2">
                             <i class="fas fa-copy"></i> Copiar Mis Respuestas para Telegram
                         </button>
                     </div>
@@ -111,7 +170,7 @@
                             <h3 class="text-lg font-bold text-amber-400 flex items-center gap-2">
                                 <i class="fas fa-comments"></i> Sala de Debate y Consultas - Unidad 1
                             </h3>
-                            <p class="text-xs text-slate-400">Foro de discusión sobre títulos valores, letras de cambio y endosos.</p>
+                            <p class="text-xs text-slate-400">Foro de discusión sobre títulos valores, letras de cambio, pagarés y endosos.</p>
                         </div>
                         <span class="bg-purple-900/80 text-purple-300 text-xs px-3 py-1 rounded-full font-bold">Chat de Unidad</span>
                     </div>
@@ -135,24 +194,67 @@
             </div>
         </div>
 
-        <!-- U2 -->
+        <!-- UNIDAD 2 -->
         <div id="u2" class="tab-content space-y-6">
-            <div class="bg-white rounded-3xl p-8 shadow-sm border border-slate-200">
-                <h2 class="text-2xl font-bold mb-4">Unidad 2: Documentos Comerciales No Negociables</h2>
-                <div class="space-y-4 text-slate-600 text-sm sm:text-base">
-                    <p><strong>2.1 Factura (Providencia SENIAT 00071):</strong> Documento probatorio de la compraventa con número de control obligatorio impreso por imprentas autorizadas por el SENIAT.</p>
-                    <p><strong>2.2 Notas de Débito y Crédito:</strong> La Nota de Crédito disminuye el valor de la factura previa (descuentos, devoluciones). La Nota de Débito incrementa el valor (recargos, mora).</p>
-                    <p><strong>2.3 Guías de Despacho / Albarán:</strong> Soportan el traslado físico de mercancías en el territorio nacional.</p>
+            <div class="bg-white rounded-3xl p-6 sm:p-8 shadow-sm border border-slate-200">
+                <h2 class="text-2xl font-bold mb-2">Unidad 2: Documentos Comerciales No Negociables</h2>
+                <p class="text-slate-500 text-sm mb-6">Visualiza la clase en video antes de completar las preguntas del cuestionario evaluativo.</p>
+
+                <!-- VIDEO PLAYER UNIDAD 2 -->
+                <div class="mb-8 bg-slate-900 rounded-3xl p-4 sm:p-6 shadow-xl border border-slate-800">
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="bg-purple-500/20 text-purple-400 p-2.5 rounded-xl border border-purple-500/30">
+                            <i class="fas fa-video text-lg"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-bold text-white">Video Clase 2: Documentos No Negociables y Facturación SENIAT</h3>
+                            <p class="text-xs text-slate-400">Observa con atención el video (Documentos No Negociables) antes de responder el cuestionario práctico.</p>
+                        </div>
+                    </div>
+                    <div class="relative rounded-2xl overflow-hidden bg-black aspect-video border border-slate-800 shadow-2xl">
+                        <video controls preload="metadata" class="w-full h-full object-contain">
+                            <source src="Documentos_No_Negociables.mp4" type="video/mp4">
+                            Tu navegador no soporta el reproductor de video HTML5.
+                        </video>
+                    </div>
                 </div>
 
-                <div class="mt-8 bg-purple-950 text-white rounded-3xl p-6 shadow-xl">
-                    <h3 class="text-lg font-bold text-purple-300 mb-4"><i class="fas fa-pen-to-square"></i> Cuestionario Práctico - Unidad 2</h3>
-                    <div class="space-y-4 text-sm">
+                <!-- SÍNTESIS TEÓRICA -->
+                <div class="bg-slate-50 p-6 rounded-2xl border border-slate-200 mb-8 space-y-4 text-slate-600 text-sm sm:text-base">
+                    <h3 class="font-bold text-slate-900 text-base flex items-center gap-2">
+                        <i class="fas fa-book-bookmark text-purple-600"></i> Resumen Teórico y Doctrinal - Unidad 2
+                    </h3>
+                    <p><strong>2.1 Pedido / Orden de Compra:</strong> Oferta formal de compra. Constituye la base del control interno contable para la validación del *Triple Match*.</p>
+                    <p><strong>2.2 Albarán (Guía de Despacho):</strong> Acredita la entrega física de mercancías (*res perit domino*). Clasificado en Valorado (con precios) y Sin Valorar (especificaciones físicas de carga).</p>
+                    <p><strong>2.3 Recibo:</strong> Documento probatorio de finiquito de deuda (Art. 1.282 Cód. Civil) con efecto liberatorio inmediato para el deudor.</p>
+                    <p><strong>2.4 Factura Fiscal (Providencia SENIAT 00071):</strong> Soporte legal obligatorio del Débito y Crédito Fiscal de IVA. Requisitos: número de control correlativo, imprenta autorizada, RIF y datos de adquirente.</p>
+                    <p><strong>2.5 Notas de Débito y Crédito (Art. 61 Ley de IVA):</strong> La Nota de Crédito disminuye la base imponible y el IVA (devoluciones, descuentos). La Nota de Débito incrementa la base imponible y el IVA (recargos, mora).</p>
+                </div>
+
+                <!-- CUESTIONARIO PRÁCTICO U2 -->
+                <div class="bg-purple-950 text-white rounded-3xl p-6 sm:p-8 shadow-xl">
+                    <div class="flex items-center gap-3 mb-6">
+                        <div class="bg-amber-500/20 text-amber-400 p-2.5 rounded-xl border border-amber-500/30">
+                            <i class="fas fa-pen-to-square text-lg"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-bold text-purple-300">Cuestionario Práctico Evaluativo - Unidad 2</h3>
+                            <p class="text-xs text-slate-300">Responde a continuación basándote en la lección explicada en el video arriba.</p>
+                        </div>
+                    </div>
+
+                    <div class="space-y-5 text-sm">
                         <div class="bg-slate-900 p-4 rounded-xl border border-slate-800">
-                            <strong>Pregunta 2.1:</strong> Mencione 4 requisitos obligatorios de una Factura bajo la Providencia 00071 del SENIAT.
+                            <span class="bg-purple-600 text-white text-[11px] font-bold px-2 py-0.5 rounded mr-2">Pregunta 2.1</span>
+                            <strong class="text-slate-200">Indique los 5 requisitos formales obligatorios que debe contener una Factura legal en Venezuela según la Providencia SENIAT N° 00071.</strong>
                         </div>
                         <div class="bg-slate-900 p-4 rounded-xl border border-slate-800">
-                            <strong>Pregunta 2.2:</strong> ¿En qué casos contables procede la emisión de una Nota de Crédito y en cuáles una Nota de Débito?
+                            <span class="bg-purple-600 text-white text-[11px] font-bold px-2 py-0.5 rounded mr-2">Pregunta 2.2</span>
+                            <strong class="text-slate-200">¿En qué casos contables procede la emisión de una Nota de Crédito y cuándo una Nota de Débito? Indique el efecto en el IVA (Débito y Crédito Fiscal).</strong>
+                        </div>
+                        <div class="bg-slate-900 p-4 rounded-xl border border-slate-800">
+                            <span class="bg-purple-600 text-white text-[11px] font-bold px-2 py-0.5 rounded mr-2">Pregunta 2.3</span>
+                            <strong class="text-slate-200">Explique la diferencia entre un Albarán Valorado y un Albarán Sin Valorar, y cuál es su significación en el traspaso del riesgo (*res perit domino*).</strong>
                         </div>
 
                         <!-- Instrucciones -->
@@ -163,12 +265,12 @@
                             <ol class="list-decimal list-inside space-y-1 text-slate-300">
                                 <li>Escribe tus respuestas abajo.</li>
                                 <li>Presiona <strong>"Copiar Mis Respuestas para Telegram"</strong>.</li>
-                                <li>Abre Telegram y presiona <strong>Pegar (Ctrl + V)</strong>.</li>
+                                <li>Abre Telegram y presiona <strong>Pegar (Ctrl + V)</strong> para publicar en el grupo evaluativo.</li>
                             </ol>
                         </div>
 
-                        <textarea id="ans-m9-u2" rows="4" placeholder="Escribe tus respuestas aquí..." class="w-full bg-slate-900 border border-slate-700 text-white rounded-xl p-4 text-xs font-mono"></textarea>
-                        <button onclick="copiarRespuestas('ans-m9-u2', 'Módulo 9 - Unidad 2')" class="bg-purple-600 hover:bg-purple-500 text-white font-bold px-5 py-3 rounded-xl text-xs">
+                        <textarea id="ans-m9-u2" rows="5" placeholder="Escribe tus respuestas detalladas aquí..." class="w-full bg-slate-900 border border-slate-700 text-white rounded-xl p-4 text-xs font-mono focus:border-amber-400 focus:outline-none"></textarea>
+                        <button onclick="copiarRespuestas('ans-m9-u2', 'Módulo 9 - Unidad 2')" class="bg-purple-600 hover:bg-purple-500 text-white font-bold px-5 py-3 rounded-xl text-xs transition flex items-center gap-2">
                             <i class="fas fa-copy"></i> Copiar Mis Respuestas para Telegram
                         </button>
                     </div>
@@ -181,7 +283,7 @@
                             <h3 class="text-lg font-bold text-amber-400 flex items-center gap-2">
                                 <i class="fas fa-comments"></i> Sala de Debate y Consultas - Unidad 2
                             </h3>
-                            <p class="text-xs text-slate-400">Debate sobre la factura SENIAT 00071 y notas de crédito/débito.</p>
+                            <p class="text-xs text-slate-400">Debate sobre la factura SENIAT 00071, albaranes y notas de crédito/débito.</p>
                         </div>
                         <span class="bg-purple-900/80 text-purple-300 text-xs px-3 py-1 rounded-full font-bold">Chat de Unidad</span>
                     </div>
@@ -208,8 +310,9 @@
     </main>
 
     <footer class="bg-slate-900 text-white py-8 border-t border-slate-800">
-        <div class="max-w-7xl mx-auto px-4 text-center">
+        <div class="max-w-7xl mx-auto px-4 text-center space-y-2">
             <p class="text-sm font-semibold">Diplomado en Contabilidad Financiera • UCSAR</p>
+            <p class="text-xs text-slate-400">Facilitador: MSc. Frank Clemente</p>
         </div>
     </footer>
 
